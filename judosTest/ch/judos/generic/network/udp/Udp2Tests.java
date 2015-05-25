@@ -1,17 +1,21 @@
 package ch.judos.generic.network.udp;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.net.DatagramSocket;
 import java.net.InetSocketAddress;
-
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import ch.judos.generic.network.udp.interfaces.Layer2Listener;
 
 /**
  * @since 04.07.2013
  * @author Julian Schelker
  */
-public class Udp2Tests extends TestCase {
+public class Udp2Tests {
 
 	int				PORT;
 	boolean			success;
@@ -58,27 +62,22 @@ public class Udp2Tests extends TestCase {
 		this.u.removeListener(listener);
 	}
 
-	public void excessiveData() {
+	@Test(expected = IOException.class)
+	public void testExcessiveData() throws IOException {
 		final byte[] senddata = new byte[UdpConfig.PACKET_SIZE_BYTES * 2];
-		try {
-			this.u.sendDataTo(1, senddata, false, new InetSocketAddress("localhost", this.PORT));
-			fail();
-		}
-		catch (IOException e) {
-			// expected to throw this exception
-		}
+		this.u.sendDataTo(1, senddata, false, new InetSocketAddress("localhost", this.PORT));
 	}
 
-	@Override
-	protected void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		@SuppressWarnings("resource")
 		DatagramSocket s = new DatagramSocket();
 		this.u = new Udp2(new Udp1(new Udp0Reader(s)));
 		this.PORT = this.u.getLocalPort();
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
+	@After
+	public void tearDown() throws Exception {
 		this.u.dispose();
 	}
 
@@ -154,10 +153,10 @@ public class Udp2Tests extends TestCase {
 		this.u.removeListener(listener);
 	}
 
+	@Test
 	public void testAll() {
 		emptyData();
 		someData();
 		someConfirmedData();
-		excessiveData();
 	}
 }

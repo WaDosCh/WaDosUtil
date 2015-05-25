@@ -1,7 +1,6 @@
 package ch.judos.generic.network.udp.interfaces;
 
 import java.io.File;
-
 import ch.judos.generic.network.udp.model.FileDescription;
 
 /**
@@ -18,7 +17,7 @@ public interface FileTransmissionHandler {
 	 * @param fd
 	 *            the description of the incoming file
 	 * @return the target save location or null if the transfer should be
-	 *         canceled
+	 *         declined
 	 */
 	public File requestFileTransmission(FileDescription fd);
 

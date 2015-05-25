@@ -32,12 +32,17 @@ layer 3:
 
 
 layer 2:
-	type (byte), packetNr (int), data(byte[])
-	constraints: type=[1,127], max. 8187 byte data
+	type (byte), meta(byte), packetNr (int), data(byte[])
+	constraints: type=[1,127], max. 8186 byte data
 	confirmation: type+128 flag
-		packet will be resent until confirmation type=0 is received
+		packet will be resent until confirmation packet is received
 	confirmation packet=
 		type=0, confirmedNrs (int[])
+		type=128, first transmitted packet with confirmation
+			(confirmation duplicate filter on receiver side should reset)
+			the real type is written in the meta byte
+	meta infos:
+		is only used for packet=128 otherwise still free to be used
 
 
 layer 1:
