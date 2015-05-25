@@ -1,6 +1,7 @@
 package ch.judos.generic.data;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Set;
 
 /**
@@ -96,5 +97,9 @@ public class HashMapR<K, V> {
 	
 	public Set<K> getKeySet() {
 		return this.key2value.keySet();
+	}
+
+	public Set<Entry<K, V>> entrySet() {
+		return this.key2value.entrySet();
 	}
 }
