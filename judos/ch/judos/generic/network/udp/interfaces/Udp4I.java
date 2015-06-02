@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetSocketAddress;
-
 import ch.judos.generic.data.SerializerException;
+import ch.judos.generic.network.udp.model.reachability.Reachability;
 
 /**
  * @since 11.07.2013
@@ -36,6 +36,13 @@ public interface Udp4I {
 	 */
 	public void
 		checkReachability(InetSocketAddress target, ReachabilityListener listener);
+	
+	/**
+	 * @param target
+	 * @param timeoutMs milliseconds to wait before returning
+	 * @return the reachability of the target
+	 */
+	public Reachability getReachability(InetSocketAddress target, int timeoutMs);
 
 	/**
 	 * stops all threads of the udpLib and closes the network connection
