@@ -2,6 +2,7 @@ package ch.judos.generic.network.udp.interfaces;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import ch.judos.generic.network.udp.ConnectionIssueListener;
 
 /**
  * handles big objects
@@ -32,9 +33,8 @@ public interface Udp3I {
 
 	/**
 	 * @return the maximal amount of bytes that can be sent at once without
-	 *         splitting the packet into parts. This is also the biggest
-	 *         possible unconfirmed packet, since confirmation for big packets
-	 *         is forced.
+	 *         splitting the packet into parts. This is also the biggest possible
+	 *         unconfirmed packet, since confirmation for big packets is forced.
 	 */
 	public int getMaxUnsplitPacketSize();
 
@@ -42,17 +42,20 @@ public interface Udp3I {
 
 	/**
 	 * @param type
-	 *            1-63
+	 *           1-63
 	 * @param data
-	 *            content of the message
+	 *           content of the message
 	 * @param confirmation
-	 *            turned on automatically for big packets (where the content
-	 *            needs to be split)
+	 *           turned on automatically for big packets (where the content needs
+	 *           to be split)
 	 * @param to
-	 *            receivers address
+	 *           receivers address
 	 * @throws IOException
 	 */
 	public abstract void sendDataTo(int type, byte[] data, boolean confirmation,
 		InetSocketAddress to) throws IOException;
 
+	public void addConnectionIssueListener(ConnectionIssueListener c);
+
+	public void removeConnectionIssueListener(ConnectionIssueListener c);
 }

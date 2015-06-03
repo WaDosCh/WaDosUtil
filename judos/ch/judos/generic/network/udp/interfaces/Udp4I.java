@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import ch.judos.generic.data.SerializerException;
+import ch.judos.generic.network.udp.ConnectionIssueListener;
 import ch.judos.generic.network.udp.model.reachability.Reachability;
 
 /**
@@ -125,4 +126,7 @@ public interface Udp4I {
 	 */
 	public void setFileHandler(FileTransmissionHandler fileHandler);
 
+	public void addConnectionIssueListener(ConnectionIssueListener c);
+
+	public void removeConnectionIssueListener(ConnectionIssueListener c);
 }

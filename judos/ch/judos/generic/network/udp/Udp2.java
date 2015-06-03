@@ -64,10 +64,12 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 		this.thread.start();
 	}
 
+	@Override
 	public void addConnectionIssueListener(ConnectionIssueListener c) {
 		this.connectionIssueListeners.add(c);
 	}
 
+	@Override
 	public void removeConnectionIssueListener(ConnectionIssueListener c) {
 		this.connectionIssueListeners.remove(c);
 	}

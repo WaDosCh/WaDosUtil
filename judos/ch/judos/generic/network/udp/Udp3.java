@@ -156,4 +156,14 @@ public class Udp3 implements Layer2Listener, Udp3I {
 		for (byte[] packet : packets)
 			this.u.sendDataTo(type + 64, packet, true, to);
 	}
+
+	@Override
+	public void addConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.addConnectionIssueListener(c);
+	}
+
+	@Override
+	public void removeConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.removeConnectionIssueListener(c);
+	}
 }

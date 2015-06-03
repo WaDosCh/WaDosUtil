@@ -267,4 +267,14 @@ public class Udp4 implements Layer3Listener, Udp4I {
 	public Reachability getReachability(InetSocketAddress target, int timeoutMs) {
 		return new ReachabilitySync(target,timeoutMs,this).waitUntilDone();
 	}
+
+	@Override
+	public void addConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.addConnectionIssueListener(c);
+	}
+
+	@Override
+	public void removeConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.removeConnectionIssueListener(c);
+	}
 }
