@@ -1,4 +1,4 @@
-package ch.judos.generic.games.easymp.api;
+package ch.judos.generic.games.easymp.model;
 
 
 /**

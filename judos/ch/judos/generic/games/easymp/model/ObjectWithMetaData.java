@@ -1,5 +1,6 @@
-package ch.judos.generic.games.easymp.msgs;
+package ch.judos.generic.games.easymp.model;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import ch.judos.generic.games.easymp.FieldInformation;
@@ -10,21 +11,23 @@ import ch.judos.generic.games.easymp.ObjectId;
  * @since 31.05.2015
  * @author Julian Schelker
  */
-public class ObjectWithMetaData {
+public class ObjectWithMetaData implements Serializable {
 
-	ObjectId	id;
+	private static final long	serialVersionUID	= 8772239159170236859L;
+
+	public ObjectId	id;
 
 	/**
 	 * for primitive fields contains the value directly<br>
 	 * for object fields this contains a reference to another ObjectWithMetaData
 	 * object
 	 */
-	Object[]	fields;
+	public Object[]	fields;
 
 	/**
 	 * stores the actual class type of this object
 	 */
-	Class<?>	clazz;
+	public Class<?>	clazz;
 
 	public static ObjectWithMetaData fromObject(Object obj, MonitoredObjectStorage storage) {
 		try {

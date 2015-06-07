@@ -4,9 +4,13 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.function.Consumer;
+
+import ch.judos.generic.data.MutableBoolean;
+import ch.judos.generic.games.easymp.FieldInformation;
 import ch.judos.generic.games.easymp.MonitoredObjectStorage;
 import ch.judos.generic.games.easymp.ObjectId;
-import ch.judos.generic.games.easymp.FieldInformation;
+import ch.judos.generic.games.easymp.model.ObjectWithMetaData;
+import ch.judos.generic.games.easymp.model.UpdatableI;
 import ch.judos.generic.reflection.Classes;
 
 /**
@@ -15,8 +19,7 @@ import ch.judos.generic.reflection.Classes;
  */
 public class ObjectUpdateMsg extends UpdateMsg {
 
-	private static final long	serialVersionUID	= -8113376392756050290L;
-
+	private static final long	serialVersionUID	= -170694419417208599L;
 	public ObjectWithMetaData	data;
 
 	public ObjectUpdateMsg(Object object, MonitoredObjectStorage storage) {
@@ -44,6 +47,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 		if (localFields.size() != remoteValues.length)
 			throw new RuntimeException("Retrieved fields are not of equal size: "
 				+ localFields + "\nAnd:" + remoteValues);
+		final MutableBoolean updated = new MutableBoolean(false);
 		for (int i = 0; i < localFields.size(); i++) {
 			// distinguish between primitives and objects:
 			if (remoteValues[i] instanceof ObjectWithMetaData) {
@@ -52,13 +56,18 @@ public class ObjectUpdateMsg extends UpdateMsg {
 				ObjectWithMetaData remoteValue = (ObjectWithMetaData) remoteValues[i];
 				updateObjectIdCheck(localValue, remoteValue, (Object o) -> {
 					setFieldValue(localObject, localField, o);
+					updated.state = true;
 				},storage);
 			}
 			else {
 				localFields.get(i).set(localObject, remoteValues[i]);
+				updated.state = true;
 			}
 		}
 		
+		if (updated.state && (localObject instanceof UpdatableI)) {
+			((UpdatableI)localObject).wasUpdated();
+		}
 	}
 
 	private static void updateObjectIdCheck(Object localValue, ObjectWithMetaData remoteValue,

@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import java.io.Serializable;
 import javax.swing.JTextField;
 import ch.judos.generic.games.easymp.Monitor;
-import ch.judos.generic.games.easymp.api.UpdatableI;
+import ch.judos.generic.games.easymp.model.UpdatableI;
 
 /**
  * @since 22.05.2015

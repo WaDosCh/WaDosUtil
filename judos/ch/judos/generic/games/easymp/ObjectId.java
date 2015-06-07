@@ -1,14 +1,18 @@
 package ch.judos.generic.games.easymp;
 
+import java.io.Serializable;
+
 /**
  * @since 31.05.2015
  * @author Julian Schelker
  */
-public class ObjectId {
+public class ObjectId implements Serializable {
 
-	private Type	type;
-	private int		nr;
-	private String	clientId;	// only set if this id is of type dynamic
+	private static final long	serialVersionUID	= 7604606689301970415L;
+	private Type				type;
+	private int					nr;
+	// only set if this id is of type dynamic
+	private String				clientId;
 
 	protected ObjectId(Type type, int nr, String clientId) {
 		this.type = type;
@@ -50,5 +54,12 @@ public class ObjectId {
 
 	enum Type {
 		STATIC, DYNAMIC;
+	}
+
+	@Override
+	public String toString() {
+		if (this.type == Type.STATIC)
+			return this.type + " " + this.nr;
+		return this.type + " " + this.nr + " (" + this.clientId + ")";
 	}
 }
