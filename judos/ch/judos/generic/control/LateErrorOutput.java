@@ -67,7 +67,7 @@ public class LateErrorOutput implements Runnable {
 					wait(wait);
 				}
 			} catch (InterruptedException e1) {
-				// FIXME: should this interrupt really be ignored? break seams better
+				//do nothing
 			}
 		}
 		this.running = false;

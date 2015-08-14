@@ -21,4 +21,11 @@ public interface CommunicatorI {
 	 * @param exclude players who shouldn't receive this object
 	 */
 	public void sendToAll(Object data, PlayerI ... exclude);
+
+	/**
+	 * @return a unique id for this client
+	 */
+	public String getClientId();
+	
+	
 }

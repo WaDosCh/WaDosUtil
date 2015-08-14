@@ -2,6 +2,7 @@ package ch.judos.generic.network.udp.interfaces;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import ch.judos.generic.network.udp.ConnectionIssueListener;
 
 /**
  * handles confirmation of messages, with the confirmation flag set to true, a
@@ -27,5 +28,9 @@ public interface Udp2I {
 
 	public void sendDataTo(int type, byte[] data, boolean confirmation,
 		InetSocketAddress dest) throws IOException;
+	
+	public void addConnectionIssueListener(ConnectionIssueListener c);
+	
+	public void removeConnectionIssueListener(ConnectionIssueListener c);
 
 }

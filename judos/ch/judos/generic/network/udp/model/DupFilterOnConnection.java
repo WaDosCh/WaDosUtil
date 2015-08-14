@@ -2,7 +2,6 @@ package ch.judos.generic.network.udp.model;
 
 import java.net.InetSocketAddress;
 import java.util.HashMap;
-
 import ch.judos.generic.data.DuplicateFilter;
 
 /**
@@ -14,6 +13,10 @@ public class DupFilterOnConnection {
 
 	public DupFilterOnConnection() {
 		this.clients = new HashMap<>();
+	}
+	
+	public synchronized void resetForConnection(InetSocketAddress addr) {
+		this.clients.remove(addr);
 	}
 
 	public synchronized boolean check(InetSocketAddress addr, int index) {

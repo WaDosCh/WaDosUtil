@@ -1,0 +1,17 @@
+since objects can be referenced under multiple parent objects:
+  - dynamic monitored objects must be indexed at runtime with uuid
+  - uuid generation must be unique (distributed, id contains clientId)
+  
+So every programm has:
+
+- static monitored objects (id -> object)
+- dynamic monitored objects (id -> object)
+   id contains {unique client number, unique object nr for that client}
+
+Message transfer and content:
+ typedef: uuid = { static|dynamic, nr } 
+ - Change for object: {uuid, replace=[int[]fieldIndex, uuid], serialized object)
+ - New object:
+     use previous message and set replacer information for that object
+     e.g. field 0 = uuid(dynamic,1) means: the first field of the changed object contains 
+          a new replaced object which is not referenced with the new uuid (dynamic,1)

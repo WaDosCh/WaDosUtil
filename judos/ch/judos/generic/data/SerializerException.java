@@ -14,6 +14,7 @@ public class SerializerException extends Exception {
 	 */
 	public SerializerException(String msg, Exception e) {
 		super(msg + ": " + e.getMessage());
+		this.setStackTrace(e.getStackTrace());
 	}
 
 	/**

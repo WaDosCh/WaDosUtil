@@ -39,7 +39,7 @@ public class IP {
 		if (wanIp == null || "-not found-".equals(wanIp)) {
 			wanIp = "-not found-";
 			try {
-				URL URL = new URL("http://www.however.ch/EStream/getip.php");
+				URL URL = new URL("https://api.ipify.org/");
 				HttpURLConnection c = (HttpURLConnection) URL.openConnection();
 				InputStream in = c.getInputStream();
 				BufferedReader br = new BufferedReader(new InputStreamReader(in));

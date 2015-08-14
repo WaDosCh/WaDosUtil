@@ -1,7 +1,8 @@
 *.class
 
 # ignore because of the custom set flags to ignore warnings
-.classpath
+/.classpath
+/.project
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

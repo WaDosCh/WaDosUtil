@@ -8,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -29,20 +28,6 @@ public class FileUtils extends File {
 	public static BufferedWriter getWriterForFile(File f) throws FileNotFoundException {
 		return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f),
 			CharsetDefault.CURRENT_CHARSET));
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent checkOrCreateDir(File) checks if the folder
-	 *             name exists, if not it is created
-	 * 
-	 * @param name
-	 */
-	@Deprecated
-	public static void checkOrCreateDir(String name) {
-		File f = new File(name);
-		if (!f.isDirectory())
-			f.mkdir();
 	}
 
 	/**
@@ -121,18 +106,6 @@ public class FileUtils extends File {
 		return ok;
 	}
 
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent copyDirectory(File,File)
-	 * @param source
-	 * @param target
-	 * @return true if operation succeeded - false if exception occured
-	 */
-	@Deprecated
-	public static boolean copyDirectory(String source, String target) {
-		return copyDirectory(new File(source), new File(target));
-	}
-
 	/**
 	 * @param f1
 	 * @param f2
@@ -155,18 +128,6 @@ public class FileUtils extends File {
 		catch (IOException e) {
 			return false;
 		}
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent copyFile(File,File)
-	 * @param source
-	 * @param destination
-	 * @return true if operation succeeded - false if exception occured
-	 */
-	@Deprecated
-	public static boolean copyFile(String source, String destination) {
-		return copyFile(new File(source), new File(destination));
 	}
 
 	/**
@@ -245,50 +206,6 @@ public class FileUtils extends File {
 			result.add(line);
 
 		return result;
-	}
-
-	// TODO: remove in build 1.4
-	/**
-	 * @deprecated use readAllFile(File) instead of the string version
-	 * @param name
-	 * @return reads the whole content in the file and returns it as one string.<br>
-	 *         lines in the file are separated by \n
-	 * @throws IOException
-	 * 
-	 */
-	@Deprecated
-	public static String readAllFile(String name) throws IOException {
-		return readAllFile(new File(name));
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use getReaderForFile(File)
-	 * @param f
-	 * @return BufferedReader to read the file
-	 * @throws FileNotFoundException
-	 *            - if the file does not exist, is a directory rather than a
-	 *            regular file, or for some other reason cannot be opened for
-	 *            reading.
-	 */
-	@Deprecated
-	public static BufferedReader readFile(File f) throws FileNotFoundException {
-		return getReaderForFile(f);
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent getReaderForFile(File)
-	 * @param name
-	 * @return BufferedReader to read the file
-	 * @throws FileNotFoundException
-	 *            - if the file does not exist, is a directory rather than a
-	 *            regular file, or for some other reason cannot be opened for
-	 *            reading.
-	 */
-	@Deprecated
-	public static BufferedReader readFile(String name) throws FileNotFoundException {
-		return getReaderForFile(new File(name));
 	}
 
 	/**
@@ -397,27 +314,9 @@ public class FileUtils extends File {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(description, extensions);
 		chooser.setFileFilter(filter);
 		int returnVal = chooser.showOpenDialog(null);
-		if (returnVal == JFileChooser.APPROVE_OPTION) {
+		if (returnVal == JFileChooser.APPROVE_OPTION)
 			return chooser.getSelectedFile();
-		}
-		// else
 		return null;
-	}
-
-	// TODO: remove in build 1.4
-	/**
-	 * @deprecated use the requestFile(File,String,String[]) equivalent version
-	 * @param startPath
-	 *           initial directory to come up with
-	 * @param description
-	 *           displayed to the user
-	 * @param extensions
-	 *           which are allowed
-	 * @return the selected file or null is the operation is canceled
-	 */
-	@Deprecated
-	public static File requestFile(String startPath, String description, String extensions[]) {
-		return requestFile(new File(startPath), description, extensions);
 	}
 
 	/**
@@ -446,36 +345,6 @@ public class FileUtils extends File {
 		return null;
 	}
 
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent getWriterForFile(File)
-	 * @param f
-	 * @return BufferedWriter to write into the file
-	 * @throws IOException
-	 *            - if the file exists but is a directory rather than a regular
-	 *            file, does not exist but cannot be created, or cannot be opened
-	 *            for any other reason
-	 */
-	@Deprecated
-	public static BufferedWriter writeFile(File f) throws IOException {
-		return getWriterForFile(f);
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent getWriterForFile(File)
-	 * @param name
-	 * @return BufferedWriter to write into the file
-	 * @throws IOException
-	 *            - if the file exists but is a directory rather than a regular
-	 *            file, does not exist but cannot be created, or cannot be opened
-	 *            for any other reason
-	 */
-	@Deprecated
-	public static BufferedWriter writeFile(String name) throws IOException {
-		return getWriterForFile(new File(name));
-	}
-
 	/**
 	 * @param file
 	 * @param content
@@ -492,31 +361,8 @@ public class FileUtils extends File {
 		return true;
 	}
 
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent writeToFile(File,String)
-	 * @param filename
-	 * @param content
-	 * @return true if writing succeeded
-	 */
-	@Deprecated
-	public static boolean writeToFile(String filename, String content) {
-		File file = new File(filename);
-		return writeToFile(file, content);
-	}
-
 	public FileUtils(File f) {
 		super(f.getAbsolutePath());
-	}
-
-	// TODO: remove in 1.4
-	/**
-	 * @deprecated use the equivalent FileUtils(File) constructor
-	 * @param pathname
-	 */
-	@Deprecated
-	public FileUtils(String pathname) {
-		super(pathname);
 	}
 
 	public String getEnding() {

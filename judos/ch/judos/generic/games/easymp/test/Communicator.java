@@ -10,6 +10,7 @@ import ch.judos.generic.games.easymp.api.CommunicatorI;
 import ch.judos.generic.games.easymp.api.PlayerI;
 import ch.judos.generic.games.easymp.msgs.Message;
 import ch.judos.generic.games.easymp.msgs.UpdateMsg;
+import ch.judos.generic.network.IP;
 import ch.judos.generic.network.udp.interfaces.Udp4I;
 import ch.judos.generic.network.udp.interfaces.UdpListener;
 
@@ -65,6 +66,11 @@ public class Communicator implements CommunicatorI, UdpListener {
 		else {
 			new Exception("unknown message object received: " + data).printStackTrace();
 		}
+	}
+
+	@Override
+	public String getClientId() {
+		return IP.getLocalIpsAsStrings()[0];
 	}
 
 }

@@ -1,8 +1,9 @@
-package tests;
+package ch.judos.generic;
 
+import static org.junit.Assert.fail;
 import java.util.LinkedList;
-
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * with more than one thread adding elements to the linkedlist the thread which
@@ -12,15 +13,16 @@ import junit.framework.TestCase;
  * @created 25.08.2012
  * @author Julian Schelker
  */
-public class LinkedListConcurrencyTest extends TestCase {
+public class LinkedListConcurrencyTest {
 	
 	private LinkedList<Integer> list;
 	
-	@Override
-	protected void setUp() throws Exception {
-		this.list = new LinkedList<Integer>();
+	@Before
+	public void setUp() throws Exception {
+		this.list = new LinkedList<>();
 	}
 	
+	@Test
 	public void testConc() throws Exception {
 		try {
 			int s = 3;
@@ -57,7 +59,7 @@ public class LinkedListConcurrencyTest extends TestCase {
 		public void run() {
 			try {
 				for (int i = 0; i < 1000000; i++) {
-					if (add)
+					if (this.add)
 						this.l.addLast(1);
 					else {
 						if (this.l.size() > 0)

@@ -1,12 +1,10 @@
 package ch.judos.generic.network.udp;
 
 import static ch.judos.generic.network.udp.UdpConfig.out;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import ch.judos.generic.network.udp.interfaces.Layer2Listener;
 import ch.judos.generic.network.udp.interfaces.Layer3Listener;
 import ch.judos.generic.network.udp.interfaces.Udp2I;
@@ -17,6 +15,10 @@ import ch.judos.generic.network.udp.model.IAddressAndId;
 
 /**
  * handles big objects<br>
+ * packge type numbers:<br>
+ * flag +64 big packet: split into pieces
+ * 
+ * 
  * UDP: ConnectionIssueListener in Udp2 should be used and offered further on
  * 
  * @since 08.07.2013
@@ -153,5 +155,15 @@ public class Udp3 implements Layer2Listener, Udp3I {
 		out("  data split into " + packets.length + " part");
 		for (byte[] packet : packets)
 			this.u.sendDataTo(type + 64, packet, true, to);
+	}
+
+	@Override
+	public void addConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.addConnectionIssueListener(c);
+	}
+
+	@Override
+	public void removeConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.removeConnectionIssueListener(c);
 	}
 }

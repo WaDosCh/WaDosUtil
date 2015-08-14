@@ -120,7 +120,9 @@ public class Launcher implements UdpListener {
 		}
 		else if (arr.length == 1) {
 			System.out.println("Player joined: " + from);
-			this.playerList.put(from, new Player());
+			Player newClient = new Player();
+			this.playerList.put(from, newClient);
+			Monitor.getMonitor().syncNewPlayer(newClient); 
 		}
 		else {
 			new Exception("Invalid raw data msg received: "+arr).printStackTrace();

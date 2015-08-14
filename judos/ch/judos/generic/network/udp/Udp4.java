@@ -1,7 +1,6 @@
 package ch.judos.generic.network.udp;
 
 import static ch.judos.generic.network.udp.UdpConfig.out;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -9,14 +8,11 @@ import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import ch.judos.generic.data.Serializer;
 import ch.judos.generic.data.SerializerException;
 import ch.judos.generic.network.udp.interfaces.*;
 import ch.judos.generic.network.udp.model.FileOutgoingTransmission;
-import ch.judos.generic.network.udp.model.reachability.CheckReachThread;
-import ch.judos.generic.network.udp.model.reachability.ReachabilityRequest;
-import ch.judos.generic.network.udp.model.reachability.ReachabilityResponse;
+import ch.judos.generic.network.udp.model.reachability.*;
 
 /**
  * handles serializing and sending of objects, raw data, files
@@ -265,5 +261,20 @@ public class Udp4 implements Layer3Listener, Udp4I {
 	@Override
 	public void setFileHandler(FileTransmissionHandler fileHandler) {
 		this.fileReceiver.setFileHandler(fileHandler);
+	}
+
+	@Override
+	public Reachability getReachability(InetSocketAddress target, int timeoutMs) {
+		return new ReachabilitySync(target,timeoutMs,this).waitUntilDone();
+	}
+
+	@Override
+	public void addConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.addConnectionIssueListener(c);
+	}
+
+	@Override
+	public void removeConnectionIssueListener(ConnectionIssueListener c) {
+		this.u.removeConnectionIssueListener(c);
 	}
 }

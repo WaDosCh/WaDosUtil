@@ -1,16 +1,15 @@
 package ch.judos.generic.network.udp;
 
 import static ch.judos.generic.network.udp.UdpConfig.out;
-
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.PriorityQueue;
-
 import ch.judos.generic.data.RandomJS;
 import ch.judos.generic.data.Serializer;
+import ch.judos.generic.math.ConvertNumber;
 import ch.judos.generic.network.udp.interfaces.Layer1Listener;
 import ch.judos.generic.network.udp.interfaces.Layer2Listener;
 import ch.judos.generic.network.udp.interfaces.Udp1I;
@@ -65,10 +64,12 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 		this.thread.start();
 	}
 
+	@Override
 	public void addConnectionIssueListener(ConnectionIssueListener c) {
 		this.connectionIssueListeners.add(c);
 	}
 
+	@Override
 	public void removeConnectionIssueListener(ConnectionIssueListener c) {
 		this.connectionIssueListeners.remove(c);
 	}
@@ -164,7 +165,7 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 	@Override
 	public int getMaxPacketSize() {
 		// an integer is added to mark the number of this packet
-		return this.u.getMaxPacketSize() - 4;
+		return this.u.getMaxPacketSize() - 5;
 	}
 
 	private int getNextPacketNr(InetSocketAddress dest) {
@@ -212,9 +213,10 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 	}
 
 	@Override
+	@SuppressWarnings("all")
 	public void receivedMsg(int type, byte[] packetData, InetSocketAddress from) {
-		byte[] data = new byte[packetData.length - 4];
-		System.arraycopy(packetData, 4, data, 0, data.length);
+		byte[] data = new byte[packetData.length - 5];
+		System.arraycopy(packetData, 5, data, 0, data.length);
 		out("in t=" + type + " size=" + packetData.length + " from:" + from);
 		Object removed = null;
 		synchronized (this.connectionIssue) {
@@ -222,12 +224,16 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 		}
 		if (removed != null)
 			notifyListenersAboutReconnectedConnection(from);
+		if (type == 128) { //flash duplicate filter
+			type = ConvertNumber.unsignedByte2Int(packetData[0]);
+			this.receiveFilter.resetForConnection(from);
+		}
 		if (type == 0)
 			memorizeConfirmationsData(data, from);
-		else if (type < 128)
+		else if (type>0 && type < 128)
 			notifyListeners(type, data, from);
-		else {
-			int nr = Serializer.bytes2int(packetData, 0);
+		else { //confirmed packets
+			int nr = Serializer.bytes2int(packetData, 1);
 			confirmFilterDuplicatesAndNotifyListeners(type - 128, data, from, nr);
 		}
 	}
@@ -340,13 +346,17 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 	@SuppressWarnings("all")
 	private void sendDataToUnchecked(int type, byte[] data, boolean confirmation,
 		InetSocketAddress dest) throws IOException {
-		byte[] sendData = new byte[data.length + 4];
-		System.arraycopy(data, 0, sendData, 4, data.length);
+		byte[] sendData = new byte[data.length + 5];
+		System.arraycopy(data, 0, sendData, 5, data.length);
 		int nr = -1;
 		if (confirmation) {
 			nr = getNextPacketNr(dest);
 			type += 128;
-			Serializer.int2bytes(sendData, 0, nr);
+			if (nr==0) { //reset duplicate filter on receiver side
+				sendData[0] = ConvertNumber.int2UnsignedByte(type);
+				type = 128;
+			}
+			Serializer.int2bytes(sendData, 1, nr);
 		}
 		Packet2ResendConfirmed packet = new Packet2ResendConfirmed(type, sendData, dest, nr);
 		send(packet);

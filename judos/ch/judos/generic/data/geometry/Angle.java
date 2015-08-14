@@ -102,6 +102,16 @@ public class Angle implements RStorable2 {
 	public PointF getDirection() {
 		return new PointF(Math.cos(this.radian), Math.sin(this.radian));
 	}
+	
+	/**
+	 * input angle = output angle<br>
+	 * this method bounces an input angle on a normal with the physics law
+	 * @param normal
+	 * @return
+	 */
+	public Angle bounceOnNormal(Angle normal) {
+		return Angle.A_180.add(normal.mul(2)).sub(this);
+	}
 
 	public Angle turnCounterClockwise(double angleInRadian) {
 		return Angle.fromRadian(this.radian - angleInRadian);

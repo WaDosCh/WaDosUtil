@@ -1,7 +1,7 @@
-package tests;
+package ch.judos.generic.math;
 
 import junit.framework.TestCase;
-import lib.data.JS_Converter;
+import ch.judos.generic.math.ConvertNumber;
 
 /**
  * @created 27.04.2012
@@ -19,7 +19,7 @@ public class ByteShiftTests extends TestCase {
 		}
 
 		for (int i = 0; i < 256; i += 32) {
-			int x = JS_Converter.unsignedByte2Int(JS_Converter.int2UnsignedByte(i));
+			int x = ConvertNumber.unsignedByte2Int(ConvertNumber.int2UnsignedByte(i));
 			assertEquals(i, x);
 		}
 
