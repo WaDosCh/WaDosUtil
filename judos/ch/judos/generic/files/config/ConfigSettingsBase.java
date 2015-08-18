@@ -36,7 +36,6 @@ public abstract class ConfigSettingsBase {
 	 * 
 	 * @return the Set of properties to be used
 	 */
-	@SuppressWarnings("null")
 	public Set<Property> getConfigurationEntries() {
 		DynamicList<Field> fields = Fields.getPublicFieldsOfClass(getConfigSettingsClass());
 		DynamicList<Object> values = Fields

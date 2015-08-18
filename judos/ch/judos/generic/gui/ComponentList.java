@@ -14,7 +14,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
 
-import org.eclipse.jdt.annotation.Nullable;
 
 import ch.judos.generic.data.TupleR;
 
@@ -24,7 +23,7 @@ import ch.judos.generic.data.TupleR;
  * @param <T>
  *           component
  */
-public class ComponentList<@Nullable T> {
+public class ComponentList<T> {
 	protected JRootPane													contentPanel;
 	protected JScrollPane												content;
 	protected ArrayList<TupleR<ComponentListEntry, T>>			entries;

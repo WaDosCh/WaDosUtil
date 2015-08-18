@@ -9,7 +9,6 @@ import javax.swing.JFrame;
  * 
  * @author Robert Harder, rob@iharder.net
  */
-@SuppressWarnings("unused")
 public class Example {
 
 	/**

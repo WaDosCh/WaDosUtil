@@ -82,7 +82,6 @@ public final class Dimension {
 	 * @return the corner to the top left.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point topLeft() {
 		if (this.topLeft == null)
 			return this.topLeft = Point.get(-this.width / 2, -this.height / 2);
@@ -95,7 +94,6 @@ public final class Dimension {
 	 * @return the corner to the top right.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point topRight() {
 		if (this.topRight == null)
 			this.topRight = Point.get(this.width / 2, -this.height / 2);
@@ -108,7 +106,6 @@ public final class Dimension {
 	 * @return the corner to the bottom left.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point bottomLeft() {
 		if (this.bottomLeft == null)
 			this.bottomLeft = Point.get(-this.width / 2, this.height / 2);
@@ -121,7 +118,6 @@ public final class Dimension {
 	 * @return the corner to the bottom right.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point bottomRight() {
 		if (this.bottomRight == null)
 			this.bottomRight = Point.get(this.width / 2, this.height / 2);

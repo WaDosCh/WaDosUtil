@@ -23,7 +23,6 @@ public abstract class UdpLib {
 	 * @return
 	 * @throws SocketException
 	 */
-	@SuppressWarnings("resource")
 	public static Udp4I createDefault() throws SocketException {
 		return new Udp4(createU3(new DatagramSocket()));
 	}
@@ -36,7 +35,6 @@ public abstract class UdpLib {
 	 * @return null if the port mapping could not be created
 	 * @throws SocketException
 	 */
-	@SuppressWarnings("resource")
 	public static Udp4Forwarded createForwarded() throws SocketException {
 		Udp3I u3 = createU3(new DatagramSocket());
 		int trials = 3;
@@ -60,7 +58,6 @@ public abstract class UdpLib {
 	 * @return null if the port mapping could not be created
 	 * @throws SocketException
 	 */
-	@SuppressWarnings("resource")
 	public static Udp4Forwarded createForwarded(int externalPort) throws SocketException {
 		Udp3I u3 = createU3(new DatagramSocket());
 		if (!UdpPortForwarder.addPortMapping(u3.getLocalPort(), externalPort,
@@ -78,7 +75,6 @@ public abstract class UdpLib {
 	 * @return
 	 * @throws SocketException
 	 */
-	@SuppressWarnings("resource")
 	public static Udp4I createOnPort(int port) throws SocketException {
 		return new Udp4(createU3(new DatagramSocket(port)));
 	}

@@ -120,7 +120,6 @@ public class PriorityQueue<E> implements Queue<E> {
 		this.backer.add(new QueueElement(element, priority));
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
 		return c.stream()

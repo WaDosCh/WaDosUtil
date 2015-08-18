@@ -47,7 +47,6 @@ public class HashMap2<K, K2, V> {
 	 * @param key2
 	 * @return gets the value back, needs both keys
 	 */
-	@SuppressWarnings("null")
 	public V get(K key1, K2 key2) {
 		HashMap<K2, V> map2 = this.map1.get(key1);
 		if (map2 == null)

@@ -33,7 +33,6 @@ public class CSVFileReader {
 	 * @return the interface to interact with the csv-file
 	 * @throws IOException
 	 */
-	@SuppressWarnings("resource")
 	public static CSVFileReader readFile(File input) throws IOException {
 		return read(new FileReader(input));
 	}

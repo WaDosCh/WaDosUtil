@@ -34,7 +34,6 @@ public class IP {
 	 * 
 	 * @return the official ip address of your computer / nat device
 	 */
-	@SuppressWarnings("resource")
 	public static String getWanIp() {
 		if (wanIp == null || "-not found-".equals(wanIp)) {
 			wanIp = "-not found-";

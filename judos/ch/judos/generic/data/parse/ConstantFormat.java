@@ -22,10 +22,9 @@ public class ConstantFormat extends SimpleFormat {
 		this.expect = expect;
 	}
 
-	/**
-	 * (non-Javadoc)
-	 * 
-	 * @see ch.judos.generic.data.parse.SimpleFormat#getObject()
+
+	/** (non-Javadoc)
+	 * @see ch.judos.generic.data.parse.Format#getObject()
 	 */
 	@Override
 	public Object getObject() {
