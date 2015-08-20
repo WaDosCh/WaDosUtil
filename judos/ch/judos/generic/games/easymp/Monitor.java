@@ -13,13 +13,13 @@ import ch.judos.generic.games.easymp.test.Player;
  */
 public abstract class Monitor {
 
-	protected boolean							isServer;
-	protected CommunicatorI					communicator;
+	protected boolean					isServer;
+	protected CommunicatorI				communicator;
 
 	protected MonitoredObjectStorage	storage;
 
-	private HashSet<Object>					updates;
-	private static Monitor					instance;
+	private HashSet<Object>				updates;
+	private static Monitor				instance;
 
 	public static void initializeServer(CommunicatorI c) {
 		if (instance != null)
@@ -32,11 +32,10 @@ public abstract class Monitor {
 			throw new RuntimeException("Monitor was already initialized");
 		instance = new ClientMonitor(false, c);
 	}
-	
+
 	public static Monitor getMonitor() {
 		if (instance == null)
-			throw new RuntimeException(
-				"Monitor needs to be first initialized");
+			throw new RuntimeException("Monitor needs to be first initialized");
 		return instance;
 	}
 
@@ -68,7 +67,7 @@ public abstract class Monitor {
 
 	private void sendUpdates() {
 		for (Object o : this.updates) {
-			UpdateMsg up = new ObjectUpdateMsg(o,this.storage);
+			UpdateMsg up = new ObjectUpdateMsg(o, this.storage);
 			this.communicator.sendToAll(up);
 		}
 		this.updates.clear();
@@ -83,7 +82,7 @@ public abstract class Monitor {
 
 	public void syncNewPlayer(Player newClient) {
 		for (Object staticObj : this.storage.getStaticObjects()) {
-			UpdateMsg m = new ObjectUpdateMsg(staticObj,this.storage);
+			UpdateMsg m = new ObjectUpdateMsg(staticObj, this.storage);
 			this.communicator.send(m, newClient);
 		}
 	}

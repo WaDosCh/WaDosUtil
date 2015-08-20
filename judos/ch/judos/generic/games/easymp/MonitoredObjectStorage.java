@@ -12,7 +12,7 @@ public class MonitoredObjectStorage {
 
 	protected HashMap<ObjectId, MonitoredObject>	stored;
 	protected HashMap<Object, ObjectId>				mappings;
-	private IdGenerator									idGenerator;
+	private IdGenerator								idGenerator;
 
 	public MonitoredObjectStorage(String clientId) {
 		this.stored = new HashMap<>();

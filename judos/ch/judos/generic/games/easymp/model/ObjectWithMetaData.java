@@ -37,7 +37,7 @@ public class ObjectWithMetaData implements Serializable {
 				throw new RuntimeException("No id found in storage for object: " + obj);
 			result.clazz = obj.getClass();
 
-			ArrayList<Field> fieldsList = FieldInformation.getRelevantFieldsFor(obj);
+			ArrayList<Field> fieldsList = FieldInformation.getRelevantFieldsOf(obj);
 			result.fields = new Object[fieldsList.size()];
 
 			for (int i = 0; i < fieldsList.size(); i++) {

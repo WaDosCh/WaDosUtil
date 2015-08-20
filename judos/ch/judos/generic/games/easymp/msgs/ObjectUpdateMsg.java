@@ -42,7 +42,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 	private static void updateObjectValues(Object localObject, ObjectWithMetaData remote,
 		MonitoredObjectStorage storage) throws Exception {
 		
-		ArrayList<Field> localFields = FieldInformation.getRelevantFieldsFor(localObject);
+		ArrayList<Field> localFields = FieldInformation.getRelevantFieldsOf(localObject);
 		Object[] remoteValues = remote.fields;
 		if (localFields.size() != remoteValues.length)
 			throw new RuntimeException("Retrieved fields are not of equal size: "

@@ -8,13 +8,13 @@ import java.util.HashSet;
  */
 public class MonitoredObject {
 
-	public Object					data;
+	public Object				data;
 
 	private ObjectId[]			references;
 	private HashSet<ObjectId>	referencedBy;
 
 	public MonitoredObject(Object o) {
-		int amountOfFields = FieldInformation.getRelevantFieldsFor(o).size();
+		int amountOfFields = FieldInformation.getRelevantFieldsOf(o).size();
 		this.data = o;
 		this.references = new ObjectId[amountOfFields];
 		this.referencedBy = new HashSet<>();
@@ -22,8 +22,8 @@ public class MonitoredObject {
 
 	public ObjectId getObjectForField(int fieldIndex) {
 		if (fieldIndex >= this.references.length)
-			throw new RuntimeException("Field index " + fieldIndex + " out of range for object: "
-				+ this.data);
+			throw new RuntimeException("Field index " + fieldIndex
+				+ " out of range for object: " + this.data);
 		return this.references[fieldIndex];
 	}
 }

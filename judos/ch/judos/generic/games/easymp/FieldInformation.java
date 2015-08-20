@@ -15,7 +15,7 @@ public class FieldInformation {
 		return type.isPrimitive() || type == String.class;
 	}
 
-	public static ArrayList<Field> getRelevantFieldsFor(Object obj) {
+	public static ArrayList<Field> getRelevantFieldsOf(Object obj) {
 		ArrayList<Field> result = new ArrayList<>();
 		for (Field field : obj.getClass().getFields()) {
 			// skip fields
