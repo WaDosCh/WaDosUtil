@@ -4,12 +4,14 @@ import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class CheckInternet {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		Thread.currentThread().setName("MainThread");
 		new CheckInternet();
@@ -17,8 +19,8 @@ public class CheckInternet {
 
 	private JTextArea		textArea;
 	private StringBuffer	text;
-	private boolean		finished;
-	private Process		process;
+	private boolean			finished;
+	private Process			process;
 
 	public CheckInternet() {
 		initGui();
@@ -33,8 +35,8 @@ public class CheckInternet {
 			Runtime r = Runtime.getRuntime();
 			this.process = r.exec(pingCmd);
 
-			try (BufferedReader in =
-				new BufferedReader(new InputStreamReader(this.process.getInputStream()))) {
+			try (BufferedReader in = new BufferedReader(new InputStreamReader(this.process
+				.getInputStream()))) {
 				String inputLine;
 				while ((inputLine = in.readLine()) != null && !this.finished) {
 					addText(inputLine);

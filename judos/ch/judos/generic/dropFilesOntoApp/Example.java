@@ -17,6 +17,7 @@ public class Example {
 	 * @param args
 	 */
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		javax.swing.JFrame frame = new javax.swing.JFrame("FileDrop");
 		// javax.swing.border.TitledBorder dragBorder = new
