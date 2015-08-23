@@ -13,7 +13,7 @@ import ch.judos.generic.reflection.Classes;
  * @author Julian Schelker
  * @version 1.11 / 21.02.2013
  * @param <T>
- *           any object to be in the list
+ *            any object to be in the list
  */
 public class DynamicList<T> extends ArrayList<T> {
 
@@ -57,7 +57,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * list is modified and returned to add further objects
 	 * 
 	 * @param obj
-	 *           add some object
+	 *            add some object
 	 * @return the list itself
 	 */
 	public DynamicList<T> a(T obj) {
@@ -80,11 +80,11 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <Type>
 	 * @param t
-	 * @return a list with all objects from this list that could be casted to the
-	 *         given type
+	 * @return a list with all objects from this list that could be casted to
+	 *         the given type
 	 */
-	@SuppressWarnings("unchecked")
-	public < Type> DynamicList<Type> castOrOmit(Type[] t) {
+	@SuppressWarnings({"unused", "unchecked"})
+	public <Type> DynamicList<Type> castOrOmit(Class<Type> c) {
 		DynamicList<Type> result = new DynamicList<>();
 		for (T entry : this) {
 			try {
@@ -181,7 +181,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * @param <Type>
 	 * @param list
 	 * @param search
-	 *           the string to look for in the toString() of the objects
+	 *            the string to look for in the toString() of the objects
 	 * @return the object that is found - null if none is found
 	 */
 	public static <Type> Type searchExact(List<Type> list, String search) {
@@ -198,7 +198,8 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <X>
 	 * @param elements
-	 * @return the smallest element of the list, according to their natural order
+	 * @return the smallest element of the list, according to their natural
+	 *         order
 	 */
 	public static <X extends Comparable<X>> Optional<X> smallest(List<X> elements) {
 		return elements.stream().min(Comparator.naturalOrder());
