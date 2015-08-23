@@ -81,7 +81,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 		}
 		else {
 			//object reference has changed
-			Object newObj = storage.getById(remoteId);
+			Object newObj = storage.getObjectById(remoteId);
 			if (newObj == null) { //object reference is unknown
 				Constructor<?> constructor = Classes.getSerializationConstructor(remoteValue.clazz);
 				newObj = constructor.newInstance();

@@ -42,7 +42,8 @@ public class Launcher implements UdpListener {
 		Frame f = new Frame(this::frameWasClosed);
 		f.setTitle((this.isServer ? "Server" : "Client") + " " + this.udp.getLocalPort());
 
-		Data d = new Data(f.getTextField());
+		Data d = new Data();
+		d.t0 = new TextFieldModel(f.getTextField());
 		Monitor.getMonitor().addMonitoredObject(d);
 
 		if (!this.isServer)
