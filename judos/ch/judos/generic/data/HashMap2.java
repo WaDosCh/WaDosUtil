@@ -17,7 +17,7 @@ public class HashMap2<K, K2, V> {
 	/**
 	 * the map
 	 */
-	protected HashMap<K, HashMap<K2, V>>	map1;
+	protected HashMap<K, HashMap<K2, V>> map1;
 
 	/**
 	 * creates the map

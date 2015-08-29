@@ -14,21 +14,21 @@ import ch.judos.generic.games.easymp.ObjectId;
  */
 public class ObjectWithMetaData implements Serializable {
 
-	private static final long	serialVersionUID	= 8772239159170236859L;
+	private static final long serialVersionUID = 8772239159170236859L;
 
-	public ObjectId				id;
+	public ObjectId id;
 
 	/**
 	 * for primitive fields contains the value directly<br>
 	 * for object fields this contains a reference to another ObjectWithMetaData
 	 * object
 	 */
-	public Object[]				fields;
+	public Object[] fields;
 
 	/**
 	 * stores the actual class type of this object
 	 */
-	public Class<?>				clazz;
+	public Class<?> clazz;
 
 	public static ObjectWithMetaData fromObject(Object obj, MonitoredObjectStorage storage) {
 		try {

@@ -11,11 +11,11 @@ import ch.judos.generic.data.RandomJS;
  * @author Julian Schelker
  */
 public class ReachabilityRequest implements Serializable {
-	private static final long	serialVersionUID	= 4854504538462295479L;
-	private int					id;
-	private transient int		ping;
-	private long				sent;
-	private InetSocketAddress	target;
+	private static final long serialVersionUID = 4854504538462295479L;
+	private int id;
+	private transient int ping;
+	private long sent;
+	private InetSocketAddress target;
 
 	public ReachabilityRequest(InetSocketAddress target) {
 		this.id = RandomJS.getInt(Integer.MAX_VALUE - 1);

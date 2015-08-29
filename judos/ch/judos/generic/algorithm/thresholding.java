@@ -11,12 +11,12 @@ import java.io.IOException;
  * @author m.thitithamasak
  */
 public class thresholding {
-	private static BufferedReader	bReader;
-	private static FileReader		fReader;
-	public static int				height			= 0;
+	private static BufferedReader bReader;
+	private static FileReader fReader;
+	public static int height = 0;
 	// private static FileOutputStream fWriter;
-	public static double			thresholdValue	= 0.0;
-	public static int				width			= 0;
+	public static double thresholdValue = 0.0;
+	public static int width = 0;
 
 	/**
 	 * 
@@ -26,7 +26,8 @@ public class thresholding {
 		try {
 			fReader.close();
 			// pWriter.close();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -70,12 +71,14 @@ public class thresholding {
 						// print("height : "+ height);
 						// binaryImage = new double[height+1][width];
 						binaryImage = new double[height + 1][width];
-					} else {
+					}
+					else {
 						pixelValue = oneLine.split(" ");
 						for (int i = 0; i < pixelValue.length; ++i) {
 							if (Double.parseDouble(pixelValue[i]) < thresholdValue) {
 								binaryImage[lineCount - 1][i] = 0;
-							} else {
+							}
+							else {
 								binaryImage[lineCount - 1][i] = 1;
 							}
 						}
@@ -92,8 +95,8 @@ public class thresholding {
 		return outputFile;
 	}
 
-	public static void thresholdOutToScreen(String fileName, double _thresholdValue,
-		int _width) {
+	public static void
+		thresholdOutToScreen(String fileName, double _thresholdValue, int _width) {
 		thresholdValue = _thresholdValue;
 		width = _width;
 		// String outputFile="BinaryImage.txt";
@@ -114,13 +117,15 @@ public class thresholding {
 						// print("width : "+ width);
 						// print("height : "+ height);
 						// binaryImage = new double[height+1][width];
-					} else {
+					}
+					else {
 						pixelValue = oneLine.split(" ");
 						for (int i = 0; i < pixelValue.length; ++i) {
 							if (Double.parseDouble(pixelValue[i]) < thresholdValue) {
 								System.out.print("  ");
 								// binaryImage[lineCount-1][i]= 0;
-							} else {
+							}
+							else {
 								System.out.print("* ");
 								// binaryImage[lineCount-1][i]= 1;
 							}

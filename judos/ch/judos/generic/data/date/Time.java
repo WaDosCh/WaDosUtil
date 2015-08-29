@@ -14,7 +14,7 @@ import ch.judos.generic.data.parse.TimeFormat;
 public class Time {
 
 	// some identifier and helper variables
-	private static GregorianCalendar	c	= new GregorianCalendar();
+	private static GregorianCalendar c = new GregorianCalendar();
 
 	/**
 	 * @return a list of all possible formating characters
@@ -46,16 +46,16 @@ public class Time {
 	/**
 	 * the hour of this time
 	 */
-	protected int	hour;
+	protected int hour;
 	/**
 	 * the minute of this time
 	 */
-	protected int	minute;
+	protected int minute;
 
 	/**
 	 * the second of this time
 	 */
-	protected int	second;
+	protected int second;
 
 	/**
 	 * the date will save the current hour, minute and second

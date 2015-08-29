@@ -42,14 +42,14 @@ public final class Dimension {
 	public static @NonNull Dimension get(final int width, final int height) {
 		if (width < 0 || height < 0)
 			throw new IllegalArgumentException(
-					"Dimension components must be positive. given pair was: ("
-							+ width + ", " + height + ")");
+				"Dimension components must be positive. given pair was: (" + width + ", "
+					+ height + ")");
 		return new Dimension(width, height);
 	}
 
 	// INSTANCE STUFF
 
-	private final int	width, height;
+	private final int width, height;
 
 	private Dimension(int width, int height) {
 		this.width = width;
@@ -74,7 +74,7 @@ public final class Dimension {
 		return this.height;
 	}
 
-	private Point	topLeft, topRight, bottomLeft, bottomRight;
+	private Point topLeft, topRight, bottomLeft, bottomRight;
 
 	/**
 	 * Returns the top-left corner.

@@ -15,8 +15,8 @@ import ch.judos.generic.graphics.Drawable;
  */
 public class Map extends SpaceGridMap {
 
-	Drawable[][]	decals;
-	Drawable[][]	floor;
+	Drawable[][] decals;
+	Drawable[][] floor;
 
 	public Map(int width, int height) {
 		super(width, height);
@@ -75,7 +75,7 @@ public class Map extends SpaceGridMap {
 	}
 
 	public static class Gras extends SimpleWayPoint implements Drawable {
-		private static final long	serialVersionUID	= -5926918915881586681L;
+		private static final long serialVersionUID = -5926918915881586681L;
 
 		public Gras(int x, int y) {
 			super(x, y);
@@ -89,7 +89,7 @@ public class Map extends SpaceGridMap {
 	}
 
 	public static class Water extends SimpleWayPoint implements Drawable {
-		private static final long	serialVersionUID	= -5926918915881586681L;
+		private static final long serialVersionUID = -5926918915881586681L;
 
 		public Water(int x, int y) {
 			super(x, y);

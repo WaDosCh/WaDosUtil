@@ -10,15 +10,15 @@ import javax.swing.JPanel;
  */
 public class ComponentListEntry extends JPanel {
 
-	public static final Color	selected			= Color.LIGHT_GRAY;
-	public static final Color	hovered				= new Color(210, 210, 210);
-	public static final Color	defaultColor		= new Color(238, 238, 238);
+	public static final Color selected = Color.LIGHT_GRAY;
+	public static final Color hovered = new Color(210, 210, 210);
+	public static final Color defaultColor = new Color(238, 238, 238);
 
-	private static final long	serialVersionUID	= 6296764881311212990L;
+	private static final long serialVersionUID = 6296764881311212990L;
 
-	protected boolean			isSelected			= false;
-	protected boolean			isHovered			= false;
-	public boolean				mouseEventHandled;
+	protected boolean isSelected = false;
+	protected boolean isHovered = false;
+	public boolean mouseEventHandled;
 
 	public ComponentListEntry() {
 		this.setBackground(getBGColorDefault());

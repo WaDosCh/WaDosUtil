@@ -10,9 +10,9 @@ import ch.judos.generic.data.Map;
  * @author Julian Schelker
  */
 public class ObjectTracker2 {
-	HashMapR<Object, Integer>	map;
-	HashMap<Object, Integer>	usages;
-	private int						nextIndex;
+	HashMapR<Object, Integer> map;
+	HashMap<Object, Integer> usages;
+	private int nextIndex;
 
 	public ObjectTracker2() {
 		this.map = new HashMapR<>();

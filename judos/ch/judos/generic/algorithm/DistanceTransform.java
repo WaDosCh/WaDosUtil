@@ -40,26 +40,26 @@ import java.util.*;
  */
 @SuppressWarnings("all")
 public class DistanceTransform {
-	public static ArrayList<Double>						aboveThresholdAl;
-	public static ArrayList<Integer>						alPixelOri;
-	public static ArrayList<Double>						belowThresholdAl;
-	private static BufferedReader							bReader;
-	private static BufferedWriter							bWriter;
-	public static int											currentLabel	= 0;
-	public static ArrayList<ArrayList<Integer>>		eqList;
-	private static FileReader								fReader;
-	public static int											height			= 0;
-	public static String[]									histogramArray;
-	public static Map<Double, Double>					histogramArrayCountMap;
-	public static ArrayList<Double>						labelAl;
-	public static ArrayList<Integer>						neighborArray;
-	public static double[][]								ori2DImage		= new double[1][1];
-	public static Map<Integer, Integer>					pixelCountMap;
-	public static Map<Integer, ArrayList<pixel>>		pixelMap;
-	public static double										pixelValue		= 0.0;
-	public static Map<Integer, ArrayList<Double>>	propertiesMap;
-	public static double										thresholdValue	= 0.0;
-	public static int											width				= 0;
+	public static ArrayList<Double> aboveThresholdAl;
+	public static ArrayList<Integer> alPixelOri;
+	public static ArrayList<Double> belowThresholdAl;
+	private static BufferedReader bReader;
+	private static BufferedWriter bWriter;
+	public static int currentLabel = 0;
+	public static ArrayList<ArrayList<Integer>> eqList;
+	private static FileReader fReader;
+	public static int height = 0;
+	public static String[] histogramArray;
+	public static Map<Double, Double> histogramArrayCountMap;
+	public static ArrayList<Double> labelAl;
+	public static ArrayList<Integer> neighborArray;
+	public static double[][] ori2DImage = new double[1][1];
+	public static Map<Integer, Integer> pixelCountMap;
+	public static Map<Integer, ArrayList<pixel>> pixelMap;
+	public static double pixelValue = 0.0;
+	public static Map<Integer, ArrayList<Double>> propertiesMap;
+	public static double thresholdValue = 0.0;
+	public static int width = 0;
 
 	/**
 	 * 
@@ -78,7 +78,8 @@ public class DistanceTransform {
 				histogramArrayCountMap.put(pixelValue, 1.0);
 			}
 			else {
-				histogramArrayCountMap.put(pixelValue, histogramArrayCountMap.get(pixelValue) + 1);
+				histogramArrayCountMap.put(pixelValue,
+					histogramArrayCountMap.get(pixelValue) + 1);
 			}
 		}
 	}
@@ -295,7 +296,8 @@ public class DistanceTransform {
 
 	/**
 	 * 
-	 * this method takes label number as an input and look up the same label with
+	 * this method takes label number as an input and look up the same label
+	 * with
 	 * 
 	 * less value.
 	 * 
@@ -395,9 +397,9 @@ public class DistanceTransform {
 						// print("");
 					}
 					else if (!neighborArray.isEmpty() && nonZeroAreTheSameLabel(neighborArray))// case
-																														// 2
-																														// :
-																														// all
+																								// 2
+																								// :
+																								// all
 					// the same
 					// values
 					{
@@ -407,9 +409,10 @@ public class DistanceTransform {
 						// print2DimensionArray(_image);
 						// print("");
 					}
-					else if (!neighborArray.isEmpty() && !nonZeroAreTheSameLabel(neighborArray)) // case
-																															// 3
-																															// :
+					else if (!neighborArray.isEmpty()
+						&& !nonZeroAreTheSameLabel(neighborArray)) // case
+																	// 3
+																	// :
 					// not all
 					// are the
 					// same
@@ -665,7 +668,7 @@ public class DistanceTransform {
 	 * This program takes no arguments in command line.
 	 * 
 	 * @param args
-	 *           the command line arguments
+	 *            the command line arguments
 	 */
 	public static void main(String[] args) {
 		double aboveAvg = 0.0;
@@ -817,8 +820,8 @@ public class DistanceTransform {
 	public static void print2DimensionArray(double[][] twodimenstionArray) {
 		for (int i = 0; i < twodimenstionArray.length; ++i) {
 			for (int j = 0; j < twodimenstionArray[0].length; ++j) {
-				System.out.print(String
-					.valueOf(roundToDecimals(twodimenstionArray[i][j], 2) + " "));
+				System.out.print(String.valueOf(roundToDecimals(twodimenstionArray[i][j], 2)
+					+ " "));
 			}
 			print("");
 		}
@@ -1100,9 +1103,9 @@ public class DistanceTransform {
 						// do nothing
 					}
 					else if (!neighborArray.isEmpty() && nonZeroAreTheSameLabel(neighborArray))// case
-																														// 2
-																														// :
-																														// all
+																								// 2
+																								// :
+																								// all
 					// the same
 					// values
 					{
@@ -1112,9 +1115,10 @@ public class DistanceTransform {
 						// print2DimensionArray(_image);
 						// print("");
 					}
-					else if (!neighborArray.isEmpty() && !nonZeroAreTheSameLabel(neighborArray)) // case
-																															// 3
-																															// :
+					else if (!neighborArray.isEmpty()
+						&& !nonZeroAreTheSameLabel(neighborArray)) // case
+																	// 3
+																	// :
 					// not all
 					// are the
 					// same
@@ -1242,8 +1246,8 @@ public class DistanceTransform {
 					// if the label return null count then it is a new label,
 					// put 1
 					// if the label return number, then it is old lable, add 1
-					pixelCountMap.put(label, pixelCountMap.get(label) == null ? 1 : pixelCountMap
-						.get(label) + 1);
+					pixelCountMap.put(label, pixelCountMap.get(label) == null ? 1
+						: pixelCountMap.get(label) + 1);
 					if (!pixelMap.containsKey(label)) // does not contain this
 					// label
 					{
@@ -1403,8 +1407,8 @@ public class DistanceTransform {
 }
 
 class pixel {
-	int	col;
-	int	row;
+	int col;
+	int row;
 
 	public pixel() {
 		this.row = 0;

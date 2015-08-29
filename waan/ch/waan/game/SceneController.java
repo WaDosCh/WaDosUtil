@@ -28,8 +28,8 @@ import ch.waan.game.ui.UIContainer;
  */
 public abstract class SceneController {
 
-	private @Nullable GUI	theGui;
-	private @Nullable Game	theLogic;
+	private @Nullable GUI theGui;
+	private @Nullable Game theLogic;
 
 	void loadController(final @NonNull GUI gui, final @NonNull Game logic) {
 		if (!gui.isEmpty())
@@ -131,8 +131,7 @@ public abstract class SceneController {
 		assertLoaded();
 		if (tickRate <= 0)
 			throw new IllegalArgumentException(
-					"tick rate must be strictly positive. given value was "
-							+ tickRate);
+				"tick rate must be strictly positive. given value was " + tickRate);
 		assert this.theLogic != null;
 		this.theLogic.setTPS(tickRate);
 	}
@@ -156,8 +155,7 @@ public abstract class SceneController {
 		assertLoaded();
 		if (frameRate <= 0)
 			throw new IllegalArgumentException(
-					"frame rate must be strictly positive. given value was "
-							+ frameRate);
+				"frame rate must be strictly positive. given value was " + frameRate);
 		assert this.theLogic != null;
 		this.theLogic.setFPS(frameRate);
 	}
@@ -264,23 +262,21 @@ public abstract class SceneController {
 	 * @implSpec the current implementation stops all internal clocks and
 	 *           gracefully disposes the UI.
 	 */
-	protected final static @NonNull SceneController	TERMINATOR_SCENE	= new SceneController() {
+	protected final static @NonNull SceneController TERMINATOR_SCENE = new SceneController() {
 
-																			@Override
-																			protected void tick(
-																					int passedTime) {
-																				// no
-																				// action
-																			}
+		@Override
+		protected void tick(int passedTime) {
+			// no
+			// action
+		}
 
-																			@Override
-																			protected void load(
-																					UIContainer<UIComponent> root) {
-																				terminate();
-																				// System.exit(0);
-																			}
+		@Override
+		protected void load(UIContainer<UIComponent> root) {
+			terminate();
+			// System.exit(0);
+		}
 
-																		};
+	};
 
 	/**
 	 * Is Invoked whenever the close button of the game window is pressed.

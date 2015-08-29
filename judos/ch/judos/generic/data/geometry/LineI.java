@@ -10,8 +10,8 @@ import java.awt.geom.Rectangle2D;
  */
 public class LineI extends Line2D {
 
-	protected PointI	start;
-	protected PointI	end;
+	protected PointI start;
+	protected PointI end;
 
 	public LineI() {
 	}

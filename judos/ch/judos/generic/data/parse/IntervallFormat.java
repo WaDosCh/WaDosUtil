@@ -19,10 +19,10 @@ public class IntervallFormat extends SimpleFormat {
 		return String.valueOf(number).length();
 	}
 
-	private int	min;
-	private int	max;
+	private int min;
+	private int max;
 
-	private int	data;
+	private int data;
 
 	/**
 	 * @param min

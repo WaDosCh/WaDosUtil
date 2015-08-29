@@ -19,8 +19,8 @@ public final class TagCompound implements Tag<HashMap<String, Tag<?>>> {
 		return 0x0A;
 	}
 
-	private String					name;
-	private HashMap<String, Tag<?>>	entries;
+	private String name;
+	private HashMap<String, Tag<?>> entries;
 
 	/**
 	 * creates a new compound tag

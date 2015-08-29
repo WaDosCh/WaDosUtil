@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class WrappedArray<T> {
 
-	public T[]	data;
+	public T[] data;
 
 	/**
 	 * (non-Javadoc)

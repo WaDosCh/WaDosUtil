@@ -40,34 +40,34 @@ class GUIImpl implements GUI {
 
 	private static @NonNull GraphicsDevice getDefaultGraphicsDevice() {
 		GraphicsDevice dev = GraphicsEnvironment.getLocalGraphicsEnvironment()
-				.getDefaultScreenDevice();
+			.getDefaultScreenDevice();
 		if (dev == null)
 			throw new AssertionError(); // should never happen
 		return dev;
 	}
 
-	private boolean														fullscreen	= false;
+	private boolean fullscreen = false;
 
-	private @NonNull GraphicsDevice										gdevice		= getDefaultGraphicsDevice();
-	private final @NonNull JFrame										frame;
-	private final @NonNull UIResizableContainer<UIComponent>			uiRoot;
-	private final @NonNull BufferStrategy								buffer;
-	private final @NonNull ConcurrentLinkedQueue<@Nullable MouseAction>	mouseActions;
-	private final @NonNull Keyboard										keyboard;
+	private @NonNull GraphicsDevice gdevice = getDefaultGraphicsDevice();
+	private final @NonNull JFrame frame;
+	private final @NonNull UIResizableContainer<UIComponent> uiRoot;
+	private final @NonNull BufferStrategy buffer;
+	private final @NonNull ConcurrentLinkedQueue<@Nullable MouseAction> mouseActions;
+	private final @NonNull Keyboard keyboard;
 
-	private final @NonNull Insets										windowInset;
+	private final @NonNull Insets windowInset;
 
 	private GUIImpl(final @NonNull JFrame frame,
-			final @NonNull UIResizableContainer<UIComponent> uiRoot,
-			final @NonNull ConcurrentLinkedQueue<@Nullable MouseAction> mouseQueue,
-			final @NonNull Keyboard keyboard) {
+		final @NonNull UIResizableContainer<UIComponent> uiRoot,
+		final @NonNull ConcurrentLinkedQueue<@Nullable MouseAction> mouseQueue,
+		final @NonNull Keyboard keyboard) {
 		this.frame = frame;
 		this.uiRoot = uiRoot;
 		this.keyboard = keyboard;
 		final BufferStrategy b = frame.getBufferStrategy();
 		if (b == null)
 			throw new IllegalStateException(
-					"frame could not be initialised for double buffering");
+				"frame could not be initialised for double buffering");
 		this.buffer = b;
 		final Insets inset = this.frame.getInsets();
 		assert inset != null;
@@ -100,7 +100,7 @@ class GUIImpl implements GUI {
 		assert device != null;
 		if (this.fullscreen)
 			throw new IllegalStateException(
-					"graphics device cannot be changed while in fullscreen mode");
+				"graphics device cannot be changed while in fullscreen mode");
 		this.gdevice = device;
 	}
 
@@ -121,14 +121,13 @@ class GUIImpl implements GUI {
 		this.frame.setTitle(title);
 	}
 
-	private @NonNull Insets	insets;
+	private @NonNull Insets insets;
 
 	@Override
 	public void render() {
 		// show last frame at beginning to ensure constant frame-rate
 		this.buffer.show();
-		Toolkit.getDefaultToolkit()
-				.sync();
+		Toolkit.getDefaultToolkit().sync();
 		// update mouse position
 		updateMouse();
 		// draw next frame
@@ -137,14 +136,12 @@ class GUIImpl implements GUI {
 		Dimension d = this.uiRoot.getDimension();
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, d.width(), d.height());
-		g.translate(d.bottomRight()
-				.x(), d.bottomRight()
-				.y());
+		g.translate(d.bottomRight().x(), d.bottomRight().y());
 		this.uiRoot.render(g);
 		g.dispose();
 	}
 
-	private boolean	hasMouse	= false;
+	private boolean hasMouse = false;
 
 	private void updateMouse() {
 
@@ -156,18 +153,19 @@ class GUIImpl implements GUI {
 				this.hasMouse = false;
 				this.uiRoot.mouseLeft();
 			}
-		} else {
+		}
+		else {
 			Point mouse = Point.get(mousePoint.x - this.insets.left,
-					mousePoint.y - this.insets.top)
-					.translate(this.uiRoot.getDimension()
-							.topLeft());
+				mousePoint.y - this.insets.top)
+				.translate(this.uiRoot.getDimension().topLeft());
 			if (this.uiRoot.collides(mouse)) {
 				if (!this.hasMouse) {
 					this.hasMouse = true;
 					this.uiRoot.mouseEntered();
 				}
 				this.uiRoot.mouseMoved(mouse);
-			} else {
+			}
+			else {
 				this.hasMouse = false;
 				this.uiRoot.mouseLeft();
 			}
@@ -181,10 +179,12 @@ class GUIImpl implements GUI {
 				if (action.isButtonDownAction()) {
 					if (this.hasMouse)
 						this.uiRoot.mouseButtonPressed(action.getButton());
-				} else {
+				}
+				else {
 					this.uiRoot.mouseButtonReleased(action.getButton());
 				}
-			} else {
+			}
+			else {
 				if (this.hasMouse)
 					this.uiRoot.mouseWheelScrolled(action.getScroll());
 			}
@@ -193,9 +193,10 @@ class GUIImpl implements GUI {
 	}
 
 	void updateRootSize() {
-		Dimension d = Dimension.get(this.frame.getWidth() - this.insets.left
-				- this.insets.right, this.frame.getHeight() - this.insets.top
-				- this.insets.bottom);
+		Dimension d = Dimension
+			.get(this.frame.getWidth() - this.insets.left - this.insets.right, this.frame
+				.getHeight()
+				- this.insets.top - this.insets.bottom);
 		this.uiRoot.setDimension(d);
 	}
 
@@ -206,9 +207,9 @@ class GUIImpl implements GUI {
 
 	private static class MouseAction {
 
-		private final @Nullable MouseButton	button;
-		private final boolean				isDown;
-		private final double				scroll;
+		private final @Nullable MouseButton button;
+		private final boolean isDown;
+		private final double scroll;
 
 		MouseAction(final @NonNull MouseButton button, final boolean isDown) {
 			this.button = button;
@@ -247,14 +248,13 @@ class GUIImpl implements GUI {
 		}
 	}
 
-	static @NonNull GUI newInstance(final int width, final int height,
-			Runnable closeAction) {
+	static @NonNull GUI newInstance(final int width, final int height, Runnable closeAction) {
 		if (width <= 0)
-			throw new IllegalArgumentException(
-					"GUI width must be positive. value was " + width);
+			throw new IllegalArgumentException("GUI width must be positive. value was "
+				+ width);
 		if (height <= 0)
-			throw new IllegalArgumentException(
-					"GUI height must be positive. value was " + height);
+			throw new IllegalArgumentException("GUI height must be positive. value was "
+				+ height);
 		Objects.requireNonNull(closeAction, "null exit handler not allowed");
 		if (GraphicsEnvironment.isHeadless())
 			throw new HeadlessException();
@@ -273,14 +273,13 @@ class GUIImpl implements GUI {
 		});
 		frame.setFocusTraversalKeysEnabled(false);
 		Insets inset = frame.getInsets();
-		Dimension dim = Dimension.get(width - inset.left - inset.right, height
-				- inset.top - inset.bottom);
+		Dimension dim = Dimension.get(width - inset.left - inset.right, height - inset.top
+			- inset.bottom);
 		UIPane root = new UIPane(Point.get(0, 0), dim);
 
 		ConcurrentLinkedQueue<@Nullable MouseAction> queue = new ConcurrentLinkedQueue<>();
 
-		GUIImpl gui = new GUIImpl(frame, root, queue,
-				KeyboardFactory.createKeyboard(frame));
+		GUIImpl gui = new GUIImpl(frame, root, queue, KeyboardFactory.createKeyboard(frame));
 
 		// BIND ACTION LISTENERS
 		frame.addMouseListener(new MouseListener() {
@@ -351,8 +350,7 @@ class GUIImpl implements GUI {
 
 	@Override
 	public boolean isEmpty() {
-		return this.uiRoot.getComponents()
-				.isEmpty();
+		return this.uiRoot.getComponents().isEmpty();
 	}
 
 }

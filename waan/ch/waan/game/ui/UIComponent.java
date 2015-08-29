@@ -93,7 +93,7 @@ public interface UIComponent {
 		final Point tl = dim.topLeft();
 		final Point br = dim.bottomRight();
 		return point.x() > tl.x() && point.x() < br.x() && point.y() > tl.y()
-				&& point.y() < br.y();
+			&& point.y() < br.y();
 	}
 
 	// == MOUSE HANDLING
@@ -192,8 +192,8 @@ public interface UIComponent {
 	 * @default no action is taken
 	 */
 	@SuppressWarnings("unused")
-	public default void parentUpdated(
-			final @Nullable UIContainer<? extends UIComponent> parent) {
+	public default void
+		parentUpdated(final @Nullable UIContainer<? extends UIComponent> parent) {
 		// default : no action
 	}
 }

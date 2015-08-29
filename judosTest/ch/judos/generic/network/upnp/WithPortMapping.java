@@ -25,7 +25,8 @@ public class WithPortMapping {
 				try {
 					u.sendObjectConfirmTo("re plop!", true, from);
 					u3.sendObjectConfirmTo("found backdoor in your NAT :D", true, from);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}

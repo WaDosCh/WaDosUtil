@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
  * @author Julian Schelker
  */
 public class RotatedRect {
-	
+
 	private int h;
 	private int w;
 	private double y;
@@ -18,7 +18,7 @@ public class RotatedRect {
 	private double r;
 	private double alpha;
 	private double innerR;
-	
+
 	public RotatedRect(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
@@ -27,29 +27,29 @@ public class RotatedRect {
 		this.theta = 0;
 		init();
 	}
-	
+
 	public void moveAbsolute(double xPos, double yPos) {
 		this.x += xPos;
 		this.y += yPos;
 	}
-	
+
 	public void moveRelative(double xPos, double yPos) {
 		this.x += yPos * Math.cos(this.theta) + xPos * Math.sin(this.theta + Math.PI);
 		this.y += yPos * Math.sin(this.theta) - xPos * Math.cos(this.theta + Math.PI);
 	}
-	
+
 	private void init() {
 		this.r = Math.hypot(this.w / 2, this.h / 2);
 		this.alpha = Math.atan2(this.h / 2, this.w / 2);
 		this.innerR = Math.min(this.w / 2, this.h / 2);
 	}
-	
+
 	private double[] getPointsAngles() {
 		double pi = Math.PI;
-		return new double[] { this.theta + this.alpha, this.theta - this.alpha,
-			this.theta + pi + this.alpha, this.theta + pi - this.alpha };
+		return new double[]{this.theta + this.alpha, this.theta - this.alpha,
+			this.theta + pi + this.alpha, this.theta + pi - this.alpha};
 	}
-	
+
 	private int[] getXPoints() {
 		int[] xPos = new int[4];
 		double[] a = getPointsAngles();
@@ -57,7 +57,7 @@ public class RotatedRect {
 			xPos[i] = (int) (this.x + this.r * Math.cos(a[i]));
 		return xPos;
 	}
-	
+
 	private int[] getYPoints() {
 		int[] yPos = new int[4];
 		double[] a = getPointsAngles();
@@ -65,16 +65,16 @@ public class RotatedRect {
 			yPos[i] = (int) (this.y + this.r * Math.sin(a[i]));
 		return yPos;
 	}
-	
+
 	private Point2D getPoint(double angle) {
-		return new Point2D.Double(this.x + this.r * Math.cos(angle), this.y
-			+ this.r * Math.sin(angle));
+		return new Point2D.Double(this.x + this.r * Math.cos(angle), this.y + this.r
+			* Math.sin(angle));
 	}
-	
+
 	private Polygon getPoly() {
 		return new Polygon(getXPoints(), getYPoints(), 4);
 	}
-	
+
 	/**
 	 * takes between 500ns and 2qs
 	 * 
@@ -93,7 +93,7 @@ public class RotatedRect {
 			return true;
 		return false;
 	}
-	
+
 	public boolean containsPointsOf(RotatedRect rect) {
 		Polygon p = this.getPoly();
 		double[] angles = rect.getPointsAngles();
@@ -104,28 +104,28 @@ public class RotatedRect {
 		}
 		return false;
 	}
-	
+
 	public double distanceTo(RotatedRect rect) {
 		return Math.hypot(rect.x - this.x, rect.y - this.y);
 	}
-	
+
 	public void draw(Graphics2D g) {
 		g.drawPolygon(getPoly());
 	}
-	
+
 	public void fill(Graphics2D g) {
 		g.fillPolygon(getPoly());
 	}
-	
+
 	public void rotate(double d) {
 		this.theta += d;
 	}
-	
+
 	public void setPosition(Point location) {
 		if (location == null)
 			return;
 		this.x = location.x;
 		this.y = location.y;
 	}
-	
+
 }

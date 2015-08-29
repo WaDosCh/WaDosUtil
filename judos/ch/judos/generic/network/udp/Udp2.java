@@ -31,16 +31,16 @@ import ch.judos.generic.network.udp.model.Packet2ResendConfirmed;
  * @author Julian Schelker
  */
 public class Udp2 implements Layer1Listener, Runnable, Udp2I {
-	private DupFilterOnConnection						confirmedPacket;
-	private HashMap<InetSocketAddress, Long>		connectionIssue;
-	private ArrayList<ConnectionIssueListener>	connectionIssueListeners;
-	private List<Layer2Listener>						listeners;
-	private HashMap<InetSocketAddress, Integer>	nextPacketNr;
-	private DupFilterOnConnection						receiveFilter;
-	public PriorityQueue<Packet2A>					resendPackets;
-	private boolean										running;
-	private Thread											thread;
-	private Udp1I											u;
+	private DupFilterOnConnection confirmedPacket;
+	private HashMap<InetSocketAddress, Long> connectionIssue;
+	private ArrayList<ConnectionIssueListener> connectionIssueListeners;
+	private List<Layer2Listener> listeners;
+	private HashMap<InetSocketAddress, Integer> nextPacketNr;
+	private DupFilterOnConnection receiveFilter;
+	public PriorityQueue<Packet2A> resendPackets;
+	private boolean running;
+	private Thread thread;
+	private Udp1I u;
 
 	// UDP: use a cach to confirm packets
 	// private HashMap<InetSocketAddress, Packet2CacheConfirmation>
@@ -224,15 +224,15 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 		}
 		if (removed != null)
 			notifyListenersAboutReconnectedConnection(from);
-		if (type == 128) { //flash duplicate filter
+		if (type == 128) { // flash duplicate filter
 			type = ConvertNumber.unsignedByte2Int(packetData[0]);
 			this.receiveFilter.resetForConnection(from);
 		}
 		if (type == 0)
 			memorizeConfirmationsData(data, from);
-		else if (type>0 && type < 128)
+		else if (type > 0 && type < 128)
 			notifyListeners(type, data, from);
-		else { //confirmed packets
+		else { // confirmed packets
 			int nr = Serializer.bytes2int(packetData, 1);
 			confirmFilterDuplicatesAndNotifyListeners(type - 128, data, from, nr);
 		}
@@ -284,7 +284,8 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 					Packet2A x = this.resendPackets.peek();
 					if (x.getResendOn() > System.currentTimeMillis()) {
 						try {
-							this.resendPackets.wait(x.getResendOn() - System.currentTimeMillis());
+							this.resendPackets.wait(x.getResendOn()
+								- System.currentTimeMillis());
 						}
 						catch (InterruptedException e) {
 							System.err.println("Error while resending packet:");
@@ -332,12 +333,13 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see ch.judos.generic.network.udp.interfaces.Udp2I#sendDataTo(int, byte[],
-	 *      boolean, java.net.InetSocketAddress)
+	 * @see ch.judos.generic.network.udp.interfaces.Udp2I#sendDataTo(int,
+	 *      byte[], boolean, java.net.InetSocketAddress)
 	 */
 	@Override
-	public void sendDataTo(int type, byte[] data, boolean confirmation, InetSocketAddress dest)
-		throws IOException {
+	public void
+		sendDataTo(int type, byte[] data, boolean confirmation, InetSocketAddress dest)
+			throws IOException {
 		if (type < 1 || type > 127)
 			throw new IOException("invalid type Nr, only 1-127 are allowed for free use");
 		sendDataToUnchecked(type, data, confirmation, dest);
@@ -352,7 +354,7 @@ public class Udp2 implements Layer1Listener, Runnable, Udp2I {
 		if (confirmation) {
 			nr = getNextPacketNr(dest);
 			type += 128;
-			if (nr==0) { //reset duplicate filter on receiver side
+			if (nr == 0) { // reset duplicate filter on receiver side
 				sendData[0] = ConvertNumber.int2UnsignedByte(type);
 				type = 128;
 			}

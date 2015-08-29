@@ -26,8 +26,7 @@ public class NBTIO {
 		stream.write(tag.getTagID());
 		if (tag instanceof TagEnd)
 			return;
-		byte[] arr = tag.getName()
-				.getBytes("UTF-8");
+		byte[] arr = tag.getName().getBytes("UTF-8");
 		short len = (short) arr.length;
 		stream.write((len >> 8) & 0xFF);
 		stream.write(len & 0xFF);

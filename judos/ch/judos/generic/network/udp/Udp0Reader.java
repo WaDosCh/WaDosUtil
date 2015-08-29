@@ -13,9 +13,9 @@ import ch.judos.generic.network.udp.interfaces.Layer0Listener;
  */
 public class Udp0Reader extends Udp0Sender implements Runnable {
 
-	protected ArrayList<Layer0Listener>	listeners;
-	protected Thread							reader;
-	protected boolean							readingRunning;
+	protected ArrayList<Layer0Listener> listeners;
+	protected Thread reader;
+	protected boolean readingRunning;
 
 	public Udp0Reader(DatagramSocket ds) throws SocketException {
 		super(ds);
@@ -81,8 +81,8 @@ public class Udp0Reader extends Udp0Sender implements Runnable {
 
 	@Override
 	public void run() {
-		DatagramPacket packet =
-			new DatagramPacket(new byte[UdpConfig.PACKET_SIZE_BYTES], UdpConfig.PACKET_SIZE_BYTES);
+		DatagramPacket packet = new DatagramPacket(new byte[UdpConfig.PACKET_SIZE_BYTES],
+			UdpConfig.PACKET_SIZE_BYTES);
 		while (this.readingRunning) {
 			try {
 				this.ds.receive(packet);

@@ -21,7 +21,6 @@ public interface Udp1I {
 
 	public void removeListener(Layer1Listener listener);
 
-	public void sendDataTo(int type, byte[] data, InetSocketAddress dest)
-		throws IOException;
+	public void sendDataTo(int type, byte[] data, InetSocketAddress dest) throws IOException;
 
 }

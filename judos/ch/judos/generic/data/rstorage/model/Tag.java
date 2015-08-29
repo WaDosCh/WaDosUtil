@@ -13,10 +13,10 @@ import ch.judos.generic.data.rstorage.helper.RSerializerException.Type;
  * @author Julian Schelker
  */
 public class Tag {
-	protected int					referenceNumber;
-	protected Optional<String>	classId				= Optional.empty();
-	protected boolean				hasSetReference	= false;
-	protected boolean				hasGetReference	= false;
+	protected int referenceNumber;
+	protected Optional<String> classId = Optional.empty();
+	protected boolean hasSetReference = false;
+	protected boolean hasGetReference = false;
 
 	private Tag() {
 	}
@@ -54,13 +54,15 @@ public class Tag {
 		boolean tagged = reader.readIfNextMatchesThenConsume("(");
 		if (tagged) {
 			if (reader.readIfNextMatchesThenConsume("$")) {
-				tag.referenceNumber = Integer.valueOf(reader.readWhile(c -> c != ' ' && c != ')'));
+				tag.referenceNumber = Integer.valueOf(reader.readWhile(c -> c != ' '
+					&& c != ')'));
 				tag.hasGetReference = true;
 				if (!reader.readIfNextMatchesThenConsume(" "))
 					tagged = false;
 			}
 			if (tagged && reader.readIfNextMatchesThenConsume("=")) {
-				tag.referenceNumber = Integer.valueOf(reader.readWhile(c -> c != ' ' && c != ')'));
+				tag.referenceNumber = Integer.valueOf(reader.readWhile(c -> c != ' '
+					&& c != ')'));
 				tag.hasSetReference = true;
 				if (!reader.readIfNextMatchesThenConsume(" "))
 					tagged = false;

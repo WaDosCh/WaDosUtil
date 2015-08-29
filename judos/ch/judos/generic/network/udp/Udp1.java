@@ -18,8 +18,8 @@ import ch.judos.generic.network.udp.interfaces.Udp1I;
  */
 public class Udp1 implements Layer0Listener, Udp1I {
 
-	private List<Layer1Listener>	listeners;
-	private Udp0Reader				u;
+	private List<Layer1Listener> listeners;
+	private Udp0Reader u;
 
 	public Udp1(Udp0Reader u) {
 		this.u = u;
@@ -94,8 +94,7 @@ public class Udp1 implements Layer0Listener, Udp1I {
 	 *      byte[], java.net.InetSocketAddress)
 	 */
 	@Override
-	public void sendDataTo(int type, byte[] data, InetSocketAddress dest)
-		throws IOException {
+	public void sendDataTo(int type, byte[] data, InetSocketAddress dest) throws IOException {
 		byte[] sendData = new byte[data.length + 1];
 		sendData[0] = ConvertNumber.int2UnsignedByte(type);
 		System.arraycopy(data, 0, sendData, 1, data.length);

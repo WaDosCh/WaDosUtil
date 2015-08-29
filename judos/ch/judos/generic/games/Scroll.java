@@ -12,7 +12,7 @@ import java.awt.Point;
  */
 public abstract class Scroll extends BorderlessScrolling {
 
-	protected Dimension	terrainSize;
+	protected Dimension terrainSize;
 
 	/**
 	 * initialize

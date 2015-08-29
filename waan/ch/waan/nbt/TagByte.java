@@ -13,8 +13,8 @@ import java.io.OutputStream;
  */
 public final class TagByte implements Tag<Byte> {
 
-	private Byte	value;
-	private String	name;
+	private Byte value;
+	private String name;
 
 	@Override
 	public byte getTagID() {
@@ -72,7 +72,7 @@ public final class TagByte implements Tag<Byte> {
 
 	@Override
 	public void write(OutputStream stream) throws IOException {
-		stream.write(new byte[] { this.value });
+		stream.write(new byte[]{this.value});
 	}
 
 	@Override

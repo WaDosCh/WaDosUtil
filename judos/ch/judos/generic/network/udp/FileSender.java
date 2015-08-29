@@ -14,15 +14,15 @@ import ch.judos.generic.network.udp.model.FileOutgoingTransmission;
  */
 public class FileSender implements Runnable {
 
-	private ArrayList<FileOutgoingTransmission>							newFiles;
-	private int																		packetSize;
-	private HashMap<InetSocketAddress, FileOutgoingTransmission>	runningFileTrans;
-	private Thread																	thread;
-	private Udp4																	u;
+	private ArrayList<FileOutgoingTransmission> newFiles;
+	private int packetSize;
+	private HashMap<InetSocketAddress, FileOutgoingTransmission> runningFileTrans;
+	private Thread thread;
+	private Udp4 u;
 	/**
 	 * used to force stop the execution of sending thread
 	 */
-	private boolean																running;
+	private boolean running;
 
 	public FileSender(Udp4 u, int packetSize) {
 		this.u = u;

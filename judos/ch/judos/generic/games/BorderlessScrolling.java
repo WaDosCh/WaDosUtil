@@ -17,19 +17,19 @@ public abstract class BorderlessScrolling {
 	 * if x increases, you are scrolling to the left since the terrain is moving
 	 * to the right on the screen
 	 */
-	protected Component		comp;
-	protected float			locX;
-	protected float			locY;
-	protected Dimension		viewPort;
-	protected Rectangle		scrollIn;
+	protected Component comp;
+	protected float locX;
+	protected float locY;
+	protected Dimension viewPort;
+	protected Rectangle scrollIn;
 
-	public static final int	SCROLL_OUTSIDE_PX	= 10;
+	public static final int SCROLL_OUTSIDE_PX = 10;
 
 	public BorderlessScrolling(Dimension viewPort) {
 		super();
 		this.viewPort = viewPort;
-		this.scrollIn = new Rectangle(-SCROLL_OUTSIDE_PX, -SCROLL_OUTSIDE_PX, viewPort.width + 2
-			* SCROLL_OUTSIDE_PX, viewPort.height + 2 * SCROLL_OUTSIDE_PX);
+		this.scrollIn = new Rectangle(-SCROLL_OUTSIDE_PX, -SCROLL_OUTSIDE_PX, viewPort.width
+			+ 2 * SCROLL_OUTSIDE_PX, viewPort.height + 2 * SCROLL_OUTSIDE_PX);
 	}
 
 	/**
@@ -43,8 +43,8 @@ public abstract class BorderlessScrolling {
 
 	/**
 	 * @param c
-	 *           the component relative to which the mouse coordinates are
-	 *           retrieved
+	 *            the component relative to which the mouse coordinates are
+	 *            retrieved
 	 */
 	public void setRelativeTo(Component c) {
 		this.comp = c;

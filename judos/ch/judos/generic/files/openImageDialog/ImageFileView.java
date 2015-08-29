@@ -39,10 +39,10 @@ import javax.swing.filechooser.FileView;
 
 /* ImageFileView.java is used by FileChooserDemo2.java. */
 public class ImageFileView extends FileView {
-	ImageIcon	jpgIcon		= Utils.createImageIcon("images/jpgIcon.gif");
-	ImageIcon	gifIcon		= Utils.createImageIcon("images/gifIcon.gif");
-	ImageIcon	tiffIcon	= Utils.createImageIcon("images/tiffIcon.gif");
-	ImageIcon	pngIcon		= Utils.createImageIcon("images/pngIcon.png");
+	ImageIcon jpgIcon = Utils.createImageIcon("images/jpgIcon.gif");
+	ImageIcon gifIcon = Utils.createImageIcon("images/gifIcon.gif");
+	ImageIcon tiffIcon = Utils.createImageIcon("images/tiffIcon.gif");
+	ImageIcon pngIcon = Utils.createImageIcon("images/pngIcon.png");
 
 	@Override
 	public String getName(File f) {
@@ -67,11 +67,14 @@ public class ImageFileView extends FileView {
 		if (extension != null) {
 			if (extension.equals(Utils.jpeg) || extension.equals(Utils.jpg)) {
 				type = "JPEG Image";
-			} else if (extension.equals(Utils.gif)) {
+			}
+			else if (extension.equals(Utils.gif)) {
 				type = "GIF Image";
-			} else if (extension.equals(Utils.tiff) || extension.equals(Utils.tif)) {
+			}
+			else if (extension.equals(Utils.tiff) || extension.equals(Utils.tif)) {
 				type = "TIFF Image";
-			} else if (extension.equals(Utils.png)) {
+			}
+			else if (extension.equals(Utils.png)) {
 				type = "PNG Image";
 			}
 		}
@@ -86,11 +89,14 @@ public class ImageFileView extends FileView {
 		if (extension != null) {
 			if (extension.equals(Utils.jpeg) || extension.equals(Utils.jpg)) {
 				icon = this.jpgIcon;
-			} else if (extension.equals(Utils.gif)) {
+			}
+			else if (extension.equals(Utils.gif)) {
 				icon = this.gifIcon;
-			} else if (extension.equals(Utils.tiff) || extension.equals(Utils.tif)) {
+			}
+			else if (extension.equals(Utils.tiff) || extension.equals(Utils.tif)) {
 				icon = this.tiffIcon;
-			} else if (extension.equals(Utils.png)) {
+			}
+			else if (extension.equals(Utils.png)) {
 				icon = this.pngIcon;
 			}
 		}

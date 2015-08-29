@@ -9,7 +9,7 @@ import ch.judos.generic.network.upnp.UdpPortForwarder;
  */
 public class Udp4Forwarded extends Udp4 {
 
-	protected int	externalPort;
+	protected int externalPort;
 
 	public Udp4Forwarded(Udp3I u, int externalPort) {
 		super(u);

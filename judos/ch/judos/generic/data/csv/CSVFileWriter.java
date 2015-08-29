@@ -19,8 +19,8 @@ import ch.judos.generic.data.StringUtils;
  */
 public class CSVFileWriter {
 
-	private String[]					attributes;
-	private ArrayList<String[]>	entries;
+	private String[] attributes;
+	private ArrayList<String[]> entries;
 
 	/**
 	 * creates a csv writer with the given attributes

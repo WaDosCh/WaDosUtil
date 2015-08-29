@@ -28,12 +28,12 @@ class XPathImp implements XPath {
 		this.elements = elements;
 	}
 
-	private final Stream<Element>	elements;
+	private final Stream<Element> elements;
 
 	@Override
 	public XPath any() {
-		return new XPathImp(this.elements.map(XPathImp::recurseThroughTree)
-				.flatMap(List::stream));
+		return new XPathImp(this.elements.map(XPathImp::recurseThroughTree).flatMap(
+			List::stream));
 	}
 
 	private static List<Element> recurseThroughTree(Element e) {
@@ -49,37 +49,31 @@ class XPathImp implements XPath {
 
 	@Override
 	public XPath children() {
-		return new XPathImp(this.elements.flatMap(e ->
-			{
-				List<Element> accum = new ArrayList<>();
-				NodeList children = e.getChildNodes();
-				for (int i = 0; i < children.getLength(); i++) {
-					if (children.item(i) instanceof Element)
-						accum.add((Element) children.item(i));
-				}
-				return accum.stream();
-			}));
+		return new XPathImp(this.elements.flatMap(e -> {
+			List<Element> accum = new ArrayList<>();
+			NodeList children = e.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
+				if (children.item(i) instanceof Element)
+					accum.add((Element) children.item(i));
+			}
+			return accum.stream();
+		}));
 	}
 
 	@Override
 	public XPath filterName(Predicate<String> predicate) {
-		return new XPathImp(
-				this.elements.filter(n -> predicate.test(n.getNodeName())));
+		return new XPathImp(this.elements.filter(n -> predicate.test(n.getNodeName())));
 	}
 
 	@Override
 	public XPath filterAttribute(String name, Predicate<String> predicate) {
-		return new XPathImp(this.elements.filter(e -> Optional.ofNullable(
-				e.getAttribute(name))
-				.filter(predicate)
-				.isPresent()));
+		return new XPathImp(this.elements.filter(e -> Optional
+			.ofNullable(e.getAttribute(name)).filter(predicate).isPresent()));
 	}
 
 	@Override
 	public XPath indexRange(int from, int amount) {
-		return new XPathImp(this.elements.sequential()
-				.skip(from)
-				.limit(amount));
+		return new XPathImp(this.elements.sequential().skip(from).limit(amount));
 	}
 
 	@Override
@@ -94,17 +88,13 @@ class XPathImp implements XPath {
 
 	@Override
 	public Stream<List<Tuple2<String, String>>> attributes() {
-		return this.elements.map(e -> e.getAttributes())
-				.map(m ->
-					{
-						List<Tuple2<String, String>> list = new ArrayList<>();
-						for (int i = 0; i < m.getLength(); i++) {
-							list.add(new Tuple2<>(m.item(i)
-									.getNodeName(), m.item(i)
-									.getNodeValue()));
-						}
-						return list;
-					});
+		return this.elements.map(e -> e.getAttributes()).map(m -> {
+			List<Tuple2<String, String>> list = new ArrayList<>();
+			for (int i = 0; i < m.getLength(); i++) {
+				list.add(new Tuple2<>(m.item(i).getNodeName(), m.item(i).getNodeValue()));
+			}
+			return list;
+		});
 	}
 
 	@Override
@@ -127,8 +117,7 @@ class XPathImp implements XPath {
 
 	@Override
 	public void dropNode() {
-		this.elements.forEach(e -> e.getParentNode()
-				.removeChild(e));
+		this.elements.forEach(e -> e.getParentNode().removeChild(e));
 	}
 
 	@Override
@@ -138,12 +127,10 @@ class XPathImp implements XPath {
 
 	@Override
 	public XPath addNode(String name) {
-		return new XPathImp(this.elements.map(e ->
-			{
-				Element el = e.getOwnerDocument()
-						.createElement(name);
-				e.appendChild(el);
-				return el;
-			}));
+		return new XPathImp(this.elements.map(e -> {
+			Element el = e.getOwnerDocument().createElement(name);
+			e.appendChild(el);
+			return el;
+		}));
 	}
 }

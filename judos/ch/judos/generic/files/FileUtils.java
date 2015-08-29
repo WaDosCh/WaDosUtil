@@ -18,7 +18,7 @@ import javax.swing.filechooser.FileSystemView;
  */
 public class FileUtils extends File {
 
-	private static final long	serialVersionUID	= -3775679979394334289L;
+	private static final long serialVersionUID = -3775679979394334289L;
 
 	public static BufferedReader getReaderForFile(File f) throws FileNotFoundException {
 		return new BufferedReader(new InputStreamReader(new FileInputStream(f),
@@ -51,7 +51,7 @@ public class FileUtils extends File {
 	 * @return the md5 hash code for this file
 	 * @throws NoSuchAlgorithmException
 	 * @throws IOException
-	 *            if the file could not be read
+	 *             if the file could not be read
 	 */
 	public static String getMd5HexForStream(InputStream is) throws NoSuchAlgorithmException,
 		IOException {
@@ -210,9 +210,9 @@ public class FileUtils extends File {
 
 	/**
 	 * @param parent
-	 *           component of the popup
+	 *            component of the popup
 	 * @param title
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @return the directory selected or null if operation is canceled
 	 */
 	public static File requestDir(Component parent, String title) {
@@ -221,11 +221,11 @@ public class FileUtils extends File {
 
 	/**
 	 * @param parent
-	 *           component of the popup
+	 *            component of the popup
 	 * @param title
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @param startAt
-	 *           initial directory to come up with
+	 *            initial directory to come up with
 	 * @return the directory selected or null if operation is canceled
 	 */
 	public static File requestDir(Component parent, String title, File startAt) {
@@ -248,7 +248,7 @@ public class FileUtils extends File {
 
 	/**
 	 * @param title
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @return the directory selected or null if operation is canceled
 	 */
 	public static File requestDir(String title) {
@@ -257,9 +257,9 @@ public class FileUtils extends File {
 
 	/**
 	 * @param title
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @param startAt
-	 *           initial directory to come up with
+	 *            initial directory to come up with
 	 * @return the directory selected or null if operation is canceled
 	 */
 	public static File requestDir(String title, File startAt) {
@@ -279,11 +279,11 @@ public class FileUtils extends File {
 
 	/**
 	 * @param startPath
-	 *           initial directory to come up with
+	 *            initial directory to come up with
 	 * @param description
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @param extensions
-	 *           which are allowed
+	 *            which are allowed
 	 * @return the selected file or null is the operation is canceled
 	 */
 	public static File requestFile(File startPath, String description, String[] extensions) {
@@ -304,9 +304,9 @@ public class FileUtils extends File {
 
 	/**
 	 * @param description
-	 *           some text to display to the user
+	 *            some text to display to the user
 	 * @param extensions
-	 *           array of the extensions allowed
+	 *            array of the extensions allowed
 	 * @return the file the user entered - null if cancel was pressed
 	 */
 	public static File requestFile(String description, String extensions[]) {
@@ -321,11 +321,11 @@ public class FileUtils extends File {
 
 	/**
 	 * @param startPath
-	 *           initial directory to come up with
+	 *            initial directory to come up with
 	 * @param description
-	 *           displayed to the user
+	 *            displayed to the user
 	 * @param extensions
-	 *           which are allowed
+	 *            which are allowed
 	 * @return the selected file or null is the operation is canceled
 	 */
 	public static File saveFile(File startPath, String description, String extensions[]) {

@@ -17,10 +17,10 @@ public class CheckInternet {
 		new CheckInternet();
 	}
 
-	private JTextArea		textArea;
-	private StringBuffer	text;
-	private boolean			finished;
-	private Process			process;
+	private JTextArea textArea;
+	private StringBuffer text;
+	private boolean finished;
+	private Process process;
 
 	public CheckInternet() {
 		initGui();

@@ -20,7 +20,7 @@ public final class Point {
 
 	// == STATIC FACTORY METHODS ==
 
-	private static final WeakHashMap<@NonNull Long, @Nullable Point>	references	= new WeakHashMap<>();
+	private static final WeakHashMap<@NonNull Long, @Nullable Point> references = new WeakHashMap<>();
 
 	/**
 	 * provides the point instance for the given x and y coordinates.
@@ -47,7 +47,7 @@ public final class Point {
 
 	// == INSTANCE ==
 
-	private final int	x, y;
+	private final int x, y;
 
 	private Point(int x, int y) {
 		this.x = x;
@@ -165,7 +165,7 @@ public final class Point {
 	 */
 	public final static class Builder {
 
-		private double	x, y;
+		private double x, y;
 
 		/**
 		 * Creates a new Builder for the given point.

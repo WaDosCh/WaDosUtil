@@ -21,7 +21,7 @@ public class AStarPathSearch {
 	 * @param start
 	 * @param target
 	 * @param fieldChecker
-	 *           checking for occupied fields
+	 *            checking for occupied fields
 	 * @return a list consisting of the waypoints with the shortest path from
 	 *         start to end
 	 */

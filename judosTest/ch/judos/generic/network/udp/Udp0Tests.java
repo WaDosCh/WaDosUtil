@@ -13,9 +13,9 @@ import ch.judos.generic.network.udp.interfaces.Layer0Listener;
  */
 public class Udp0Tests extends TestCase {
 
-	public static final int	PORT	= 60000;
-	private Udp0Reader		u;
-	boolean						success;
+	public static final int PORT = 60000;
+	private Udp0Reader u;
+	boolean success;
 
 	@Override
 	protected void setUp() throws Exception {

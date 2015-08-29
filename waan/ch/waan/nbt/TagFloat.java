@@ -13,8 +13,8 @@ import java.io.OutputStream;
  */
 public final class TagFloat implements Tag<Float> {
 
-	private String	name;
-	private Float	value;
+	private String name;
+	private Float value;
 
 	/**
 	 * new float tag without value (Defaults to zero)

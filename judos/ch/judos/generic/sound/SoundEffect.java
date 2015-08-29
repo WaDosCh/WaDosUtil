@@ -34,7 +34,7 @@ public class SoundEffect {
 	// }
 	// }
 
-	private File	file;
+	private File file;
 
 	public SoundEffect(String soundFileName) {
 		this.file = new File(soundFileName);
@@ -54,7 +54,7 @@ public class SoundEffect {
 	 * play the sound in the background
 	 * 
 	 * @param volume
-	 *           [0,1]
+	 *            [0,1]
 	 * @return true if succeeded, false otherwise
 	 */
 	public boolean play(final float volume) {
@@ -82,7 +82,8 @@ public class SoundEffect {
 			Clip clip = AudioSystem.getClip()) {
 			clip.open(audioInputStream);
 
-			FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			FloatControl volume = (FloatControl) clip
+				.getControl(FloatControl.Type.MASTER_GAIN);
 			float max = volume.getMaximum();
 			float min = volume.getMinimum();
 			float level = (max - min) * volumePercentage + min;

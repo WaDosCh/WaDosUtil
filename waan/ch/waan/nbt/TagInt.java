@@ -13,8 +13,8 @@ import java.io.OutputStream;
  */
 public final class TagInt implements Tag<Integer> {
 
-	private String	name;
-	private Integer	value;
+	private String name;
+	private Integer value;
 
 	@Override
 	public byte getTagID() {

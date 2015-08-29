@@ -6,9 +6,9 @@ package ch.judos.generic.network.udp.model.reachability;
  */
 public class Reachability {
 
-	private boolean	reachable;
+	private boolean reachable;
 
-	private int			pingOrTimeoutMS;
+	private int pingOrTimeoutMS;
 
 	public Reachability(boolean reachable, int pingOrTimeoutMS) {
 		this.reachable = reachable;

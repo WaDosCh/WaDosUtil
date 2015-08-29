@@ -9,9 +9,9 @@ import ch.judos.generic.data.rstorage.helper.RSerializerException;
  * @author Julian Schelker
  */
 public class ObjectReferenceTests extends SerializationTest {
-	static String	a	= "Hallo";
-	static String	b	= "Welt";
-	static String	c	= a + "";
+	static String a = "Hallo";
+	static String b = "Welt";
+	static String c = a + "";
 
 	public static void main(String[] args) throws IOException, RSerializerException {
 		new ObjectReferenceTests().outputTestObject();

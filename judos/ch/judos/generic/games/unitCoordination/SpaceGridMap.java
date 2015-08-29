@@ -19,15 +19,15 @@ public abstract class SpaceGridMap extends GridMap {
 	/**
 	 * how many fields the map contains (width)
 	 */
-	protected int			gridWidth;
+	protected int gridWidth;
 	/**
 	 * how many fields the map contains (height)
 	 */
-	protected int			gridHeight;
+	protected int gridHeight;
 	/**
 	 * the array storing which fields are free
 	 */
-	protected boolean[][]	fieldFree;
+	protected boolean[][] fieldFree;
 
 	/**
 	 * @param gridWidth

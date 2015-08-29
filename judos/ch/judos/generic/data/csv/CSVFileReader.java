@@ -23,13 +23,13 @@ public class CSVFileReader {
 	 * if it isn't muted, the readFile operations output some information about
 	 * the csv file
 	 */
-	public static boolean	muted	= true;
+	public static boolean muted = true;
 
 	/**
 	 * a static implementation to read a csv-file
 	 * 
 	 * @param input
-	 *           the file to read
+	 *            the file to read
 	 * @return the interface to interact with the csv-file
 	 * @throws IOException
 	 */
@@ -41,7 +41,7 @@ public class CSVFileReader {
 	 * a static implementation to read a csv-file
 	 * 
 	 * @param input
-	 *           the file to read
+	 *            the file to read
 	 * @return the interface to interact with the csv-file
 	 * @throws IOException
 	 */
@@ -53,7 +53,7 @@ public class CSVFileReader {
 	 * a static implementation to read a csv-file
 	 * 
 	 * @param input
-	 *           the file to read
+	 *            the file to read
 	 * @return the interface to interact with the csv-file
 	 * @throws IOException
 	 */
@@ -67,7 +67,7 @@ public class CSVFileReader {
 	 * a static implementation to read a csv-file
 	 * 
 	 * @param pathname
-	 *           the filename of the file to read
+	 *            the filename of the file to read
 	 * @return the interface to interact with the csv-file
 	 * @throws IOException
 	 */
@@ -91,7 +91,7 @@ public class CSVFileReader {
 
 	/**
 	 * @param index
-	 *           must be in the valid range (between 0 and countEntries()-1)
+	 *            must be in the valid range (between 0 and countEntries()-1)
 	 * @return a stored object of the file
 	 * @throws IndexOutOfBoundsException
 	 */
@@ -99,9 +99,9 @@ public class CSVFileReader {
 		return this.entities[index];
 	}
 
-	protected String		separation;
-	private String[]		attributes;
-	private String[][]	entities;
+	protected String separation;
+	private String[] attributes;
+	private String[][] entities;
 
 	/**
 	 * reads and parses a csv file

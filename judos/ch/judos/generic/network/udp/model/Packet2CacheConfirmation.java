@@ -11,7 +11,7 @@ import ch.judos.generic.network.udp.UdpConfig;
  */
 public class Packet2CacheConfirmation extends Packet2A {
 
-	private ArrayList<Integer>	confirms;
+	private ArrayList<Integer> confirms;
 
 	public Packet2CacheConfirmation(InetSocketAddress dest, int numberToConfirm) {
 		// numberToConfirm is used as identifier

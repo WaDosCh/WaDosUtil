@@ -141,7 +141,7 @@ public class DynamicList<T> extends ArrayList<T> {
 		return s;
 	}
 
-	private static final long	serialVersionUID	= 5577347360761404931L;
+	private static final long serialVersionUID = 5577347360761404931L;
 
 	/**
 	 * @param <Type>
@@ -270,9 +270,9 @@ public class DynamicList<T> extends ArrayList<T> {
 	@SuppressWarnings("rawtypes")
 	public static class Iterator2 implements Iterator {
 
-		private List		list;
-		private int			pos;
-		private Class<?>	commonClass;
+		private List list;
+		private int pos;
+		private Class<?> commonClass;
 
 		/**
 		 * @param list

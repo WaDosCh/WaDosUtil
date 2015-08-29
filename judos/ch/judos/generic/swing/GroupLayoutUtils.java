@@ -11,8 +11,8 @@ import javax.swing.GroupLayout.Group;
  * @author Julian Schelker
  */
 public class GroupLayoutUtils {
-	private GroupLayout		l;
-	private Stack<Group>	groups;
+	private GroupLayout l;
+	private Stack<Group> groups;
 
 	public GroupLayoutUtils(GroupLayout layout) {
 		this.l = layout;

@@ -9,7 +9,7 @@ public class RandomJS {
 	/**
 	 * the generators base
 	 */
-	protected static java.util.Random	r;
+	protected static java.util.Random r;
 
 	/**
 	 * inits the generator
@@ -81,10 +81,11 @@ public class RandomJS {
 
 	/**
 	 * not exact, but good for values between 1% and 99%
+	 * 
 	 * @param percentage
 	 * @return
 	 */
 	public static boolean getTrueWithProb(int percentage) {
-		return getDouble(100) <=percentage;
+		return getDouble(100) <= percentage;
 	}
 }

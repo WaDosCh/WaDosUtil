@@ -21,9 +21,9 @@ import ch.judos.generic.network.udp.interfaces.UdpListener;
  */
 public class Communicator implements CommunicatorI, UdpListener {
 
-	private Udp4I									udp;
-	private HashMapR<InetSocketAddress, PlayerI>	playerList;
-	private ConcurrentLinkedQueue<Message>			messages;
+	private Udp4I udp;
+	private HashMapR<InetSocketAddress, PlayerI> playerList;
+	private ConcurrentLinkedQueue<Message> messages;
 
 	public Communicator(Udp4I udp, HashMapR<InetSocketAddress, PlayerI> playerList) {
 		this.udp = udp;

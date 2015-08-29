@@ -13,13 +13,13 @@ import ch.waan.game.ui.UIContainer;
  */
 public final class Game {
 
-	private @NonNull SceneController			controller;
-	private @NonNull final GUI					gui;
-	private @NonNull final HighPrecisionClock	frameClock;
-	private @NonNull final HighPrecisionClock	tickClock;
+	private @NonNull SceneController controller;
+	private @NonNull final GUI gui;
+	private @NonNull final HighPrecisionClock frameClock;
+	private @NonNull final HighPrecisionClock tickClock;
 
-	private Game(int width, int height, @NonNull SceneController controller,
-			int tickRate, int frameRate) {
+	private Game(int width, int height, @NonNull SceneController controller, int tickRate,
+		int frameRate) {
 		this.gui = GUIImpl.newInstance(width, height, this::close);
 		this.controller = controller;
 		this.frameClock = new HighPrecisionClock(frameRate, this::render);
@@ -37,8 +37,7 @@ public final class Game {
 		// unload old stuff
 		UIContainer<UIComponent> c = this.gui.getRootContainer();
 		while (!this.gui.isEmpty()) {
-			c.removeComponent(c.getComponents()
-					.get(0));
+			c.removeComponent(c.getComponents().get(0));
 		}
 		// load new stuff
 		this.controller = controller;

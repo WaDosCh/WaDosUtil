@@ -17,10 +17,10 @@ public class BigPacketRec {
 		return new IAddressAndId(id, from);
 	}
 
-	private byte[][]	data;
-	private short		id;
-	private int			missing;
-	private short		parts;
+	private byte[][] data;
+	private short id;
+	private int missing;
+	private short parts;
 
 	public BigPacketRec() {
 		this.parts = 0;

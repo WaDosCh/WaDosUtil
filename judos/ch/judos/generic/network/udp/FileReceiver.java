@@ -18,10 +18,10 @@ import ch.judos.generic.network.udp.model.FileIncomingTransmission;
  */
 public class FileReceiver {
 
-	private FileTransmissionHandler									fileHandler;
-	private int														packetSize;
-	private HashMap<InetSocketAddress, FileIncomingTransmission>	receiveTransfers;
-	private Udp4													u;
+	private FileTransmissionHandler fileHandler;
+	private int packetSize;
+	private HashMap<InetSocketAddress, FileIncomingTransmission> receiveTransfers;
+	private Udp4 u;
 
 	public FileReceiver(Udp4 udp4, int packetSize) {
 		this.u = udp4;
@@ -55,9 +55,11 @@ public class FileReceiver {
 				listener, this.packetSize, from);
 			this.receiveTransfers.put(from, inc);
 
-		} catch (SerializerException e) {
+		}
+		catch (SerializerException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -71,7 +73,8 @@ public class FileReceiver {
 				try {
 					throw new RuntimeException("received fileMsg t=" + type
 						+ " but no transfer ongoing for connection " + from);
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					System.err.println("Warning: received fileMsg t=" + type
 						+ " but no transfer ongoing for connection " + from);
 					return;

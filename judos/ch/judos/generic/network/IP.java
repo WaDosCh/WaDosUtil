@@ -27,7 +27,7 @@ public class IP {
 		System.out.println("Behind NAT: " + isBehindNat());
 	}
 
-	private static String	wanIp;
+	private static String wanIp;
 
 	/**
 	 * <b>Note:</b> check url and server page to ensure this method works

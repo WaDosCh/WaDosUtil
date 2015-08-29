@@ -13,15 +13,15 @@ public class Date implements Cloneable, Comparable<Date> {
 	/**
 	 * day
 	 */
-	protected int	day;
+	protected int day;
 	/**
 	 * month
 	 */
-	protected int	month;
+	protected int month;
 	/**
 	 * year
 	 */
-	protected int	year;
+	protected int year;
 
 	/**
 	 * the date will save the current day, month and year
@@ -36,7 +36,7 @@ public class Date implements Cloneable, Comparable<Date> {
 	 * see also the static parse method for parsing dates
 	 * 
 	 * @param year
-	 *           give some values to initialize this date
+	 *            give some values to initialize this date
 	 * @param month
 	 * @param day
 	 */
@@ -126,7 +126,7 @@ public class Date implements Cloneable, Comparable<Date> {
 
 	/**
 	 * @param date
-	 *           another date
+	 *            another date
 	 * @return true if this date is in the futur relatively to the given date
 	 */
 	public boolean isAfter(Date date) {
@@ -135,7 +135,7 @@ public class Date implements Cloneable, Comparable<Date> {
 
 	/**
 	 * @param date
-	 *           another date
+	 *            another date
 	 * @return true if this date is in the past relatively to the given date
 	 */
 	public boolean isBefore(Date date) {
@@ -242,7 +242,7 @@ public class Date implements Cloneable, Comparable<Date> {
 	 * date</a>
 	 * 
 	 * @param format
-	 *           : one char for every format, use / as escape char
+	 *            : one char for every format, use / as escape char
 	 * @return the formated string
 	 */
 	public String toString(String format) {
@@ -271,11 +271,11 @@ public class Date implements Cloneable, Comparable<Date> {
 	 * adds the specified format to the string
 	 * 
 	 * @param cf
-	 *           format
+	 *            format
 	 * @param r
-	 *           stringbuffer to add the result
+	 *            stringbuffer to add the result
 	 * @param c
-	 *           the calender
+	 *            the calender
 	 * @return true if format is found, false otherwise
 	 */
 	protected boolean formatChar(String cf, StringBuffer r, GregorianCalendar c) {

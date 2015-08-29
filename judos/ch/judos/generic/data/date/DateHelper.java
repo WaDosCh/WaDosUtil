@@ -15,20 +15,19 @@ import ch.judos.generic.data.parse.DateFormat;
  */
 public class DateHelper {
 	// some identifier and helper variables
-	private static GregorianCalendar	c				= new GregorianCalendar();
+	private static GregorianCalendar c = new GregorianCalendar();
 
 	/**
 	 * Assumes that Calendar.Sunday = 1, Calendar.Monday = 2 and so on... names
 	 * of the week days
 	 */
-	public static String[]				weekdayNames	= new String[]{"Sonntag",
-		"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
+	public static String[] weekdayNames = new String[]{"Sonntag", "Montag", "Dienstag",
+		"Mittwoch", "Donnerstag", "Freitag", "Samstag"};
 	/**
 	 * names of the months
 	 */
-	public static String[]				monthNames		= new String[]{"Januar",
-		"Februar", "M�rz", "April", "Mai", "Juni", "Juli", "August", "September",
-		"Oktober", "November", "Dezember"				};
+	public static String[] monthNames = new String[]{"Januar", "Februar", "M�rz", "April",
+		"Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"};
 
 	/**
 	 * @param year

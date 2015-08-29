@@ -6,7 +6,7 @@ import ch.waan.function.ErrableFunction;
 
 class ErrorResult<T> extends Result<T> {
 
-	private final Exception	e;
+	private final Exception e;
 
 	ErrorResult(Exception e) {
 		this.e = e;
@@ -54,7 +54,8 @@ class ErrorResult<T> extends Result<T> {
 			if (result != null)
 				return new ValueResult<>(result);
 			return new EmptyResult<>();
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			return new ErrorResult<>(ex);
 		}
 	}
@@ -63,14 +64,14 @@ class ErrorResult<T> extends Result<T> {
 	public Result<T> flatMapException(ErrableFunction<Exception, Result<T>> mapper) {
 		try {
 			return mapper.apply(this.e);
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			return new ErrorResult<>(ex);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "ERROR( " + this.e.toString() + " @ " + this.e.getStackTrace()[0]
-				+ " )";
+		return "ERROR( " + this.e.toString() + " @ " + this.e.getStackTrace()[0] + " )";
 	}
 }

@@ -9,8 +9,8 @@ import java.util.Arrays;
  */
 public class IAddressAndId {
 
-	private InetSocketAddress	address;
-	private short				id;
+	private InetSocketAddress address;
+	private short id;
 
 	public IAddressAndId(short id, InetSocketAddress address) {
 		this.id = id;

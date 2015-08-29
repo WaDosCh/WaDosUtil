@@ -11,9 +11,9 @@ import java.util.function.IntConsumer;
  */
 class HighPrecisionClock {
 
-	private volatile int		tps;
-	private final IntConsumer	task;
-	private Thread				runner;
+	private volatile int tps;
+	private final IntConsumer task;
+	private Thread runner;
 
 	HighPrecisionClock(int tps, IntConsumer task) {
 		this.tps = tps;
@@ -33,7 +33,8 @@ class HighPrecisionClock {
 		this.runner.interrupt();
 		try {
 			this.runner.join();
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			// ignore
 		}
 		this.runner = null;
@@ -45,17 +46,15 @@ class HighPrecisionClock {
 
 	void setTPS(int tps) {
 		if (tps <= 0)
-			throw new IllegalArgumentException(
-					"tick rate must be strictly positive. " + tps
-							+ " is no legal value");
+			throw new IllegalArgumentException("tick rate must be strictly positive. " + tps
+				+ " is no legal value");
 		this.tps = tps;
 	}
 
 	private void run() {
 		try {
 			long lastFrame = System.nanoTime();
-			while (!Thread.currentThread()
-					.isInterrupted()) {
+			while (!Thread.currentThread().isInterrupted()) {
 				long delay = 1000000000 / this.tps;
 				long ns = System.nanoTime();
 				if (ns - lastFrame >= delay) {
@@ -65,10 +64,10 @@ class HighPrecisionClock {
 				}
 				long remaining = ((System.nanoTime() - lastFrame - delay) / 2 - 100000);
 				if (remaining > 0)
-					Thread.sleep((int) (remaining / 1000000),
-							(int) (remaining % 1000000));
+					Thread.sleep((int) (remaining / 1000000), (int) (remaining % 1000000));
 			}
-		} catch (InterruptedException e) {
+		}
+		catch (InterruptedException e) {
 			// interrupt is OK. terminate.
 		}
 	}

@@ -36,17 +36,17 @@ import org.xml.sax.helpers.DefaultHandler;
 public class GatewayDeviceHandler extends DefaultHandler {
 
 	/** state variables */
-	private String			currentElement;
+	private String currentElement;
 
 	/**
 	 * The device that should be populated with data coming from the stream
 	 * being parsed
 	 */
-	private GatewayDevice	device;
+	private GatewayDevice device;
 
 	@SuppressWarnings("unused")
-	private int				level	= 0;
-	private short			state	= 0;
+	private int level = 0;
+	private short state = 0;
 
 	/**
 	 * Creates a new instance of GatewayDeviceHandler that will populate the

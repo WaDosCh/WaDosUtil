@@ -76,16 +76,14 @@ public abstract class Source {
 	 * @return a Result holding the string or any potential exception
 	 */
 	public Result<String> mkString() {
-		return this.mkStream()
-				.map((stream) ->
-					{
-						StringBuilder sb = new StringBuilder();
-						int character;
-						while ((character = stream.read()) >= 0)
-							sb.append((char) character);
-						return sb.toString();
+		return this.mkStream().map((stream) -> {
+			StringBuilder sb = new StringBuilder();
+			int character;
+			while ((character = stream.read()) >= 0)
+				sb.append((char) character);
+			return sb.toString();
 
-					});
+		});
 	}
 
 	/**
@@ -94,13 +92,9 @@ public abstract class Source {
 	 * @return a result holding the XML
 	 */
 	public Result<XML> mkXML() {
-		return this.mkString()
-				.map(StringReader::new)
-				.map(InputSource::new)
-				.map(reader -> DocumentBuilderFactory.newInstance()
-						.newDocumentBuilder()
-						.parse(reader))
-				.map(XML::new);
+		return this.mkString().map(StringReader::new).map(InputSource::new).map(
+			reader -> DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(reader))
+			.map(XML::new);
 
 	}
 }

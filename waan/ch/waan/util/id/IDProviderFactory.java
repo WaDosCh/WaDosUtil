@@ -31,16 +31,16 @@ public final class IDProviderFactory {
 
 	static IDProvider getIDProvider(byte size, boolean preset) {
 		switch (size) {
-			case 1:
+			case 1 :
 				return new BaseIDProvider(preset);
-			case 2:
-			case 3:
-			case 4:
+			case 2 :
+			case 3 :
+			case 4 :
 				return new LayeredIDProvider(size - 1, preset);
-			default:
+			default :
 				throw new IllegalArgumentException(
-						"Provider size must be at least 1 and at most 4. " + size
-								+ " is no valid size!");
+					"Provider size must be at least 1 and at most 4. " + size
+						+ " is no valid size!");
 		}
 	}
 }

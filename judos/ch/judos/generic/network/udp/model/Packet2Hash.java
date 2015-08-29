@@ -9,8 +9,8 @@ import java.util.Arrays;
  */
 public class Packet2Hash {
 
-	protected InetSocketAddress	dest;
-	protected int				nr;
+	protected InetSocketAddress dest;
+	protected int nr;
 
 	public Packet2Hash() {
 		super();

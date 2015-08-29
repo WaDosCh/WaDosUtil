@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  */
 public class JDialogWithTaskbarEntry extends JDialog {
 
-	private static final long	serialVersionUID	= -8635486826953215847L;
+	private static final long serialVersionUID = -8635486826953215847L;
 
 	/**
 	 * @param args
@@ -47,7 +47,7 @@ public class JDialogWithTaskbarEntry extends JDialog {
 	}
 
 	static class DummyFrame extends JFrame {
-		private static final long	serialVersionUID	= 6035300590783149332L;
+		private static final long serialVersionUID = 6035300590783149332L;
 
 		DummyFrame(String title) {
 			super(title);

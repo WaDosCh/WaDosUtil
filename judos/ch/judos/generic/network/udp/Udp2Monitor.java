@@ -10,7 +10,7 @@ import ch.judos.generic.network.udp.model.Packet2ResendConfirmed;
  * @author Julian Schelker
  */
 public class Udp2Monitor extends Thread {
-	private Udp2	u;
+	private Udp2 u;
 
 	public Udp2Monitor(Udp2 u2) {
 		super("Udp2Monitor");
@@ -27,11 +27,11 @@ public class Udp2Monitor extends Thread {
 			while (true) {
 				PriorityQueue<Packet2ResendConfirmed> x = (PriorityQueue<Packet2ResendConfirmed>) f
 					.get(this.u);
-				System.out.println("Packets unconfirmed and queued for resend: "
-					+ x.size());
+				System.out.println("Packets unconfirmed and queued for resend: " + x.size());
 				Thread.sleep(250);
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

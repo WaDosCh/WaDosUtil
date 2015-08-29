@@ -14,34 +14,33 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
 
-
 import ch.judos.generic.data.TupleR;
 
 /**
  * @since 20.09.2014
  * @author Julian Schelker
  * @param <T>
- *           component
+ *            component
  */
 public class ComponentList<T> {
-	protected JRootPane													contentPanel;
-	protected JScrollPane												content;
-	protected ArrayList<TupleR<ComponentListEntry, T>>			entries;
-	protected int															selectedIndex;
-	protected ComponentListEntry										hoveredComponent;
+	protected JRootPane contentPanel;
+	protected JScrollPane content;
+	protected ArrayList<TupleR<ComponentListEntry, T>> entries;
+	protected int selectedIndex;
+	protected ComponentListEntry hoveredComponent;
 
 	/**
 	 * use as id to show that no entry is selected or found
 	 */
-	public static final int												NO_ENTRY	= -1;
-	protected ArrayList<ComponentListSelectionListener<T>>	selectionListeners;
-	protected ArrayList<MouseListener>								mouseListeners;
-	protected ComponentList<T>.GlassPaneListener					glassPaneListener;
+	public static final int NO_ENTRY = -1;
+	protected ArrayList<ComponentListSelectionListener<T>> selectionListeners;
+	protected ArrayList<MouseListener> mouseListeners;
+	protected ComponentList<T>.GlassPaneListener glassPaneListener;
 	/**
 	 * if false, content will be aligned top
 	 */
-	protected boolean														alignCentered;
-	protected JPanel														alignementFillerPanel;
+	protected boolean alignCentered;
+	protected JPanel alignementFillerPanel;
 
 	/**
 	 * use getContent() to add this componentList to a JFrame or JPanel.<br>
@@ -129,7 +128,7 @@ public class ComponentList<T> {
 
 	/**
 	 * @param l
-	 *           the listener is notified when an entry is selected
+	 *            the listener is notified when an entry is selected
 	 */
 	public void addListSelectionListener(ComponentListSelectionListener<T> l) {
 		if (l == null)
@@ -166,7 +165,7 @@ public class ComponentList<T> {
 
 	/**
 	 * @param visibleComponent
-	 *           you will get this from your mouseEvent.getComponent()
+	 *            you will get this from your mouseEvent.getComponent()
 	 * @return -1 if the element was not found
 	 */
 	public int getIndexOf(Component visibleComponent) {
@@ -263,11 +262,11 @@ public class ComponentList<T> {
 		/**
 		 * used to generated mouseExited and mouseEntered events
 		 */
-		private Component				currentlyHovered;
-		private ComponentListEntry	currentEntryHovered;
-		private ComponentList<T>	that	= ComponentList.this;
-		Component						glass	= ComponentList.this.contentPanel.getGlassPane();
-		Container						con	= ComponentList.this.contentPanel.getContentPane();
+		private Component currentlyHovered;
+		private ComponentListEntry currentEntryHovered;
+		private ComponentList<T> that = ComponentList.this;
+		Component glass = ComponentList.this.contentPanel.getGlassPane();
+		Container con = ComponentList.this.contentPanel.getContentPane();
 
 		public GlassPaneListener() {
 		}
@@ -361,7 +360,8 @@ public class ComponentList<T> {
 		private void forwardEvent(MouseEvent e) {
 			Point glassPoint = e.getPoint();
 
-			Point containerPoint = SwingUtilities.convertPoint(this.glass, glassPoint, this.con);
+			Point containerPoint = SwingUtilities.convertPoint(this.glass, glassPoint,
+				this.con);
 			if (containerPoint.y < 0)
 				return;
 
@@ -377,7 +377,8 @@ public class ComponentList<T> {
 			if (component == null)
 				return;
 
-			Point componentPoint = SwingUtilities.convertPoint(this.glass, glassPoint, component);
+			Point componentPoint = SwingUtilities.convertPoint(this.glass, glassPoint,
+				component);
 
 			if (component != this.currentlyHovered) {
 				this.currentlyHovered = component;

@@ -6,7 +6,7 @@ import ch.waan.util.Result;
 
 class StreamSource extends Source {
 
-	private final InputStream	stream;
+	private final InputStream stream;
 
 	StreamSource(InputStream stream) {
 		this.stream = stream;

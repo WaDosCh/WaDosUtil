@@ -27,12 +27,12 @@ public final class SerializationConstructorFactory {
 	 *             if reflection access to the object is denied by the VM
 	 */
 	public static Constructor<? extends Object> getSerialisationConstructor(
-			Class<? extends Object> clazz) {
+		Class<? extends Object> clazz) {
 		try {
-			return ReflectionFactory.getReflectionFactory()
-					.newConstructorForSerialization(clazz,
-							Object.class.getDeclaredConstructor());
-		} catch (NoSuchMethodException e) {
+			return ReflectionFactory.getReflectionFactory().newConstructorForSerialization(
+				clazz, Object.class.getDeclaredConstructor());
+		}
+		catch (NoSuchMethodException e) {
 			return null;
 		}
 	}

@@ -29,7 +29,8 @@ public class XmlJS {
 			Document d = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(
 				new InputSource(xmlStream));
 			return d;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			System.err.println("JS_Xml: Could not translate XML");
 			e.printStackTrace();
 			return null;
@@ -47,7 +48,8 @@ public class XmlJS {
 			transformer.transform(source, result);
 			String xml = stringWriter.getBuffer().toString();
 			return xml;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}

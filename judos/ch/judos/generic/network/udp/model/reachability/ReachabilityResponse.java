@@ -8,8 +8,8 @@ import java.io.Serializable;
  */
 public class ReachabilityResponse implements Serializable {
 
-	private static final long	serialVersionUID	= 2199566573164124889L;
-	private ReachabilityRequest	rr;
+	private static final long serialVersionUID = 2199566573164124889L;
+	private ReachabilityRequest rr;
 
 	public ReachabilityResponse(ReachabilityRequest rr) {
 		this.rr = rr;

@@ -19,13 +19,14 @@ public abstract class IterativeRunner implements Runnable {
 	public final void run() {
 		this.onStart();
 		Thread owner = Thread.currentThread();
-		interruptBox: {
-			loop: while (!owner.isInterrupted()) {
+		interruptBox : {
+			loop : while (!owner.isInterrupted()) {
 				try {
 					if (this.step())
 						continue;
 					break interruptBox;
-				} catch (InterruptedException e) {
+				}
+				catch (InterruptedException e) {
 					break loop;
 				}
 			}

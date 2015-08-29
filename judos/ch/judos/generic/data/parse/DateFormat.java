@@ -9,9 +9,9 @@ import ch.judos.generic.data.date.Date;
  */
 public class DateFormat extends ChoiceFormat {
 
-	private IntervallFormat	day;
-	private IntervallFormat	month;
-	private NumberFormat	year;
+	private IntervallFormat day;
+	private IntervallFormat month;
+	private NumberFormat year;
 
 	/**
 	 */

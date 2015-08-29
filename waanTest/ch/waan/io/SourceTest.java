@@ -14,24 +14,15 @@ public class SourceTest {
 
 	public static void main(String[] args) {
 
-		XML XML = Source.fromFile(".classpath")
-				.mkXML()
-				.orNull();
+		XML XML = Source.fromFile(".classpath").mkXML().orNull();
 
 		if (XML == null)
 			return;
 
-		XML.query()
-				.addNode("classpathentry")
-				.setAttribute("kind", "myKind");
+		XML.query().addNode("classpathentry").setAttribute("kind", "myKind");
 
-		XML.query()
-				.node("classpathentry")
-				.attribute("kind")
-				.filter(r -> r.isPresent())
-				.map(r -> r.get())
-				.distinct()
-				.forEach(System.out::println);
+		XML.query().node("classpathentry").attribute("kind").filter(r -> r.isPresent()).map(
+			r -> r.get()).distinct().forEach(System.out::println);
 
 	}
 }

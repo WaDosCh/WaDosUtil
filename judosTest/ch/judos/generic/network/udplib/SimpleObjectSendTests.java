@@ -17,10 +17,10 @@ import ch.judos.generic.network.udp.interfaces.UdpListener;
  */
 public class SimpleObjectSendTests implements UdpListener {
 
-	private Udp4I	udp;
-	private Object	received;
-	private int		receivedPackges	= 0;
-	private int		sendPackages		= 100;
+	private Udp4I udp;
+	private Object received;
+	private int receivedPackges = 0;
+	private int sendPackages = 100;
 
 	@Before
 	public void setUp() throws Exception {
@@ -34,7 +34,8 @@ public class SimpleObjectSendTests implements UdpListener {
 		String sent = "Hallo Welt!";
 		this.udp.addObjectListener(this);
 		for (int i = 0; i < this.sendPackages; i++) {
-			this.udp.sendObjectConfirmTo(sent, false, new InetSocketAddress("127.0.0.1", port));
+			this.udp
+				.sendObjectConfirmTo(sent, false, new InetSocketAddress("127.0.0.1", port));
 			Thread.sleep(20);
 		}
 		assertEquals(this.received, sent);

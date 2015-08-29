@@ -14,8 +14,8 @@ import java.io.OutputStream;
  */
 public final class TagDouble implements Tag<Double> {
 
-	private Double	value;
-	private String	name;
+	private Double value;
+	private String name;
 
 	@Override
 	public byte getTagID() {

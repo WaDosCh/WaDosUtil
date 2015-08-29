@@ -17,7 +17,7 @@ import org.eclipse.jdt.annotation.NonNull;
  * @param <E>
  *            The component type allowed in this container
  */
-public interface UIMovableContainer<@NonNull E extends UIComponent> extends
-		UIContainer<E>, UIMovable {
+public interface UIMovableContainer<@NonNull E extends UIComponent> extends UIContainer<E>,
+	UIMovable {
 	// default : no content - pure combination interface
 }

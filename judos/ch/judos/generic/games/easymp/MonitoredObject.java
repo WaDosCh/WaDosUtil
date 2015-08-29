@@ -8,12 +8,12 @@ import java.util.HashSet;
  */
 public class MonitoredObject {
 
-	public ObjectId				id;
-	public Object				data;
+	public ObjectId id;
+	public Object data;
 
 	// use Array here, such that it is clear what field referenced which object
-	public ObjectId[]			references;
-	public HashSet<ObjectId>	referencedBy;
+	public ObjectId[] references;
+	public HashSet<ObjectId> referencedBy;
 
 	public MonitoredObject(Object o, ObjectId id) {
 		int amountOfFields = FieldInformation.getRelevantFieldsOf(o).size();

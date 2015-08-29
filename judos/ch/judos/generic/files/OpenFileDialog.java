@@ -15,11 +15,10 @@ import ch.judos.generic.files.openImageDialog.ImagePreview;
  * @author Julian Schelker
  */
 public class OpenFileDialog {
-	private boolean	cancelled;
-	private File	selectedFile;
+	private boolean cancelled;
+	private File selectedFile;
 
-	public OpenFileDialog(Component parent, String title, File currentPath,
-		String[] extensions) {
+	public OpenFileDialog(Component parent, String title, File currentPath, String[] extensions) {
 		JFileChooser fc = new JFileChooser(currentPath);
 		UIManager.put("FileChooser.openDialogTitleText", title);
 		SwingUtilities.updateComponentTreeUI(fc);
@@ -47,7 +46,7 @@ public class OpenFileDialog {
 	}
 
 	private class DefinedFileFilter extends FileFilter {
-		private String[]	extensions;
+		private String[] extensions;
 
 		public DefinedFileFilter(String[] extensions) {
 			this.extensions = extensions;

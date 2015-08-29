@@ -10,13 +10,13 @@ import java.io.Serializable;
  */
 public class FileDescription implements Serializable {
 
-	private static final long	serialVersionUID	= -1694298991434697351L;
-	private String				description;
-	private long				length;
+	private static final long serialVersionUID = -1694298991434697351L;
+	private String description;
+	private long length;
 
-	private int					parts;
+	private int parts;
 
-	private String				path;
+	private String path;
 
 	public FileDescription(long length, int parts, String path, String description) {
 		this.length = length;

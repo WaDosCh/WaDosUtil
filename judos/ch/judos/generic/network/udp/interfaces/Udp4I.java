@@ -35,12 +35,12 @@ public interface Udp4I {
 	 * @param listener
 	 *            receives the updates about the connection
 	 */
-	public void
-		checkReachability(InetSocketAddress target, ReachabilityListener listener);
-	
+	public void checkReachability(InetSocketAddress target, ReachabilityListener listener);
+
 	/**
 	 * @param target
-	 * @param timeoutMs milliseconds to wait before returning
+	 * @param timeoutMs
+	 *            milliseconds to wait before returning
 	 * @return the reachability of the target
 	 */
 	public Reachability getReachability(InetSocketAddress target, int timeoutMs);
@@ -94,9 +94,8 @@ public interface Udp4I {
 	 * @throws IOException
 	 *             if the underlying network gets some exception
 	 */
-	public void
-		sendObjectConfirmTo(Object obj, boolean confirmation, InetSocketAddress to)
-			throws SerializerException, IOException;
+	public void sendObjectConfirmTo(Object obj, boolean confirmation, InetSocketAddress to)
+		throws SerializerException, IOException;
 
 	/**
 	 * sends some byteData with or without confirmation to a target client
@@ -114,8 +113,8 @@ public interface Udp4I {
 	 * @throws IOException
 	 *             if the underlying network gets some exception
 	 */
-	public void sendRawDataConfirmTo(byte[] data, boolean confirmation,
-		InetSocketAddress to) throws SerializerException, IOException;
+	public void sendRawDataConfirmTo(byte[] data, boolean confirmation, InetSocketAddress to)
+		throws SerializerException, IOException;
 
 	/**
 	 * sets the current fileTransmissionHandler, it's responsibilities are to

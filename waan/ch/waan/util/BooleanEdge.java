@@ -13,9 +13,9 @@ import org.eclipse.jdt.annotation.NonNull;
  */
 public final class BooleanEdge {
 
-	private final @NonNull BooleanSupplier	expression;
+	private final @NonNull BooleanSupplier expression;
 
-	private boolean							lastValue	= false;
+	private boolean lastValue = false;
 
 	/**
 	 * creates a new edge adapter for the given expression.
@@ -42,7 +42,8 @@ public final class BooleanEdge {
 				return this.lastValue;
 			}
 			return false;
-		} catch (RuntimeException ex) {
+		}
+		catch (RuntimeException ex) {
 			throw new RuntimeException(ex);
 		}
 	}

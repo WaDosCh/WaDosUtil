@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class ProgressIterable<T> implements Iterable<Progress<T>> {
 
-	T[]	arr;
+	T[] arr;
 
 	/**
 	 * @param list
@@ -36,7 +36,7 @@ public class ProgressIterable<T> implements Iterable<Progress<T>> {
 	@Override
 	public Iterator<Progress<T>> iterator() {
 		return new Iterator<Progress<T>>() {
-			int	index	= 0;
+			int index = 0;
 
 			@Override
 			public boolean hasNext() {

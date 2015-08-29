@@ -11,11 +11,11 @@ import ch.judos.generic.data.RandomJS;
  */
 public class Udp2ResendThreadTests extends TestCase {
 
-	private static final boolean	SILENT	= true;
+	private static final boolean SILENT = true;
 
-	int									failed;
-	private PriorityQueue<Long>	queue;
-	private boolean					running;
+	int failed;
+	private PriorityQueue<Long> queue;
+	private boolean running;
 
 	@SuppressWarnings("unused")
 	private void resend(Long x) {

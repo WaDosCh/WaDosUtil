@@ -16,8 +16,7 @@ public class DecodeEncodeTests extends TestCase {
 		String[] s = new String[5];
 
 		s[0] = "abc" + CSVFile.separator + "def";
-		s[1] = "a" + CSVFile.escape + CSVFile.linebreak + CSVFile.separator
-			+ CSVFile.escape;
+		s[1] = "a" + CSVFile.escape + CSVFile.linebreak + CSVFile.separator + CSVFile.escape;
 		s[2] = CSVFile.escape + CSVFile.escape + CSVFile.separator;
 		s[3] = CSVFile.separator + CSVFile.separator + CSVFile.escape;
 		s[4] = CSVFile.escape + CSVFile.escape + CSVFile.linebreak;

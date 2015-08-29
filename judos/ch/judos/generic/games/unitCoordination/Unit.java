@@ -22,7 +22,7 @@ public abstract class Unit extends Obstacle {
 	/**
 	 * listeners interested in the movement of this unit
 	 */
-	protected ArrayList<MovementListener>	listener;
+	protected ArrayList<MovementListener> listener;
 
 	/**
 	 * creates the unit
@@ -99,8 +99,8 @@ public abstract class Unit extends Obstacle {
 
 	/**
 	 * update the unit, this includes possible movement and state changes of it<br>
-	 * this method must be called from some controller, otherwise the movement is
-	 * not going to work
+	 * this method must be called from some controller, otherwise the movement
+	 * is not going to work
 	 */
 	public abstract void update();
 }

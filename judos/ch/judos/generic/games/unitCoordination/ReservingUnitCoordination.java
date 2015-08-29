@@ -20,8 +20,8 @@ public abstract class ReservingUnitCoordination extends NonReservingUnitCoordina
 	/**
 	 * the map
 	 */
-	protected SpaceGridMap		bmap;
-	private HashSet<WayPoint>	occupiedFields;
+	protected SpaceGridMap bmap;
+	private HashSet<WayPoint> occupiedFields;
 
 	/**
 	 * @param map
@@ -46,8 +46,8 @@ public abstract class ReservingUnitCoordination extends NonReservingUnitCoordina
 	 * @throws NoFreeSpaceException
 	 *             thrown if the initial position is already occupied
 	 */
-	public ReservingUnitCoordination(SpaceGridMap map, WayPoint pos,
-		FreeFieldChecker checker) throws NoFreeSpaceException {
+	public ReservingUnitCoordination(SpaceGridMap map, WayPoint pos, FreeFieldChecker checker)
+		throws NoFreeSpaceException {
 		super(map, pos, checker);
 		this.bmap = map;
 		if (!this.bmap.reserveFields(getFields()))
@@ -72,8 +72,7 @@ public abstract class ReservingUnitCoordination extends NonReservingUnitCoordina
 
 		if (this.bmap.reserveFields(newFields)) {
 			this.occupiedFields.addAll(newFields);
-			HashSet<WayPoint> leftFields = (HashSet<WayPoint>) this.occupiedFields
-				.clone();
+			HashSet<WayPoint> leftFields = (HashSet<WayPoint>) this.occupiedFields.clone();
 			leftFields.removeAll(fields);
 			this.bmap.freeFields(leftFields);
 			this.occupiedFields.removeAll(leftFields);

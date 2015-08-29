@@ -13,13 +13,13 @@ import ch.judos.generic.games.easymp.test.Player;
  */
 public abstract class Monitor {
 
-	protected boolean					isServer;
-	protected CommunicatorI				communicator;
+	protected boolean isServer;
+	protected CommunicatorI communicator;
 
-	protected MonitoredObjectStorage	storage;
+	protected MonitoredObjectStorage storage;
 
-	private HashSet<Object>				updates;
-	private static Monitor				instance;
+	private HashSet<Object> updates;
+	private static Monitor instance;
 
 	public static void initializeServer(CommunicatorI c) {
 		if (instance != null)

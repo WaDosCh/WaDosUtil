@@ -20,10 +20,10 @@ import org.eclipse.jdt.annotation.NonNull;
  */
 public final class Lazy<T> {
 
-	private boolean						needsInit	= false;
-	private T							value;
-	private final Supplier<? extends T>	supplier;
-	private final Object				LOCKER		= new Object();
+	private boolean needsInit = false;
+	private T value;
+	private final Supplier<? extends T> supplier;
+	private final Object LOCKER = new Object();
 
 	/**
 	 * Creates a new lazy instance based on the provided supplier method
@@ -79,7 +79,6 @@ public final class Lazy<T> {
 
 	@Override
 	public int hashCode() {
-		return this.get()
-				.hashCode();
+		return this.get().hashCode();
 	}
 }

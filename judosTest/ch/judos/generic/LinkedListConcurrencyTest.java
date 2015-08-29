@@ -14,14 +14,14 @@ import org.junit.Test;
  * @author Julian Schelker
  */
 public class LinkedListConcurrencyTest {
-	
+
 	private LinkedList<Integer> list;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		this.list = new LinkedList<>();
 	}
-	
+
 	@Test
 	public void testConc() throws Exception {
 		try {
@@ -31,30 +31,31 @@ public class LinkedListConcurrencyTest {
 				w[i] = new Worker(this.list, i == 0);
 			for (Thread t : w)
 				t.start();
-			
+
 			for (Thread t : w)
 				t.join();
 			for (Worker t : w)
 				if (t.failed != null)
 					throw t.failed;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return;
 		}
 		fail();
 	}
-	
+
 	private class Worker extends Thread {
-		
+
 		private LinkedList<Integer> l;
 		private boolean add;
 		public Exception failed;
-		
+
 		public Worker(LinkedList<Integer> l, boolean add) {
 			this.l = l;
 			this.add = add;
 			this.failed = null;
 		}
-		
+
 		@Override
 		public void run() {
 			try {
@@ -66,10 +67,11 @@ public class LinkedListConcurrencyTest {
 							this.l.removeFirst();
 					}
 				}
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				this.failed = e;
 			}
 		}
 	}
-	
+
 }

@@ -11,14 +11,14 @@ import java.util.Random;
  */
 public class SquaresDiamonds {
 
-	private int			segments;
-	private float[][]	points;
-	private int			currentSize;
-	private float		roughness;
-	private int			currentIteration;
-	private int			maxIterations;
-	private Random		randomGenerator;
-	private float		waterMin;
+	private int segments;
+	private float[][] points;
+	private int currentSize;
+	private float roughness;
+	private int currentIteration;
+	private int maxIterations;
+	private Random randomGenerator;
+	private float waterMin;
 
 	/**
 	 * @param iterations
@@ -61,8 +61,7 @@ public class SquaresDiamonds {
 
 				float avg = avgNeighbours2(x, y);
 
-				float newHeight = (1f - smoothness) * this.points[x][y]
-					+ smoothness * avg;
+				float newHeight = (1f - smoothness) * this.points[x][y] + smoothness * avg;
 				// System.out.println("h�he: "+this.points[x][y]+" avg umg.: "+avg+" neu:"+newHeight);
 
 				newPoints[x][y] = newHeight;
@@ -106,7 +105,8 @@ public class SquaresDiamonds {
 				this.points[0][0] = rndHeight(this.roughness, this.roughness);
 				this.points[this.currentSize][0] = rndHeight(this.roughness, this.roughness);
 				this.points[0][this.currentSize] = rndHeight(this.roughness, this.roughness);
-				this.points[this.currentSize][this.currentSize] = rndHeight(this.roughness, this.roughness);
+				this.points[this.currentSize][this.currentSize] = rndHeight(this.roughness,
+					this.roughness);
 			}
 
 			// diamond step
@@ -159,8 +159,8 @@ public class SquaresDiamonds {
 			value /= anz;
 		}
 		if (anz < 4)
-			System.err.println("Error: this point " + x + "," + y
-				+ " has not 4 neighbours...");
+			System.err
+				.println("Error: this point " + x + "," + y + " has not 4 neighbours...");
 		return value;
 	}
 

@@ -41,8 +41,7 @@ public final class DijkstraPathfinder<V extends Vertex<V>> implements Pathfinder
 			double distance = distances.get(vertex);
 			for (V neighbour : vertex.getNeighbours()) {
 				double dist = distance + vertex.getDistance(neighbour);
-				if (!distances.containsKey(neighbour)
-						|| distances.get(neighbour) > dist) {
+				if (!distances.containsKey(neighbour) || distances.get(neighbour) > dist) {
 					distances.put(neighbour, dist);
 					backsteps.put(neighbour, vertex);
 					if (!queue.contains(neighbour))

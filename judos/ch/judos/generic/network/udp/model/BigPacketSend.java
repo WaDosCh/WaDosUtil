@@ -9,12 +9,12 @@ import ch.judos.generic.data.format.ByteData;
  */
 public class BigPacketSend {
 
-	public static final int	CONTROL_DATA_BYTES	= 6;
+	public static final int CONTROL_DATA_BYTES = 6;
 
-	private byte[]			data;
-	private short			id;
-	private int				packetDataLimit;
-	private short			parts;
+	private byte[] data;
+	private short id;
+	private int packetDataLimit;
+	private short parts;
 
 	public BigPacketSend(short id, byte[] data, int maxPacketSize) {
 		int sizeData = maxPacketSize - CONTROL_DATA_BYTES;

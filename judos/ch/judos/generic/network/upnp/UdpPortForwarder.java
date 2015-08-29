@@ -13,11 +13,10 @@ import ch.judos.generic.network.IP;
  * @author Julian Schelker
  */
 public class UdpPortForwarder {
-	protected static GatewayDevice	device;
-	private static String			PROTOCOL	= "UDP";
+	protected static GatewayDevice device;
+	private static String PROTOCOL = "UDP";
 
-	public static boolean addPortMapping(int localPort, int externalPort,
-		String description) {
+	public static boolean addPortMapping(int localPort, int externalPort, String description) {
 		GatewayDevice d = getGatewayDevice();
 		InetAddress ipv4 = null;
 		for (InetAddress ip : IP.getLocalIps()) {
@@ -31,9 +30,10 @@ public class UdpPortForwarder {
 			return false;
 		}
 		try {
-			return d.addPortMapping(externalPort, localPort, ipv4.getHostAddress(),
-				PROTOCOL, description);
-		} catch (Exception e) {
+			return d.addPortMapping(externalPort, localPort, ipv4.getHostAddress(), PROTOCOL,
+				description);
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -43,7 +43,8 @@ public class UdpPortForwarder {
 		GatewayDevice d = getGatewayDevice();
 		try {
 			return d.getExternalIPAddress();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -58,7 +59,8 @@ public class UdpPortForwarder {
 			// logger.info("Looking for Gateway Devices");
 			try {
 				discover.discover();
-			} catch (Exception e) {
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 			device = discover.getValidGateway();
@@ -87,7 +89,8 @@ public class UdpPortForwarder {
 			if (!d.deletePortMapping(externalPort, PROTOCOL))
 				new Exception("could not remove Port Mapping on port " + externalPort)
 					.printStackTrace();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

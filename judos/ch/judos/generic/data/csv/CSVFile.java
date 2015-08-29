@@ -21,17 +21,17 @@ public class CSVFile {
 	/**
 	 * the standard character used as separator between fields
 	 */
-	public static String	separator	= ";";
+	public static String separator = ";";
 	/**
 	 * the standard character to escape characters equals to linebreak or
 	 * separators in fields
 	 */
-	public static String	escape		= "@";
+	public static String escape = "@";
 
 	/**
 	 * the standard character to separate entries
 	 */
-	public static String	linebreak	= "\r\n";
+	public static String linebreak = "\r\n";
 
 	/**
 	 * escapes all critical characters in this field

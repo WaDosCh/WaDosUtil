@@ -14,7 +14,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class RStorableArray2 implements RStorableWrapper {
 
-	private Object[]	array;
+	private Object[] array;
 
 	@Override
 	public boolean isTrackedAsObject() {

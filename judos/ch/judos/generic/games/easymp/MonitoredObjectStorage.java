@@ -14,14 +14,14 @@ public class MonitoredObjectStorage {
 	/**
 	 * maps ObjectId to MonitoredObject
 	 */
-	protected HashMap<ObjectId, MonitoredObject>	stored;
+	protected HashMap<ObjectId, MonitoredObject> stored;
 
 	/**
 	 * maps Object to their ObjectId
 	 */
-	protected HashMap<Object, ObjectId>				mappings;
+	protected HashMap<Object, ObjectId> mappings;
 
-	private IdGenerator								idGenerator;
+	private IdGenerator idGenerator;
 
 	public MonitoredObjectStorage(String clientId) {
 		this.stored = new HashMap<>();

@@ -18,11 +18,11 @@ public class Tuple2<T1, T2> {
 	/**
 	 * The first element
 	 */
-	public final T1	_1;
+	public final T1 _1;
 	/**
 	 * The second element
 	 */
-	public final T2	_2;
+	public final T2 _2;
 
 	/**
 	 * Creates a new tuple instance
@@ -54,8 +54,7 @@ public class Tuple2<T1, T2> {
 		if (obj == null || !(obj instanceof Tuple2))
 			return false;
 		Tuple2<?, ?> other = (Tuple2<?, ?>) obj;
-		return Objects.equals(this._1, other._1)
-				&& Objects.equals(this._2, other._2);
+		return Objects.equals(this._1, other._1) && Objects.equals(this._2, other._2);
 	}
 
 	@Override

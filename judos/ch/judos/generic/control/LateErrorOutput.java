@@ -9,11 +9,11 @@ import java.util.PriorityQueue;
  */
 public class LateErrorOutput implements Runnable {
 
-	private static LateErrorOutput	instance;
-	private HashMap<String, Error>	errors;
-	private boolean					running;
-	private PriorityQueue<Error>	check;
-	private Thread					thread;
+	private static LateErrorOutput instance;
+	private HashMap<String, Error> errors;
+	private boolean running;
+	private PriorityQueue<Error> check;
+	private Thread thread;
 
 	public static LateErrorOutput getInstance() {
 		if (instance == null)
@@ -33,7 +33,8 @@ public class LateErrorOutput implements Runnable {
 			this.errors.put(msg, e);
 			this.check.add(e);
 			startThread();
-		} else {
+		}
+		else {
 			this.errors.get(msg).hit();
 		}
 	}
@@ -57,26 +58,28 @@ public class LateErrorOutput implements Runnable {
 				this.check.poll();
 				if (this.check.isEmpty())
 					break;
-			//	else
-					wait = this.check.peek().getRemainingTime();
-			} else
+				// else
+				wait = this.check.peek().getRemainingTime();
+			}
+			else
 				wait = e.getRemainingTime();
 
 			try {
 				synchronized (this) {
 					wait(wait);
 				}
-			} catch (InterruptedException e1) {
-				//do nothing
+			}
+			catch (InterruptedException e1) {
+				// do nothing
 			}
 		}
 		this.running = false;
 	}
 
 	class Error implements Comparable<Error> {
-		String	msg;
-		long	lastMsOccured;
-		int		count;
+		String msg;
+		long lastMsOccured;
+		int count;
 
 		public Error(String msg) {
 			this.msg = msg;

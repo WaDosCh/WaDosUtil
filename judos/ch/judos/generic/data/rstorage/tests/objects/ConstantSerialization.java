@@ -14,8 +14,8 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class ConstantSerialization implements RStorableManual2 {
 
-	public static int	length	= 5;
-	private String		str;
+	public static int length = 5;
+	private String str;
 
 	public ConstantSerialization(String s) {
 		if (s.length() != length)

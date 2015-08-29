@@ -13,8 +13,8 @@ import java.io.OutputStream;
  */
 public final class TagLong implements Tag<Long> {
 
-	private Long	value;
-	private String	name;
+	private Long value;
+	private String name;
 
 	@Override
 	public byte getTagID() {

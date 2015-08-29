@@ -10,7 +10,7 @@ import ch.judos.generic.games.pathsearch.WayPoint;
  */
 public class WaterFieldChecker extends FreeFieldCheckAdapter {
 
-	private Map	gMap;
+	private Map gMap;
 
 	public WaterFieldChecker(Map map) {
 		super(map);

@@ -9,8 +9,8 @@ import ch.judos.generic.data.date.Time;
  */
 public class TimeHM extends ComposedFormat {
 
-	private IntervallFormat	hour;
-	private IntervallFormat	minute;
+	private IntervallFormat hour;
+	private IntervallFormat minute;
 
 	/**
 	 * 

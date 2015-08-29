@@ -23,10 +23,10 @@ import ch.waan.game.ui.UIResizableContainer;
  */
 public class UIPane implements UIResizableContainer<UIComponent> {
 
-	private @NonNull Point			position;
-	private @NonNull Dimension		dimension;
-	private @Nullable UIComponent	mouseOwner	= null;
-	private final List<UIComponent>	components	= new ArrayList<>();
+	private @NonNull Point position;
+	private @NonNull Dimension dimension;
+	private @Nullable UIComponent mouseOwner = null;
+	private final List<UIComponent> components = new ArrayList<>();
 
 	/**
 	 * Creates a new Pane instance
@@ -107,9 +107,7 @@ public class UIPane implements UIResizableContainer<UIComponent> {
 			// draw component
 			final Graphics2D g2 = (Graphics2D) g.create();
 			g2.translate(p.x(), p.y());
-			g2.clipRect(d.topLeft()
-					.x(), d.topLeft()
-					.y(), d.width() + 1, d.height() + 1);
+			g2.clipRect(d.topLeft().x(), d.topLeft().y(), d.width() + 1, d.height() + 1);
 			c.render(g2);
 		}
 	}
@@ -124,15 +122,13 @@ public class UIPane implements UIResizableContainer<UIComponent> {
 	 * @default simple bounding rectangle collision check
 	 */
 	protected boolean isVisibleOnScreen(final @NonNull UIComponent comp) {
-		int dx = comp.getPosition()
-				.x();
-		int dy = comp.getPosition()
-				.y();
+		int dx = comp.getPosition().x();
+		int dy = comp.getPosition().y();
 		dx = dx < 0 ? -dx : dx;
 		dy = dy < 0 ? -dy : dy;
-		return !(2 * dx > comp.getDimension()
-				.width() + this.dimension.width() || 2 * dy > comp.getDimension()
-				.height() + this.dimension.height());
+		return !(2 * dx > comp.getDimension().width() + this.dimension.width() || 2 * dy > comp
+			.getDimension().height()
+			+ this.dimension.height());
 	}
 
 	@Override
@@ -154,8 +150,7 @@ public class UIPane implements UIResizableContainer<UIComponent> {
 	 */
 	protected boolean hasChildCollision(final @NonNull Point point) {
 		for (UIComponent c : this.components) {
-			if (c.collides(point.translate(c.getPosition()
-					.scale(-1))))
+			if (c.collides(point.translate(c.getPosition().scale(-1))))
 				return true;
 		}
 		return false;
@@ -172,8 +167,7 @@ public class UIPane implements UIResizableContainer<UIComponent> {
 	protected @Nullable UIComponent childAt(final @NonNull Point point) {
 		UIComponent child = null;
 		for (UIComponent c : this.components)
-			if (c.collides(point.translate(c.getPosition()
-					.scale(-1))))
+			if (c.collides(point.translate(c.getPosition().scale(-1))))
 				child = c;
 		return child;
 	}
@@ -195,8 +189,7 @@ public class UIPane implements UIResizableContainer<UIComponent> {
 		}
 		// apply movement
 		if (newOwner != null)
-			newOwner.mouseMoved(mouse.translate(newOwner.getPosition()
-					.scale(-1)));
+			newOwner.mouseMoved(mouse.translate(newOwner.getPosition().scale(-1)));
 		// store new owner
 		this.mouseOwner = newOwner;
 	}

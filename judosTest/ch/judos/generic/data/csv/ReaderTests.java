@@ -22,7 +22,7 @@ public class ReaderTests extends TestCase {
 	 * @see junit.framework.TestCase#setUp()
 	 */
 
-	private StringReader	input;
+	private StringReader input;
 
 	@Override
 	protected void setUp() throws Exception {

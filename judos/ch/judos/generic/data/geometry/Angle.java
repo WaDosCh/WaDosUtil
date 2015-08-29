@@ -10,14 +10,14 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  */
 public class Angle implements RStorable2 {
 
-	public static final Angle	A_0						= Angle.fromDegree(0);
-	public static final Angle	A_90						= Angle.fromDegree(90);
-	public static final Angle	A_180						= Angle.fromDegree(180);
-	public static final Angle	A_270						= Angle.fromDegree(270);
-	public static final Angle	A_360						= Angle.fromDegreeUncapped(360);
+	public static final Angle A_0 = Angle.fromDegree(0);
+	public static final Angle A_90 = Angle.fromDegree(90);
+	public static final Angle A_180 = Angle.fromDegree(180);
+	public static final Angle A_270 = Angle.fromDegree(270);
+	public static final Angle A_360 = Angle.fromDegreeUncapped(360);
 
-	public static final double	degreeToRadianFactor	= 2 * Math.PI / 360;
-	public static final double	radianToDegreeFactor	= 360 / (2 * Math.PI);
+	public static final double degreeToRadianFactor = 2 * Math.PI / 360;
+	public static final double radianToDegreeFactor = 360 / (2 * Math.PI);
 
 	/**
 	 * uses the opposite and hypotenuse to calculate the angle between adjacent
@@ -52,7 +52,7 @@ public class Angle implements RStorable2 {
 		return a;
 	}
 
-	protected double	radian;
+	protected double radian;
 
 	protected Angle(double radian) {
 		this.radian = radian;
@@ -102,10 +102,11 @@ public class Angle implements RStorable2 {
 	public PointF getDirection() {
 		return new PointF(Math.cos(this.radian), Math.sin(this.radian));
 	}
-	
+
 	/**
 	 * input angle = output angle<br>
 	 * this method bounces an input angle on a normal with the physics law
+	 * 
 	 * @param normal
 	 * @return
 	 */
@@ -116,12 +117,10 @@ public class Angle implements RStorable2 {
 	public Angle turnCounterClockwise(double angleInRadian) {
 		return Angle.fromRadian(this.radian - angleInRadian);
 	}
-	
 
 	public Angle turnCounterClockwise(Angle angle) {
 		return this.sub(angle);
 	}
-
 
 	public Angle turnClockwise(double angleInRadian) {
 		return Angle.fromRadian(this.radian + angleInRadian);

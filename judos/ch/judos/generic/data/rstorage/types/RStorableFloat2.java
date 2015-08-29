@@ -14,7 +14,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class RStorableFloat2 implements RStorableWrapper {
 
-	private float	number;
+	private float number;
 
 	@Override
 	public boolean isTrackedAsObject() {

@@ -13,9 +13,9 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  * @author Julian Schelker
  * @version 1.0 / 27.02.2013
  */
-public class PointF extends Point2D.Float implements /*Cloneable, Serializable, */ RStorable2 {
+public class PointF extends Point2D.Float implements /* Cloneable, Serializable, */RStorable2 {
 
-	private static final long	serialVersionUID	= 1495729872930076211L;
+	private static final long serialVersionUID = 1495729872930076211L;
 
 	/**
 	 * used for the RStorage to create instances
@@ -54,7 +54,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	 * <b>Note:</b> does not change the current instance
 	 * 
 	 * @param p
-	 *           some other point
+	 *            some other point
 	 * @return the new point, adding up the position of this point and the given
 	 *         one
 	 */
@@ -66,7 +66,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	 * <b>Note:</b> changes the current instance
 	 * 
 	 * @param p
-	 *           some other point
+	 *            some other point
 	 */
 	public void addI(PointF p) {
 		this.x += p.x;
@@ -77,7 +77,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	 * <b>Note:</b> changes the current instance
 	 * 
 	 * @param p
-	 *           some other point
+	 *            some other point
 	 */
 	public void addI(Point p) {
 		this.x += p.x;
@@ -87,7 +87,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	/**
 	 * @param target
 	 * @param speed
-	 *           distance to move the point in the direction of the target
+	 *            distance to move the point in the direction of the target
 	 * @return whether target is reached or not
 	 */
 	public boolean approachPoint(Point target, float speed) {
@@ -97,7 +97,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	/**
 	 * @param target
 	 * @param speed
-	 *           distance to move the point in the direction of the target
+	 *            distance to move the point in the direction of the target
 	 * @return whether target is reached or not
 	 */
 	public boolean approachPoint(PointF target, float speed) {
@@ -108,11 +108,11 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 			this.y = target.y;
 			return true;
 		}
-		//else {
-			double angle = Math.atan2(delta.y, delta.x);
-			movePoint(angle, speed);
-			return false;
-		//}
+		// else {
+		double angle = Math.atan2(delta.y, delta.x);
+		movePoint(angle, speed);
+		return false;
+		// }
 	}
 
 	/**
@@ -211,8 +211,8 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 
 	/**
 	 * @param factor
-	 * @return the length of the vector is multiplied by the given factor and the
-	 *         new vector is returned
+	 * @return the length of the vector is multiplied by the given factor and
+	 *         the new vector is returned
 	 */
 	public PointF scale(double factor) {
 		return new PointF((float) (this.x * factor), (float) (this.y * factor));
@@ -220,8 +220,8 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 
 	/**
 	 * @param factor
-	 * @return the length of the vector is multiplied by the given factor and the
-	 *         new vector is returned
+	 * @return the length of the vector is multiplied by the given factor and
+	 *         the new vector is returned
 	 */
 	public PointF scale(float factor) {
 		return new PointF(this.x * factor, this.y * factor);
@@ -299,7 +299,7 @@ public class PointF extends Point2D.Float implements /*Cloneable, Serializable, 
 	 * <b>Note:</b> does not change the current instance
 	 * 
 	 * @param p
-	 *           some other point
+	 *            some other point
 	 * @return the new point, adding up the position of this point and the given
 	 *         one
 	 */

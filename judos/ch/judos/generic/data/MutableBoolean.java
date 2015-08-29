@@ -5,11 +5,11 @@ package ch.judos.generic.data;
  * @author Julian Schelker
  */
 public class MutableBoolean {
-	
+
 	public MutableBoolean(boolean state) {
 		this.state = state;
 	}
 
 	public boolean state;
-	
+
 }

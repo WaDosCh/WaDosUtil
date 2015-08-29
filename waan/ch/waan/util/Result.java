@@ -56,11 +56,10 @@ public abstract class Result<T> {
 	 * @return the result containing the value
 	 */
 	public static <T> Result<T> of(T value) {
-		return Result.eval(() ->
-			{
-				Objects.requireNonNull(value);
-				return value;
-			});
+		return Result.eval(() -> {
+			Objects.requireNonNull(value);
+			return value;
+		});
 	}
 
 	/**
@@ -86,8 +85,7 @@ public abstract class Result<T> {
 	 * @return the result containing the exception
 	 */
 	public static <T> Result<T> ofException(Exception e) {
-		return Result.of(e)
-				.flatMap(ex -> new ErrorResult<>(ex));
+		return Result.of(e).flatMap(ex -> new ErrorResult<>(ex));
 	}
 
 	/**
@@ -103,7 +101,8 @@ public abstract class Result<T> {
 	public static <T> Result<T> eval(ErrableSupplier<T> supplier) {
 		try {
 			return Result.ofNullable(supplier.get());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return new ErrorResult<>(e);
 		}
 	}
@@ -184,8 +183,7 @@ public abstract class Result<T> {
 	 *            the mapping function
 	 * @return the result of the mapping function
 	 */
-	public abstract Result<T> flatMapException(
-			ErrableFunction<Exception, Result<T>> mapper);
+	public abstract Result<T> flatMapException(ErrableFunction<Exception, Result<T>> mapper);
 
 	/**
 	 * Evaluates the consumer with the value if it exists

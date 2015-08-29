@@ -40,18 +40,23 @@ public class NaturalOrderComparator implements Comparator<Object> {
 
 			if (!Character.isDigit(ca) && !Character.isDigit(cb)) {
 				return bias;
-			} else if (!Character.isDigit(ca)) {
+			}
+			else if (!Character.isDigit(ca)) {
 				return -1;
-			} else if (!Character.isDigit(cb)) {
+			}
+			else if (!Character.isDigit(cb)) {
 				return +1;
-			} else if (ca < cb) {
+			}
+			else if (ca < cb) {
 				if (bias == 0) {
 					bias = -1;
 				}
-			} else if (ca > cb) {
+			}
+			else if (ca > cb) {
 				if (bias == 0)
 					bias = +1;
-			} else if (ca == 0 && cb == 0) {
+			}
+			else if (ca == 0 && cb == 0) {
 				return bias;
 			}
 		}
@@ -83,7 +88,8 @@ public class NaturalOrderComparator implements Comparator<Object> {
 			while (Character.isSpaceChar(ca) || ca == '0') {
 				if (ca == '0') {
 					nza++;
-				} else {
+				}
+				else {
 					// only count consecutive zeroes
 					nza = 0;
 				}
@@ -94,7 +100,8 @@ public class NaturalOrderComparator implements Comparator<Object> {
 			while (Character.isSpaceChar(cb) || cb == '0') {
 				if (cb == '0') {
 					nzb++;
-				} else {
+				}
+				else {
 					// only count consecutive zeroes
 					nzb = 0;
 				}
@@ -117,7 +124,8 @@ public class NaturalOrderComparator implements Comparator<Object> {
 
 			if (ca < cb) {
 				return -1;
-			} else if (ca > cb) {
+			}
+			else if (ca > cb) {
 				return +1;
 			}
 

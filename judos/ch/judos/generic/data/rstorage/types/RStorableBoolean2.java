@@ -13,7 +13,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class RStorableBoolean2 implements RStorableWrapper {
 
-	private boolean	c;
+	private boolean c;
 
 	@Override
 	public boolean equals(Object obj) {

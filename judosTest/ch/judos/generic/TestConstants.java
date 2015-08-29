@@ -14,7 +14,7 @@ import ch.judos.generic.files.FileUtils;
  */
 public class TestConstants {
 
-	public static final String	testFolderName	= "bin/";
+	public static final String testFolderName = "bin/";
 
 	private static File getDir() {
 		File testFolder = new File(testFolderName);
@@ -25,7 +25,8 @@ public class TestConstants {
 
 	public static File getTestData(long size) throws IOException {
 		long remainingSize = size;
-		File f = new File(getDir(), "testData-" + FileSize.getSizeNiceFromBytes(size) + ".temp");
+		File f = new File(getDir(), "testData-" + FileSize.getSizeNiceFromBytes(size)
+			+ ".temp");
 		try (Writer w = FileUtils.getWriterForFile(f)) {
 			int bufSize = 1024 * 1024; // 1MB
 			char[] data = null;

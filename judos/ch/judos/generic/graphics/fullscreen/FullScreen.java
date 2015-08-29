@@ -141,53 +141,53 @@ public class FullScreen implements MouseInfoI {
 	/**
 	 * whether the screen is cleared before drawing a frame
 	 */
-	protected boolean								clear;
+	protected boolean clear;
 	/**
 	 * frame inside which fullscreen content is displayed
 	 */
-	public Frame									frame;
+	public Frame frame;
 	/**
 	 * deviced/ screen used for displaying
 	 */
-	protected GraphicsDevice					device;
+	protected GraphicsDevice device;
 	/**
 	 * resolution and frequency used
 	 */
-	protected DisplayMode						mode;
+	protected DisplayMode mode;
 	/**
 	 * content of the view
 	 */
-	protected Drawable							draw;
+	protected Drawable draw;
 	/**
 	 * title for the window
 	 */
-	protected String								title;
+	protected String title;
 	/**
 	 * refresh timer
 	 */
-	protected Timer								timer;
+	protected Timer timer;
 	/**
 	 * prevents flickering
 	 */
-	protected BufferStrategy					bufferStrategy;
+	protected BufferStrategy bufferStrategy;
 	/**
 	 * calc fps - last check ms
 	 */
-	protected long									fps_ms;
+	protected long fps_ms;
 	/**
 	 * calc fps - current counter
 	 */
-	protected int									fps_co;
+	protected int fps_co;
 	/**
 	 * calculated fps
 	 */
-	public int										FPS;
-	private int										individualRefreshRateFps;
-	private boolean								individualRefreshRate;
-	private ArrayList<KeyListener>			klists;
-	private ArrayList<MouseListener>			mlists;
-	private ArrayList<WindowListener>		wlists;
-	private ArrayList<MouseMotionListener>	mmlist;
+	public int FPS;
+	private int individualRefreshRateFps;
+	private boolean individualRefreshRate;
+	private ArrayList<KeyListener> klists;
+	private ArrayList<MouseListener> mlists;
+	private ArrayList<WindowListener> wlists;
+	private ArrayList<MouseMotionListener> mmlist;
 
 	/**
 	 * @param device
@@ -212,8 +212,8 @@ public class FullScreen implements MouseInfoI {
 
 	/**
 	 * @param list
-	 *           A KeyListener to add permanently (is saved and still active
-	 *           after you exit and start FullScreen again)
+	 *            A KeyListener to add permanently (is saved and still active
+	 *            after you exit and start FullScreen again)
 	 */
 	public void addKeyListener(KeyListener list) {
 		this.klists.add(list);
@@ -259,11 +259,11 @@ public class FullScreen implements MouseInfoI {
 	 * open up the fullscreen view with certain number of buffers
 	 * 
 	 * @param numBuffers
-	 *           number of buffers to predraw on before displaying
+	 *            number of buffers to predraw on before displaying
 	 * @param fullscreen
-	 *           whether the content should be drawn in fullscreen mode
+	 *            whether the content should be drawn in fullscreen mode
 	 * @param undecorated
-	 *           for window mode: if true will not show border of window
+	 *            for window mode: if true will not show border of window
 	 */
 	public void openScreen(int numBuffers, boolean fullscreen, boolean undecorated) {
 		this.frame = new Frame(this.title, this.device.getDefaultConfiguration());
@@ -345,7 +345,7 @@ public class FullScreen implements MouseInfoI {
 
 	/**
 	 * @param value
-	 *           turn on or off the clearing before drawing each frame
+	 *            turn on or off the clearing before drawing each frame
 	 */
 	public void setClearing(boolean value) {
 		this.clear = value;
@@ -353,7 +353,8 @@ public class FullScreen implements MouseInfoI {
 
 	/**
 	 * @param fps
-	 *           If content needs to be refreshed less than displayMode suggests
+	 *            If content needs to be refreshed less than displayMode
+	 *            suggests
 	 */
 	public void setIndividualRefreshRate(int fps) {
 		this.individualRefreshRate = true;
@@ -374,8 +375,9 @@ public class FullScreen implements MouseInfoI {
 	 */
 	@Override
 	public String toString() {
-		return this.title + "  running in " + this.mode.getWidth() + "x" + this.mode.getHeight()
-			+ " " + this.mode.getBitDepth() + "bit " + this.mode.getRefreshRate() + "fps";
+		return this.title + "  running in " + this.mode.getWidth() + "x"
+			+ this.mode.getHeight() + " " + this.mode.getBitDepth() + "bit "
+			+ this.mode.getRefreshRate() + "fps";
 	}
 
 	/**

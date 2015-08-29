@@ -12,7 +12,7 @@ import java.net.SocketException;
  */
 public class Udp0Sender {
 
-	protected DatagramSocket	ds;
+	protected DatagramSocket ds;
 
 	protected Udp0Sender(DatagramSocket ds) throws SocketException {
 		this.ds = ds;

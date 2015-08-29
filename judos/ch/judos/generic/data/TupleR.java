@@ -19,11 +19,11 @@ public class TupleR<T0, T1> implements CloneableJS {
 	/**
 	 * first entry
 	 */
-	public T0	e0;
+	public T0 e0;
 	/**
 	 * second entry
 	 */
-	public T1	e1;
+	public T1 e1;
 
 	/**
 	 * @param e0
@@ -67,7 +67,8 @@ public class TupleR<T0, T1> implements CloneableJS {
 	public Object get(int index) {
 		if (index == 0) {
 			return this.e0;
-		} else if (index == 1)
+		}
+		else if (index == 1)
 			return this.e1;
 		else
 			throw new IndexOutOfBoundsException("only index 0 and 1 is allowed.");

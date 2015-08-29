@@ -15,7 +15,7 @@ import org.eclipse.jdt.annotation.NonNull;
  */
 public final class SynchronizedIDProvider implements IDProvider {
 
-	private IDProvider	backer;
+	private IDProvider backer;
 
 	/**
 	 * Instantiate a new synchronised IDProvider based on the provided provider.

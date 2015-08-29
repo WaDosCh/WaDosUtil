@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
  */
 public class WordFormat extends SimpleFormat {
 
-	protected String	data;
+	protected String data;
 
 	public WordFormat() {
 		super(Pattern.compile("(\\w+)(.*)"));

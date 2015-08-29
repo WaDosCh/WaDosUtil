@@ -21,6 +21,6 @@ import org.eclipse.jdt.annotation.NonNull;
  *            The component type allowed in this container
  */
 public interface UIResizableContainer<@NonNull E extends UIComponent> extends
-		UIMovableContainer<E>, UIResizable {
+	UIMovableContainer<E>, UIResizable {
 	// no content - pure combo-interface
 }

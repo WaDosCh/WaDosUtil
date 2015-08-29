@@ -10,8 +10,8 @@ import java.io.Writer;
  */
 public class IndentWriter2 extends BufferedWriter {
 
-	private boolean	onANewLine;
-	int					indent;
+	private boolean onANewLine;
+	int indent;
 
 	public IndentWriter2(Writer redirectTo) {
 		super(redirectTo);

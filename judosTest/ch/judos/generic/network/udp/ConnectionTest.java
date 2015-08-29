@@ -13,7 +13,7 @@ import ch.judos.generic.network.udp.interfaces.Udp4I;
  */
 public class ConnectionTest extends TestCase {
 
-	private static final boolean	SILENT	= true;
+	private static final boolean SILENT = true;
 
 	public void testConnection() throws SocketException, InterruptedException {
 		Udp4I u = UdpLib.createDefault();
