@@ -10,8 +10,8 @@ import ch.judos.generic.data.rstorage.helper.RuntimeWriter2;
  */
 public class DynEscapeSeq {
 
-	private RuntimeWriter2		writer;
-	private Supplier<Boolean>	test;
+	private RuntimeWriter2 writer;
+	private Supplier<Boolean> test;
 
 	public DynEscapeSeq(Supplier<Boolean> test, RuntimeWriter2 wr) {
 		this.test = test;

@@ -9,17 +9,16 @@ package ch.waan.util.id;
  */
 class LayeredIDProvider implements IDProvider {
 
-	private final int		layer;
-	private final long		maxCount;
-	private long			usedCount;
+	private final int layer;
+	private final long maxCount;
+	private long usedCount;
 
-	private IDProvider[]	subProviders;
+	private IDProvider[] subProviders;
 
 	LayeredIDProvider(int layer, boolean defaults) {
 		this.layer = layer;
 		this.subProviders = new IDProvider[256];
-		CompressedProvider p = defaults ? CompressedProvider.TRUE
-				: CompressedProvider.FALSE;
+		CompressedProvider p = defaults ? CompressedProvider.TRUE : CompressedProvider.FALSE;
 		for (int i = 0; i < 256; i++)
 			this.subProviders[i] = p;
 		long mxCnt = 0;
@@ -84,11 +83,12 @@ class LayeredIDProvider implements IDProvider {
 			subAdd = this.getProviderIDWithPotential(potential);
 			// fill subprovider
 			chosenID = this.subProviders[subAdd].get();
-		} else {
+		}
+		else {
 			// top-level expansion required
 			for (subAdd = 0; subAdd < 256; subAdd++) {
 				if (this.subProviders[subAdd] instanceof CompressedProvider
-						&& !this.subProviders[subAdd].isFull()) {
+					&& !this.subProviders[subAdd].isFull()) {
 					this.expand(subAdd, false);
 					break;
 				}
@@ -126,8 +126,7 @@ class LayeredIDProvider implements IDProvider {
 	}
 
 	private void expand(int addr, boolean state) {
-		this.subProviders[addr] = IDProviderFactory.getIDProvider((byte) this.layer,
-				state);
+		this.subProviders[addr] = IDProviderFactory.getIDProvider((byte) this.layer, state);
 	}
 
 	private void compress(int addr) {
@@ -155,7 +154,8 @@ class LayeredIDProvider implements IDProvider {
 				if (this.subProviders[i].getFreeIDCount() > 1) {
 					if (val < 0)
 						val = 0;
-				} else if (this.subProviders[i].getFreeIDCount() == 1) {
+				}
+				else if (this.subProviders[i].getFreeIDCount() == 1) {
 					if (val < 1)
 						val = 1;
 				}

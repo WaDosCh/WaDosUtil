@@ -6,7 +6,7 @@ package ch.judos.generic.data;
  * @version 1.01 22.02.2013
  */
 public class SerializerException extends Exception {
-	private static final long	serialVersionUID	= -5228333595544445373L;
+	private static final long serialVersionUID = -5228333595544445373L;
 
 	/**
 	 * @param msg

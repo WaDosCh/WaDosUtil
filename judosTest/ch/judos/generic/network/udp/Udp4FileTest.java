@@ -21,12 +21,12 @@ import ch.judos.generic.network.udp.model.FileDescription;
 public class Udp4FileTest extends TestCase implements FileTransmissionHandler,
 	UdpFileTransferListener {
 
-	public static final boolean	SILENT	= true;
-	public static File				testFile;
-	public static final int			PORT		= 60000;
-	private long						start;
-	private Udp4I						u;
-	private static File				testFileReceive;
+	public static final boolean SILENT = true;
+	public static File testFile;
+	public static final int PORT = 60000;
+	private long start;
+	private Udp4I u;
+	private static File testFileReceive;
 
 	@Override
 	public int getUpdateEveryMS() {
@@ -62,8 +62,8 @@ public class Udp4FileTest extends TestCase implements FileTransmissionHandler,
 	public void testSomeThing() throws FileNotFoundException, InterruptedException {
 		this.u.setFileHandler(this);
 
-		this.u.sendFileTo(testFile, "some test file", new InetSocketAddress("localhost", PORT),
-			null);
+		this.u.sendFileTo(testFile, "some test file",
+			new InetSocketAddress("localhost", PORT), null);
 
 		synchronized (this) {
 			wait();
@@ -98,8 +98,8 @@ public class Udp4FileTest extends TestCase implements FileTransmissionHandler,
 		long total) {
 		if (!SILENT)
 			System.out.println(MathJS.round(percentage, 0) + "% speed: "
-				+ ByteData.autoFormat(avgSpeed) + "  " + ByteData.autoFormat(transmitted) + " / "
-				+ ByteData.autoFormat(total));
+				+ ByteData.autoFormat(avgSpeed) + "  " + ByteData.autoFormat(transmitted)
+				+ " / " + ByteData.autoFormat(total));
 	}
 
 }

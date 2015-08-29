@@ -41,12 +41,12 @@ public class NameValueHandler extends DefaultHandler {
 	/**
 	 * A reference to the name-value map to populate with the data being read
 	 */
-	private Map<String, String>	nameValue;
+	private Map<String, String> nameValue;
 
 	/**
 	 * The last read element
 	 */
-	private String				currentElement;
+	private String currentElement;
 
 	/**
 	 * Creates a new instance of a <tt>NameValueHandler</tt>, storing values in

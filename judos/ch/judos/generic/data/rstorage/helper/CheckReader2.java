@@ -10,9 +10,9 @@ import java.util.regex.Pattern;
  * @since 20.04.2015
  * @author Julian Schelker
  */
-public class CheckReader2 extends Reader /*implements AutoCloseable*/ {
+public class CheckReader2 extends Reader /* implements AutoCloseable */{
 
-	protected Reader	readFrom;
+	protected Reader readFrom;
 
 	public CheckReader2(Reader in) {
 		this.readFrom = in;
@@ -41,13 +41,13 @@ public class CheckReader2 extends Reader /*implements AutoCloseable*/ {
 	}
 
 	/**
-	 * reads ahead if the stream matches the given string and eventually consumes
-	 * it from the stream
+	 * reads ahead if the stream matches the given string and eventually
+	 * consumes it from the stream
 	 * 
 	 * @param shouldBe
 	 * @param shouldConsume
-	 *           did the string match -> should the string be consumed in the
-	 *           stream
+	 *            did the string match -> should the string be consumed in the
+	 *            stream
 	 * @return did the string match
 	 * @throws IOException
 	 */
@@ -115,7 +115,8 @@ public class CheckReader2 extends Reader /*implements AutoCloseable*/ {
 		String got = new String(buffer);
 		boolean matches = shouldBe.equals(got);
 		if (!matches)
-			throw new IOException("readMustMatch failed got: " + got + " expected: " + shouldBe);
+			throw new IOException("readMustMatch failed got: " + got + " expected: "
+				+ shouldBe);
 	}
 
 	@Override

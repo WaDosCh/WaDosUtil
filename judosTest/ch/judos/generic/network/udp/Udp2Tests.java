@@ -17,9 +17,9 @@ import ch.judos.generic.network.udp.interfaces.Layer2Listener;
  */
 public class Udp2Tests {
 
-	int				PORT;
-	boolean			success;
-	private Udp2	u;
+	int PORT;
+	boolean success;
+	private Udp2 u;
 
 	void assertArrayEquals(byte[] senddata, byte[] data) {
 		for (int index = 0; index < data.length; index++)
@@ -44,8 +44,8 @@ public class Udp2Tests {
 		this.u.addListener(listener);
 
 		try {
-			this.u.sendDataTo(1, new byte[0], false,
-				new InetSocketAddress("localhost", this.PORT));
+			this.u.sendDataTo(1, new byte[0], false, new InetSocketAddress("localhost",
+				this.PORT));
 		}
 		catch (IOException e) {
 			fail();
@@ -100,7 +100,8 @@ public class Udp2Tests {
 		this.u.addListener(listener);
 
 		try {
-			this.u.sendDataTo(5, senddata, true, new InetSocketAddress("localhost", this.PORT));
+			this.u
+				.sendDataTo(5, senddata, true, new InetSocketAddress("localhost", this.PORT));
 		}
 		catch (IOException e) {
 			fail();
@@ -136,7 +137,8 @@ public class Udp2Tests {
 		this.u.addListener(listener);
 
 		try {
-			this.u.sendDataTo(5, senddata, false, new InetSocketAddress("localhost", this.PORT));
+			this.u.sendDataTo(5, senddata, false,
+				new InetSocketAddress("localhost", this.PORT));
 		}
 		catch (IOException e) {
 			fail();

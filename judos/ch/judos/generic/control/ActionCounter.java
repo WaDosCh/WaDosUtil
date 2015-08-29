@@ -13,20 +13,20 @@ public class ActionCounter {
 	/**
 	 * current number of executions
 	 */
-	protected int	done;
+	protected int done;
 	/**
 	 * milliseconds of the last check
 	 */
-	protected long	time;
+	protected long time;
 	/**
 	 * every checkTime the actionRate is calculated
 	 */
-	protected int	checkTime;
+	protected int checkTime;
 
 	/**
 	 * the current actionRate
 	 */
-	protected int	actionRate;
+	protected int actionRate;
 
 	/**
 	 * Periodically calculates the actionRate every second.

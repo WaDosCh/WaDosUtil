@@ -18,9 +18,9 @@ import ch.waan.util.SerializationConstructorFactory;
  */
 public final class TagList implements Tag<ArrayList<Tag<?>>> {
 
-	private String				name;
-	private ArrayList<Tag<?>>	value;
-	private byte				contentType	= -1;
+	private String name;
+	private ArrayList<Tag<?>> value;
+	private byte contentType = -1;
 
 	@Override
 	public byte getTagID() {
@@ -82,8 +82,7 @@ public final class TagList implements Tag<ArrayList<Tag<?>>> {
 				this.contentType = t.getTagID();
 			}
 			if (this.contentType != t.getTagID())
-				throw new RuntimeException(
-						"TAG_LIST only supports one type at a time");
+				throw new RuntimeException("TAG_LIST only supports one type at a time");
 			this.value.add(t);
 		}
 	}
@@ -122,8 +121,7 @@ public final class TagList implements Tag<ArrayList<Tag<?>>> {
 
 	@Override
 	public void write(OutputStream stream) throws IOException {
-		stream.write(this.value.isEmpty() ? getID() : this.value.get(0)
-				.getTagID());
+		stream.write(this.value.isEmpty() ? getID() : this.value.get(0).getTagID());
 		int len = this.value.size();
 		stream.write((len >> 24) & 0xFF);
 		stream.write((len >> 16) & 0xFF);
@@ -137,20 +135,23 @@ public final class TagList implements Tag<ArrayList<Tag<?>>> {
 	private static byte getID() {
 		try {
 			return ((Tag<?>) SerializationConstructorFactory.getSerialisationConstructor(
-					(Class<?>) ((ParameterizedType) TagList.class.getDeclaredField(
-							"value")
-							.getGenericType()).getActualTypeArguments()[0])
-					.newInstance()).getTagID();
-		} catch (NoSuchFieldException | SecurityException e) {
+				(Class<?>) ((ParameterizedType) TagList.class.getDeclaredField("value")
+					.getGenericType()).getActualTypeArguments()[0]).newInstance()).getTagID();
+		}
+		catch (NoSuchFieldException | SecurityException e) {
 			e.printStackTrace();
 			throw new RuntimeException("whoops");
-		} catch (InstantiationException e) {
+		}
+		catch (InstantiationException e) {
 			e.printStackTrace();
-		} catch (IllegalAccessException e) {
+		}
+		catch (IllegalAccessException e) {
 			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
+		}
+		catch (IllegalArgumentException e) {
 			e.printStackTrace();
-		} catch (InvocationTargetException e) {
+		}
+		catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		return -1;
@@ -160,9 +161,8 @@ public final class TagList implements Tag<ArrayList<Tag<?>>> {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("TAG_LIST<"
-				+ NBTDecoder.getNameTag(this.contentType) + ">(\"" + this.name
-				+ "\") : " + this.value.size()
-				+ (this.value.size() == 1 ? " entry" : " entries"));
+			+ NBTDecoder.getNameTag(this.contentType) + ">(\"" + this.name + "\") : "
+			+ this.value.size() + (this.value.size() == 1 ? " entry" : " entries"));
 		int i = 0;
 		for (Tag<?> e : this.value)
 			sb.append("\n [" + (i++) + "] : " + e.toString());

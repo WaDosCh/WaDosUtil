@@ -14,7 +14,7 @@ import ch.judos.generic.data.parse.TimeFormat;
 public class Time {
 
 	// some identifier and helper variables
-	private static GregorianCalendar	c	= new GregorianCalendar();
+	private static GregorianCalendar c = new GregorianCalendar();
 
 	/**
 	 * @return a list of all possible formating characters
@@ -33,7 +33,7 @@ public class Time {
 	 * hour:minute:seconds
 	 * 
 	 * @param line
-	 *           the time as string
+	 *            the time as string
 	 * @return null if the time could not be parsed
 	 */
 	public static Time parse(String line) {
@@ -46,16 +46,16 @@ public class Time {
 	/**
 	 * the hour of this time
 	 */
-	protected int	hour;
+	protected int hour;
 	/**
 	 * the minute of this time
 	 */
-	protected int	minute;
+	protected int minute;
 
 	/**
 	 * the second of this time
 	 */
-	protected int	second;
+	protected int second;
 
 	/**
 	 * the date will save the current hour, minute and second
@@ -71,7 +71,7 @@ public class Time {
 	 * see also the static parse method for parsing time
 	 * 
 	 * @param hour
-	 *           give some values to initialize this date
+	 *            give some values to initialize this date
 	 * @param minute
 	 */
 	public Time(int hour, int minute) {
@@ -84,7 +84,7 @@ public class Time {
 	 * see also the static parse method for parsing time
 	 * 
 	 * @param hour
-	 *           give some values to initialize this date
+	 *            give some values to initialize this date
 	 * @param minute
 	 * @param second
 	 */
@@ -108,7 +108,7 @@ public class Time {
 
 	/**
 	 * @param time
-	 *           same other time object
+	 *            same other time object
 	 * @return 1 if this.isAfter(time) <br>
 	 *         -1 if this.isBefore(time) <br>
 	 *         0 if the two times represent the same hour, minute and second
@@ -193,7 +193,7 @@ public class Time {
 
 	/**
 	 * @param time
-	 *           another time
+	 *            another time
 	 * @return true if this time is in the futur relatively to the given time
 	 */
 	public boolean isAfter(Time time) {
@@ -202,7 +202,7 @@ public class Time {
 
 	/**
 	 * @param time
-	 *           another time
+	 *            another time
 	 * @return true if this time is in the past relatively to the given time
 	 */
 	public boolean isBefore(Time time) {
@@ -243,7 +243,7 @@ public class Time {
 	 * date</a>
 	 * 
 	 * @param format
-	 *           : one char for every format, use / as escape char
+	 *            : one char for every format, use / as escape char
 	 * @return the formated string
 	 */
 	public String toString(String format) {
@@ -272,44 +272,44 @@ public class Time {
 	 * @return true if format was found, false otherwise
 	 */
 	protected boolean formatChar(String form, StringBuffer r) {
-		if (c.equals("a")) {
+		if (form.equals("a")) {
 			if (this.hour < 12)
 				r.append("am");
 			else
 				r.append("pm");
 		}
-		else if (c.equals("A")) {
+		else if (form.equals("A")) {
 			if (this.hour < 12)
 				r.append("AM");
 			else
 				r.append("PM");
 		}
-		else if (c.equals("B")) {
+		else if (form.equals("B")) {
 			int sec = this.hour * 3600 + this.minute * 60 + this.second;
 			int swatchTime = (int) (sec / 86.4);
 			r.append(swatchTime);
 		}
-		else if (c.equals("g"))
+		else if (form.equals("g"))
 			r.append((this.hour + 12) % 12);
-		else if (c.equals("h")) {
+		else if (form.equals("h")) {
 			int h = (this.hour + 12) % 12;
 			if (h < 10)
 				r.append(0);
 			r.append(h);
 		}
-		else if (c.equals("G"))
+		else if (form.equals("G"))
 			r.append(this.hour);
-		else if (c.equals("H")) {
+		else if (form.equals("H")) {
 			if (this.hour < 10)
 				r.append(0);
 			r.append(this.hour);
 		}
-		else if (c.equals("i")) {
+		else if (form.equals("i")) {
 			if (this.minute < 10)
 				r.append(0);
 			r.append(this.minute);
 		}
-		else if (c.equals("s")) {
+		else if (form.equals("s")) {
 			if (this.second < 10)
 				r.append(0);
 			r.append(this.second);

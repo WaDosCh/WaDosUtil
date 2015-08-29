@@ -60,7 +60,8 @@ public class Serializer {
 		try {
 			ois = new ObjectInputStream(bais);
 			return ois.readObject();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SerializerException("Could not deserialize object", e);
 		}
 	}
@@ -105,7 +106,8 @@ public class Serializer {
 			transformer.transform(source, result);
 			String xml = stringWriter.getBuffer().toString();
 			return xml;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SerializerException("Could not generate text from xml", e);
 		}
 	}
@@ -140,19 +142,20 @@ public class Serializer {
 			oos = new ObjectOutputStream(baos);
 			oos.writeObject(obj);
 			oos.flush();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SerializerException("Could not serialize object (" + obj + ")", e);
 		}
 		return baos.toByteArray();
 	}
 
-	public static void object2Stream(Object obj, OutputStream str)
-		throws SerializerException {
+	public static void object2Stream(Object obj, OutputStream str) throws SerializerException {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(str);
 			oos.writeObject(obj);
 			oos.flush();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			throw new SerializerException("Could not serialize object (" + obj + ")", e);
 		}
 	}
@@ -175,7 +178,8 @@ public class Serializer {
 		try {
 			ObjectInputStream ois = new ObjectInputStream(str);
 			return ois.readObject();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SerializerException("Could not deserialize object", e);
 		}
 	}
@@ -194,7 +198,8 @@ public class Serializer {
 			Document d = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(
 				new InputSource(xmlStream));
 			return d;
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new SerializerException("Could not parse xml", e);
 		}
 	}

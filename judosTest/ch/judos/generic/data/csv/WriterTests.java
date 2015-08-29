@@ -16,7 +16,7 @@ import junit.framework.TestCase;
  */
 public class WriterTests extends TestCase {
 
-	private CSVFileWriter	csv;
+	private CSVFileWriter csv;
 
 	/*
 	 * (non-Javadoc)
@@ -38,8 +38,8 @@ public class WriterTests extends TestCase {
 		String c = CSVFile.separator;
 		String l = CSVFile.linebreak;
 
-		String expected = "A" + c + "B" + c + "C" + l + "1" + c + "1" + c + "1" + l + "2"
-			+ c + "2" + c + "2" + l;
+		String expected = "A" + c + "B" + c + "C" + l + "1" + c + "1" + c + "1" + l + "2" + c
+			+ "2" + c + "2" + l;
 
 		assertEquals(s, expected);
 	}

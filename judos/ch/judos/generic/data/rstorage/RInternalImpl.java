@@ -13,7 +13,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class RInternalImpl implements RStoreInternal {
 
-	private ReadableStorage2Impl	rstorage;
+	private ReadableStorage2Impl rstorage;
 
 	public RInternalImpl(ReadableStorage2Impl rstorage) {
 		this.rstorage = rstorage;

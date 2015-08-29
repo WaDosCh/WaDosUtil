@@ -12,7 +12,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class NoWrapperWrapper implements RStorableWrapper {
 
-	private RStorableManual2	obj;
+	private RStorableManual2 obj;
 
 	public NoWrapperWrapper(RStorableManual2 o) {
 		this.obj = o;

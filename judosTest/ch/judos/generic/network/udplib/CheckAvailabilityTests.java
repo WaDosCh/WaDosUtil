@@ -15,11 +15,11 @@ import ch.judos.generic.network.udp.model.reachability.Reachability;
  * @author Julian Schelker
  */
 public class CheckAvailabilityTests {
-	
+
 	private Udp4I udp;
 	private InetSocketAddress target;
 	private InetSocketAddress wrongTarget;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -31,16 +31,16 @@ public class CheckAvailabilityTests {
 		this.target = new InetSocketAddress("127.0.0.1", this.udp.getLocalPort());
 		this.wrongTarget = new InetSocketAddress("10.0.0.1", 1000);
 	}
-	
+
 	@Test
 	public void test() {
 		Reachability r = this.udp.getReachability(this.target, 100);
 		assertTrue(r.isReachable());
-		System.out.println("Ping to self: "+r.getPingMS()+" ms");
+		System.out.println("Ping to self: " + r.getPingMS() + " ms");
 		r = this.udp.getReachability(this.wrongTarget, 500);
 		assertFalse(r.isReachable());
 	}
-	
+
 	@After
 	public void tearDown() {
 		this.udp.dispose();

@@ -50,12 +50,12 @@ import ch.judos.generic.network.upnp.PortMappingEntry;
  * @author Alessandro Bahgat Shehata
  */
 public class MainGui {
-	private static int			SAMPLE_PORT			= 6991;
-	private static short		WAIT_TIME			= 10;
-	private static boolean		LIST_ALL_MAPPINGS	= false;
-	private static InetAddress	use;
-	private static JFrame		frame;
-	private static TextArea		ta;
+	private static int SAMPLE_PORT = 6991;
+	private static short WAIT_TIME = 10;
+	private static boolean LIST_ALL_MAPPINGS = false;
+	private static InetAddress use;
+	private static JFrame frame;
+	private static TextArea ta;
 
 	public static void main(String[] args) throws Exception {
 		frame = new JFrame("Auto Portforwarding with weupnp lib");
@@ -100,18 +100,18 @@ public class MainGui {
 		int counter = 0;
 		for (GatewayDevice gw : gateways.values()) {
 			counter++;
-			addLogLine("Listing gateway details of device #" + counter
-				+ "\n\tFriendly name: " + gw.getFriendlyName() + "\n\tPresentation URL: "
-				+ gw.getPresentationURL() + "\n\tModel name: " + gw.getModelName()
-				+ "\n\tModel number: " + gw.getModelNumber()
-				+ "\n\tLocal interface address: " + gw.getLocalAddress().getHostAddress()
-				+ "\n");
+			addLogLine("Listing gateway details of device #" + counter + "\n\tFriendly name: "
+				+ gw.getFriendlyName() + "\n\tPresentation URL: " + gw.getPresentationURL()
+				+ "\n\tModel name: " + gw.getModelName() + "\n\tModel number: "
+				+ gw.getModelNumber() + "\n\tLocal interface address: "
+				+ gw.getLocalAddress().getHostAddress() + "\n");
 		}
 		// choose the first active gateway for the tests
 		GatewayDevice activeGW = gatewayDiscover.getValidGateway();
 		if (null != activeGW) {
 			addLogLine("Using gateway: " + activeGW.getFriendlyName());
-		} else {
+		}
+		else {
 			addLogLine("No active gateway device found");
 			addLogLine("Stopping weupnp");
 			return;
@@ -134,8 +134,9 @@ public class MainGui {
 					break;
 				}
 				pmCount++;
-			} while(true); //while (portMapping != null);
-		} else {
+			} while (true); // while (portMapping != null);
+		}
+		else {
 			if (activeGW.getGenericPortMappingEntry(0, portMapping))
 				addLogLine("Portmapping #0 successfully retrieved ("
 					+ portMapping.getPortMappingDescription() + ":"
@@ -159,24 +160,27 @@ public class MainGui {
 			addLogLine("Port " + SAMPLE_PORT + " is already mapped.");
 			if (activeGW.deletePortMapping(SAMPLE_PORT, "TCP")) {
 				addLogLine("Port mapping removed, SUCCESSFUL");
-			} else {
+			}
+			else {
 				addLogLine("Port mapping removal FAILED");
 			}
-		} else {
-			addLogLine("Mapping free. Sending port mapping request for port "
-				+ SAMPLE_PORT);
+		}
+		else {
+			addLogLine("Mapping free. Sending port mapping request for port " + SAMPLE_PORT);
 			// test static lease duration mapping
-			if (activeGW.addPortMapping(SAMPLE_PORT, SAMPLE_PORT, use.getHostAddress(),
-				"TCP", "test")) {
+			if (activeGW.addPortMapping(SAMPLE_PORT, SAMPLE_PORT, use.getHostAddress(), "TCP",
+				"test")) {
 				addLogLine("Mapping SUCCESSFUL. Waiting " + WAIT_TIME
 					+ " seconds before removing mapping...");
 				Thread.sleep(1000 * WAIT_TIME);
 				if (activeGW.deletePortMapping(SAMPLE_PORT, "TCP")) {
 					addLogLine("Port mapping removed, test SUCCESSFUL");
-				} else {
+				}
+				else {
 					addLogLine("Port mapping removal FAILED");
 				}
-			} else
+			}
+			else
 				System.err.println("PortMapping couldn't be added");
 		}
 		addLogLine("Stopping weupnp");

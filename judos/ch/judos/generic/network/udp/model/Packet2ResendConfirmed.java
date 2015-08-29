@@ -10,10 +10,9 @@ import ch.judos.generic.network.udp.UdpConfig;
  */
 public class Packet2ResendConfirmed extends Packet2A {
 
-	int	sendCount;
+	int sendCount;
 
-	public Packet2ResendConfirmed(int type, byte[] sendData, InetSocketAddress dest,
-		int nr) {
+	public Packet2ResendConfirmed(int type, byte[] sendData, InetSocketAddress dest, int nr) {
 		super(dest, nr, UdpConfig.RESEND_TIMEOUT_MS);
 		this.type = type;
 		this.sendData = sendData;

@@ -12,11 +12,11 @@ import java.util.function.Function;
 class BaseIDProvider implements IDProvider {
 
 	// use char as unsigned short
-	private char[]								values;
-	private short								usedCount;
+	private char[] values;
+	private short usedCount;
 
-	private static Function<Integer, Integer>	bitNum	= (id) -> id & 0x0F;
-	private static Function<Integer, Integer>	arrInd	= (id) -> (id >>> 4) & 0x0F;
+	private static Function<Integer, Integer> bitNum = (id) -> id & 0x0F;
+	private static Function<Integer, Integer> arrInd = (id) -> (id >>> 4) & 0x0F;
 
 	BaseIDProvider(boolean defaultState) {
 		this.values = new char[16];
@@ -37,7 +37,8 @@ class BaseIDProvider implements IDProvider {
 		int id = IDProvider.localAddress(ID, (byte) 0);
 		if (this.isFull())
 			return true;
-		return (this.values[BaseIDProvider.arrInd.apply(id)] & (0x1 << BaseIDProvider.bitNum.apply(id))) != 0;
+		return (this.values[BaseIDProvider.arrInd.apply(id)] & (0x1 << BaseIDProvider.bitNum
+			.apply(id))) != 0;
 	}
 
 	@Override
@@ -45,7 +46,8 @@ class BaseIDProvider implements IDProvider {
 		int id = IDProvider.localAddress(ID, (byte) 0);
 		if (this.isFull() || this.isUsed(id))
 			return false;
-		this.values[BaseIDProvider.arrInd.apply(id)] |= (0x1 << BaseIDProvider.bitNum.apply(id));
+		this.values[BaseIDProvider.arrInd.apply(id)] |= (0x1 << BaseIDProvider.bitNum
+			.apply(id));
 		this.usedCount++;
 		return true;
 	}
@@ -55,7 +57,8 @@ class BaseIDProvider implements IDProvider {
 		int id = IDProvider.localAddress(ID, (byte) 0);
 		if (this.isEmpty() || !this.isUsed(id))
 			return false;
-		this.values[BaseIDProvider.arrInd.apply(id)] ^= (0x1 << BaseIDProvider.bitNum.apply(id));
+		this.values[BaseIDProvider.arrInd.apply(id)] ^= (0x1 << BaseIDProvider.bitNum
+			.apply(id));
 		this.usedCount--;
 		return true;
 	}

@@ -26,10 +26,10 @@ public class Main extends KeyMouseAdapter implements MovementListener {
 		new Main().initFrameAndStart();
 	}
 
-	private Map								map;
-	private int								selected;
-	private HashMap<Unit, Integer>	unitmode;
-	private ArrayList<Unit>				units;
+	private Map map;
+	private int selected;
+	private HashMap<Unit, Integer> unitmode;
+	private ArrayList<Unit> units;
 
 	private void initFrameAndStart() {
 		this.map = new Map(15, 10);

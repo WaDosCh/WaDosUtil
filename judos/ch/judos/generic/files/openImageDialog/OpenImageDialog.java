@@ -12,8 +12,8 @@ import javax.swing.UIManager;
  * @author Julian Schelker
  */
 public class OpenImageDialog {
-	private File	selectedFile;
-	private boolean	cancelled;
+	private File selectedFile;
+	private boolean cancelled;
 
 	public OpenImageDialog(Component parent, String title, File currentPath) {
 

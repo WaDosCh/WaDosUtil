@@ -12,15 +12,15 @@ public class TripleW<T0, T1, T2> {
 	/**
 	 * first entry
 	 */
-	public T0	e0;
+	public T0 e0;
 	/**
 	 * second entry
 	 */
-	public T1	e1;
+	public T1 e1;
 	/**
 	 * third entry
 	 */
-	public T2	e2;
+	public T2 e2;
 
 	/**
 	 * @param e0
@@ -35,7 +35,7 @@ public class TripleW<T0, T1, T2> {
 
 	/**
 	 * @param index
-	 *           0 based index
+	 *            0 based index
 	 * @return the n'th element
 	 */
 	public Object get(int index) {

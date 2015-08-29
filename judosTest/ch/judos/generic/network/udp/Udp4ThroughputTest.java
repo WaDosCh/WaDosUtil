@@ -15,14 +15,14 @@ import ch.judos.generic.network.udp.interfaces.UdpListener;
 public class Udp4ThroughputTest extends TestCase implements UdpListener,
 	ConnectionIssueListener {
 
-	public static final boolean	SILENT	= true;
+	public static final boolean SILENT = true;
 
-	private static final int		DATA		= 5;
-	private static final int		MB			= 1024 * 1024;
-	public static final int			PORT		= 60000;
-	private TimerJS					t;
-	private Udp4						u;
-	private AtomicBoolean			finished;
+	private static final int DATA = 5;
+	private static final int MB = 1024 * 1024;
+	public static final int PORT = 60000;
+	private TimerJS t;
+	private Udp4 u;
+	private AtomicBoolean finished;
 
 	@Override
 	public void receiveMsg(Object source, InetSocketAddress from, Object data) {
@@ -33,8 +33,8 @@ public class Udp4ThroughputTest extends TestCase implements UdpListener,
 		for (int i = 0; i < DATA * MB; i++)
 			assertEquals((byte) i, x[i]);
 		if (!SILENT)
-			System.out.println("message received " + this.t.getS() + "s " + this.t.getMS() % 1000
-				+ " ms");
+			System.out.println("message received " + this.t.getS() + "s " + this.t.getMS()
+				% 1000 + " ms");
 		this.finished.set(true);
 		synchronized (this.finished) {
 			this.finished.notify();

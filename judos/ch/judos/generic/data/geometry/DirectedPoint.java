@@ -9,8 +9,8 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  * @author Julian Schelker
  */
 public class DirectedPoint implements RStorable2 {
-	protected PointI	pos;
-	protected Angle	angle;
+	protected PointI pos;
+	protected Angle angle;
 
 	public DirectedPoint(int x, int y, Angle angle) {
 		this.pos = new PointI(x, y);
@@ -63,14 +63,14 @@ public class DirectedPoint implements RStorable2 {
 
 	public DirectedPoint move(int step) {
 		PointI target = this.pos.f().movePoint(this.angle, step).i();
-		return new DirectedPoint(target,this.angle);
+		return new DirectedPoint(target, this.angle);
 	}
 
 	public DirectedPoint turnClockwise(Angle addAngle) {
-		return new DirectedPoint(this.pos,this.angle.turnClockwise(addAngle));
+		return new DirectedPoint(this.pos, this.angle.turnClockwise(addAngle));
 	}
 
 	public DirectedPoint turnCounterClockwise(Angle addAngle) {
-		return new DirectedPoint(this.pos,this.angle.turnCounterClockwise(addAngle));
+		return new DirectedPoint(this.pos, this.angle.turnCounterClockwise(addAngle));
 	}
 }

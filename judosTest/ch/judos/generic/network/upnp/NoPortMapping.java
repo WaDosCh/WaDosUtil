@@ -22,7 +22,7 @@ public class NoPortMapping implements UdpListener {
 		new NoPortMapping().showPortMappingInfo(60000);
 	}
 
-	private boolean	received;
+	private boolean received;
 
 	public void showPortMappingInfo(int port) throws SerializerException, IOException,
 		InterruptedException {

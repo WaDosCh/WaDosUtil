@@ -17,29 +17,29 @@ public class NBTDecoder {
 	 */
 	public static Tag<?> instantiateShallow(byte code) {
 		switch (code) {
-			case 0x0:
+			case 0x0 :
 				return new TagEnd();
-			case 0x1:
+			case 0x1 :
 				return new TagByte(null);
-			case 0x2:
+			case 0x2 :
 				return new TagShort(null);
-			case 0x3:
+			case 0x3 :
 				return new TagInt(null);
-			case 0x4:
+			case 0x4 :
 				return new TagLong(null);
-			case 0x5:
+			case 0x5 :
 				return new TagFloat(null);
-			case 0x6:
+			case 0x6 :
 				return new TagDouble(null);
-			case 0x7:
+			case 0x7 :
 				return new TagByteArray(null);
-			case 0x8:
+			case 0x8 :
 				return new TagString(null);
-			case 0x9:
+			case 0x9 :
 				return new TagList(null);
-			case 0xA:
+			case 0xA :
 				return new TagCompound(null);
-			default:
+			default :
 				return null;
 		}
 	}
@@ -53,29 +53,29 @@ public class NBTDecoder {
 	 */
 	public static String getNameTag(byte code) {
 		switch (code) {
-			case 0x0:
+			case 0x0 :
 				return "TAG_END";
-			case 0x1:
+			case 0x1 :
 				return "TAG_BYTE";
-			case 0x2:
+			case 0x2 :
 				return "TAG_SHORT";
-			case 0x3:
+			case 0x3 :
 				return "TAG_INT";
-			case 0x4:
+			case 0x4 :
 				return "TAG_LONG";
-			case 0x5:
+			case 0x5 :
 				return "TAG_FLOAT";
-			case 0x6:
+			case 0x6 :
 				return "TAG_DOUBLE";
-			case 0x7:
+			case 0x7 :
 				return "TAG_BYTE[]";
-			case 0x8:
+			case 0x8 :
 				return "TAG_STRING";
-			case 0x9:
+			case 0x9 :
 				return "TAG_LIST";
-			case 0xA:
+			case 0xA :
 				return "TAG_COMPOUND";
-			default:
+			default :
 				return null;
 		}
 	}

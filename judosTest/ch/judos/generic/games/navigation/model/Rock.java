@@ -18,8 +18,8 @@ import ch.judos.generic.graphics.Drawable;
  */
 public class Rock implements Drawable {
 
-	private int	x;
-	private int	y;
+	private int x;
+	private int y;
 
 	/**
 	 * @param map

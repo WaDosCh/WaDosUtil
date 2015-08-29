@@ -8,14 +8,14 @@ package ch.waan.util.id;
  */
 class CompressedProvider implements IDProvider {
 
-	public static final CompressedProvider	FALSE	= new CompressedProvider(false);
-	public static final CompressedProvider	TRUE	= new CompressedProvider(true);
+	public static final CompressedProvider FALSE = new CompressedProvider(false);
+	public static final CompressedProvider TRUE = new CompressedProvider(true);
 
 	private static void err() {
 		throw new UnsupportedOperationException("Placeholder!");
 	}
 
-	private final boolean	state;
+	private final boolean state;
 
 	private CompressedProvider(boolean value) {
 		this.state = value;

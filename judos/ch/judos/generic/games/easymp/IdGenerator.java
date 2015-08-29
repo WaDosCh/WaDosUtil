@@ -8,9 +8,9 @@ import ch.judos.generic.games.easymp.ObjectId.Type;
  */
 public class IdGenerator {
 
-	private int		currentStaticNr	= 0;
-	private int		currentDynamicNr	= 0;
-	private String	clientId;
+	private int currentStaticNr = 0;
+	private int currentDynamicNr = 0;
+	private String clientId;
 
 	public IdGenerator(String clientId) {
 		this.clientId = clientId;
@@ -26,8 +26,8 @@ public class IdGenerator {
 
 	public ObjectId[] getAllStaticIds() {
 		ObjectId[] result = new ObjectId[this.currentStaticNr];
-		for(int i=0;i<result.length;i++)
-			result[i] = new ObjectId(Type.STATIC,i,null);
+		for (int i = 0; i < result.length; i++)
+			result[i] = new ObjectId(Type.STATIC, i, null);
 		return result;
 	}
 

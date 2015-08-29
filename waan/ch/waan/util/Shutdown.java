@@ -21,8 +21,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 */
 	public Shutdown() {
 		super(false);
-		Runtime.getRuntime()
-				.addShutdownHook(new Thread(this::runShutdown));
+		Runtime.getRuntime().addShutdownHook(new Thread(this::runShutdown));
 	}
 
 	/**
@@ -31,9 +30,9 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 * @see #add(Runnable)
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			DEFAULT			= 0;
+	public static final int DEFAULT = 0;
 
-	private static final Shutdown	defaultShutdown	= new Shutdown();
+	private static final Shutdown defaultShutdown = new Shutdown();
 
 	/**
 	 * The default priority for operations that should be performed very early
@@ -41,7 +40,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			EARLIER			= 10000;
+	public static final int EARLIER = 10000;
 
 	/**
 	 * The default priority for operations that should be performed rather early
@@ -49,7 +48,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			EARLY			= 1000;
+	public static final int EARLY = 1000;
 
 	/**
 	 * The highest possible priority. This should only be used if an operation
@@ -57,7 +56,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			FIRST			= Integer.MAX_VALUE;
+	public static final int FIRST = Integer.MAX_VALUE;
 
 	/**
 	 * The lowest possible priority. This should only be used if an operation
@@ -65,7 +64,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			LAST			= Integer.MIN_VALUE;
+	public static final int LAST = Integer.MIN_VALUE;
 
 	/**
 	 * The default priority for operations that should be performed rather late
@@ -73,7 +72,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			LATE			= -1000;
+	public static final int LATE = -1000;
 
 	/**
 	 * The default priority for operations that should be performed very late in
@@ -81,7 +80,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 	 *
 	 * @see #add(Runnable, int)
 	 */
-	public static final int			LATER			= -10000;
+	public static final int LATER = -10000;
 
 	/**
 	 * Provides a global Shutdown handler.
@@ -138,8 +137,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 
 	private final void runShutdown() {
 		while (!this.isEmpty()) {
-			this.element()
-					.run();
+			this.element().run();
 		}
 	}
 

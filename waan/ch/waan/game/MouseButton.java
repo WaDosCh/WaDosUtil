@@ -31,15 +31,15 @@ public enum MouseButton {
 	public static @NonNull MouseButton getButtonForEvent(@NonNull MouseEvent e) {
 		int btn = e.getButton();
 		switch (btn) {
-			case MouseEvent.BUTTON1:
+			case MouseEvent.BUTTON1 :
 				return LEFT;
-			case MouseEvent.BUTTON2:
+			case MouseEvent.BUTTON2 :
 				return MIDDLE;
-			case MouseEvent.BUTTON3:
+			case MouseEvent.BUTTON3 :
 				return RIGHT;
-			default:
+			default :
 				throw new IllegalArgumentException("mouse event " + e
-						+ "had illegal button value: " + btn);
+					+ "had illegal button value: " + btn);
 		}
 	}
 }

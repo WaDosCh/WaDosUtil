@@ -17,17 +17,17 @@ import ch.judos.generic.data.Warning;
  * @version 1.11 / 28.03.2012
  */
 public class Config {
-	private static final String			SPLIT_EXPRESSION	= " = ";
+	private static final String SPLIT_EXPRESSION = " = ";
 
 	/**
 	 * valid properties are stored here
 	 */
-	protected HashMap<String, Property>	data;
+	protected HashMap<String, Property> data;
 
 	/**
 	 * the settings for the config to use
 	 */
-	private ConfigSettingsBase				settings;
+	private ConfigSettingsBase settings;
 
 	/**
 	 * @param settings
@@ -41,7 +41,7 @@ public class Config {
 
 	/**
 	 * @param name
-	 *           of the property
+	 *            of the property
 	 * @return the property - if not found null is returned
 	 */
 	public Property getPropertyByName(String name) {

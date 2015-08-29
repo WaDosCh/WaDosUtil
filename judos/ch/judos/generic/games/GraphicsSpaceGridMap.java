@@ -22,9 +22,9 @@ public abstract class GraphicsSpaceGridMap extends SpaceGridMap implements Drawa
 	/**
 	 * the scroll object
 	 */
-	protected Scroll	scroll;
-	private int			drawFieldsY;
-	private int			drawFieldsX;
+	protected Scroll scroll;
+	private int drawFieldsY;
+	private int drawFieldsX;
 
 	/**
 	 * @param mapSize

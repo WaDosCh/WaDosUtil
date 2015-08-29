@@ -3,6 +3,7 @@ package ch.judos.generic.games.easymp.test;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
 import ch.judos.generic.data.ArraysJS;
 import ch.judos.generic.data.HashMapR;
 import ch.judos.generic.data.SerializerException;
@@ -20,9 +21,9 @@ import ch.judos.generic.network.udp.interfaces.UdpListener;
  */
 public class Communicator implements CommunicatorI, UdpListener {
 
-	private Udp4I											udp;
-	private HashMapR<InetSocketAddress, PlayerI>	playerList;
-	private ConcurrentLinkedQueue<Message>			messages;
+	private Udp4I udp;
+	private HashMapR<InetSocketAddress, PlayerI> playerList;
+	private ConcurrentLinkedQueue<Message> messages;
 
 	public Communicator(Udp4I udp, HashMapR<InetSocketAddress, PlayerI> playerList) {
 		this.udp = udp;
@@ -70,7 +71,7 @@ public class Communicator implements CommunicatorI, UdpListener {
 
 	@Override
 	public String getClientId() {
-		return IP.getLocalIpsAsStrings()[0];
+		return IP.getLocalIpsAsStrings()[0] + ":" + this.udp.getLocalPort();
 	}
 
 }

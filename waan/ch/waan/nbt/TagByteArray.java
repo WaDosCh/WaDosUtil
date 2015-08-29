@@ -12,8 +12,8 @@ import java.io.OutputStream;
  */
 public final class TagByteArray implements Tag<Byte[]> {
 
-	private Byte[]	value;
-	private String	name;
+	private Byte[] value;
+	private String name;
 
 	@Override
 	public byte getTagID() {
@@ -90,8 +90,7 @@ public final class TagByteArray implements Tag<Byte[]> {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("TAG_BYTE[](\"" + this.name + "\") : ("
-				+ this.value.length
-				+ (this.value.length == 1 ? " entry)" : "entries)"));
+			+ this.value.length + (this.value.length == 1 ? " entry)" : "entries)"));
 		int i = 0;
 		for (Byte b : this.value) {
 			sb.append("\n - [" + (i++) + "] = " + b.byteValue());

@@ -5,18 +5,19 @@ package ch.judos.generic.data.rstorage.helper;
  * @author Julian Schelker
  */
 public class RSerializerException extends Exception {
-	private static final long	serialVersionUID	= -479085228278371501L;
+	private static final long serialVersionUID = -479085228278371501L;
 
-	private Type					type;
+	private Type type;
 
 	public enum Type {
 		IO // generic io problem while reading
-		, ReadingUntagged // reading an untagged object without an assumed
+			, ReadingUntagged // reading an untagged object without an assumed
 								// type -> cannot interfere what type to read
-		, ClassNotFound // a class to deserialize an object could not be found
-		, Instantiation // could not create an instance of a certain type
-		, Wrapper // a wrapper object could not be found for this object
-		,
+			, ClassNotFound // a class to deserialize an object could not be
+							// found
+			, Instantiation // could not create an instance of a certain type
+			, Wrapper // a wrapper object could not be found for this object
+			,
 	}
 
 	public RSerializerException(String msg, Type t) {

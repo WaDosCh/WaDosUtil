@@ -10,10 +10,10 @@ public abstract class Format {
 	/**
 	 * whether some data for get() has been stored
 	 */
-	protected boolean	set				= false;
+	protected boolean set = false;
 	/**
 	 */
-	protected Object	defaultValue	= null;
+	protected Object defaultValue = null;
 
 	/**
 	 * remove unnecessary objects and memory

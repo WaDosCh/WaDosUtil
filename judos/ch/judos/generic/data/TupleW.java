@@ -28,11 +28,13 @@ public class TupleW<T0, T1> extends TupleR<T0, T1> {
 		try {
 			this.e0 = (T0) e;
 			return true;
-		} catch (Exception exc) {
+		}
+		catch (Exception exc) {
 			try {
 				this.e1 = (T1) e;
 				return true;
-			} catch (Exception exc2) {
+			}
+			catch (Exception exc2) {
 				return false;
 			}
 		}

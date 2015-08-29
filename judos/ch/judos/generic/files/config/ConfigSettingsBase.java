@@ -25,8 +25,8 @@ public abstract class ConfigSettingsBase {
 
 	/**
 	 * @return the configSettings object<br>
-	 *         this object should have public property fields. these will be used
-	 *         for the config
+	 *         this object should have public property fields. these will be
+	 *         used for the config
 	 */
 	public abstract Object getConfigSettingsObject();
 
@@ -36,13 +36,12 @@ public abstract class ConfigSettingsBase {
 	 * 
 	 * @return the Set of properties to be used
 	 */
-	@SuppressWarnings("null")
 	public Set<Property> getConfigurationEntries() {
 		DynamicList<Field> fields = Fields.getPublicFieldsOfClass(getConfigSettingsClass());
-		DynamicList<Object> values = Fields
-			.getValuesForFields(getConfigSettingsObject(), fields);
+		DynamicList<Object> values = Fields.getValuesForFields(getConfigSettingsObject(),
+			fields);
 		values = values.filterByClass(Property.class);
-		DynamicList<Property> result = values.castOrOmit(new Property[]{});
+		DynamicList<Property> result = values.castOrOmit(Property.class);
 		return result.toSet();
 	}
 

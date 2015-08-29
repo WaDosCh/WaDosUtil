@@ -26,10 +26,10 @@ import ch.judos.generic.network.udp.model.IAddressAndId;
  */
 public class Udp3 implements Layer2Listener, Udp3I {
 
-	protected HashMap<InetSocketAddress, Short>		idsBigPacket;
-	private ArrayList<Layer3Listener>				listeners;
-	private HashMap<IAddressAndId, BigPacketRec>	receiveBig;
-	protected Udp2I									u;
+	protected HashMap<InetSocketAddress, Short> idsBigPacket;
+	private ArrayList<Layer3Listener> listeners;
+	private HashMap<IAddressAndId, BigPacketRec> receiveBig;
+	protected Udp2I u;
 
 	public Udp3(Udp2I u) {
 		this.u = u;

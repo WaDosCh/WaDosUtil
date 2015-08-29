@@ -42,14 +42,14 @@ public final class Dimension {
 	public static @NonNull Dimension get(final int width, final int height) {
 		if (width < 0 || height < 0)
 			throw new IllegalArgumentException(
-					"Dimension components must be positive. given pair was: ("
-							+ width + ", " + height + ")");
+				"Dimension components must be positive. given pair was: (" + width + ", "
+					+ height + ")");
 		return new Dimension(width, height);
 	}
 
 	// INSTANCE STUFF
 
-	private final int	width, height;
+	private final int width, height;
 
 	private Dimension(int width, int height) {
 		this.width = width;
@@ -74,7 +74,7 @@ public final class Dimension {
 		return this.height;
 	}
 
-	private Point	topLeft, topRight, bottomLeft, bottomRight;
+	private Point topLeft, topRight, bottomLeft, bottomRight;
 
 	/**
 	 * Returns the top-left corner.
@@ -82,7 +82,6 @@ public final class Dimension {
 	 * @return the corner to the top left.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point topLeft() {
 		if (this.topLeft == null)
 			return this.topLeft = Point.get(-this.width / 2, -this.height / 2);
@@ -95,7 +94,6 @@ public final class Dimension {
 	 * @return the corner to the top right.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point topRight() {
 		if (this.topRight == null)
 			this.topRight = Point.get(this.width / 2, -this.height / 2);
@@ -108,7 +106,6 @@ public final class Dimension {
 	 * @return the corner to the bottom left.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point bottomLeft() {
 		if (this.bottomLeft == null)
 			this.bottomLeft = Point.get(-this.width / 2, this.height / 2);
@@ -121,7 +118,6 @@ public final class Dimension {
 	 * @return the corner to the bottom right.
 	 */
 	// lazy init is null-safe
-	@SuppressWarnings("null")
 	public @NonNull Point bottomRight() {
 		if (this.bottomRight == null)
 			this.bottomRight = Point.get(this.width / 2, this.height / 2);

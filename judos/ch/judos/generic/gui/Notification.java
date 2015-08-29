@@ -11,15 +11,15 @@ public class Notification {
 	/**
 	 * returned if yes is clicked
 	 */
-	public static int	PROCEED_YES		= 0;
+	public static int PROCEED_YES = 0;
 	/**
 	 * returned if no is clicked
 	 */
-	public static int	PROCEED_NO		= 1;
+	public static int PROCEED_NO = 1;
 	/**
 	 * returned if cancel is clicked
 	 */
-	public static int	PROCEED_CANCEL	= 2;
+	public static int PROCEED_CANCEL = 2;
 
 	/**
 	 * @param title
@@ -48,11 +48,10 @@ public class Notification {
 	 * @param selected
 	 * @return the option that was clicked, index from the provided options
 	 */
-	public static int
-		proceed(String title, String message, String[] options, int selected) {
+	public static int proceed(String title, String message, String[] options, int selected) {
 		return JOptionPane.showOptionDialog(null, message, title,
-			JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,
-			options, options[selected]);
+			JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options,
+			options[selected]);
 	}
 
 	/**
@@ -72,8 +71,7 @@ public class Notification {
 	 * @param message
 	 */
 	public static void notifyInfo(String title, String message) {
-		JOptionPane.showMessageDialog(null, message, title,
-			JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }

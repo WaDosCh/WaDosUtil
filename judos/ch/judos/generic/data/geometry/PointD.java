@@ -8,6 +8,6 @@ import java.awt.geom.Point2D;
  */
 public class PointD extends Point2D.Double {
 
-	private static final long	serialVersionUID	= -3551698231506636754L;
+	private static final long serialVersionUID = -3551698231506636754L;
 
 }

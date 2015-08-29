@@ -1,6 +1,5 @@
 package ch.judos.generic.games.easymp.model;
 
-
 /**
  * @since 22.05.2015
  * @author Julian Schelker
@@ -8,5 +7,5 @@ package ch.judos.generic.games.easymp.model;
 public interface UpdatableI {
 
 	public void wasUpdated();
-	
+
 }

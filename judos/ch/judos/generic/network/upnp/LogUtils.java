@@ -53,11 +53,11 @@ public class LogUtils {
 	 * The name used for logging with java.util.logging. Right now it is
 	 * <tt>org.wetorrent.weupnp</tt>.
 	 */
-	private static final String	LOG_NAME	= "org.wetorrent.weupnp";
+	private static final String LOG_NAME = "org.wetorrent.weupnp";
 
 	/**
 	 * The logger used by weupnp
 	 */
-	private static Logger		logger		= Logger.getLogger(LOG_NAME);
+	private static Logger logger = Logger.getLogger(LOG_NAME);
 
 }

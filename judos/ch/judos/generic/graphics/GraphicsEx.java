@@ -13,9 +13,9 @@ import java.awt.Graphics;
  * @author Julian Schelker
  */
 public class GraphicsEx {
-	public Graphics	g;
-	private int		translatedX	= 0;
-	private int		translatedY	= 0;
+	public Graphics g;
+	private int translatedX = 0;
+	private int translatedY = 0;
 
 	public GraphicsEx(Graphics g) {
 		this.g = g;

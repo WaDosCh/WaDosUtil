@@ -18,8 +18,8 @@ import ch.judos.generic.network.udp.interfaces.UdpListener;
  * @author Julian Schelker
  */
 public class TestXML extends TestCase implements UdpListener {
-	private boolean	received;
-	private String	text;
+	private boolean received;
+	private String text;
 
 	@Override
 	public void receiveMsg(Object source, InetSocketAddress from, Object data) {
@@ -28,7 +28,8 @@ public class TestXML extends TestCase implements UdpListener {
 			Document d = (Document) data;
 			try {
 				assertEquals(this.text, Serializer.document2Text(d));
-			} catch (SerializerException e) {
+			}
+			catch (SerializerException e) {
 				fail();
 			}
 			notify();
@@ -43,8 +44,7 @@ public class TestXML extends TestCase implements UdpListener {
 		this.text = "<root>Hallo XML Welt!</root>";
 		Document d = Serializer.text2Document(this.text);
 		this.received = false;
-		u.sendObjectConfirmTo(d, true, new InetSocketAddress("localhost", u
-			.getLocalPort()));
+		u.sendObjectConfirmTo(d, true, new InetSocketAddress("localhost", u.getLocalPort()));
 
 		synchronized (this) {
 			wait(500);

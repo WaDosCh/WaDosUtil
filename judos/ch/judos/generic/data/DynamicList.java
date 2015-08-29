@@ -3,8 +3,6 @@ package ch.judos.generic.data;
 import java.lang.reflect.Array;
 import java.util.*;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import ch.judos.generic.reflection.Classes;
 
@@ -15,7 +13,7 @@ import ch.judos.generic.reflection.Classes;
  * @author Julian Schelker
  * @version 1.11 / 21.02.2013
  * @param <T>
- *           any object to be in the list
+ *            any object to be in the list
  */
 public class DynamicList<T> extends ArrayList<T> {
 
@@ -59,7 +57,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * list is modified and returned to add further objects
 	 * 
 	 * @param obj
-	 *           add some object
+	 *            add some object
 	 * @return the list itself
 	 */
 	public DynamicList<T> a(T obj) {
@@ -82,12 +80,12 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <Type>
 	 * @param t
-	 * @return a list with all objects from this list that could be casted to the
-	 *         given type
+	 * @return a list with all objects from this list that could be casted to
+	 *         the given type
 	 */
-	@SuppressWarnings("unchecked")
-	public <@Nullable Type> DynamicList<Type> castOrOmit(Type[] t) {
-		DynamicList<@Nullable Type> result = new DynamicList<>();
+	@SuppressWarnings({"unused", "unchecked"})
+	public <Type> DynamicList<Type> castOrOmit(Class<Type> c) {
+		DynamicList<Type> result = new DynamicList<>();
 		for (T entry : this) {
 			try {
 				result.add((Type) entry);
@@ -143,14 +141,13 @@ public class DynamicList<T> extends ArrayList<T> {
 		return s;
 	}
 
-	private static final long	serialVersionUID	= 5577347360761404931L;
+	private static final long serialVersionUID = 5577347360761404931L;
 
 	/**
 	 * @param <Type>
 	 * @param list
 	 * @return the list as iterable object
 	 */
-	@SuppressWarnings("unused")
 	public static <Type> Iterable<Type> getIterableObject(final List<Type> list) {
 		if (list == null)
 			return new EmptyIterable<Type>();
@@ -174,7 +171,6 @@ public class DynamicList<T> extends ArrayList<T> {
 		return new Iterator2(list);
 	}
 
-	@SuppressWarnings("null")
 	public T getOrNull(int index) {
 		if (this.size() > index)
 			return get(index);
@@ -185,10 +181,9 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * @param <Type>
 	 * @param list
 	 * @param search
-	 *           the string to look for in the toString() of the objects
+	 *            the string to look for in the toString() of the objects
 	 * @return the object that is found - null if none is found
 	 */
-	@SuppressWarnings("null")
 	public static <Type> Type searchExact(List<Type> list, String search) {
 		for (Type o : list) {
 			String s = "null";
@@ -203,7 +198,8 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <X>
 	 * @param elements
-	 * @return the smallest element of the list, according to their natural order
+	 * @return the smallest element of the list, according to their natural
+	 *         order
 	 */
 	public static <X extends Comparable<X>> Optional<X> smallest(List<X> elements) {
 		return elements.stream().min(Comparator.naturalOrder());
@@ -239,7 +235,7 @@ public class DynamicList<T> extends ArrayList<T> {
 		return buf.toString();
 	}
 
-	static class EmptyIterable<@Nullable T> implements Iterable<T> {
+	static class EmptyIterable<T> implements Iterable<T> {
 
 		@Override
 		public Iterator<T> iterator() {
@@ -274,9 +270,9 @@ public class DynamicList<T> extends ArrayList<T> {
 	@SuppressWarnings("rawtypes")
 	public static class Iterator2 implements Iterator {
 
-		private List		list;
-		private int			pos;
-		private Class<?>	commonClass;
+		private List list;
+		private int pos;
+		private Class<?> commonClass;
 
 		/**
 		 * @param list
@@ -322,7 +318,6 @@ public class DynamicList<T> extends ArrayList<T> {
 
 	}
 
-	@SuppressWarnings("null")
 	public <K> T searchExactFirst(K search, Mapper<T, K> mapper) {
 		Iterator<T> it = iterator();
 		while (it.hasNext()) {
@@ -333,7 +328,6 @@ public class DynamicList<T> extends ArrayList<T> {
 		return null;
 	}
 
-	@SuppressWarnings("null")
 	public static <T2, T1 extends T2> DynamicList<T2> castDown(List<T1> l) {
 		DynamicList<T2> result = new DynamicList<>(l.size());
 		for (int i = 0; i < l.size(); i++) {

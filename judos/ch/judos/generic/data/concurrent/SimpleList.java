@@ -2,8 +2,6 @@ package ch.judos.generic.data.concurrent;
 
 import java.util.Iterator;
 
-import org.eclipse.jdt.annotation.Nullable;
-
 import ch.judos.generic.data.DynamicList;
 
 /**
@@ -13,11 +11,11 @@ import ch.judos.generic.data.DynamicList;
  * @since 01.02.2015
  * @author Julian Schelker
  * @param <T>
- *           contained in this list
+ *            contained in this list
  */
-public class SimpleList<@Nullable T> extends DynamicList<T> {
+public class SimpleList<T> extends DynamicList<T> {
 
-	private static final long	serialVersionUID	= -5788620750829673564L;
+	private static final long serialVersionUID = -5788620750829673564L;
 
 	/**
 	 * <p>
@@ -33,8 +31,8 @@ public class SimpleList<@Nullable T> extends DynamicList<T> {
 	/**
 	 * An optimized version of AbstractList.Itr
 	 */
-	protected class Itr implements Iterator<@Nullable T> {
-		int	cursor;	// index of next element to return
+	protected class Itr implements Iterator<T> {
+		int cursor; // index of next element to return
 
 		@Override
 		public boolean hasNext() {
@@ -43,7 +41,6 @@ public class SimpleList<@Nullable T> extends DynamicList<T> {
 
 		@Override
 		public T next() {
-			@Nullable
 			T element;
 			try {
 				element = get(this.cursor);

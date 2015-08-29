@@ -22,27 +22,27 @@ import ch.judos.generic.network.udp.model.reachability.*;
  */
 public class Udp4 implements Layer3Listener, Udp4I {
 
-	public static final int												FileTransfer_ACCEPTED					= -2;
-	public static final int												FileTransfer_COMPLETED					= -5;
-	public static final int												FileTransfer_DENIED						= -3;
-	public static final int												FileTransfer_REQUEST_DATA				= -4;
-	public static final int												FileTransfer_REQUEST_FILE_TRANSFER	= -1;
+	public static final int FileTransfer_ACCEPTED = -2;
+	public static final int FileTransfer_COMPLETED = -5;
+	public static final int FileTransfer_DENIED = -3;
+	public static final int FileTransfer_REQUEST_DATA = -4;
+	public static final int FileTransfer_REQUEST_FILE_TRANSFER = -1;
 
 	/**
 	 * these numbers are used as identifier for the udp messages<br>
 	 * available are: 1-63
 	 */
-	private static final int											TYPE_FILE									= 3;
+	private static final int TYPE_FILE = 3;
 
-	private static final int											TYPE_OBJECT									= 1;
-	private static final int											TYPE_PING									= 4;
-	private static final int											TYPE_RAW_DATA								= 2;
+	private static final int TYPE_OBJECT = 1;
+	private static final int TYPE_PING = 4;
+	private static final int TYPE_RAW_DATA = 2;
 
-	private FileReceiver													fileReceiver;
-	private FileSender													fileSender;
-	private HashMap<Integer, List<UdpListener>>					listeners;
-	private HashMap<ReachabilityRequest, CheckReachThread>	reachabilityRequests;
-	private Udp3I															u;
+	private FileReceiver fileReceiver;
+	private FileSender fileSender;
+	private HashMap<Integer, List<UdpListener>> listeners;
+	private HashMap<ReachabilityRequest, CheckReachThread> reachabilityRequests;
+	private Udp3I u;
 
 	public Udp4(Udp3I u) {
 		this.u = u;
@@ -167,7 +167,8 @@ public class Udp4 implements Layer3Listener, Udp4I {
 				try {
 					Object o = Serializer.bytes2object(packetData);
 					if (o instanceof ReachabilityRequest) {
-						ReachabilityResponse rr = new ReachabilityResponse((ReachabilityRequest) o);
+						ReachabilityResponse rr = new ReachabilityResponse(
+							(ReachabilityRequest) o);
 						byte[] data1 = Serializer.object2Bytes(rr);
 						this.u.sendDataTo(TYPE_PING, data1, true, from);
 					}
@@ -212,7 +213,7 @@ public class Udp4 implements Layer3Listener, Udp4I {
 	 * NOTE: system usage only
 	 * 
 	 * @param type
-	 *           of file message
+	 *            of file message
 	 * @param data
 	 * @param target
 	 * @throws IOException
@@ -229,8 +230,8 @@ public class Udp4 implements Layer3Listener, Udp4I {
 	@Override
 	public void sendFileTo(File f, String description, InetSocketAddress to,
 		UdpFileTransferListener fileListener) throws FileNotFoundException {
-		this.fileSender.addToQueue(new FileOutgoingTransmission(f, description, this.fileSender
-			.getPacketSize(), to, fileListener));
+		this.fileSender.addToQueue(new FileOutgoingTransmission(f, description,
+			this.fileSender.getPacketSize(), to, fileListener));
 	}
 
 	/**
@@ -265,7 +266,7 @@ public class Udp4 implements Layer3Listener, Udp4I {
 
 	@Override
 	public Reachability getReachability(InetSocketAddress target, int timeoutMs) {
-		return new ReachabilitySync(target,timeoutMs,this).waitUntilDone();
+		return new ReachabilitySync(target, timeoutMs, this).waitUntilDone();
 	}
 
 	@Override

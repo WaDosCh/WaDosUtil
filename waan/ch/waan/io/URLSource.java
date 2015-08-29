@@ -7,7 +7,7 @@ import ch.waan.util.Result;
 
 final class URLSource extends Source {
 
-	private final String	url;
+	private final String url;
 
 	URLSource(String url) {
 		this.url = url;
@@ -15,9 +15,7 @@ final class URLSource extends Source {
 
 	@Override
 	public Result<InputStream> mkStream() {
-		return Result.of(this.url)
-				.map(URL::new)
-				.map(URL::openStream);
+		return Result.of(this.url).map(URL::new).map(URL::openStream);
 	}
 
 	@Override

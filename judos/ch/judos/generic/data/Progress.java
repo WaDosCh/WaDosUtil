@@ -7,8 +7,8 @@ package ch.judos.generic.data;
  * @param <P>
  */
 public class Progress<P> {
-	private float	progress;
-	private P		p;
+	private float progress;
+	private P p;
 
 	/**
 	 * @param f

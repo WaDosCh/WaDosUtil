@@ -14,7 +14,7 @@ public class NumberFormat extends SimpleFormat {
 	/**
 	 * parsed data
 	 */
-	protected int	data;
+	protected int data;
 
 	/**
 	 * 

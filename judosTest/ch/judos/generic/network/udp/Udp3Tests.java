@@ -14,9 +14,9 @@ import ch.judos.generic.network.udp.interfaces.Udp3I;
  */
 public class Udp3Tests extends TestCase {
 
-	public static final int	PORT	= 60000;
-	boolean						success;
-	private Udp3I				u;
+	public static final int PORT = 60000;
+	boolean success;
+	private Udp3I u;
 
 	void assertArrayEquals(byte[] senddata, byte[] data) {
 		for (int index = 0; index < data.length; index++)
@@ -41,7 +41,8 @@ public class Udp3Tests extends TestCase {
 		this.u.addListener(listener);
 
 		try {
-			this.u.sendDataTo(1, new byte[0], false, new InetSocketAddress("localhost", 60000));
+			this.u
+				.sendDataTo(1, new byte[0], false, new InetSocketAddress("localhost", 60000));
 		}
 		catch (IOException e) {
 			fail();

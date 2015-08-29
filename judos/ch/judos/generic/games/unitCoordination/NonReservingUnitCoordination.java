@@ -19,32 +19,32 @@ import ch.judos.generic.games.pathsearch.*;
  */
 public abstract class NonReservingUnitCoordination extends Unit {
 
-	private FreeFieldChecker		checker;
+	private FreeFieldChecker checker;
 	/**
 	 * the final target of the unit, if is is reached the next path will be
 	 * calculated until this list is empty
 	 */
-	protected ArrayList<WayPoint>	finalTargets;
+	protected ArrayList<WayPoint> finalTargets;
 	/**
 	 * the map to use
 	 */
-	protected GridMap					map;
+	protected GridMap map;
 	/**
 	 * current position in pixels on the map
 	 */
-	protected PointF					pos;
+	protected PointF pos;
 	/**
 	 * intermediate targets of the path
 	 */
-	protected ArrayList<WayPoint>	targets;
+	protected ArrayList<WayPoint> targets;
 
 	/**
 	 * @param map
-	 *           the map to use
+	 *            the map to use
 	 * @param pos
-	 *           the starting field position of the unit
+	 *            the starting field position of the unit
 	 * @throws NoFreeSpaceException
-	 *            if at the starting field position there's no space
+	 *             if at the starting field position there's no space
 	 */
 	public NonReservingUnitCoordination(GridMap map, WayPoint pos) throws NoFreeSpaceException {
 		this(map, pos, null);
@@ -52,13 +52,13 @@ public abstract class NonReservingUnitCoordination extends Unit {
 
 	/**
 	 * @param map
-	 *           the map to use
+	 *            the map to use
 	 * @param pos
-	 *           the starting field position of the unit
+	 *            the starting field position of the unit
 	 * @param checker
-	 *           used to check where this unit can go
+	 *            used to check where this unit can go
 	 * @throws NoFreeSpaceException
-	 *            if at the starting field position there's no space
+	 *             if at the starting field position there's no space
 	 */
 	@SuppressWarnings("all")
 	public NonReservingUnitCoordination(GridMap map, WayPoint pos, FreeFieldChecker checker)
@@ -106,7 +106,7 @@ public abstract class NonReservingUnitCoordination extends Unit {
 
 	/**
 	 * @param point
-	 *           check whether this point collides with any obstacle on the map
+	 *            check whether this point collides with any obstacle on the map
 	 * @return true if the new position for the unit is allowed
 	 */
 	protected boolean checkMovementCollidesAndAllocate(PointF point) {
@@ -130,8 +130,9 @@ public abstract class NonReservingUnitCoordination extends Unit {
 	 * assumes an object has the size of one field
 	 * 
 	 * @param point
-	 *           some point on the map
-	 * @return all waypoints that are occupied by an object the size of one field
+	 *            some point on the map
+	 * @return all waypoints that are occupied by an object the size of one
+	 *         field
 	 */
 	protected HashSet<WayPoint> getCornerFields(PointF point) {
 		int size = this.map.getGridSize();

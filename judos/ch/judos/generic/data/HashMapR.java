@@ -15,8 +15,8 @@ import java.util.Set;
  */
 public class HashMapR<K, V> {
 
-	private HashMap<K, V>	key2value;
-	private HashMap<V, K>	value2key;
+	private HashMap<K, V> key2value;
+	private HashMap<V, K> value2key;
 
 	/**
 	 * creates the map
@@ -94,7 +94,7 @@ public class HashMapR<K, V> {
 	public Set<V> getValueSet() {
 		return this.value2key.keySet();
 	}
-	
+
 	public Set<K> getKeySet() {
 		return this.key2value.keySet();
 	}

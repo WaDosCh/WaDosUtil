@@ -55,16 +55,14 @@ import ch.judos.generic.dropFilesOntoApp.FileDrop.TransferableObject;
  */
 @SuppressWarnings("all")
 public class FileDrop {
-	private transient javax.swing.border.Border			normalBorder;
-	private transient java.awt.dnd.DropTargetListener	dropListener;
+	private transient javax.swing.border.Border normalBorder;
+	private transient java.awt.dnd.DropTargetListener dropListener;
 
 	/** Discover if the running JVM is modern enough to have drag and drop. */
-	private static Boolean										supportsDnD;
+	private static Boolean supportsDnD;
 
 	// Default border color
-	private static java.awt.Color								defaultBorderColor	= new java.awt.Color(
-																										0f, 0f, 1f,
-																										0.25f);
+	private static java.awt.Color defaultBorderColor = new java.awt.Color(0f, 0f, 1f, 0.25f);
 
 	/**
 	 * Constructs a {@link FileDrop} with a default light-blue border and, if
@@ -73,9 +71,9 @@ public class FileDrop {
 	 * container will change borders.
 	 * 
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final java.awt.Component c, final Listener listener) {
@@ -90,18 +88,19 @@ public class FileDrop {
 	/**
 	 * Constructor with a default border and the option to recursively set drop
 	 * targets. If your component is a <tt>java.awt.Container</tt>, then each of
-	 * its children components will also listen for drops, though only the parent
-	 * will change borders.
+	 * its children components will also listen for drops, though only the
+	 * parent will change borders.
 	 * 
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param recursive
-	 *           Recursively set children as drop targets.
+	 *            Recursively set children as drop targets.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
-	public FileDrop(final java.awt.Component c, final boolean recursive, final Listener listener) {
+	public FileDrop(final java.awt.Component c, final boolean recursive,
+		final Listener listener) {
 		this(null, // Logging stream
 			c, // Drop target
 			javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, defaultBorderColor), // Drag
@@ -111,24 +110,26 @@ public class FileDrop {
 	} // end constructor
 
 	/**
-	 * Constructor with a default border and debugging optionally turned on. With
-	 * Debugging turned on, more status messages will be displayed to
+	 * Constructor with a default border and debugging optionally turned on.
+	 * With Debugging turned on, more status messages will be displayed to
 	 * <tt>out</tt>. A common way to use this constructor is with
 	 * <tt>System.out</tt> or <tt>System.err</tt>. A <tt>null</tt> value for the
 	 * parameter <tt>out</tt> will result in no debugging output.
 	 * 
 	 * @param out
-	 *           PrintStream to record debugging info or null for no debugging.
+	 *            PrintStream to record debugging info or null for no debugging.
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final PrintStream out, final java.awt.Component c, final Listener listener) {
-		this(out, // Logging stream
+		this(
+			out, // Logging stream
 			c, // Drop target
-			javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, defaultBorderColor), false, // Recursive
+			javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, defaultBorderColor),
+			false, // Recursive
 			listener);
 	} // end constructor
 
@@ -143,17 +144,17 @@ public class FileDrop {
 	 * parameter <tt>out</tt> will result in no debugging output.
 	 * 
 	 * @param out
-	 *           PrintStream to record debugging info or null for no debugging.
+	 *            PrintStream to record debugging info or null for no debugging.
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param recursive
-	 *           Recursively set children as drop targets.
+	 *            Recursively set children as drop targets.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
-	public FileDrop(final PrintStream out, final java.awt.Component c, final boolean recursive,
-		final Listener listener) {
+	public FileDrop(final PrintStream out, final java.awt.Component c,
+		final boolean recursive, final Listener listener) {
 		this(out, // Logging stream
 			c, // Drop target
 			javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, defaultBorderColor), // Drag
@@ -166,11 +167,11 @@ public class FileDrop {
 	 * Constructor with a specified border
 	 * 
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param dragBorder
-	 *           Border to use on <tt>JComponent</tt> when dragging occurs.
+	 *            Border to use on <tt>JComponent</tt> when dragging occurs.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final java.awt.Component c, final javax.swing.border.Border dragBorder,
@@ -183,19 +184,19 @@ public class FileDrop {
 	} // end constructor
 
 	/**
-	 * Constructor with a specified border and the option to recursively set drop
-	 * targets. If your component is a <tt>java.awt.Container</tt>, then each of
-	 * its children components will also listen for drops, though only the parent
-	 * will change borders.
+	 * Constructor with a specified border and the option to recursively set
+	 * drop targets. If your component is a <tt>java.awt.Container</tt>, then
+	 * each of its children components will also listen for drops, though only
+	 * the parent will change borders.
 	 * 
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param dragBorder
-	 *           Border to use on <tt>JComponent</tt> when dragging occurs.
+	 *            Border to use on <tt>JComponent</tt> when dragging occurs.
 	 * @param recursive
-	 *           Recursively set children as drop targets.
+	 *            Recursively set children as drop targets.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final java.awt.Component c, final javax.swing.border.Border dragBorder,
@@ -211,13 +212,13 @@ public class FileDrop {
 	 * parameter <tt>out</tt> will result in no debugging output.
 	 * 
 	 * @param out
-	 *           PrintStream to record debugging info or null for no debugging.
+	 *            PrintStream to record debugging info or null for no debugging.
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param dragBorder
-	 *           Border to use on <tt>JComponent</tt> when dragging occurs.
+	 *            Border to use on <tt>JComponent</tt> when dragging occurs.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final PrintStream out, final java.awt.Component c,
@@ -237,15 +238,15 @@ public class FileDrop {
 	 * parameter <tt>out</tt> will result in no debugging output.
 	 * 
 	 * @param out
-	 *           PrintStream to record debugging info or null for no debugging.
+	 *            PrintStream to record debugging info or null for no debugging.
 	 * @param c
-	 *           Component on which files will be dropped.
+	 *            Component on which files will be dropped.
 	 * @param dragBorder
-	 *           Border to use on <tt>JComponent</tt> when dragging occurs.
+	 *            Border to use on <tt>JComponent</tt> when dragging occurs.
 	 * @param recursive
-	 *           Recursively set children as drop targets.
+	 *            Recursively set children as drop targets.
 	 * @param listener
-	 *           Listens for <tt>filesDropped</tt>.
+	 *            Listens for <tt>filesDropped</tt>.
 	 * @since 1.0
 	 */
 	public FileDrop(final PrintStream out, final java.awt.Component c,
@@ -436,7 +437,7 @@ public class FileDrop {
 	} // end supportsDnD
 
 	// BEGIN 2007-09-12 Nathan Blomquist -- Linux (KDE/Gnome) support added.
-	private static String	ZERO_CHAR_STRING	= "" + (char) 0;
+	private static String ZERO_CHAR_STRING = "" + (char) 0;
 
 	private static File[] createFileArray(BufferedReader bReader, PrintStream out) {
 		try {
@@ -513,7 +514,8 @@ public class FileDrop {
 	} // end dropListener
 
 	/** Determine if the dragged data is a file list. */
-	private boolean isDragOk(final PrintStream out, final java.awt.dnd.DropTargetDragEvent evt) {
+	private boolean
+		isDragOk(final PrintStream out, final java.awt.dnd.DropTargetDragEvent evt) {
 		boolean ok = false;
 
 		// Get data flavors being dragged
@@ -556,14 +558,14 @@ public class FileDrop {
 	} // end log
 
 	/**
-	 * Removes the drag-and-drop hooks from the component and optionally from the
-	 * all children. You should call this if you add and remove components after
-	 * you've set up the drag-and-drop. This will recursively unregister all
-	 * components contained within <var>c</var> if <var>c</var> is a
+	 * Removes the drag-and-drop hooks from the component and optionally from
+	 * the all children. You should call this if you add and remove components
+	 * after you've set up the drag-and-drop. This will recursively unregister
+	 * all components contained within <var>c</var> if <var>c</var> is a
 	 * {@link java.awt.Container}.
 	 * 
 	 * @param c
-	 *           The component to unregister as a drop target
+	 *            The component to unregister as a drop target
 	 * @return true if it could be removed
 	 * @since 1.0
 	 */
@@ -572,16 +574,17 @@ public class FileDrop {
 	} // end remove
 
 	/**
-	 * Removes the drag-and-drop hooks from the component and optionally from the
-	 * all children. You should call this if you add and remove components after
-	 * you've set up the drag-and-drop.
+	 * Removes the drag-and-drop hooks from the component and optionally from
+	 * the all children. You should call this if you add and remove components
+	 * after you've set up the drag-and-drop.
 	 * 
 	 * @param out
-	 *           Optional {@link PrintStream} for logging drag and drop messages
+	 *            Optional {@link PrintStream} for logging drag and drop
+	 *            messages
 	 * @param c
-	 *           The component to unregister
+	 *            The component to unregister
 	 * @param recursive
-	 *           Recursively unregister components within a container
+	 *            Recursively unregister components within a container
 	 * @return true if it could be removed
 	 * @since 1.0
 	 */
@@ -599,7 +602,7 @@ public class FileDrop {
 					remove(out, comps[i], recursive);
 				return true;
 			} // end if: recursive
-			// else
+				// else
 			return false;
 		} // end if: supports DnD
 			// else
@@ -628,7 +631,7 @@ public class FileDrop {
 		 * This method is called when files have been successfully dropped.
 		 * 
 		 * @param files
-		 *           An array of <tt>File</tt>s that were dropped.
+		 *            An array of <tt>File</tt>s that were dropped.
 		 * @since 1.0
 		 */
 		public abstract void filesDropped(File[] files);
@@ -653,17 +656,17 @@ public class FileDrop {
 	 */
 	public static class Event extends java.util.EventObject {
 
-		private static final long	serialVersionUID	= 9198649885004185727L;
-		private File[]					files;
+		private static final long serialVersionUID = 9198649885004185727L;
+		private File[] files;
 
 		/**
 		 * Constructs an {@link Event} with the array of files that were dropped
 		 * and the {@link FileDrop} that initiated the event.
 		 * 
 		 * @param files
-		 *           The array of files that were dropped
+		 *            The array of files that were dropped
 		 * @param source
-		 *           The event source
+		 *            The event source
 		 * @since 1.1
 		 */
 		public Event(File[] files, Object source) {
@@ -742,7 +745,7 @@ public class FileDrop {
 		 * 
 		 * @since 1.1
 		 */
-		public final static String										MIME_TYPE	= "application/x-net.iharder.dnd.TransferableObject";
+		public final static String MIME_TYPE = "application/x-net.iharder.dnd.TransferableObject";
 
 		/**
 		 * The default {@link java.awt.datatransfer.DataFlavor} for
@@ -752,14 +755,13 @@ public class FileDrop {
 		 * 
 		 * @since 1.1
 		 */
-		public final static java.awt.datatransfer.DataFlavor	DATA_FLAVOR	= new java.awt.datatransfer.DataFlavor(
-																									FileDrop.TransferableObject.class,
-																									MIME_TYPE);
+		public final static java.awt.datatransfer.DataFlavor DATA_FLAVOR = new java.awt.datatransfer.DataFlavor(
+			FileDrop.TransferableObject.class, MIME_TYPE);
 
-		private Fetcher													fetcher;
-		private Object														data;
+		private Fetcher fetcher;
+		private Object data;
 
-		private java.awt.datatransfer.DataFlavor					customFlavor;
+		private java.awt.datatransfer.DataFlavor customFlavor;
 
 		/**
 		 * Creates a new {@link TransferableObject} that wraps <var>data</var>.
@@ -769,12 +771,13 @@ public class FileDrop {
 		 * <tt>application/x-net.iharder.dnd.TransferableObject</tt>.
 		 * 
 		 * @param data
-		 *           The data to transfer
+		 *            The data to transfer
 		 * @since 1.1
 		 */
 		public TransferableObject(Object data) {
 			this.data = data;
-			this.customFlavor = new java.awt.datatransfer.DataFlavor(data.getClass(), MIME_TYPE);
+			this.customFlavor = new java.awt.datatransfer.DataFlavor(data.getClass(),
+				MIME_TYPE);
 		} // end constructor
 
 		/**
@@ -784,7 +787,7 @@ public class FileDrop {
 		 * 
 		 * @see Fetcher
 		 * @param fetcher
-		 *           The {@link Fetcher} that will return the data object
+		 *            The {@link Fetcher} that will return the data object
 		 * @since 1.1
 		 */
 		public TransferableObject(Fetcher fetcher) {
@@ -794,15 +797,17 @@ public class FileDrop {
 		/**
 		 * Creates a new {@link TransferableObject} that will return the object
 		 * that is returned by <var>fetcher</var>. Along with the
-		 * {@link #DATA_FLAVOR} associated with this class, this creates a custom
-		 * data flavor with a representation class <var>dataClass</var> and the
-		 * MIME type <tt>application/x-net.iharder.dnd.TransferableObject</tt>.
+		 * {@link #DATA_FLAVOR} associated with this class, this creates a
+		 * custom data flavor with a representation class <var>dataClass</var>
+		 * and the MIME type
+		 * <tt>application/x-net.iharder.dnd.TransferableObject</tt>.
 		 * 
 		 * @see Fetcher
 		 * @param dataClass
-		 *           The {@link java.lang.Class} to use in the custom data flavor
+		 *            The {@link java.lang.Class} to use in the custom data
+		 *            flavor
 		 * @param fetcher
-		 *           The {@link Fetcher} that will return the data object
+		 *            The {@link Fetcher} that will return the data object
 		 * @since 1.1
 		 */
 		public TransferableObject(Class<?> dataClass, Fetcher fetcher) {
@@ -811,9 +816,10 @@ public class FileDrop {
 		} // end constructor
 
 		/**
-		 * Returns the custom {@link java.awt.datatransfer.DataFlavor} associated
-		 * with the encapsulated object or <tt>null</tt> if the {@link Fetcher}
-		 * constructor was used without passing a {@link java.lang.Class}.
+		 * Returns the custom {@link java.awt.datatransfer.DataFlavor}
+		 * associated with the encapsulated object or <tt>null</tt> if the
+		 * {@link Fetcher} constructor was used without passing a
+		 * {@link java.lang.Class}.
 		 * 
 		 * @return The custom data flavor for the encapsulated object
 		 * @since 1.1
@@ -825,10 +831,10 @@ public class FileDrop {
 		/* ******** T R A N S F E R A B L E M E T H O D S ******** */
 
 		/**
-		 * Returns a two- or three-element array containing first the custom data
-		 * flavor, if one was created in the constructors, second the default
-		 * {@link #DATA_FLAVOR} associated with {@link TransferableObject}, and
-		 * third the
+		 * Returns a two- or three-element array containing first the custom
+		 * data flavor, if one was created in the constructors, second the
+		 * default {@link #DATA_FLAVOR} associated with
+		 * {@link TransferableObject}, and third the
 		 * 
 		 * @return An array of supported data flavors
 		 * @since 1.1
@@ -855,7 +861,7 @@ public class FileDrop {
 		 * {@link Fetcher#getObject getObject()} method will not be called.
 		 * 
 		 * @param flavor
-		 *           The data flavor for the data to return
+		 *            The data flavor for the data to return
 		 * @return The dropped data
 		 * @throws java.awt.datatransfer.UnsupportedFlavorException
 		 * @throws IOException
@@ -883,7 +889,7 @@ public class FileDrop {
 		 * method.
 		 * 
 		 * @param flavor
-		 *           The data flavor to check
+		 *            The data flavor to check
 		 * @return Whether or not the flavor is supported
 		 * @since 1.1
 		 */
@@ -904,12 +910,13 @@ public class FileDrop {
 		/* ******** I N N E R I N T E R F A C E F E T C H E R ******** */
 
 		/**
-		 * Instead of passing your data directly to the {@link TransferableObject}
-		 * constructor, you may want to know exactly when your data was received
-		 * in case you need to remove it from its source (or do anyting else to
-		 * it). When the {@link #getTransferData getTransferData(...)} method is
-		 * called on the {@link TransferableObject}, the {@link Fetcher}'s
-		 * {@link #getObject getObject()} method will be called.
+		 * Instead of passing your data directly to the
+		 * {@link TransferableObject} constructor, you may want to know exactly
+		 * when your data was received in case you need to remove it from its
+		 * source (or do anyting else to it). When the {@link #getTransferData
+		 * getTransferData(...)} method is called on the
+		 * {@link TransferableObject}, the {@link Fetcher}'s {@link #getObject
+		 * getObject()} method will be called.
 		 * 
 		 * @author Robert Harder
 		 * @copyright 2001

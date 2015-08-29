@@ -11,15 +11,15 @@ import java.io.Serializable;
  */
 public class SimpleWayPoint extends WayPoint implements Serializable {
 
-	private static final long	serialVersionUID	= -2378580491710419827L;
+	private static final long serialVersionUID = -2378580491710419827L;
 	/**
 	 * x-coordinate of the waypoint
 	 */
-	protected int				x;
+	protected int x;
 	/**
 	 * y-coordinate of the waypoint
 	 */
-	protected int				y;
+	protected int y;
 
 	/**
 	 * @param x

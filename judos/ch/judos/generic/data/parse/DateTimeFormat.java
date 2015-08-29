@@ -10,8 +10,8 @@ import ch.judos.generic.data.date.Time;
  */
 public class DateTimeFormat extends ChoiceFormat {
 
-	private DateFormat	d;
-	private TimeFormat	t;
+	private DateFormat d;
+	private TimeFormat t;
 
 	/**
 	 */

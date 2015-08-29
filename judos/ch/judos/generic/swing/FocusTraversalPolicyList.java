@@ -18,7 +18,7 @@ public class FocusTraversalPolicyList extends FocusTraversalPolicy {
 	/**
 	 * the components and their order stored in a list
 	 */
-	public List<Component>	list;
+	public List<Component> list;
 
 	/**
 	 * creates a policy with no components

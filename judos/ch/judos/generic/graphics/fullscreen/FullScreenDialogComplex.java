@@ -18,47 +18,47 @@ import javax.swing.table.DefaultTableModel;
 public class FullScreenDialogComplex extends JDialog implements ActionListener,
 	ListSelectionListener, FullScreenDialogI {
 
-	private static final long		serialVersionUID	= -7452838983112945857L;
-	JButton								exit;
-	JButton								ok;
-	private JTable						dmList;
-	private JScrollPane				dmPane;
-	private GraphicsDevice[]		devices;
+	private static final long serialVersionUID = -7452838983112945857L;
+	JButton exit;
+	JButton ok;
+	private JTable dmList;
+	private JScrollPane dmPane;
+	private GraphicsDevice[] devices;
 
 	// java 6 vs java 7 problem with parametrized JComboBox
 	@SuppressWarnings("rawtypes")
-	private JComboBox					gui_devices;
-	private DisplayMode				result;
-	private GraphicsDevice			resultD;
-	private boolean					chosen;
-	private KeyEventDispatcher		dispatcher;
+	private JComboBox gui_devices;
+	private DisplayMode result;
+	private GraphicsDevice resultD;
+	private boolean chosen;
+	private KeyEventDispatcher dispatcher;
 
 	/**
 	 * index of width column
 	 */
-	public static final int			INDEX_WIDTH			= 0;
+	public static final int INDEX_WIDTH = 0;
 	/**
 	 * index of height column
 	 */
-	public static final int			INDEX_HEIGHT		= 1;
+	public static final int INDEX_HEIGHT = 1;
 	/**
 	 * index of bitdepth column
 	 */
-	public static final int			INDEX_BITDEPTH		= 2;
+	public static final int INDEX_BITDEPTH = 2;
 	/**
 	 * index of refreshrate column
 	 */
-	public static final int			INDEX_REFRESHRATE	= 3;
+	public static final int INDEX_REFRESHRATE = 3;
 
 	/**
 	 * width of columns
 	 */
-	public static final int[]		COLUMN_WIDTHS		= new int[]{100, 100, 100, 100};
+	public static final int[] COLUMN_WIDTHS = new int[]{100, 100, 100, 100};
 	/**
 	 * names of columns
 	 */
-	public static final String[]	COLUMN_NAMES		= new String[]{"Width", "Height",
-		"Bit Depth", "Refresh Rate"						};
+	public static final String[] COLUMN_NAMES = new String[]{"Width", "Height", "Bit Depth",
+		"Refresh Rate"};
 
 	FullScreenDialogComplex() {
 		this("Select Display Mode");
@@ -163,7 +163,8 @@ public class FullScreenDialogComplex extends JDialog implements ActionListener,
 				boolean keyHandled = false;
 				if (e.getID() == KeyEvent.KEY_PRESSED) {
 					if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-						actionPerformed(new ActionEvent(FullScreenDialogComplex.this.ok, 0, "enter"));
+						actionPerformed(new ActionEvent(FullScreenDialogComplex.this.ok, 0,
+							"enter"));
 						keyHandled = true;
 					}
 					else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
@@ -261,7 +262,7 @@ public class FullScreenDialogComplex extends JDialog implements ActionListener,
 
 	private class JS_GraphicsDevice {
 
-		GraphicsDevice	dev;
+		GraphicsDevice dev;
 
 		public JS_GraphicsDevice(GraphicsDevice dev) {
 			this.dev = dev;
@@ -298,8 +299,8 @@ public class FullScreenDialogComplex extends JDialog implements ActionListener,
 
 class DisplayModeModel extends DefaultTableModel {
 
-	private static final long	serialVersionUID	= 3497527378948646452L;
-	private DisplayMode[]		modes;
+	private static final long serialVersionUID = 3497527378948646452L;
+	private DisplayMode[] modes;
 
 	public DisplayModeModel(DisplayMode[] modes) {
 		this.modes = modes;

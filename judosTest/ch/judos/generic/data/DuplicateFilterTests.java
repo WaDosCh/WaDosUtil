@@ -10,7 +10,7 @@ import junit.framework.TestCase;
  */
 public class DuplicateFilterTests extends TestCase {
 
-	private static final boolean	SILENT	= true;
+	private static final boolean SILENT = true;
 
 	private void printMem(int i) {
 		Runtime runtime = Runtime.getRuntime();
@@ -18,8 +18,8 @@ public class DuplicateFilterTests extends TestCase {
 		NumberFormat format = NumberFormat.getInstance();
 		long allocatedMemory = runtime.totalMemory();
 		if (!SILENT)
-			System.out.println("allocated memory: "
-				+ format.format(allocatedMemory / 1024) + "  (" + format.format(i) + ")");
+			System.out.println("allocated memory: " + format.format(allocatedMemory / 1024)
+				+ "  (" + format.format(i) + ")");
 	}
 
 	public void test() {
@@ -34,7 +34,8 @@ public class DuplicateFilterTests extends TestCase {
 		for (int i = 1; i < 100000; i++) {
 			if (i % 1000000 != 0) {
 				x.hit(i);
-			} else {
+			}
+			else {
 				assertTrue(x.hit(i));
 				if (System.currentTimeMillis() - ms > 1000) {
 					printMem(i);

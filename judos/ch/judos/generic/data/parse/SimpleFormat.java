@@ -15,13 +15,13 @@ public abstract class SimpleFormat extends Format {
 	/**
 	 * the pattern to use for this formatPart
 	 */
-	protected Pattern	pattern;
+	protected Pattern pattern;
 
 	/**
 	 * matcher for the last input, used by doesntMatch()<br>
 	 * is set to null after matching!
 	 */
-	protected Matcher	matcher;
+	protected Matcher matcher;
 
 	/**
 	 * @param p

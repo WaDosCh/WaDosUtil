@@ -11,9 +11,9 @@ import java.util.ArrayList;
  */
 public class RuntimeWriter2 extends Writer {
 
-	protected BufferedWriter	redirectTo;
-	private ArrayList<Object>	content;
-	protected boolean				escaped;
+	protected BufferedWriter redirectTo;
+	private ArrayList<Object> content;
+	protected boolean escaped;
 
 	public RuntimeWriter2(BufferedWriter redirectTo) {
 		this.redirectTo = redirectTo;

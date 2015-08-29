@@ -13,7 +13,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStoreInternal;
  */
 public class RStorableInteger2 implements RStorableWrapper {
 
-	private int	nr;
+	private int nr;
 
 	/**
 	 * (non-Javadoc)

@@ -18,7 +18,7 @@ import org.w3c.dom.Document;
  */
 public class XML {
 
-	private final Document	document;
+	private final Document document;
 
 	/**
 	 * Creates a new XML instance based off a given DOM Document

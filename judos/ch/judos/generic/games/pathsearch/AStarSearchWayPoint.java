@@ -11,23 +11,23 @@ package ch.judos.generic.games.pathsearch;
 public class AStarSearchWayPoint extends SimpleWayPoint implements
 	Comparable<AStarSearchWayPoint> {
 
-	private static final long	serialVersionUID	= -6338254904838453889L;
+	private static final long serialVersionUID = -6338254904838453889L;
 	/**
 	 * position x
 	 */
-	protected int				ty;
+	protected int ty;
 	/**
 	 * position y
 	 */
-	protected int				tx;
+	protected int tx;
 	/**
 	 * steps taken already
 	 */
-	protected int				steps;
+	protected int steps;
 	/**
 	 * remaining estimated distance
 	 */
-	protected double			dist;
+	protected double dist;
 
 	/**
 	 * creates a search waypoint
@@ -109,8 +109,8 @@ public class AStarSearchWayPoint extends SimpleWayPoint implements
 	 */
 	@Override
 	public String toString() {
-		return "A*WayPoint: " + this.x + "/" + this.y + ", steps:" + this.steps
-			+ ", dist:" + this.dist;
+		return "A*WayPoint: " + this.x + "/" + this.y + ", steps:" + this.steps + ", dist:"
+			+ this.dist;
 	}
 
 }

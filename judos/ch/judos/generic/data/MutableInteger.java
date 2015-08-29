@@ -16,20 +16,20 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * A constant holding the minimum value an {@code int} can have,
 	 * -2<sup>31</sup>.
 	 */
-	public static final int	MIN_VALUE	= 0x80000000;
+	public static final int MIN_VALUE = 0x80000000;
 
 	/**
 	 * A constant holding the maximum value an {@code int} can have,
 	 * 2<sup>31</sup>-1.
 	 */
-	public static final int	MAX_VALUE	= 0x7fffffff;
+	public static final int MAX_VALUE = 0x7fffffff;
 
 	/**
 	 * All possible chars for representing a number as a String
 	 */
-	final static char[]		digits		= {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q',
-		'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+	final static char[] digits = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b',
+		'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+		't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
 	/**
 	 * Returns a string representation of the first argument in the radix
@@ -56,17 +56,18 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * These are <code>'&#92;u0030'</code> through <code>'&#92;u0039'</code> and
 	 * <code>'&#92;u0061'</code> through <code>'&#92;u007A'</code>. If
 	 * {@code radix} is <var>N</var>, then the first <var>N</var> of these
-	 * characters are used as radix-<var>N</var> digits in the order shown. Thus,
-	 * the digits for hexadecimal (radix 16) are {@code 0123456789abcdef}. If
-	 * uppercase letters are desired, the {@link java.lang.String#toUpperCase()}
-	 * method may be called on the result:
+	 * characters are used as radix-<var>N</var> digits in the order shown.
+	 * Thus, the digits for hexadecimal (radix 16) are {@code 0123456789abcdef}.
+	 * If uppercase letters are desired, the
+	 * {@link java.lang.String#toUpperCase()} method may be called on the
+	 * result:
 	 * 
 	 * <blockquote> {@code Integer.toString(n, 16).toUpperCase()} </blockquote>
 	 * 
 	 * @param i
-	 *           an integer to be converted to a string.
+	 *            an integer to be converted to a string.
 	 * @param radix
-	 *           the radix to use in the string representation.
+	 *            the radix to use in the string representation.
 	 * @return a string representation of the argument in the specified radix.
 	 * @see java.lang.Character#MAX_RADIX
 	 * @see java.lang.Character#MIN_RADIX
@@ -110,8 +111,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * The unsigned integer value is the argument plus 2<sup>32</sup> if the
 	 * argument is negative; otherwise, it is equal to the argument. This value
 	 * is converted to a string of ASCII digits in hexadecimal (base&nbsp;16)
-	 * with no extra leading {@code 0}s. If the unsigned magnitude is zero, it is
-	 * represented by a single zero character {@code '0'} (
+	 * with no extra leading {@code 0}s. If the unsigned magnitude is zero, it
+	 * is represented by a single zero character {@code '0'} (
 	 * <code>'&#92;u0030'</code>); otherwise, the first character of the
 	 * representation of the unsigned magnitude will not be the zero character.
 	 * The following characters are used as hexadecimal digits:
@@ -121,12 +122,13 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * These are the characters <code>'&#92;u0030'</code> through
 	 * <code>'&#92;u0039'</code> and <code>'&#92;u0061'</code> through
 	 * <code>'&#92;u0066'</code>. If uppercase letters are desired, the
-	 * {@link java.lang.String#toUpperCase()} method may be called on the result:
+	 * {@link java.lang.String#toUpperCase()} method may be called on the
+	 * result:
 	 * 
 	 * <blockquote> {@code Integer.toHexString(n).toUpperCase()} </blockquote>
 	 * 
 	 * @param i
-	 *           an integer to be converted to a string.
+	 *            an integer to be converted to a string.
 	 * @return the string representation of the unsigned integer value
 	 *         represented by the argument in hexadecimal (base&nbsp;16).
 	 * @since JDK1.0.2
@@ -157,7 +159,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * <code>'&#92;u0037'</code>.
 	 * 
 	 * @param i
-	 *           an integer to be converted to a string.
+	 *            an integer to be converted to a string.
 	 * @return the string representation of the unsigned integer value
 	 *         represented by the argument in octal (base&nbsp;8).
 	 * @since JDK1.0.2
@@ -172,8 +174,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * 
 	 * <p>
 	 * The unsigned integer value is the argument plus 2<sup>32</sup> if the
-	 * argument is negative; otherwise it is equal to the argument. This value is
-	 * converted to a string of ASCII digits in binary (base&nbsp;2) with no
+	 * argument is negative; otherwise it is equal to the argument. This value
+	 * is converted to a string of ASCII digits in binary (base&nbsp;2) with no
 	 * extra leading {@code 0}s. If the unsigned magnitude is zero, it is
 	 * represented by a single zero character {@code '0'} (
 	 * <code>'&#92;u0030'</code>); otherwise, the first character of the
@@ -182,7 +184,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * <code>'&#92;u0031'</code>) are used as binary digits.
 	 * 
 	 * @param i
-	 *           an integer to be converted to a string.
+	 *            an integer to be converted to a string.
 	 * @return the string representation of the unsigned integer value
 	 *         represented by the argument in binary (base&nbsp;2).
 	 * @since JDK1.0.2
@@ -207,21 +209,21 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 		return new String(buf, charPos, (32 - charPos));
 	}
 
-	final static char[]	DigitTens	= {'0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1',
+	final static char[] DigitTens = {'0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1',
 		'1', '1', '1', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '2', '2', '2', '2',
 		'2', '2', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '4', '4', '4', '4', '4',
 		'4', '4', '4', '4', '4', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '6', '6',
 		'6', '6', '6', '6', '6', '6', '6', '6', '7', '7', '7', '7', '7', '7', '7', '7', '7',
 		'7', '8', '8', '8', '8', '8', '8', '8', '8', '8', '8', '9', '9', '9', '9', '9', '9',
-		'9', '9', '9', '9',				};
+		'9', '9', '9', '9',};
 
-	final static char[]	DigitOnes	= {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+	final static char[] DigitOnes = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
 		'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7',
 		'8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4',
 		'5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1',
 		'2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8',
 		'9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5',
-		'6', '7', '8', '9',				};
+		'6', '7', '8', '9',};
 
 	// I use the "invariant division by multiplication" trick to
 	// accelerate Integer.toString. In particular we want to
@@ -242,11 +244,11 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	/**
 	 * Returns a {@code String} object representing the specified integer. The
 	 * argument is converted to signed decimal representation and returned as a
-	 * string, exactly as if the argument and radix 10 were given as arguments to
-	 * the {@link #toString(int, int)} method.
+	 * string, exactly as if the argument and radix 10 were given as arguments
+	 * to the {@link #toString(int, int)} method.
 	 * 
 	 * @param i
-	 *           an integer to be converted.
+	 *            an integer to be converted.
 	 * @return a string representation of the argument in base&nbsp;10.
 	 */
 	public static String toString(int i) {
@@ -254,10 +256,10 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	}
 
 	/**
-	 * Places characters representing the integer i into the character array buf.
-	 * The characters are placed into the buffer backwards starting with the
-	 * least significant digit at the specified index (exclusive), and working
-	 * backwards from there.
+	 * Places characters representing the integer i into the character array
+	 * buf. The characters are placed into the buffer backwards starting with
+	 * the least significant digit at the specified index (exclusive), and
+	 * working backwards from there.
 	 * 
 	 * Will fail if i == Integer.MIN_VALUE
 	 */
@@ -296,8 +298,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 		}
 	}
 
-	final static int[]	sizeTable	= {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999,
-		999999999, Integer.MAX_VALUE	};
+	final static int[] sizeTable = {9, 99, 999, 9999, 99999, 999999, 9999999, 99999999,
+		999999999, Integer.MAX_VALUE};
 
 	// Requires positive x
 	static int stringSize(int x) {
@@ -310,20 +312,21 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * Parses the string argument as a signed integer in the radix specified by
 	 * the second argument. The characters in the string must all be digits of
 	 * the specified radix (as determined by whether
-	 * {@link java.lang.Character#digit(char, int)} returns a nonnegative value),
-	 * except that the first character may be an ASCII minus sign {@code '-'} (
-	 * <code>'&#92;u002D'</code>) to indicate a negative value or an ASCII plus
-	 * sign {@code '+'} (<code>'&#92;u002B'</code>) to indicate a positive value.
-	 * The resulting integer value is returned.
+	 * {@link java.lang.Character#digit(char, int)} returns a nonnegative
+	 * value), except that the first character may be an ASCII minus sign
+	 * {@code '-'} ( <code>'&#92;u002D'</code>) to indicate a negative value or
+	 * an ASCII plus sign {@code '+'} (<code>'&#92;u002B'</code>) to indicate a
+	 * positive value. The resulting integer value is returned.
 	 * 
 	 * <p>
-	 * An exception of type {@code NumberFormatException} is thrown if any of the
-	 * following situations occurs:
+	 * An exception of type {@code NumberFormatException} is thrown if any of
+	 * the following situations occurs:
 	 * <ul>
 	 * <li>The first argument is {@code null} or is a string of length zero.
 	 * 
-	 * <li>The radix is either smaller than {@link java.lang.Character#MIN_RADIX}
-	 * or larger than {@link java.lang.Character#MAX_RADIX}.
+	 * <li>The radix is either smaller than
+	 * {@link java.lang.Character#MIN_RADIX} or larger than
+	 * {@link java.lang.Character#MAX_RADIX}.
 	 * 
 	 * <li>Any character of the string is not a digit of the specified radix,
 	 * except that the first character may be a minus sign {@code '-'} (
@@ -331,7 +334,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * <code>'&#92;u002B'</code>) provided that the string is longer than length
 	 * 1.
 	 * 
-	 * <li>The value represented by the string is not a value of type {@code int}.
+	 * <li>The value represented by the string is not a value of type
+	 * {@code int}.
 	 * </ul>
 	 * 
 	 * <p>
@@ -355,15 +359,15 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * </blockquote>
 	 * 
 	 * @param s
-	 *           the {@code String} containing the integer representation to be
-	 *           parsed
+	 *            the {@code String} containing the integer representation to be
+	 *            parsed
 	 * @param radix
-	 *           the radix to be used while parsing {@code s}.
+	 *            the radix to be used while parsing {@code s}.
 	 * @return the integer represented by the string argument in the specified
 	 *         radix.
 	 * @exception NumberFormatException
-	 *               if the {@code String} does not contain a parsable
-	 *               {@code int}.
+	 *                if the {@code String} does not contain a parsable
+	 *                {@code int}.
 	 */
 	public static int parseInt(String s, int radix) throws NumberFormatException {
 		return Integer.parseInt(s, radix);
@@ -371,20 +375,20 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 
 	/**
 	 * Parses the string argument as a signed decimal integer. The characters in
-	 * the string must all be decimal digits, except that the first character may
-	 * be an ASCII minus sign {@code '-'} (<code>'&#92;u002D'</code>) to indicate
-	 * a negative value or an ASCII plus sign {@code '+'} (
+	 * the string must all be decimal digits, except that the first character
+	 * may be an ASCII minus sign {@code '-'} (<code>'&#92;u002D'</code>) to
+	 * indicate a negative value or an ASCII plus sign {@code '+'} (
 	 * <code>'&#92;u002B'</code>) to indicate a positive value. The resulting
 	 * integer value is returned, exactly as if the argument and the radix 10
 	 * were given as arguments to the {@link #parseInt(java.lang.String, int)}
 	 * method.
 	 * 
 	 * @param s
-	 *           a {@code String} containing the {@code int} representation to be
-	 *           parsed
+	 *            a {@code String} containing the {@code int} representation to
+	 *            be parsed
 	 * @return the integer value represented by the argument in decimal.
 	 * @exception NumberFormatException
-	 *               if the string does not contain a parsable integer.
+	 *                if the string does not contain a parsable integer.
 	 */
 	public static int parseInt(String s) throws NumberFormatException {
 		return parseInt(s, 10);
@@ -400,20 +404,21 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * integer value specified by the string.
 	 * 
 	 * <p>
-	 * In other words, this method returns an {@code Integer} object equal to the
-	 * value of:
+	 * In other words, this method returns an {@code Integer} object equal to
+	 * the value of:
 	 * 
-	 * <blockquote> {@code new Integer(Integer.parseInt(s, radix))} </blockquote>
+	 * <blockquote> {@code new Integer(Integer.parseInt(s, radix))}
+	 * </blockquote>
 	 * 
 	 * @param s
-	 *           the string to be parsed.
+	 *            the string to be parsed.
 	 * @param radix
-	 *           the radix to be used in interpreting {@code s}
+	 *            the radix to be used in interpreting {@code s}
 	 * @return an {@code Integer} object holding the value represented by the
 	 *         string argument in the specified radix.
 	 * @exception NumberFormatException
-	 *               if the {@code String} does not contain a parsable
-	 *               {@code int}.
+	 *                if the {@code String} does not contain a parsable
+	 *                {@code int}.
 	 */
 	public static Integer valueOf(String s, int radix) throws NumberFormatException {
 		return Integer.valueOf(parseInt(s, radix));
@@ -428,26 +433,26 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * string.
 	 * 
 	 * <p>
-	 * In other words, this method returns an {@code Integer} object equal to the
-	 * value of:
+	 * In other words, this method returns an {@code Integer} object equal to
+	 * the value of:
 	 * 
 	 * <blockquote> {@code new Integer(Integer.parseInt(s))} </blockquote>
 	 * 
 	 * @param s
-	 *           the string to be parsed.
+	 *            the string to be parsed.
 	 * @return an {@code Integer} object holding the value represented by the
 	 *         string argument.
 	 * @exception NumberFormatException
-	 *               if the string cannot be parsed as an integer.
+	 *                if the string cannot be parsed as an integer.
 	 */
 	public static Integer valueOf(String s) throws NumberFormatException {
 		return Integer.valueOf(parseInt(s, 10));
 	}
 
 	/**
-	 * Returns an {@code Integer} instance representing the specified {@code int}
-	 * value. If a new {@code Integer} instance is not required, this method
-	 * should generally be used in preference to the constructor
+	 * Returns an {@code Integer} instance representing the specified
+	 * {@code int} value. If a new {@code Integer} instance is not required,
+	 * this method should generally be used in preference to the constructor
 	 * {@link #MutableInteger(int)}, as this method is likely to yield
 	 * significantly better space and time performance by caching frequently
 	 * requested values.
@@ -456,7 +461,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * and may cache other values outside of this range.
 	 * 
 	 * @param i
-	 *           an {@code int} value.
+	 *            an {@code int} value.
 	 * @return an {@code Integer} instance representing {@code i}.
 	 * @since 1.5
 	 */
@@ -469,14 +474,14 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * 
 	 * @serial
 	 */
-	private int	value;
+	private int value;
 
 	/**
 	 * Constructs a newly allocated {@code Integer} object that represents the
 	 * specified {@code int} value.
 	 * 
 	 * @param value
-	 *           the value to be represented by the {@code Integer} object.
+	 *            the value to be represented by the {@code Integer} object.
 	 */
 	public MutableInteger(int value) {
 		this.value = value;
@@ -484,14 +489,14 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 
 	/**
 	 * Constructs a newly allocated {@code Integer} object that represents the
-	 * {@code int} value indicated by the {@code String} parameter. The string is
-	 * converted to an {@code int} value in exactly the manner used by the
+	 * {@code int} value indicated by the {@code String} parameter. The string
+	 * is converted to an {@code int} value in exactly the manner used by the
 	 * {@code parseInt} method for radix 10.
 	 * 
 	 * @param s
-	 *           the {@code String} to be converted to an {@code Integer}.
+	 *            the {@code String} to be converted to an {@code Integer}.
 	 * @exception NumberFormatException
-	 *               if the {@code String} does not contain a parsable integer.
+	 *                if the {@code String} does not contain a parsable integer.
 	 * @see java.lang.Integer#parseInt(java.lang.String, int)
 	 */
 	public MutableInteger(String s) throws NumberFormatException {
@@ -556,10 +561,10 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	}
 
 	/**
-	 * Returns a {@code String} object representing this {@code Integer}'s value.
-	 * The value is converted to signed decimal representation and returned as a
-	 * string, exactly as if the integer value were given as an argument to the
-	 * {@link java.lang.Integer#toString(int)} method.
+	 * Returns a {@code String} object representing this {@code Integer}'s
+	 * value. The value is converted to signed decimal representation and
+	 * returned as a string, exactly as if the integer value were given as an
+	 * argument to the {@link java.lang.Integer#toString(int)} method.
 	 * 
 	 * @return a string representation of the value of this object in
 	 *         base&nbsp;10.
@@ -586,8 +591,9 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * object that contains the same {@code int} value as this object.
 	 * 
 	 * @param obj
-	 *           the object to compare with.
-	 * @return {@code true} if the objects are the same; {@code false} otherwise.
+	 *            the object to compare with.
+	 * @return {@code true} if the objects are the same; {@code false}
+	 *         otherwise.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -619,13 +625,13 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * numeric format, then {@code null} is returned.
 	 * 
 	 * <p>
-	 * In other words, this method returns an {@code Integer} object equal to the
-	 * value of:
+	 * In other words, this method returns an {@code Integer} object equal to
+	 * the value of:
 	 * 
 	 * <blockquote> {@code getInteger(nm, null)} </blockquote>
 	 * 
 	 * @param nm
-	 *           property name.
+	 *            property name.
 	 * @return the {@code Integer} value of the property.
 	 * @see java.lang.System#getProperty(java.lang.String)
 	 * @see java.lang.System#getProperty(java.lang.String, java.lang.String)
@@ -654,8 +660,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * numeric format, or if the specified name is empty or {@code null}.
 	 * 
 	 * <p>
-	 * In other words, this method returns an {@code Integer} object equal to the
-	 * value of:
+	 * In other words, this method returns an {@code Integer} object equal to
+	 * the value of:
 	 * 
 	 * <blockquote> {@code getInteger(nm, new Integer(val))} </blockquote>
 	 * 
@@ -674,9 +680,9 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * default value is not needed.
 	 * 
 	 * @param nm
-	 *           property name.
+	 *            property name.
 	 * @param val
-	 *           default value.
+	 *            default value.
 	 * @return the {@code Integer} value of the property.
 	 * @see java.lang.System#getProperty(java.lang.String)
 	 * @see java.lang.System#getProperty(java.lang.String, java.lang.String)
@@ -691,9 +697,9 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * The first argument is treated as the name of a system property. System
 	 * properties are accessible through the
 	 * {@link java.lang.System#getProperty(java.lang.String)} method. The string
-	 * value of this property is then interpreted as an integer value, as per the
-	 * {@code Integer.decode} method, and an {@code Integer} object representing
-	 * this value is returned.
+	 * value of this property is then interpreted as an integer value, as per
+	 * the {@code Integer.decode} method, and an {@code Integer} object
+	 * representing this value is returned.
 	 * 
 	 * <ul>
 	 * <li>If the property value begins with the two ASCII characters {@code 0x}
@@ -701,22 +707,22 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * rest of it is parsed as a hexadecimal integer exactly as by the method
 	 * {@link #valueOf(java.lang.String, int)} with radix 16.
 	 * <li>If the property value begins with the ASCII character {@code 0}
-	 * followed by another character, it is parsed as an octal integer exactly as
-	 * by the method {@link #valueOf(java.lang.String, int)} with radix 8.
+	 * followed by another character, it is parsed as an octal integer exactly
+	 * as by the method {@link #valueOf(java.lang.String, int)} with radix 8.
 	 * <li>Otherwise, the property value is parsed as a decimal integer exactly
 	 * as by the method {@link #valueOf(java.lang.String, int)} with radix 10.
 	 * </ul>
 	 * 
 	 * <p>
-	 * The second argument is the default value. The default value is returned if
-	 * there is no property of the specified name, if the property does not have
-	 * the correct numeric format, or if the specified name is empty or
+	 * The second argument is the default value. The default value is returned
+	 * if there is no property of the specified name, if the property does not
+	 * have the correct numeric format, or if the specified name is empty or
 	 * {@code null}.
 	 * 
 	 * @param nm
-	 *           property name.
+	 *            property name.
 	 * @param val
-	 *           default value.
+	 *            default value.
 	 * @return the {@code Integer} value of the property.
 	 * @see java.lang.System#getProperty(java.lang.String)
 	 * @see java.lang.System#getProperty(java.lang.String, java.lang.String)
@@ -760,11 +766,11 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * sign. No whitespace characters are permitted in the {@code String}.
 	 * 
 	 * @param nm
-	 *           the {@code String} to decode.
+	 *            the {@code String} to decode.
 	 * @return an {@code Integer} object holding the {@code int} value
 	 *         represented by {@code nm}
 	 * @exception NumberFormatException
-	 *               if the {@code String} does not contain a parsable integer.
+	 *                if the {@code String} does not contain a parsable integer.
 	 * @see java.lang.Integer#parseInt(java.lang.String, int)
 	 */
 	public static Integer decode(String nm) throws NumberFormatException {
@@ -775,7 +781,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * Compares two {@code Integer} objects numerically.
 	 * 
 	 * @param anotherInteger
-	 *           the {@code Integer} to be compared.
+	 *            the {@code Integer} to be compared.
 	 * @return the value {@code 0} if this {@code Integer} is equal to the
 	 *         argument {@code Integer}; a value less than {@code 0} if this
 	 *         {@code Integer} is numerically less than the argument
@@ -798,11 +804,11 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * </pre>
 	 * 
 	 * @param x
-	 *           the first {@code int} to compare
+	 *            the first {@code int} to compare
 	 * @param y
-	 *           the second {@code int} to compare
-	 * @return the value {@code 0} if {@code x == y}; a value less than {@code 0}
-	 *         if {@code x < y}; and a value greater than {@code 0} if
+	 *            the second {@code int} to compare
+	 * @return the value {@code 0} if {@code x == y}; a value less than
+	 *         {@code 0} if {@code x < y}; and a value greater than {@code 0} if
 	 *         {@code x > y}
 	 * @since 1.7
 	 */
@@ -818,7 +824,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * 
 	 * @since 1.5
 	 */
-	public static final int	SIZE	= 32;
+	public static final int SIZE = 32;
 
 	/**
 	 * Returns an {@code int} value with at most a single one-bit, in the
@@ -829,8 +835,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * 
 	 * @param i
 	 * 
-	 * @return an {@code int} value with a single one-bit, in the position of the
-	 *         highest-order one-bit in the specified value, or zero if the
+	 * @return an {@code int} value with a single one-bit, in the position of
+	 *         the highest-order one-bit in the specified value, or zero if the
 	 *         specified value is itself equal to zero.
 	 * @since 1.5
 	 */
@@ -847,8 +853,8 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * 
 	 * @param i
 	 * 
-	 * @return an {@code int} value with a single one-bit, in the position of the
-	 *         lowest-order one-bit in the specified value, or zero if the
+	 * @return an {@code int} value with a single one-bit, in the position of
+	 *         the lowest-order one-bit in the specified value, or zero if the
 	 *         specified value is itself equal to zero.
 	 * @since 1.5
 	 */
@@ -969,13 +975,14 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	}
 
 	/**
-	 * Returns the value obtained by reversing the order of the bits in the two's
-	 * complement binary representation of the specified {@code int} value.
+	 * Returns the value obtained by reversing the order of the bits in the
+	 * two's complement binary representation of the specified {@code int}
+	 * value.
 	 * 
 	 * @param i
 	 * 
-	 * @return the value obtained by reversing order of the bits in the specified
-	 *         {@code int} value.
+	 * @return the value obtained by reversing order of the bits in the
+	 *         specified {@code int} value.
 	 * @since 1.5
 	 */
 	public static int reverse(int i) {
@@ -1011,7 +1018,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	}
 
 	/** use serialVersionUID from JDK 1.0.2 for interoperability */
-	private static final long	serialVersionUID	= 1360826667806852920L;
+	private static final long serialVersionUID = 1360826667806852920L;
 
 	/**
 	 * increments the value by one

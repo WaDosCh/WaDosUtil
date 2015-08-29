@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketException;
 import java.util.Timer;
+
 import ch.judos.generic.data.HashMapR;
 import ch.judos.generic.data.SerializerException;
 import ch.judos.generic.games.easymp.Monitor;
@@ -19,16 +20,16 @@ import ch.judos.generic.wrappers.WrappedTimerTask;
  */
 public class Launcher implements UdpListener {
 
-	public static final int								START_PORT	= 20000;
+	public static final int START_PORT = 20000;
 
-	private Udp4I											udp;
-	private boolean										isServer;
+	private Udp4I udp;
+	private boolean isServer;
 
-	private HashMapR<InetSocketAddress, PlayerI>	playerList;
+	private HashMapR<InetSocketAddress, PlayerI> playerList;
 
-	private Communicator									communicator;
+	private Communicator communicator;
 
-	private Timer	timer;
+	private Timer timer;
 
 	public static void main(String[] args) {
 		new Launcher().start();
@@ -42,12 +43,17 @@ public class Launcher implements UdpListener {
 		Frame f = new Frame(this::frameWasClosed);
 		f.setTitle((this.isServer ? "Server" : "Client") + " " + this.udp.getLocalPort());
 
-		Data d = new Data(f.getTextField());
+		Data d = new Data();
+		d.frame = f;
+		if (this.isServer) {
+			d.t0 = new TextFieldModel(f.getTextField());
+			d.t1 = new TextFieldModel(f.textfield2);
+		}
 		Monitor.getMonitor().addMonitoredObject(d);
 
 		if (!this.isServer)
 			sendClientJoinToServer();
-		
+
 		Runnable r = () -> Monitor.getMonitor().update();
 		this.timer = new Timer();
 		this.timer.scheduleAtFixedRate(new WrappedTimerTask(r), 0, 50);
@@ -122,10 +128,10 @@ public class Launcher implements UdpListener {
 			System.out.println("Player joined: " + from);
 			Player newClient = new Player();
 			this.playerList.put(from, newClient);
-			Monitor.getMonitor().syncNewPlayer(newClient); 
+			Monitor.getMonitor().syncNewPlayer(newClient);
 		}
 		else {
-			new Exception("Invalid raw data msg received: "+arr).printStackTrace();
+			new Exception("Invalid raw data msg received: " + arr).printStackTrace();
 		}
 	}
 

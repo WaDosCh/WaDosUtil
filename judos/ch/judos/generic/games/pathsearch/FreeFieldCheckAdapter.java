@@ -8,7 +8,7 @@ import java.util.HashSet;
  */
 public abstract class FreeFieldCheckAdapter implements FreeFieldChecker {
 
-	protected GridMap	map;
+	protected GridMap map;
 
 	public FreeFieldCheckAdapter(GridMap map) {
 		this.map = map;

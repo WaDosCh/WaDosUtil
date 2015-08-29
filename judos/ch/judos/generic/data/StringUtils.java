@@ -18,20 +18,20 @@ public class StringUtils {
 	/**
 	 * the new line string value
 	 */
-	public static String	newline		= System.getProperty("line.separator");
+	public static String newline = System.getProperty("line.separator");
 
 	/**
 	 * the standard character to escape characters equals to linebreak or
 	 * separators in fields
 	 */
-	public static String	escape		= "\\";
+	public static String escape = "\\";
 
 	/**
 	 * the standard character to separate entries
 	 */
-	public static String	linebreak	= "\n";
+	public static String linebreak = "\n";
 
-	public static String	returnChar	= "\t";
+	public static String returnChar = "\t";
 
 	/**
 	 * escapes all critical characters in this field
@@ -101,8 +101,8 @@ public class StringUtils {
 	 * @param string1
 	 * @param string2
 	 * 
-	 * @return the levenshtein distance between two strings measured in number of
-	 *         characters removed/edited
+	 * @return the levenshtein distance between two strings measured in number
+	 *         of characters removed/edited
 	 */
 	public static int getLevenshteinDistance(String string1, String string2) {
 		String a = string1.toLowerCase();
@@ -131,8 +131,8 @@ public class StringUtils {
 	 * 
 	 * @param s
 	 * @param t
-	 * @return the levenshtein distance between two strings measured in number of
-	 *         characters removed/edited
+	 * @return the levenshtein distance between two strings measured in number
+	 *         of characters removed/edited
 	 */
 	public static int distanceRec(String s, String t) {
 		/*
@@ -152,8 +152,8 @@ public class StringUtils {
 			return distanceRec(s.substring(1), t.substring(1));
 
 		/*
-		 * else try: changing first letter of s to that of t, remove first letter
-		 * of s, or remove first letter of t
+		 * else try: changing first letter of s to that of t, remove first
+		 * letter of s, or remove first letter of t
 		 */
 		int a = distanceRec(s.substring(1), t.substring(1));
 		int b = distanceRec(s, t.substring(1));
@@ -207,7 +207,7 @@ public class StringUtils {
 	 * 
 	 * @param text
 	 * @param charCount
-	 *           the maximum of characters in the string
+	 *            the maximum of characters in the string
 	 * @return the shortened text
 	 */
 	public static String shorten(String text, int charCount) {
@@ -233,7 +233,7 @@ public class StringUtils {
 
 	private static class CharIterableString implements Iterable<String> {
 
-		private String	string;
+		private String string;
 
 		public CharIterableString(String string) {
 			this.string = string;
@@ -248,7 +248,7 @@ public class StringUtils {
 
 	private static class CharIterator implements Iterator<String> {
 
-		private StringBuffer	s;
+		private StringBuffer s;
 
 		public CharIterator(String s) {
 			this.s = new StringBuffer();
@@ -276,8 +276,8 @@ public class StringUtils {
 	/**
 	 * @param text
 	 * @param findReplaces
-	 *           an arbitrary number of arrays with 2 elements [0]=find
-	 *           [1]=replace
+	 *            an arbitrary number of arrays with 2 elements [0]=find
+	 *            [1]=replace
 	 * @return
 	 */
 	@SuppressWarnings("all")
@@ -309,16 +309,16 @@ public class StringUtils {
 
 	/**
 	 * @param s
-	 *           the text
+	 *            the text
 	 * @param start
-	 *           position in string, might be negative. A negative start position
-	 *           means to start at the end.<br>
-	 *           substr(s,-1) will return the last letter
+	 *            position in string, might be negative. A negative start
+	 *            position means to start at the end.<br>
+	 *            substr(s,-1) will return the last letter
 	 * @param length
-	 *           of output string. Might also be negative to get back all
-	 *           characters except n.<br>
-	 *           substr(s,0,-5) will return everything except the last 5
-	 *           characters.
+	 *            of output string. Might also be negative to get back all
+	 *            characters except n.<br>
+	 *            substr(s,0,-5) will return everything except the last 5
+	 *            characters.
 	 * @return the cut out string
 	 */
 	@SuppressWarnings("all")
@@ -335,11 +335,11 @@ public class StringUtils {
 
 	/**
 	 * @param s
-	 *           the text
+	 *            the text
 	 * @param start
-	 *           position in string, might be negative. A negative start position
-	 *           means to start at the end.<br>
-	 *           substr(s,-1) will return the last letter
+	 *            position in string, might be negative. A negative start
+	 *            position means to start at the end.<br>
+	 *            substr(s,-1) will return the last letter
 	 * @return the cut out string
 	 */
 	public static String substr(String s, int start) {
@@ -351,7 +351,7 @@ public class StringUtils {
 	 * to match the given length
 	 * 
 	 * @param obj
-	 *           provides the String via the toString method
+	 *            provides the String via the toString method
 	 * @param length
 	 * @return the repeated String
 	 */
@@ -385,14 +385,14 @@ public class StringUtils {
 
 	/**
 	 * @param obj
-	 *           the Object witch provides the String via toString method
+	 *            the Object witch provides the String via toString method
 	 * @param length
 	 * @param ex
-	 *           the extension String to insert on the left<br>
-	 *           the first n chars are used, where n is
-	 *           length-obj.toString().length<br>
-	 *           if n is bigger than ex.length, the inserted chars are again used
-	 *           from the beginning of ex
+	 *            the extension String to insert on the left<br>
+	 *            the first n chars are used, where n is
+	 *            length-obj.toString().length<br>
+	 *            if n is bigger than ex.length, the inserted chars are again
+	 *            used from the beginning of ex
 	 * @return the extended string
 	 */
 	@SuppressWarnings("all")
@@ -409,14 +409,14 @@ public class StringUtils {
 
 	/**
 	 * @param obj
-	 *           the Object witch provides the String via toString method
+	 *            the Object witch provides the String via toString method
 	 * @param length
 	 * @param ex
-	 *           the extension String to insert on the right<br>
-	 *           the first n chars are used, where n is
-	 *           length-obj.toString().length<br>
-	 *           if n is bigger than ex.length, the inserted chars are again used
-	 *           from the beginning of ex
+	 *            the extension String to insert on the right<br>
+	 *            the first n chars are used, where n is
+	 *            length-obj.toString().length<br>
+	 *            if n is bigger than ex.length, the inserted chars are again
+	 *            used from the beginning of ex
 	 * @return the extended string
 	 */
 	public static String extendRightWith(Object obj, int length, String ex) {
@@ -431,11 +431,11 @@ public class StringUtils {
 
 	/**
 	 * @param f
-	 *           a text file
+	 *            a text file
 	 * @return the plain text content of the file
 	 * @throws IOException
-	 *            if the file is not found or an exception occured during reading
-	 *            the content
+	 *             if the file is not found or an exception occured during
+	 *             reading the content
 	 */
 	public static StringBuffer file2String(File f) throws IOException {
 		try (BufferedReader read = new BufferedReader(new FileReader(f))) {

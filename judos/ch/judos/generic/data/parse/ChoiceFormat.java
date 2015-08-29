@@ -7,7 +7,7 @@ package ch.judos.generic.data.parse;
  */
 public class ChoiceFormat extends ComposedFormat {
 
-	private int	choice;
+	private int choice;
 
 	/**
 	 * @param parts

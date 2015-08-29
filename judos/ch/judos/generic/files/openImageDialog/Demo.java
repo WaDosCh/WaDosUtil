@@ -52,10 +52,10 @@ import javax.swing.*;
  */
 @SuppressWarnings("all")
 public class Demo extends JPanel implements ActionListener {
-	private static final long	serialVersionUID	= -2763901179684304188L;
-	static private String		newline				= "\n";
-	private JTextArea				log;
-	private JFileChooser			fc;
+	private static final long serialVersionUID = -2763901179684304188L;
+	static private String newline = "\n";
+	private JTextArea log;
+	private JFileChooser fc;
 
 	public Demo() {
 		super(new BorderLayout());

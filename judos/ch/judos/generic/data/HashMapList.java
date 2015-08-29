@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class HashMapList<K, V> {
 
-	protected HashMap<K, ArrayList<V>>	map;
+	protected HashMap<K, ArrayList<V>> map;
 
 	public HashMapList() {
 		this.map = new HashMap<>();

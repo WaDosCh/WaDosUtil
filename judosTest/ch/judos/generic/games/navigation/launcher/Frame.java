@@ -17,12 +17,12 @@ import javax.swing.JPanel;
  */
 public class Frame extends JFrame implements KeyListener {
 
-	public static final int		FPS					= 60;
+	public static final int FPS = 60;
 
-	private static final long	serialVersionUID	= -5151041547543472432L;
-	private Timer					timer;
+	private static final long serialVersionUID = -5151041547543472432L;
+	private Timer timer;
 
-	JPanelX							content;
+	JPanelX content;
 
 	public Frame(Main m) {
 		super("Walking test");
@@ -98,8 +98,8 @@ public class Frame extends JFrame implements KeyListener {
 
 	private static class JPanelX extends JPanel {
 
-		private static final long	serialVersionUID	= -4579397306400357694L;
-		private Main					m;
+		private static final long serialVersionUID = -4579397306400357694L;
+		private Main m;
 
 		public JPanelX(Main m) {
 			super(true);

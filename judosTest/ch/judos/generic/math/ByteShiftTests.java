@@ -10,8 +10,8 @@ import ch.judos.generic.math.ConvertNumber;
 public class ByteShiftTests extends TestCase {
 
 	public void testByteShifting() {
-		int[] test = new int[] { 127, 128 };
-		boolean[] testB = new boolean[] { false, true };
+		int[] test = new int[]{127, 128};
+		boolean[] testB = new boolean[]{false, true};
 
 		for (int i = 0; i < test.length; i++) {
 			boolean flag = (test[i] >>> 7) == 1;

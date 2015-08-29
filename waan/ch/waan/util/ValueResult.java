@@ -7,7 +7,7 @@ import ch.waan.function.ErrableFunction;
 
 class ValueResult<T> extends Result<T> {
 
-	private final T	value;
+	private final T value;
 
 	ValueResult(T value) {
 		Objects.requireNonNull(value);
@@ -41,7 +41,8 @@ class ValueResult<T> extends Result<T> {
 			if (result != null)
 				return new ValueResult<>(result);
 			return new EmptyResult<>();
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			return new ErrorResult<>(e);
 		}
 	}
@@ -50,7 +51,8 @@ class ValueResult<T> extends Result<T> {
 	public <E> Result<E> flatMap(ErrableFunction<T, Result<E>> mapper) {
 		try {
 			return mapper.apply(this.value);
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) {
 			return new ErrorResult<>(ex);
 		}
 	}

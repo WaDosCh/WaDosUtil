@@ -10,7 +10,7 @@ public class ComposedFormat extends Format {
 	/**
 	 * stores the individual formats
 	 */
-	protected Format[]	parts;
+	protected Format[] parts;
 
 	/**
 	 * @param parts
@@ -87,8 +87,8 @@ public class ComposedFormat extends Format {
 
 	/**
 	 * allows any object as formatParts.<br>
-	 * Objects that don't extend FormatPart will be interpretated as ConstantFP's
-	 * with value of their toString() method
+	 * Objects that don't extend FormatPart will be interpretated as
+	 * ConstantFP's with value of their toString() method
 	 * 
 	 * @param initParts
 	 */

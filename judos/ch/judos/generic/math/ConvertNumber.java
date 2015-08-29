@@ -28,7 +28,8 @@ public class ConvertNumber {
 			if (b.compareTo(BigDecimal.ONE) >= 0) {
 				b = b.subtract(BigDecimal.ONE);
 				output.append(1);
-			} else
+			}
+			else
 				output.append(0);
 			if (b.compareTo(BigDecimal.ZERO) == 0)
 				break;
@@ -62,7 +63,8 @@ public class ConvertNumber {
 	public static boolean isDouble(String str) {
 		try {
 			Double.parseDouble(str);
-		} catch (NumberFormatException nfe) {
+		}
+		catch (NumberFormatException nfe) {
 			return false;
 		}
 		return true;
@@ -77,7 +79,8 @@ public class ConvertNumber {
 	public static boolean isInt(String str) {
 		try {
 			Integer.parseInt(str);
-		} catch (NumberFormatException nfe) {
+		}
+		catch (NumberFormatException nfe) {
 			return false;
 		}
 		return true;

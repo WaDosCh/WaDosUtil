@@ -10,7 +10,7 @@ import ch.judos.generic.games.pathsearch.WayPoint;
  */
 public class GroundFieldChecker extends FreeFieldCheckAdapter {
 
-	private Map	gMap;
+	private Map gMap;
 
 	public GroundFieldChecker(Map map) {
 		super(map);

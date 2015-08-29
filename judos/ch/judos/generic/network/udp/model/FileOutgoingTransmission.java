@@ -18,29 +18,29 @@ import ch.judos.generic.network.udp.interfaces.UdpFileTransferListener;
  */
 public class FileOutgoingTransmission {
 
-	private int						currentPos;
+	private int currentPos;
 
-	private String					description;
-	private File					file;
-	private UdpFileTransferListener	fileListener;
-	private long					lastSentLastPart;
-	private long					listenerLastUpdate;
+	private String description;
+	private File file;
+	private UdpFileTransferListener fileListener;
+	private long lastSentLastPart;
+	private long listenerLastUpdate;
 
-	private LinkedList<Integer>		missing;
+	private LinkedList<Integer> missing;
 
-	private int						packetSize;
+	private int packetSize;
 
-	private int						parts;
+	private int parts;
 
-	private RandomAccessFile		rFile;
+	private RandomAccessFile rFile;
 
-	private int						speed;
+	private int speed;
 
-	private SpeedMeasurement		speedMeasure;
+	private SpeedMeasurement speedMeasure;
 
-	private Status					status;
+	private Status status;
 
-	private InetSocketAddress		to;
+	private InetSocketAddress to;
 
 	public FileOutgoingTransmission(File file, String description, int packetSize,
 		InetSocketAddress to, UdpFileTransferListener fileListener)
@@ -78,8 +78,8 @@ public class FileOutgoingTransmission {
 	}
 
 	public FileDescription getFileDescription() {
-		return new FileDescription(this.file.length(), this.parts, this.file.getAbsolutePath(),
-			this.description);
+		return new FileDescription(this.file.length(), this.parts,
+			this.file.getAbsolutePath(), this.description);
 	}
 
 	private byte[] getPart(int partNr) throws IOException {
@@ -118,7 +118,8 @@ public class FileOutgoingTransmission {
 				try {
 					u.sendFileMessage(partNr, getPart(partNr), this.to);
 					remainingPackets--;
-				} catch (IOException e) {
+				}
+				catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
@@ -134,17 +135,20 @@ public class FileOutgoingTransmission {
 						this.lastSentLastPart = System.currentTimeMillis();
 						break;
 					}
-				} catch (IOException e) {
+				}
+				catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-		} else { // awaiting request messages or complete confirmation
+		}
+		else { // awaiting request messages or complete confirmation
 			long delay = System.currentTimeMillis() - this.lastSentLastPart;
 			if (delay > UdpConfig.RESEND_FINAL_PACKET_MS) {
 				int partNr = this.parts - 1;
 				try {
 					u.sendFileMessage(partNr, getPart(partNr), this.to);
-				} catch (IOException e) {
+				}
+				catch (IOException e) {
 					e.printStackTrace();
 				}
 				this.lastSentLastPart = System.currentTimeMillis();

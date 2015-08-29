@@ -12,11 +12,11 @@ public class TimerJS {
 	/**
 	 * time of the start
 	 */
-	protected long		ns;
+	protected long ns;
 	/**
 	 * name of the timer
 	 */
-	protected String	name;
+	protected String name;
 
 	/**
 	 * create a timer

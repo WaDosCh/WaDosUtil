@@ -44,9 +44,9 @@ import javax.swing.JFileChooser;
 
 /* ImagePreview.java by FileChooserDemo2.java. */
 public class ImagePreview extends JComponent implements PropertyChangeListener {
-	private static final long	serialVersionUID	= -6290428046882199356L;
-	ImageIcon					thumbnail			= null;
-	File						file				= null;
+	private static final long serialVersionUID = -6290428046882199356L;
+	ImageIcon thumbnail = null;
+	File file = null;
 
 	public ImagePreview(JFileChooser fc) {
 		setPreferredSize(new Dimension(100, 50));
@@ -63,14 +63,15 @@ public class ImagePreview extends JComponent implements PropertyChangeListener {
 		// because the image we're trying to load is probably not one
 		// of this program's own resources.
 		ImageIcon tmpIcon = new ImageIcon(this.file.getPath());
-		//if (tmpIcon != null) {
-			if (tmpIcon.getIconWidth() > 90) {
-				this.thumbnail = new ImageIcon(tmpIcon.getImage().getScaledInstance(90, -1,
-					Image.SCALE_DEFAULT));
-			} else { // no need to miniaturize
-				this.thumbnail = tmpIcon;
-			}
-		//}
+		// if (tmpIcon != null) {
+		if (tmpIcon.getIconWidth() > 90) {
+			this.thumbnail = new ImageIcon(tmpIcon.getImage().getScaledInstance(90, -1,
+				Image.SCALE_DEFAULT));
+		}
+		else { // no need to miniaturize
+			this.thumbnail = tmpIcon;
+		}
+		// }
 	}
 
 	@Override
@@ -84,7 +85,8 @@ public class ImagePreview extends JComponent implements PropertyChangeListener {
 			update = true;
 
 			// If a file became selected, find out which one.
-		} else if (JFileChooser.SELECTED_FILE_CHANGED_PROPERTY.equals(prop)) {
+		}
+		else if (JFileChooser.SELECTED_FILE_CHANGED_PROPERTY.equals(prop)) {
 			this.file = (File) e.getNewValue();
 			update = true;
 		}

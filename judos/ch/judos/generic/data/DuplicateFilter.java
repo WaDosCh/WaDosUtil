@@ -6,9 +6,9 @@ package ch.judos.generic.data;
  */
 public class DuplicateFilter {
 
-	private int		cleanUpCounter;
-	private Group	gMaster;
-	protected int	groupStart;
+	private int cleanUpCounter;
+	private Group gMaster;
+	protected int groupStart;
 
 	public DuplicateFilter() {
 		this.gMaster = new Group(3);
@@ -18,7 +18,7 @@ public class DuplicateFilter {
 
 	/**
 	 * @param index
-	 *           checks if this index has been hit before
+	 *            checks if this index has been hit before
 	 * @return true if index was not hit, false otherwise
 	 */
 	public boolean check(int index) {
@@ -27,8 +27,8 @@ public class DuplicateFilter {
 
 	/**
 	 * it is assumed that the indices circulate from Integer.MIN_VALUE to
-	 * Integer.MAX_VALUE. to be able to use indices again, this function needs to
-	 * be called
+	 * Integer.MAX_VALUE. to be able to use indices again, this function needs
+	 * to be called
 	 */
 	public void cleanup() {
 		int used = 0;
@@ -49,7 +49,7 @@ public class DuplicateFilter {
 
 	/**
 	 * @param index
-	 *           this index is hit, check(index) will return false after hit()
+	 *            this index is hit, check(index) will return false after hit()
 	 * @return true if this index has not been hit before, false otherwise
 	 */
 	public boolean hit(int index) {
@@ -61,11 +61,11 @@ public class DuplicateFilter {
 
 	protected static class Group {
 
-		private int	div;
-		boolean[]	f;
-		int			finished;
-		Group[]		g;
-		private int	lvl;
+		private int div;
+		boolean[] f;
+		int finished;
+		Group[] g;
+		private int lvl;
 
 		public Group(int lvl) {
 			this.lvl = lvl;
@@ -84,7 +84,8 @@ public class DuplicateFilter {
 			int gIndex = index / this.div;
 			if (this.lvl == 3) // since integers start at -2^31
 				gIndex += 128;
-			if (this.f[gIndex]) // if whole group is already marked as hit/finished
+			if (this.f[gIndex]) // if whole group is already marked as
+								// hit/finished
 				return false;
 			if (this.g[gIndex] == null) // if group doesn't exist yet
 				return true;
@@ -109,7 +110,8 @@ public class DuplicateFilter {
 			int gIndex = index / this.div;
 			if (this.lvl == 3) // since integers start at -2^31
 				gIndex += 128;
-			if (this.f[gIndex]) // if whole group is already marked as hit/finished
+			if (this.f[gIndex]) // if whole group is already marked as
+								// hit/finished
 				return false;
 
 			int lowerIndex = index % this.div;

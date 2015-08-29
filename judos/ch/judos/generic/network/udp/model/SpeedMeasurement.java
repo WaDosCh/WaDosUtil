@@ -8,11 +8,11 @@ import java.util.LinkedList;
  */
 public class SpeedMeasurement {
 
-	private static final int	AVG_OVER_MEASUREMENTS	= 20;
-	private long				currentValue;
-	private long				lastUpdate;
-	private LinkedList<Float>	speedValues;
-	private double				sum;
+	private static final int AVG_OVER_MEASUREMENTS = 20;
+	private long currentValue;
+	private long lastUpdate;
+	private LinkedList<Float> speedValues;
+	private double sum;
 
 	public SpeedMeasurement() {
 		this.currentValue = 0;

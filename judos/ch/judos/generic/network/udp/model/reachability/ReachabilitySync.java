@@ -4,27 +4,25 @@ import java.net.InetSocketAddress;
 import ch.judos.generic.network.udp.interfaces.ReachabilityListener;
 import ch.judos.generic.network.udp.interfaces.Udp4I;
 
-
 /**
  * @since 02.06.2015
  * @author Julian Schelker
  */
 public class ReachabilitySync implements ReachabilityListener {
-	
-	
-	private int	timeout;
-	private Reachability	result;
+
+	private int timeout;
+	private Reachability result;
 
 	public ReachabilitySync(InetSocketAddress target, int timeout, Udp4I udp4) {
 		this.timeout = timeout;
-		this.result = new Reachability(false,0);
+		this.result = new Reachability(false, 0);
 		udp4.checkReachability(target, this);
 	}
 
 	@Override
 	public void connectionActive(InetSocketAddress target, int pingMS) {
 		this.result = new Reachability(true, pingMS);
-		synchronized(this) {
+		synchronized (this) {
 			this.notifyAll();
 		}
 	}
@@ -32,7 +30,7 @@ public class ReachabilitySync implements ReachabilityListener {
 	@Override
 	public void connectionTimedOut(InetSocketAddress target) {
 		this.result = new Reachability(false, this.timeout);
-		synchronized(this) {
+		synchronized (this) {
 			this.notifyAll();
 		}
 	}
@@ -44,7 +42,7 @@ public class ReachabilitySync implements ReachabilityListener {
 
 	public Reachability waitUntilDone() {
 		try {
-			synchronized(this) {
+			synchronized (this) {
 				this.wait();
 			}
 		}

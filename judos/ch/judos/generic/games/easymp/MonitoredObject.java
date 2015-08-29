@@ -8,22 +8,31 @@ import java.util.HashSet;
  */
 public class MonitoredObject {
 
-	public Object					data;
+	public ObjectId id;
+	public Object data;
 
-	private ObjectId[]			references;
-	private HashSet<ObjectId>	referencedBy;
+	// use Array here, such that it is clear what field referenced which object
+	public ObjectId[] references;
+	public HashSet<ObjectId> referencedBy;
 
-	public MonitoredObject(Object o) {
-		int amountOfFields = FieldInformation.getRelevantFieldsFor(o).size();
+	public MonitoredObject(Object o, ObjectId id) {
+		int amountOfFields = FieldInformation.getRelevantFieldsOf(o).size();
 		this.data = o;
+		this.id = id;
 		this.references = new ObjectId[amountOfFields];
 		this.referencedBy = new HashSet<>();
 	}
 
+	/**
+	 * @param fieldIndex
+	 * @deprecated is this still used?
+	 * @return
+	 */
+	@Deprecated
 	public ObjectId getObjectForField(int fieldIndex) {
 		if (fieldIndex >= this.references.length)
-			throw new RuntimeException("Field index " + fieldIndex + " out of range for object: "
-				+ this.data);
+			throw new RuntimeException("Field index " + fieldIndex
+				+ " out of range for object: " + this.data);
 		return this.references[fieldIndex];
 	}
 }

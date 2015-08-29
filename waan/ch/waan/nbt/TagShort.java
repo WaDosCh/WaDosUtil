@@ -12,8 +12,8 @@ import java.io.OutputStream;
  */
 public final class TagShort implements Tag<Short> {
 
-	private Short	value;
-	private String	name;
+	private Short value;
+	private String name;
 
 	@Override
 	public byte getTagID() {

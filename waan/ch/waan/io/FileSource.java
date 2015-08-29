@@ -7,7 +7,7 @@ import ch.waan.util.Result;
 
 final class FileSource extends Source {
 
-	private final String	filename;
+	private final String filename;
 
 	FileSource(String filename) {
 		this.filename = filename;

@@ -17,8 +17,8 @@ import ch.judos.generic.games.unitCoordination.NonReservingUnitCoordination;
  */
 public class FlyUnit extends NonReservingUnitCoordination implements Unit {
 
-	private boolean	paused;
-	private float	speed;
+	private boolean paused;
+	private float speed;
 
 	public FlyUnit(GridMap map, int x, int y) throws NoFreeSpaceException {
 		super(map, new SimpleWayPoint(x, y), new FlyUnitFieldChecker(map));
@@ -42,8 +42,7 @@ public class FlyUnit extends NonReservingUnitCoordination implements Unit {
 		for (int i = 0; i < this.targets.size(); i++) {
 			Point t1 = this.map.getPointFromField(this.targets.get(i)).getPoint();
 			if (i == 0)
-				g.drawLine((int) getPosition().getX(), (int) getPosition().getY(), t1.x,
-					t1.y);
+				g.drawLine((int) getPosition().getX(), (int) getPosition().getY(), t1.x, t1.y);
 			if (i < this.targets.size() - 1) {
 				Point t2 = this.map.getPointFromField(this.targets.get(i + 1)).getPoint();
 				g.drawLine(t1.x, t1.y, t2.x, t2.y);

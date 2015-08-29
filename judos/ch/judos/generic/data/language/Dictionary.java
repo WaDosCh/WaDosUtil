@@ -17,8 +17,7 @@ public class Dictionary {
 	 * array of all language classes<br>
 	 * add your language class here!
 	 */
-	protected static final Class<?>[]	languages	= new Class<?>[]{English.class,
-		German.class								};
+	protected static final Class<?>[] languages = new Class<?>[]{English.class, German.class};
 
 	/**
 	 * @return all supported languages
@@ -45,7 +44,8 @@ public class Dictionary {
 					Class<? extends LanguageI> c1 = (Class<? extends LanguageI>) c;
 					return c1.newInstance();
 				}
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

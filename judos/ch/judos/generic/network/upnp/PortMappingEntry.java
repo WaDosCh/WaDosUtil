@@ -40,34 +40,34 @@ public class PortMappingEntry {
 	/**
 	 * The internal port
 	 */
-	private int		internalPort;
+	private int internalPort;
 	/**
 	 * The external port of the mapping (the one on the GatewayDevice)
 	 */
-	private int		externalPort;
+	private int externalPort;
 	/**
 	 * The remote host this mapping is associated with
 	 */
-	private String	remoteHost;
+	private String remoteHost;
 	/**
 	 * The internal host this mapping is associated with
 	 */
-	private String	internalClient;
+	private String internalClient;
 	/**
 	 * The protocol associated with this mapping (i.e. <tt>TCP</tt> or
 	 * <tt>udp</tt>)
 	 */
-	private String	protocol;
+	private String protocol;
 	/**
 	 * A flag that tells whether the mapping is enabled or not (<tt>"1"</tt> for
 	 * enabled, <tt>"0"</tt> for disabled)
 	 */
-	private String	enabled;
+	private String enabled;
 	/**
 	 * A human readable description of the port mapping (used for display
 	 * purposes)
 	 */
-	private String	portMappingDescription;
+	private String portMappingDescription;
 
 	/**
 	 * Creates a new PortMappingEntry

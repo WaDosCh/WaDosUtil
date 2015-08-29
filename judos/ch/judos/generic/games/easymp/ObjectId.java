@@ -8,11 +8,11 @@ import java.io.Serializable;
  */
 public class ObjectId implements Serializable {
 
-	private static final long	serialVersionUID	= 7604606689301970415L;
-	private Type				type;
-	private int					nr;
+	private static final long serialVersionUID = 7604606689301970415L;
+	private Type type;
+	private int nr;
 	// only set if this id is of type dynamic
-	private String				clientId;
+	private String clientId;
 
 	protected ObjectId(Type type, int nr, String clientId) {
 		this.type = type;

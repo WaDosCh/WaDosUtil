@@ -10,7 +10,7 @@ package ch.judos.generic.games.pathsearch;
  */
 public class UnitOnMapFreeFieldChecker extends FreeFieldCheckAdapter {
 
-	private Obstacle	unit;
+	private Obstacle unit;
 
 	/**
 	 * @param m

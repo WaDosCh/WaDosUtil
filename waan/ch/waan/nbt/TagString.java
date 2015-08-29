@@ -12,8 +12,8 @@ import java.io.OutputStream;
  */
 public final class TagString implements Tag<String> {
 
-	private String	value;
-	private String	name;
+	private String value;
+	private String name;
 
 	/**
 	 * Creates a new String tag with given name and value

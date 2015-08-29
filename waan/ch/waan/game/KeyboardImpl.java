@@ -17,21 +17,21 @@ import org.eclipse.jdt.annotation.NonNull;
  */
 final class KeyboardImpl implements Keyboard {
 
-	final @NonNull Set<Integer>	keyList;
+	final @NonNull Set<Integer> keyList;
 
-	private final KeyAdapter	adapter	= new KeyAdapter() {
+	private final KeyAdapter adapter = new KeyAdapter() {
 
-											@Override
-											public void keyPressed(final KeyEvent e) {
-												KeyboardImpl.this.keyList.add(Integer.valueOf(e.getKeyCode()));
-											}
+		@Override
+		public void keyPressed(final KeyEvent e) {
+			KeyboardImpl.this.keyList.add(Integer.valueOf(e.getKeyCode()));
+		}
 
-											@Override
-											public void keyReleased(final KeyEvent e) {
-												KeyboardImpl.this.keyList.remove(Integer.valueOf(e.getKeyCode()));
-											}
+		@Override
+		public void keyReleased(final KeyEvent e) {
+			KeyboardImpl.this.keyList.remove(Integer.valueOf(e.getKeyCode()));
+		}
 
-										};
+	};
 
 	KeyboardImpl(final @NonNull JFrame frame) {
 		frame.addKeyListener(this.adapter);

@@ -82,9 +82,9 @@ public class ImageUtils {
 		if (ratio_is >= ratio_should) {
 			return image.getScaledInstance(-1, height, Image.SCALE_SMOOTH);
 		}
-		//else {
-			return image.getScaledInstance(width, -1, Image.SCALE_SMOOTH);
-		//}
+		// else {
+		return image.getScaledInstance(width, -1, Image.SCALE_SMOOTH);
+		// }
 
 	}
 

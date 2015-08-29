@@ -52,23 +52,23 @@ public class GatewayDevice {
 	 * Issues UPnP commands to a GatewayDevice that can be reached at the
 	 * specified <tt>url</tt>
 	 * 
-	 * The command is identified by a <tt>service</tt> and an <tt>action</tt> and
-	 * can receive arguments
+	 * The command is identified by a <tt>service</tt> and an <tt>action</tt>
+	 * and can receive arguments
 	 * 
 	 * @param url
-	 *           the url to use to contact the device
+	 *            the url to use to contact the device
 	 * @param service
-	 *           the service to invoke
+	 *            the service to invoke
 	 * @param action
-	 *           the specific action to perform
+	 *            the specific action to perform
 	 * @param args
-	 *           the command arguments
+	 *            the command arguments
 	 * @return the response to the performed command, as a name-value map. In
 	 *         case errors occur, the returned map will be <i>empty.</i>
 	 * @throws IOException
-	 *            on communication errors
+	 *             on communication errors
 	 * @throws SAXException
-	 *            if errors occur while parsing the response
+	 *             if errors occur while parsing the response
 	 */
 	public static Map<String, String> simpleUPnPcommand(String url, String service,
 		String action, Map<String, String> args) throws IOException, SAXException {
@@ -133,57 +133,57 @@ public class GatewayDevice {
 		// }
 	}
 
-	private String			controlURL;
-	private String			controlURLCIF;
-	private String			deviceType;
-	private String			deviceTypeCIF;
-	private String			eventSubURL;
-	private String			eventSubURLCIF;
+	private String controlURL;
+	private String controlURLCIF;
+	private String deviceType;
+	private String deviceTypeCIF;
+	private String eventSubURL;
+	private String eventSubURLCIF;
 	/**
 	 * The friendly (human readable) name associated with this device
 	 */
-	private String			friendlyName;
+	private String friendlyName;
 	/**
 	 * The address used to reach this machine from the GatewayDevice
 	 */
-	private InetAddress	localAddress;
-	private String			location;
+	private InetAddress localAddress;
+	private String location;
 	/**
 	 * The device manufacturer name
 	 */
-	private String			manufacturer;
+	private String manufacturer;
 	/**
 	 * The model description as a string
 	 */
-	private String			modelDescription;
+	private String modelDescription;
 	/**
 	 * The model name
 	 */
-	private String			modelName;
+	private String modelName;
 
 	// description data
 
 	/**
 	 * The model number (used by the manufacturer to identify the product)
 	 */
-	private String			modelNumber;
+	private String modelNumber;
 
 	/**
 	 * The URL that can be used to access the IGD interface
 	 */
-	private String			presentationURL;
+	private String presentationURL;
 
-	private String			sCPDURL;
+	private String sCPDURL;
 
-	private String			sCPDURLCIF;
+	private String sCPDURLCIF;
 
-	private String			serviceType;
+	private String serviceType;
 
-	private String			serviceTypeCIF;
+	private String serviceTypeCIF;
 
-	private String			st;
+	private String st;
 
-	private String			urlBase;
+	private String urlBase;
 
 	/**
 	 * Creates a new instance of GatewayDevice
@@ -196,15 +196,15 @@ public class GatewayDevice {
 	 * parameters.
 	 * 
 	 * @param externalPort
-	 *           the external associated with the new mapping
+	 *            the external associated with the new mapping
 	 * @param internalPort
-	 *           the internal port associated with the new mapping
+	 *            the internal port associated with the new mapping
 	 * @param internalClient
-	 *           the internal client associated with the new mapping
+	 *            the internal client associated with the new mapping
 	 * @param protocol
-	 *           the protocol associated with the new mapping
+	 *            the protocol associated with the new mapping
 	 * @param description
-	 *           the mapping description
+	 *            the mapping description
 	 * @return true if the mapping was succesfully added, false otherwise
 	 * @throws IOException
 	 * @throws SAXException
@@ -252,9 +252,9 @@ public class GatewayDevice {
 	 * <tt>protocol</tt>
 	 * 
 	 * @param externalPort
-	 *           the external port
+	 *            the external port
 	 * @param protocol
-	 *           the protocol
+	 *            the protocol
 	 * @return true if removal was successful
 	 * @throws IOException
 	 * @throws SAXException
@@ -322,10 +322,10 @@ public class GatewayDevice {
 	 * Returns a specific port mapping entry, depending on a the supplied index.
 	 * 
 	 * @param index
-	 *           the index of the desired port mapping
+	 *            the index of the desired port mapping
 	 * @param portMappingEntry
-	 *           the entry containing the details, in any is present, <i>null</i>
-	 *           otherwise. <i>(used as return value)</i>
+	 *            the entry containing the details, in any is present,
+	 *            <i>null</i> otherwise. <i>(used as return value)</i>
 	 * @return true if a valid mapping is found
 	 * @throws IOException
 	 * @throws SAXException
@@ -335,9 +335,8 @@ public class GatewayDevice {
 	 * @todo consider refactoring this method to make it consistend with Java
 	 *       practices (return the port mapping)
 	 */
-	public boolean
-		getGenericPortMappingEntry(int index, final PortMappingEntry portMappingEntry)
-			throws IOException, SAXException {
+	public boolean getGenericPortMappingEntry(int index,
+		final PortMappingEntry portMappingEntry) throws IOException, SAXException {
 		Map<String, String> args = new HashMap<>();
 		args.put("NewPortMappingIndex", Integer.toString(index));
 
@@ -345,7 +344,8 @@ public class GatewayDevice {
 			"GetGenericPortMappingEntry", args);
 
 		try {
-			portMappingEntry.setExternalPort(Integer.parseInt(nameValue.get("NewExternalPort")));
+			portMappingEntry.setExternalPort(Integer
+				.parseInt(nameValue.get("NewExternalPort")));
 		}
 		catch (Exception e) {
 		}
@@ -355,7 +355,8 @@ public class GatewayDevice {
 		portMappingEntry.setProtocol(nameValue.get("NewProtocol"));
 
 		try {
-			portMappingEntry.setInternalPort(Integer.parseInt(nameValue.get("NewInternalPort")));
+			portMappingEntry.setInternalPort(Integer
+				.parseInt(nameValue.get("NewInternalPort")));
 		}
 		catch (Exception e) {
 		}
@@ -411,7 +412,8 @@ public class GatewayDevice {
 		Integer portMappingNumber = null;
 
 		try {
-			portMappingNumber = Integer.valueOf(nameValue.get("NewPortMappingNumberOfEntries"));
+			portMappingNumber = Integer
+				.valueOf(nameValue.get("NewPortMappingNumberOfEntries"));
 		}
 		catch (Exception e) {
 		}
@@ -447,12 +449,12 @@ public class GatewayDevice {
 	 * <tt>externalPort</tt> and <tt>protocol</tt>, if present.
 	 * 
 	 * @param externalPort
-	 *           the external port
+	 *            the external port
 	 * @param protocol
-	 *           the protocol (TCP or udp)
+	 *            the protocol (TCP or udp)
 	 * @param portMappingEntry
-	 *           the entry containing the details, in any is present, <i>null</i>
-	 *           otherwise. <i>(used as return value)</i>
+	 *            the entry containing the details, in any is present,
+	 *            <i>null</i> otherwise. <i>(used as return value)</i>
 	 * @return true if a valid mapping is found
 	 * @throws IOException
 	 * @throws SAXException
@@ -530,9 +532,9 @@ public class GatewayDevice {
 	 * {@link GatewayDeviceHandler} to populate the fields of this class
 	 * 
 	 * @throws SAXException
-	 *            if an error occurs while parsing the request
+	 *             if an error occurs while parsing the request
 	 * @throws IOException
-	 *            on communication errors
+	 *             on communication errors
 	 * @see ch.judos.generic.network.upnp.GatewayDeviceHandler
 	 */
 	public void loadDescription() throws SAXException, IOException {
@@ -595,7 +597,7 @@ public class GatewayDevice {
 	 * Sets the localAddress
 	 * 
 	 * @param localAddress
-	 *           the address to set
+	 *            the address to set
 	 */
 	public void setLocalAddress(InetAddress localAddress) {
 		this.localAddress = localAddress;

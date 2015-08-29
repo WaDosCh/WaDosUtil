@@ -15,8 +15,8 @@ import ch.waan.game.ui.UIMovable;
  */
 public abstract class UICanvas implements UIMovable {
 
-	private @NonNull Point				position;
-	private final @NonNull Dimension	dimension;
+	private @NonNull Point position;
+	private final @NonNull Dimension dimension;
 
 	/**
 	 * Creates a new canvas instance.

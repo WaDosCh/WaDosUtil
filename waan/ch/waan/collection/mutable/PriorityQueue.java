@@ -24,8 +24,8 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	private class QueueElement implements Comparable<QueueElement> {
 
-		Object	element;
-		double	priority;
+		Object element;
+		double priority;
 
 		QueueElement(Object element, double priority) {
 			this.element = element;
@@ -35,15 +35,14 @@ public class PriorityQueue<E> implements Queue<E> {
 		@Override
 		public int compareTo(QueueElement o) {
 			return (PriorityQueue.this.isMinQueue ? 1 : -1)
-					* Double.compare(this.priority, o.priority);
+				* Double.compare(this.priority, o.priority);
 		}
 
 		@Override
 		public boolean equals(Object obj) {
 			if (!(obj instanceof PriorityQueue.QueueElement))
 				return false;
-			return Objects.equals(this.element,
-					((PriorityQueue<?>.QueueElement) obj).element);
+			return Objects.equals(this.element, ((PriorityQueue<?>.QueueElement) obj).element);
 		}
 
 		@Override
@@ -76,9 +75,9 @@ public class PriorityQueue<E> implements Queue<E> {
 		return new PriorityQueue<>(true);
 	}
 
-	private java.util.PriorityQueue<QueueElement>	backer;
+	private java.util.PriorityQueue<QueueElement> backer;
 
-	final boolean									isMinQueue;
+	final boolean isMinQueue;
 
 	/**
 	 * Creates a new min-priority-queue instance
@@ -104,8 +103,8 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public boolean add(E e) {
-		return this.backer.add(new QueueElement(e,
-				this.isMinQueue ? Double.MAX_VALUE : Double.MIN_VALUE));
+		return this.backer.add(new QueueElement(e, this.isMinQueue ? Double.MAX_VALUE
+			: Double.MIN_VALUE));
 	}
 
 	/**
@@ -120,12 +119,9 @@ public class PriorityQueue<E> implements Queue<E> {
 		this.backer.add(new QueueElement(element, priority));
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
-		return c.stream()
-				.map(this::add)
-				.reduce(false, (a, b) -> a || b);
+		return c.stream().map(this::add).reduce(false, (a, b) -> a || b);
 	}
 
 	@Override
@@ -140,8 +136,7 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public boolean containsAll(Collection<?> c) {
-		return c.stream()
-				.allMatch(this::contains);
+		return c.stream().allMatch(this::contains);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -180,7 +175,7 @@ public class PriorityQueue<E> implements Queue<E> {
 		return new Iterator<E>() {
 
 			@SuppressWarnings("synthetic-access")
-			Iterator<QueueElement>	backedIterator	= PriorityQueue.this.backer.iterator();
+			Iterator<QueueElement> backedIterator = PriorityQueue.this.backer.iterator();
 
 			@Override
 			public boolean hasNext() {
@@ -225,16 +220,13 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		return c.stream()
-				.map(this::remove)
-				.reduce(false, (a, b) -> a || b);
+		return c.stream().map(this::remove).reduce(false, (a, b) -> a || b);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		return this.backer.retainAll(c.stream()
-				.map(e -> new QueueElement(e, 0))
-				.collect(Collectors.toList()));
+		return this.backer.retainAll(c.stream().map(e -> new QueueElement(e, 0)).collect(
+			Collectors.toList()));
 	}
 
 	/**
@@ -258,9 +250,7 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public Object[] toArray() {
-		return this.backer.stream()
-				.map(e -> e.element)
-				.toArray();
+		return this.backer.stream().map(e -> e.element).toArray();
 	}
 
 	@SuppressWarnings("unchecked")

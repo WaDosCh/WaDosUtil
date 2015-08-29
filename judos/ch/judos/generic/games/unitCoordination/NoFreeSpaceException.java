@@ -10,7 +10,7 @@ package ch.judos.generic.games.unitCoordination;
  */
 public class NoFreeSpaceException extends RuntimeException {
 
-	private static final long	serialVersionUID	= -8101964666375940569L;
+	private static final long serialVersionUID = -8101964666375940569L;
 
 	/**
 	 * standard error message "No free space available"

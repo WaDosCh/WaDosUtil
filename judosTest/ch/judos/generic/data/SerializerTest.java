@@ -12,7 +12,7 @@ import ch.judos.generic.data.SerializerException;
  * @author Julian Schelker
  */
 public class SerializerTest {
-	
+
 	@Test
 	public void testObject() throws SerializerException {
 		ArrayList<Integer> x = new ArrayList<>();
@@ -23,9 +23,9 @@ public class SerializerTest {
 		Object o = Serializer.bytes2object(data);
 		assertEquals(x, o);
 	}
-	
+
 	@Test
-	public void testXml() throws SerializerException  {
+	public void testXml() throws SerializerException {
 		String xml = "<root><type>someTestMessage</type><clients>"
 			+ "<client><ip>127.0.0.1</ip><port>50000</port><name>julian</name>"
 			+ "</client></clients></root>";
@@ -33,11 +33,10 @@ public class SerializerTest {
 		String xml2 = Serializer.document2Text(doc);
 		assertEquals(xml, xml2);
 	}
-	
+
 	@Test
 	public void testIntegers() {
-		int[] i = new int[] { Integer.MAX_VALUE, Integer.MIN_VALUE, 0, 1000,
-			-42 };
+		int[] i = new int[]{Integer.MAX_VALUE, Integer.MIN_VALUE, 0, 1000, -42};
 		byte[] data = new byte[6];
 		for (int test : i) {
 			Serializer.int2bytes(data, 1, test);
@@ -45,5 +44,5 @@ public class SerializerTest {
 			assertEquals(test, test2);
 		}
 	}
-	
+
 }

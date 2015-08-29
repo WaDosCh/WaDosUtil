@@ -21,17 +21,17 @@ import org.eclipse.jdt.annotation.Nullable;
 public final class LinkedQueue<@Nullable E> implements Queue<E> {
 
 	private class Node<T> {
-		T		item;
-		Node<T>	next;
+		T item;
+		Node<T> next;
 
 		Node(T item) {
 			this.item = item;
 		}
 	}
 
-	private Node<E>	head	= null;
-	private Node<E>	tail	= null;
-	private int		size	= 0;
+	private Node<E> head = null;
+	private Node<E> tail = null;
+	private int size = 0;
 
 	@Override
 	public int size() {
@@ -75,8 +75,7 @@ public final class LinkedQueue<@Nullable E> implements Queue<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T[] toArray(T[] a) {
-		T[] array = (T[]) Array.newInstance(a.getClass()
-				.getComponentType(), this.size);
+		T[] array = (T[]) Array.newInstance(a.getClass().getComponentType(), this.size);
 		Iterator<E> it = this.iterator();
 		for (int i = 0; i < array.length && it.hasNext(); i++)
 			array[i] = (T) it.next();
@@ -125,7 +124,8 @@ public final class LinkedQueue<@Nullable E> implements Queue<E> {
 	public boolean add(E e) {
 		if (this.head == null) {
 			this.tail = this.head = new Node<>(e);
-		} else {
+		}
+		else {
 			Node<E> node = new Node<>(e);
 			this.tail.next = node;
 			this.tail = node;
@@ -173,7 +173,7 @@ public final class LinkedQueue<@Nullable E> implements Queue<E> {
 
 	private class QueueIterator<@Nullable T> implements Iterator<T> {
 
-		private Node<T>	currentNode;
+		private Node<T> currentNode;
 
 		QueueIterator(Node<T> head) {
 			this.currentNode = new Node<>(null);

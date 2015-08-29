@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  */
 public class ComponentListTest extends JFrame {
 
-	private static final long	serialVersionUID	= 3202698926181997884L;
+	private static final long serialVersionUID = 3202698926181997884L;
 
 	public static void main(String[] args) {
 		new ComponentListTest().showTest();

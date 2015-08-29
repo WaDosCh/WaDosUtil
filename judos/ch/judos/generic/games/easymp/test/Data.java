@@ -1,37 +1,26 @@
 package ch.judos.generic.games.easymp.test;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.io.Serializable;
-import javax.swing.JTextField;
-import ch.judos.generic.games.easymp.Monitor;
 import ch.judos.generic.games.easymp.model.UpdatableI;
 
 /**
- * @since 22.05.2015
+ * @since 23.08.2015
  * @author Julian Schelker
  */
-public class Data extends KeyAdapter implements UpdatableI, Serializable {
+public class Data implements UpdatableI {
+	public TextFieldModel t0, t1, t2;
 
-	private static final long		serialVersionUID	= -8659183434463452484L;
+	public transient Frame frame;
 
-	public String						text;
-
-	public transient JTextField	textField;
-
-	public Data(JTextField textField) {
-		this.textField = textField;
-		this.textField.addKeyListener(this);
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		this.text = this.textField.getText();
-		Monitor.getMonitor().forceUpdate(this);
+	public Data() {
 	}
 
 	@Override
 	public void wasUpdated() {
-		this.textField.setText(this.text);
+		if (this.t0 != null) {
+			this.t0.setup(this.frame.getTextField());
+		}
+		if (this.t1 != null) {
+			this.t1.setup(this.frame.textfield2);
+		}
 	}
 }

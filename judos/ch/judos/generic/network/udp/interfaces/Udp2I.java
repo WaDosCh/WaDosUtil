@@ -26,11 +26,12 @@ public interface Udp2I {
 
 	public void removeListener(Layer2Listener listener);
 
-	public void sendDataTo(int type, byte[] data, boolean confirmation,
-		InetSocketAddress dest) throws IOException;
-	
+	public void
+		sendDataTo(int type, byte[] data, boolean confirmation, InetSocketAddress dest)
+			throws IOException;
+
 	public void addConnectionIssueListener(ConnectionIssueListener c);
-	
+
 	public void removeConnectionIssueListener(ConnectionIssueListener c);
 
 }

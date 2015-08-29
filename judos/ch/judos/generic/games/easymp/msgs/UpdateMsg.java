@@ -9,7 +9,7 @@ import ch.judos.generic.games.easymp.MonitoredObjectStorage;
  */
 public abstract class UpdateMsg implements Serializable {
 
-	private static final long	serialVersionUID	= -3702614265304050303L;
+	private static final long serialVersionUID = -3702614265304050303L;
 
 	public abstract void install(MonitoredObjectStorage storage);
 }

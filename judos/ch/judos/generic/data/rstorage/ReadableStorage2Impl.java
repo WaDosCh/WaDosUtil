@@ -26,9 +26,9 @@ import ch.judos.generic.reflection.Classes;
  */
 public class ReadableStorage2Impl implements ReadableStorage2 {
 
-	protected HashMap<Class<?>, Class<? extends RStorableWrapper>>	wrappers;
-	private RStoreInternal														internalStorage;
-	protected static ThreadLocal<ObjectTracker2>							objectTracker	= new ThreadLocal<>();
+	protected HashMap<Class<?>, Class<? extends RStorableWrapper>> wrappers;
+	private RStoreInternal internalStorage;
+	protected static ThreadLocal<ObjectTracker2> objectTracker = new ThreadLocal<>();
 
 	public ReadableStorage2Impl() {
 		this.wrappers = new HashMap<>();
@@ -43,13 +43,14 @@ public class ReadableStorage2Impl implements ReadableStorage2 {
 	}
 
 	/**
-	 * declares a class as RStorable and uses the given Wrapper class and factory
-	 * object to do the work
+	 * declares a class as RStorable and uses the given Wrapper class and
+	 * factory object to do the work
 	 * 
 	 * @param wrapped
 	 * @param wrapper
 	 */
-	public void addStorableWrapper(Class<?> wrapped, Class<? extends RStorableWrapper> wrapper) {
+	public void
+		addStorableWrapper(Class<?> wrapped, Class<? extends RStorableWrapper> wrapper) {
 		this.wrappers.put(wrapped, wrapper);
 	}
 
@@ -76,7 +77,7 @@ public class ReadableStorage2Impl implements ReadableStorage2 {
 	/**
 	 * @param reader
 	 * @param assumeType
-	 *           if the object is untyped an initial type reference is needed
+	 *            if the object is untyped an initial type reference is needed
 	 * @return
 	 * @throws RSerializerException
 	 */
@@ -158,17 +159,19 @@ public class ReadableStorage2Impl implements ReadableStorage2 {
 				return r;
 			}
 			else if (this.wrappers.containsKey(o.getClass())) {
-				Class<? extends RStorableWrapper> wrapperClass = this.wrappers.get(o.getClass());
-				RStorableWrapper store = (RStorableWrapper) Classes.getSerializationConstructor(
-					wrapperClass).newInstance();
+				Class<? extends RStorableWrapper> wrapperClass = this.wrappers.get(o
+					.getClass());
+				RStorableWrapper store = (RStorableWrapper) Classes
+					.getSerializationConstructor(wrapperClass).newInstance();
 				store.initWrapped(o);
 				return store;
 			}
 		}
 		catch (SecurityException | InstantiationException | IllegalAccessException
 			| IllegalArgumentException | InvocationTargetException io) {
-			throw new RSerializerException("Exception while trying to find wrapper for object: "
-				+ o + " of type " + o.getClass(), io, Type.Wrapper);
+			throw new RSerializerException(
+				"Exception while trying to find wrapper for object: " + o + " of type "
+					+ o.getClass(), io, Type.Wrapper);
 		}
 		throw new RSerializerException("Could not find wrapper for object: " + o + " of type "
 			+ o.getClass(), Type.Wrapper);
@@ -180,8 +183,8 @@ public class ReadableStorage2Impl implements ReadableStorage2 {
 			return c1.newInstance();
 		}
 		catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-			throw new RSerializerException("Could not generate instance of class " + c.getName(),
-				e, Type.Instantiation);
+			throw new RSerializerException("Could not generate instance of class "
+				+ c.getName(), e, Type.Instantiation);
 		}
 	}
 

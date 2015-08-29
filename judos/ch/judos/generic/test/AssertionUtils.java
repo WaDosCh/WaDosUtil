@@ -13,7 +13,8 @@ public class AssertionUtils {
 		boolean assertionsActive = false;
 		try {
 			assert (false);
-		} catch (AssertionError e) {
+		}
+		catch (AssertionError e) {
 			assertionsActive = true;
 		}
 		return assertionsActive;

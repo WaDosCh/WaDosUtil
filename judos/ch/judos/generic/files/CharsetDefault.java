@@ -8,5 +8,5 @@ import java.nio.charset.StandardCharsets;
  * @author Julian Schelker
  */
 public class CharsetDefault {
-	public static final Charset	CURRENT_CHARSET	= StandardCharsets.UTF_8;
+	public static final Charset CURRENT_CHARSET = StandardCharsets.UTF_8;
 }

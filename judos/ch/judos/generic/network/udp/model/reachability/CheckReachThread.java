@@ -11,11 +11,11 @@ import ch.judos.generic.network.udp.interfaces.ReachabilityListener;
  */
 public class CheckReachThread extends Thread {
 
-	private ReachabilityListener	listener;
-	private boolean					received;
-	private ReachabilityRequest	rr;
-	private InetSocketAddress		target;
-	private Udp4						u;
+	private ReachabilityListener listener;
+	private boolean received;
+	private ReachabilityRequest rr;
+	private InetSocketAddress target;
+	private Udp4 u;
 
 	public CheckReachThread(Udp4 u, ReachabilityRequest rr, ReachabilityListener listener) {
 		this.u = u;

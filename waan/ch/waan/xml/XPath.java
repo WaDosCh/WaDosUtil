@@ -39,8 +39,7 @@ public interface XPath {
 	 * @param name
 	 */
 	default XPath node(String name) {
-		return this.children()
-				.filterName(name::equals);
+		return this.children().filterName(name::equals);
 	}
 
 	/**

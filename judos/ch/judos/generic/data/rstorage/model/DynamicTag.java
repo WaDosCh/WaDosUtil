@@ -22,10 +22,10 @@ public class DynamicTag extends Tag {
 			if (objectTracker.isMappedAlready(object))
 				return new Tag(Optional.empty(), false, true, objectTracker
 					.getIndexForObject(object));
-			//else {
-				objectNr = objectTracker.mapObjectAndGetIndex(object);
-				isObjReferenced = () -> (objectTracker.getUsageForObject(object) > 0);
-			//}
+			// else {
+			objectNr = objectTracker.mapObjectAndGetIndex(object);
+			isObjReferenced = () -> (objectTracker.getUsageForObject(object) > 0);
+			// }
 		}
 		Optional<String> type = Optional.empty();
 		if (storeType)
@@ -33,7 +33,7 @@ public class DynamicTag extends Tag {
 		return new DynamicTag(type, isObjReferenced, objectNr);
 	}
 
-	protected Supplier<Boolean>	setRefDynamic;
+	protected Supplier<Boolean> setRefDynamic;
 
 	public DynamicTag(Optional<String> type, Supplier<Boolean> referenceUsed,
 		int referenceNumber) {

@@ -9,8 +9,8 @@ import ch.judos.generic.data.date.Time;
  */
 public class TimeFormat extends ChoiceFormat {
 
-	private TimeHM	t1;
-	private TimeHMS	t2;
+	private TimeHM t1;
+	private TimeHMS t2;
 
 	/**
 	 */

@@ -9,12 +9,12 @@ import ch.judos.generic.data.DuplicateFilter;
  * @author Julian Schelker
  */
 public class DupFilterOnConnection {
-	private HashMap<InetSocketAddress, DuplicateFilter>	clients;
+	private HashMap<InetSocketAddress, DuplicateFilter> clients;
 
 	public DupFilterOnConnection() {
 		this.clients = new HashMap<>();
 	}
-	
+
 	public synchronized void resetForConnection(InetSocketAddress addr) {
 		this.clients.remove(addr);
 	}

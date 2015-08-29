@@ -12,7 +12,7 @@ public class ConstantFormat extends SimpleFormat {
 	/**
 	 * string to expect
 	 */
-	protected String	expect;
+	protected String expect;
 
 	/**
 	 * @param expect
@@ -25,7 +25,7 @@ public class ConstantFormat extends SimpleFormat {
 	/**
 	 * (non-Javadoc)
 	 * 
-	 * @see ch.judos.generic.data.parse.SimpleFormat#getObject()
+	 * @see ch.judos.generic.data.parse.Format#getObject()
 	 */
 	@Override
 	public Object getObject() {

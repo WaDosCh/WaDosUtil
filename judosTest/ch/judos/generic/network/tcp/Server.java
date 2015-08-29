@@ -28,8 +28,8 @@ public class Server implements Runnable {
 		new Thread(this).start();
 	}
 
-	private BufferedReader	in;
-	private BufferedWriter	out;
+	private BufferedReader in;
+	private BufferedWriter out;
 
 	public Server(Socket cs) throws IOException {
 		this.in = new BufferedReader(new InputStreamReader(cs.getInputStream()));

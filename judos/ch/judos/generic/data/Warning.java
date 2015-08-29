@@ -6,7 +6,7 @@ package ch.judos.generic.data;
  */
 public class Warning extends Exception {
 
-	private static final long	serialVersionUID	= 4349839465652178175L;
+	private static final long serialVersionUID = 4349839465652178175L;
 
 	public Warning(String msg) {
 		super(msg);

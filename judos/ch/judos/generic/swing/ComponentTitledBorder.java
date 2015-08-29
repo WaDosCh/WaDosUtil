@@ -39,8 +39,8 @@ public class ComponentTitledBorder implements Border, MouseListener, MouseMotion
 		proxyPanel.add(new JTextField("8080"));
 		final JCheckBox checkBox = new JCheckBox("Use Proxy", true);
 		checkBox.setFocusPainted(false);
-		ComponentTitledBorder componentBorder = new ComponentTitledBorder(checkBox, proxyPanel,
-			BorderFactory.createEtchedBorder());
+		ComponentTitledBorder componentBorder = new ComponentTitledBorder(checkBox,
+			proxyPanel, BorderFactory.createEtchedBorder());
 		checkBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -61,17 +61,17 @@ public class ComponentTitledBorder implements Border, MouseListener, MouseMotion
 		frame.setVisible(true);
 	}
 
-	int						offset			= 5;
+	int offset = 5;
 
-	alignement				componentAlignement;
+	alignement componentAlignement;
 
-	private int				left;
+	private int left;
 
-	private Component		comp;
-	private JComponent	container;
-	private Rectangle		rect;
-	private Border			border;
-	private boolean		mouseEntered	= false;
+	private Component comp;
+	private JComponent container;
+	private Rectangle rect;
+	private Border border;
+	private boolean mouseEntered = false;
 
 	/**
 	 * standard alignement (left)

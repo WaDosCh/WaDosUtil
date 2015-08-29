@@ -18,9 +18,9 @@ public class Classes {
 	/**
 	 * this is where the compiled classes can be found
 	 */
-	private static final String					binFolder	= "bin";
+	private static final String binFolder = "bin";
 
-	private static HashMapR<Class<?>, Class<?>>	autoBoxMap;
+	private static HashMapR<Class<?>, Class<?>> autoBoxMap;
 
 	public static HashMapR<Class<?>, Class<?>> getAutoBoxMap() {
 		if (autoBoxMap == null) {

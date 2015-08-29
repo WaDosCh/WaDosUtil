@@ -10,7 +10,7 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  * @author Julian Schelker
  */
 public class PointI extends Point implements RStorable2 {
-	private static final long	serialVersionUID	= -2304751012108303425L;
+	private static final long serialVersionUID = -2304751012108303425L;
 
 	public PointI(Point point) {
 		this(point.x, point.y);

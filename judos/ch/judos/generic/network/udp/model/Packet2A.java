@@ -8,14 +8,14 @@ import java.net.InetSocketAddress;
 
 public abstract class Packet2A extends Packet2Hash implements Comparable<Packet2A> {
 
-	private long		resendOn;
-	protected byte[]	sendData;
+	private long resendOn;
+	protected byte[] sendData;
 	/**
 	 * type of message (0-255) <br>
 	 * +128 = confirmation requested<br>
 	 * 0 =
 	 */
-	protected int		type;
+	protected int type;
 
 	// private Packet2A() {
 	// super();
