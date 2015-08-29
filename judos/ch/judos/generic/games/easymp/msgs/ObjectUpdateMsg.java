@@ -19,8 +19,8 @@ import ch.judos.generic.reflection.Classes;
  */
 public class ObjectUpdateMsg extends UpdateMsg {
 
-	private static final long	serialVersionUID	= -170694419417208599L;
-	public ObjectWithMetaData	data;
+	private static final long serialVersionUID = -170694419417208599L;
+	public ObjectWithMetaData data;
 
 	public ObjectUpdateMsg(Object object, MonitoredObjectStorage storage) {
 		this.data = ObjectWithMetaData.fromObject(object, storage);
@@ -31,8 +31,8 @@ public class ObjectUpdateMsg extends UpdateMsg {
 		try {
 			ObjectId id = this.data.id;
 			Object localObject = storage.getObjectById(id);
-			
-			updateObjectValues(localObject,this.data,storage);
+
+			updateObjectValues(localObject, this.data, storage);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,7 +41,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 
 	private static void updateObjectValues(Object localObject, ObjectWithMetaData remote,
 		MonitoredObjectStorage storage) throws Exception {
-		
+
 		ArrayList<Field> localFields = FieldInformation.getRelevantFieldsOf(localObject);
 		Object[] remoteValues = remote.fields;
 		if (localFields.size() != remoteValues.length)
@@ -57,33 +57,34 @@ public class ObjectUpdateMsg extends UpdateMsg {
 				updateObjectIdCheck(localValue, remoteValue, (Object o) -> {
 					setFieldValue(localObject, localField, o);
 					updated.state = true;
-				},storage);
+				}, storage);
 			}
 			else {
 				localFields.get(i).set(localObject, remoteValues[i]);
 				updated.state = true;
 			}
 		}
-		
+
 		if (updated.state && (localObject instanceof UpdatableI)) {
-			((UpdatableI)localObject).wasUpdated();
+			((UpdatableI) localObject).wasUpdated();
 		}
 	}
 
 	private static void updateObjectIdCheck(Object localValue, ObjectWithMetaData remoteValue,
 		Consumer<Object> onNewObject, MonitoredObjectStorage storage) throws Exception {
-		
+
 		ObjectId localId = storage.getIdOf(localValue);
 		ObjectId remoteId = remoteValue.id;
-		if (localId.equals(remoteId)) { 
-			//change content of object
+		if (localId != null && localId.equals(remoteId)) {
+			// change content of object
 			updateObjectValues(localValue, remoteValue, storage);
 		}
 		else {
-			//object reference has changed
+			// object reference has changed
 			Object newObj = storage.getObjectById(remoteId);
-			if (newObj == null) { //object reference is unknown
-				Constructor<?> constructor = Classes.getSerializationConstructor(remoteValue.clazz);
+			if (newObj == null) { // object reference is unknown
+				Constructor<?> constructor = Classes
+					.getSerializationConstructor(remoteValue.clazz);
 				newObj = constructor.newInstance();
 				storage.addMonitoredObject(newObj, remoteId);
 			}

@@ -19,6 +19,9 @@ public class FieldInformation {
 
 	public static ArrayList<Field> getRelevantFieldsOf(Object obj) {
 		ArrayList<Field> result = new ArrayList<>();
+		if (obj == null) {
+			throw new RuntimeException("Can't get fields for null object.");
+		}
 		for (Field field : obj.getClass().getFields()) {
 			// skip fields
 			if (Modifier.isTransient(field.getModifiers()))

@@ -3,7 +3,9 @@ package ch.judos.generic.games.easymp.test;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
+
 import javax.swing.JTextField;
+
 import ch.judos.generic.games.easymp.Monitor;
 import ch.judos.generic.games.easymp.model.UpdatableI;
 
@@ -13,14 +15,20 @@ import ch.judos.generic.games.easymp.model.UpdatableI;
  */
 public class TextFieldModel extends KeyAdapter implements UpdatableI, Serializable {
 
-	private static final long		serialVersionUID	= -8659183434463452484L;
+	private static final long serialVersionUID = -8659183434463452484L;
 
-	public String						text;
+	public String text;
 
-	public transient JTextField	textField;
+	public transient JTextField textField;
 
 	public TextFieldModel(JTextField textField) {
 		this.textField = textField;
+		setup(textField);
+	}
+
+	public void setup(JTextField textField) {
+		this.textField = textField;
+		this.textField.removeKeyListener(this);
 		this.textField.addKeyListener(this);
 	}
 
@@ -32,6 +40,10 @@ public class TextFieldModel extends KeyAdapter implements UpdatableI, Serializab
 
 	@Override
 	public void wasUpdated() {
-		this.textField.setText(this.text);
+		if (this.textField != null)
+			this.textField.setText(this.text);
+		else {
+			System.err.println("Can't update text, no textfield is set for: " + this);
+		}
 	}
 }
