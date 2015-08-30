@@ -9,8 +9,8 @@ import ch.judos.generic.games.easymp.msgs.Message;
  */
 public class ServerMonitor extends Monitor {
 
-	protected ServerMonitor(boolean isServer, CommunicatorI c) {
-		super(isServer, c);
+	protected ServerMonitor(CommunicatorI c) {
+		super(true, c);
 	}
 
 	@Override

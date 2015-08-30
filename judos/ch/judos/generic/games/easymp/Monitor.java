@@ -1,6 +1,7 @@
 package ch.judos.generic.games.easymp;
 
 import java.util.HashSet;
+
 import ch.judos.generic.games.easymp.api.CommunicatorI;
 import ch.judos.generic.games.easymp.msgs.Message;
 import ch.judos.generic.games.easymp.msgs.ObjectUpdateMsg;
@@ -24,13 +25,13 @@ public abstract class Monitor {
 	public static void initializeServer(CommunicatorI c) {
 		if (instance != null)
 			throw new RuntimeException("Monitor was already initialized");
-		instance = new ServerMonitor(true, c);
+		instance = new ServerMonitor(c);
 	}
 
 	public static void initializeClient(CommunicatorI c) {
 		if (instance != null)
 			throw new RuntimeException("Monitor was already initialized");
-		instance = new ClientMonitor(false, c);
+		instance = new ClientMonitor(c);
 	}
 
 	public static Monitor getMonitor() {
