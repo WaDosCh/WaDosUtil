@@ -37,10 +37,11 @@ import java.util.Map;
 
 import javax.swing.JFrame;
 
+import org.bitlet.weupnp.GatewayDevice;
+import org.bitlet.weupnp.GatewayDiscover;
+import org.bitlet.weupnp.PortMappingEntry;
+
 import ch.judos.generic.network.IP;
-import ch.judos.generic.network.upnp.GatewayDevice;
-import ch.judos.generic.network.upnp.GatewayDiscover;
-import ch.judos.generic.network.upnp.PortMappingEntry;
 
 /**
  * This class contains a trivial main method that can be used to test whether

@@ -32,7 +32,11 @@ public class ObjectUpdateMsg extends UpdateMsg {
 			ObjectId id = this.data.id;
 			Object localObject = storage.getObjectById(id);
 
-			updateObjectValues(localObject, this.data, storage);
+			ArrayList<UpdatableI> objectsToUpdate = new ArrayList<UpdatableI>();
+			updateObjectValues(localObject, this.data, storage, objectsToUpdate);
+			for (UpdatableI up : objectsToUpdate) {
+				up.wasUpdated();
+			}
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -40,7 +44,8 @@ public class ObjectUpdateMsg extends UpdateMsg {
 	}
 
 	private static void updateObjectValues(Object localObject, ObjectWithMetaData remote,
-		MonitoredObjectStorage storage) throws Exception {
+		MonitoredObjectStorage storage, ArrayList<UpdatableI> objectsToUpdate)
+		throws Exception {
 
 		ArrayList<Field> localFields = FieldInformation.getRelevantFieldsOf(localObject);
 		Object[] remoteValues = remote.fields;
@@ -48,6 +53,10 @@ public class ObjectUpdateMsg extends UpdateMsg {
 			throw new RuntimeException("Retrieved fields are not of equal size: "
 				+ localFields + "\nAnd:" + remoteValues);
 		final MutableBoolean updated = new MutableBoolean(false);
+		if (localObject instanceof UpdatableI) {
+			objectsToUpdate.add((UpdatableI) localObject);
+		}
+
 		for (int i = 0; i < localFields.size(); i++) {
 			// distinguish between primitives and objects:
 			if (remoteValues[i] instanceof ObjectWithMetaData) {
@@ -57,7 +66,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 				updateObjectIdCheck(localValue, remoteValue, (Object o) -> {
 					setFieldValue(localObject, localField, o);
 					updated.state = true;
-				}, storage);
+				}, storage, objectsToUpdate);
 			}
 			else {
 				localFields.get(i).set(localObject, remoteValues[i]);
@@ -65,19 +74,20 @@ public class ObjectUpdateMsg extends UpdateMsg {
 			}
 		}
 
-		if (updated.state && (localObject instanceof UpdatableI)) {
-			((UpdatableI) localObject).wasUpdated();
+		if (!updated.state && (localObject instanceof UpdatableI)) {
+			objectsToUpdate.remove(localObject);
 		}
 	}
 
 	private static void updateObjectIdCheck(Object localValue, ObjectWithMetaData remoteValue,
-		Consumer<Object> onNewObject, MonitoredObjectStorage storage) throws Exception {
+		Consumer<Object> onNewObject, MonitoredObjectStorage storage,
+		ArrayList<UpdatableI> objectsToUpdate) throws Exception {
 
 		ObjectId localId = storage.getIdOf(localValue);
 		ObjectId remoteId = remoteValue.id;
 		if (localId != null && localId.equals(remoteId)) {
 			// change content of object
-			updateObjectValues(localValue, remoteValue, storage);
+			updateObjectValues(localValue, remoteValue, storage, objectsToUpdate);
 		}
 		else {
 			// object reference has changed
@@ -89,7 +99,7 @@ public class ObjectUpdateMsg extends UpdateMsg {
 				storage.addMonitoredObject(newObj, remoteId);
 			}
 			onNewObject.accept(newObj);
-			updateObjectValues(newObj, remoteValue, storage);
+			updateObjectValues(newObj, remoteValue, storage, objectsToUpdate);
 		}
 	}
 

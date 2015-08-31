@@ -22,7 +22,7 @@
  * 
  */
 
-package ch.judos.generic.network.upnp;
+package org.bitlet.weupnp;
 
 import java.util.Map;
 
@@ -33,9 +33,10 @@ import org.xml.sax.helpers.DefaultHandler;
 /**
  * A simple SAX handler that is used to parse XML name value pairs in the form
  * &lt;name&gt;value&lt;/name&gt;
- * 
+ *
  * @see org.xml.sax.helpers.DefaultHandler
  */
+@SuppressWarnings("all")
 public class NameValueHandler extends DefaultHandler {
 
 	/**
@@ -51,7 +52,7 @@ public class NameValueHandler extends DefaultHandler {
 	/**
 	 * Creates a new instance of a <tt>NameValueHandler</tt>, storing values in
 	 * the supplied map
-	 * 
+	 *
 	 * @param nameValue
 	 *            the map to store name-value pairs in
 	 */
@@ -61,10 +62,10 @@ public class NameValueHandler extends DefaultHandler {
 
 	/**
 	 * Receive notification of the start of an element.
-	 * 
-	 * Caches the element as currentElement, so that it will be stored as a map
-	 * key when the corresponding value will be read.
-	 * 
+	 *
+	 * Caches the element as {@link #currentElement}, so that it will be stored
+	 * as a map key when the corresponding value will be read.
+	 *
 	 * @param uri
 	 *            The Namespace URI, or the empty string if the element has no
 	 *            Namespace URI or if Namespace processing is not being
@@ -86,19 +87,19 @@ public class NameValueHandler extends DefaultHandler {
 	public void
 		startElement(String uri, String localName, String qName, Attributes attributes)
 			throws SAXException {
-		this.currentElement = localName;
+		currentElement = localName;
 	}
 
 	/**
 	 * Receive notification of the end of an element.
-	 * 
+	 *
 	 * It is used to reset currentElement when the XML node is closed. Note:
 	 * this works only when the data we are interested in does not contain child
 	 * nodes.
-	 * 
+	 *
 	 * Based on a patch provided by christophercyll and attached to issue #4:
 	 * http://code.google.com/p/weupnp/issues/detail?id=4
-	 * 
+	 *
 	 * @param uri
 	 *            The Namespace URI, or the empty string if the element has no
 	 *            Namespace URI or if Namespace processing is not being
@@ -114,14 +115,14 @@ public class NameValueHandler extends DefaultHandler {
 	 */
 	@Override
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		this.currentElement = null;
+		currentElement = null;
 	}
 
 	/**
 	 * Receive notification of character data inside an element.
-	 * 
-	 * Stores the characters as value, using currentElement as a key
-	 * 
+	 *
+	 * Stores the characters as value, using {@link #currentElement} as a key
+	 *
 	 * @param ch
 	 *            The characters.
 	 * @param start
@@ -134,11 +135,11 @@ public class NameValueHandler extends DefaultHandler {
 	 */
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		if (this.currentElement != null) {
+		if (currentElement != null) {
 			String value = new String(ch, start, length);
-			String old = this.nameValue.put(this.currentElement, value);
+			String old = nameValue.put(currentElement, value);
 			if (old != null) {
-				this.nameValue.put(this.currentElement, old + value);
+				nameValue.put(currentElement, old + value);
 			}
 		}
 	}
