@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 
+import org.bitlet.weupnp.GatewayDevice;
+import org.bitlet.weupnp.GatewayDiscover;
+import org.bitlet.weupnp.PortMappingEntry;
 import org.xml.sax.SAXException;
 
 import ch.judos.generic.network.IP;
