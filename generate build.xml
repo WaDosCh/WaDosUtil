@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="main">
+
+	<target name="main">
+		<antcall target="javadoc" />
+		<antcall target="compile" />
+		<antcall target="clean" />
+	</target>
+
+	<target name="javadoc">
+	<!--	<javadoc access="protected" author="true" classpath="lib/junit-4.12.jar;lib/hamcrest-all-1.3.jar;lib/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar" destdir="doc" doctitle="WaDosUtil" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="ch.judos.generic.data.date,ch.judos.generic.data.rstorage.tests,ch.judos.generic.math.operators,ch.judos.generic.dropFilesOntoApp,ch.judos.generic.graphics.fullscreen,ch.judos.generic.data.rstorage,ch.judos.generic.graphics,ch.judos.generic.games.easymp,ch.judos.generic.games.easymp.api,ch.waan.function,ch.judos.generic.wrappers,ch.waan.nbt,ch.judos.generic.data.xml,ch.judos.generic.games.easymp.test,ch.judos.generic.test,ch.judos.generic.control,ch.judos.generic.data.geometry,ch.waan.game.ui.templates,ch.judos.generic.games.pathsearch,ch.judos.generic.reflection,ch.waan.util.id,ch.judos.generic.data.rstorage.helper,ch.judos.generic.data.rstorage.types,ch.judos.generic.files.config,ch.judos.generic.games.easymp.msgs,ch.judos.generic.algorithm,ch.waan.pathfinding,ch.judos.generic.data.rstorage.model,ch.judos.generic.games.unitCoordination,ch.judos.generic.sound,ch.waan.game.ui,ch.judos.generic.data.rstorage.interfaces,ch.judos.generic.exception,ch.judos.generic.data.concurrent,ch.waan.xml,ch.judos.generic.network.udp.model.reachability,ch.waan.concurrent,ch.judos.generic.data.language,ch.judos.generic.swing,ch.judos.generic.network.udp.model,ch.waan.util,ch.waan.game,ch.judos.generic.boids,ch.judos.generic.files.openImageDialog,ch.judos.generic.data.rstorage.tests.objects,ch.judos.generic.network.udp.interfaces,ch.judos.generic.data.format,org.bitlet.weupnp,ch.waan.collection.mutable,ch.judos.generic.games.easymp.model" source="1.8" sourcefiles="judos/ch/judos/generic/gui/ComponentListEntry.java,judos/ch/judos/generic/data/parse/ComposedFormat.java,judos/ch/judos/generic/data/Serializer.java,judos/ch/judos/generic/data/parse/NumberFormat.java,judos/ch/judos/generic/data/HashMapR.java,judos/ch/judos/generic/network/udp/UdpConfig.java,judos/ch/judos/generic/data/NaturalOrderComparator.java,judos/ch/judos/generic/network/udp/FileReceiver.java,judos/ch/judos/generic/gui/RequestInput.java,judos/ch/judos/generic/network/udp/Udp3.java,waan/ch/waan/io/FileSource.java,waan/ch/waan/io/StreamSource.java,judos/ch/judos/generic/data/parse/TimeFormat.java,judos/ch/judos/generic/data/StringUtils.java,judos/ch/judos/generic/data/csv/CSVFile.java,waan/ch/waan/io/Source.java,judos/ch/judos/generic/data/ProgressIterable.java,judos/ch/judos/generic/files/FileSize.java,judos/ch/judos/generic/data/SerializerException.java,judos/ch/judos/generic/network/udp/Udp0Reader.java,judos/ch/judos/generic/data/CloneableJS.java,judos/ch/judos/generic/data/HashMapList.java,judos/ch/judos/generic/network/udp/Udp0Sender.java,judos/ch/judos/generic/network/udp/Udp2Monitor.java,judos/ch/judos/generic/games/BorderlessScrolling.java,judos/ch/judos/generic/games/GraphicsSpaceGridMap.java,judos/ch/judos/generic/math/ConvertNumber.java,judos/ch/judos/generic/data/parse/TimeHMS.java,judos/ch/judos/generic/data/DynHashSet.java,judos/ch/judos/generic/gui/Notification.java,judos/ch/judos/generic/data/DynamicList.java,judos/ch/judos/generic/data/parse/ChoiceFormat.java,judos/ch/judos/generic/data/MutableInteger.java,judos/ch/judos/generic/network/udp/Udp4.java,judos/ch/judos/generic/gui/WindowUtils.java,judos/ch/judos/generic/data/ArraysJS.java,judos/ch/judos/generic/data/HashMapSet.java,judos/ch/judos/generic/data/parse/WordFormat.java,judos/ch/judos/generic/files/CharsetDefault.java,judos/ch/judos/generic/data/parse/Format.java,judos/ch/judos/generic/data/parse/TimeHM.java,judos/ch/judos/generic/network/udp/ConnectionIssueListener.java,judos/ch/judos/generic/network/udp/UdpLib.java,judos/ch/judos/generic/network/udp/Udp1.java,judos/ch/judos/generic/gui/ComponentListSelectionListener.java,judos/ch/judos/generic/data/TupleW.java,judos/ch/judos/generic/data/csv/CSVFileWriter.java,judos/ch/judos/generic/data/Cloner.java,judos/ch/judos/generic/math/MathJS.java,judos/ch/judos/generic/data/TripleW.java,judos/ch/judos/generic/network/upnp/UdpPortForwarder.java,judos/ch/judos/generic/data/csv/CSVFileReader.java,judos/ch/judos/generic/data/Mapper.java,judos/ch/judos/generic/games/Scroll.java,judos/ch/judos/generic/data/Progress.java,judos/ch/judos/generic/data/Factory.java,judos/ch/judos/generic/data/HashMap2.java,judos/ch/judos/generic/data/parse/DateTimeFormat.java,judos/ch/judos/generic/data/Map.java,judos/ch/judos/generic/data/MutableBoolean.java,judos/ch/judos/generic/network/IP.java,judos/ch/judos/generic/network/udp/Udp2.java,judos/ch/judos/generic/data/RandomJS.java,judos/ch/judos/generic/network/udp/Udp4Forwarded.java,judos/ch/judos/generic/data/parse/DateFormat.java,judos/ch/judos/generic/data/Warning.java,judos/ch/judos/generic/files/OpenFileDialog.java,judos/ch/judos/generic/network/udp/FileSender.java,judos/ch/judos/generic/data/parse/IntervallFormat.java,waan/ch/waan/io/URLSource.java,judos/ch/judos/generic/data/DuplicateFilter.java,judos/ch/judos/generic/gui/ComponentList.java,judos/ch/judos/generic/data/parse/ConstantFormat.java,judos/ch/judos/generic/data/TupleR.java,judos/ch/judos/generic/data/parse/SimpleFormat.java,judos/ch/judos/generic/files/FileUtils.java" sourcepath="judosTest;waan;waanTest;judos" splitindex="true" use="true" version="true" />
+		-->
+		<javadoc access="protected" author="true" 
+			classpath="lib/junit-4.12.jar;lib/hamcrest-all-1.3.jar;lib/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar" 
+			destdir="doc" doctitle="WaDosUtil" nodeprecated="false" nodeprecatedlist="false" 
+			noindex="false" nonavbar="false" notree="false" 
+			packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*"
+			source="1.8"
+			sourcepath="waan;judos" splitindex="true" use="true" version="true" />
+	</target>
+	
+	<target name="clean">
+		<delete dir="doc" />
+	</target>
+
+	<target name="compile">
+		<jar destfile="builds/WaDosUtil-X.X-all.jar" filesetmanifest="mergewithoutmain">
+			<fileset dir="bin" />
+			<fileset dir="judos" />
+			<fileset dir="waan" />
+			<fileset dir="doc" />
+		</jar>
+		<jar destfile="builds/WaDosUtil-X.X.jar" filesetmanifest="mergewithoutmain">
+			<fileset dir="bin" />
+			<fileset dir="judos" />
+			<fileset dir="waan" />
+		</jar>
+	</target>
+</project>
