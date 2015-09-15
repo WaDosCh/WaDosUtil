@@ -41,6 +41,10 @@ public class ColorTintFilter extends AbstractFilter {
 		return this.mixColor;
 	}
 
+	public BufferedImage filter(BufferedImage src) {
+		return filter(src, null);
+	}
+
 	@Override
 	public BufferedImage filter(BufferedImage src, BufferedImage dst) {
 		if (dst == null) {
