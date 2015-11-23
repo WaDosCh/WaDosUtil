@@ -1,11 +1,25 @@
 package ch.judos.generic.data;
 
+import java.util.function.Function;
+
 /**
  * @since 05.11.2011
  * @author Julian Schelker
  * @version 1.02 / 23.02.2013
  */
 public class ArraysJS {
+
+	public static enum LoopResult {
+		CONTINUE, BREAK;
+	}
+
+	public static <T> void foreach(T[] arr, Function<T, LoopResult> lambda) {
+		for (int i = 0; i < arr.length; i++) {
+			LoopResult l = lambda.apply(arr[i]);
+			if (l == LoopResult.BREAK)
+				break;
+		}
+	}
 
 	/**
 	 * @param arr
