@@ -17,32 +17,52 @@ public class FileTypeAssociates {
 	 * @param fileDescription
 	 * @return
 	 */
-	public void win_add(String fileType, String command, String fileDescription)
+	public static void win_add(String fileType, String command, String fileDescription)
 		throws RegistryException {
 
+		WindowsRegistryNode fileNode = null;
+		WindowsRegistryNode fileMeta = null;
 		try {
-			WindowsRegistryNode node = new WindowsRegistryNode(
-				"HKEY_CURRENT_USER\\Software\\Classes");
-			WindowsRegistryNode fileNode = node.addSubNode("." + fileType);
-			if (fileNode == null)
-				throw new RegistryException("Could not create file node");
-			if (!fileNode.setKeyValueREG_SZ("", fileType + "_file"))
-				throw new RegistryException("Could not write default value");
+			try {
+				WindowsRegistryNode node = new WindowsRegistryNode(
+					"HKEY_CURRENT_USER\\Software\\Classes");
+				fileNode = node.addSubNode("." + fileType);
+				if (fileNode == null)
+					throw new RegistryException("Could not create file node");
+				if (!fileNode.setKeyValueREG_SZ("", fileType + "_file"))
+					throw new RegistryException("Could not write default value");
 
-			WindowsRegistryNode fileMeta = node.addSubNode(fileType + "_file");
-			if (!fileMeta.setKeyValueREG_SZ("", fileDescription))
-				throw new RegistryException("Could not write file description");
-			WindowsRegistryNode commandNode = fileMeta.addSubNode("shell\\open\\command");
-			if (!commandNode.setKeyValueREG_SZ("", command))
-				throw new RegistryException("Could not write command");
+				fileMeta = node.addSubNode(fileType + "_file");
+				if (!fileMeta.setKeyValueREG_SZ("", fileDescription))
+					throw new RegistryException("Could not write file description");
+				WindowsRegistryNode commandNode = fileMeta.addSubNode("shell\\open\\command");
+				if (!commandNode.setKeyValueREG_SZ("", command))
+					throw new RegistryException("Could not write command");
+			}
+			catch (IOException e) {
+				throw new RethrownRegistryException(
+					"IOException occured while creating fileAssociation.", e);
+			}
+			catch (InterruptedException e) {
+				throw new RethrownRegistryException(
+					"InterruptedException occured while creating fileAssociation.", e);
+			}
 		}
-		catch (IOException e) {
-			throw new RethrownRegistryException(
-				"IOException occured while creating fileAssociation.", e);
-		}
-		catch (InterruptedException e) {
-			throw new RethrownRegistryException(
-				"InterruptedException occured while creating fileAssociation.", e);
+		catch (RegistryException e) {
+			try {
+				if (fileNode != null)
+					fileNode.deleteNode();
+			}
+			catch (Exception e2) {
+			}
+			try {
+				if (fileMeta != null)
+					fileMeta.deleteNode();
+			}
+			catch (Exception e2) {
+			}
+			throw e;
 		}
 	}
+
 }

@@ -302,7 +302,7 @@ public class StringUtils {
 	public static String replaceAll(String text, String[] find, String replace) {
 		for (String findX : find) {
 			findX = Pattern.quote(findX);
-			text = text.replaceAll(findX, replace);
+			text = text.replaceAll(findX, Matcher.quoteReplacement(replace));
 		}
 		return text;
 	}

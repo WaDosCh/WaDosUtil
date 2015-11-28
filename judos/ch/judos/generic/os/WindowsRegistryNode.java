@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import ch.judos.generic.data.MutableBoolean;
+import ch.judos.generic.data.StringUtils;
 
 /**
  * TODO: make sure exceptions are thrown correctly and no null values are
@@ -110,6 +111,7 @@ public class WindowsRegistryNode {
 
 	public boolean setKeyValueREG_SZ(String key, String value) throws IOException,
 		InterruptedException {
+		value = StringUtils.replaceAll(value, new String[]{"\""}, "\\\"");
 		// uses /f to force override of value if existing
 		String cmd = "reg add \"" + this.path + "\" /v \"" + key + "\" /t REG_SZ /d \""
 			+ value + "\" /f";
