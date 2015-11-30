@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import ch.judos.generic.games.easymp.FieldInformation;
 import ch.judos.generic.games.easymp.MonitoredObjectStorage;
-import ch.judos.generic.games.easymp.ObjectId;
+import ch.judos.generic.games.easymp.id.ObjectId;
 
 /**
  * @since 31.05.2015

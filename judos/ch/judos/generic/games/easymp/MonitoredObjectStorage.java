@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import ch.judos.generic.games.easymp.id.IdGenerator;
+import ch.judos.generic.games.easymp.id.ObjectId;
+
 /**
  * @since 23.05.2015
  * @author Julian Schelker

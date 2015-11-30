@@ -1,4 +1,4 @@
-package ch.judos.generic.games.easymp;
+package ch.judos.generic.games.easymp.id;
 
 import java.io.Serializable;
 

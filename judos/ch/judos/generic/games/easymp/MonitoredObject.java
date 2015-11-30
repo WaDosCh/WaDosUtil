@@ -2,6 +2,8 @@ package ch.judos.generic.games.easymp;
 
 import java.util.HashSet;
 
+import ch.judos.generic.games.easymp.id.ObjectId;
+
 /**
  * @since 23.05.2015
  * @author Julian Schelker
@@ -21,18 +23,5 @@ public class MonitoredObject {
 		this.id = id;
 		this.references = new ObjectId[amountOfFields];
 		this.referencedBy = new HashSet<>();
-	}
-
-	/**
-	 * @param fieldIndex
-	 * @deprecated is this still used?
-	 * @return
-	 */
-	@Deprecated
-	public ObjectId getObjectForField(int fieldIndex) {
-		if (fieldIndex >= this.references.length)
-			throw new RuntimeException("Field index " + fieldIndex
-				+ " out of range for object: " + this.data);
-		return this.references[fieldIndex];
 	}
 }

@@ -9,6 +9,11 @@ import ch.judos.generic.games.easymp.msgs.UpdateMsg;
 import ch.judos.generic.games.easymp.test.Player;
 
 /**
+ * automatic monitor for objects which can be synchronized over the network.<br>
+ * use addMonitoredObject(Object) to add managed objects.<br>
+ * use forceUpdate(Object) to synchronize an objects.<br>
+ * use update() to send out messages over the Communicator.<br>
+ * 
  * @since 22.05.2015
  * @author Julian Schelker
  */
