@@ -20,7 +20,7 @@ public abstract class ConfigSettingsBase {
 	 * @return the class with public property fields
 	 */
 	public Class<?> getConfigSettingsClass() {
-		return getConfigSettingsObject().getClass();
+		return this.getClass();
 	}
 
 	/**

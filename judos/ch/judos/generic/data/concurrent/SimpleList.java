@@ -8,11 +8,13 @@ import ch.judos.generic.data.DynamicList;
  * a list that optimistically removes ConcurrentModificationExceptions from the
  * implementation of all ArrayList methods.
  * 
+ * @deprecated use ConcurrentIteratorAll instead
  * @since 01.02.2015
  * @author Julian Schelker
  * @param <T>
  *            contained in this list
  */
+@Deprecated
 public class SimpleList<T> extends DynamicList<T> {
 
 	private static final long serialVersionUID = -5788620750829673564L;

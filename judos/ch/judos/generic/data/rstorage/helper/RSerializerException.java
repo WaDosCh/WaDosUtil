@@ -11,13 +11,13 @@ public class RSerializerException extends Exception {
 
 	public enum Type {
 		IO // generic io problem while reading
-			, ReadingUntagged // reading an untagged object without an assumed
-								// type -> cannot interfere what type to read
-			, ClassNotFound // a class to deserialize an object could not be
-							// found
-			, Instantiation // could not create an instance of a certain type
-			, Wrapper // a wrapper object could not be found for this object
-			,
+		, ReadingUntagged // reading an untagged object without an assumed
+							// type -> cannot interfere what type to read
+		, ClassNotFound // a class to deserialize an object could not be
+						// found
+		, Instantiation // could not create an instance of a certain type
+		, Wrapper // a wrapper object could not be found for this object
+		,
 	}
 
 	public RSerializerException(String msg, Type t) {

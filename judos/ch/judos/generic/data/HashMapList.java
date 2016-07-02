@@ -2,6 +2,7 @@ package ch.judos.generic.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * implements HashMap [K,HashSet[V]]
@@ -27,7 +28,7 @@ public class HashMapList<K, V> {
 		this.map.get(key).add(value);
 	}
 
-	public ArrayList<V> getSet(K key) {
+	public ArrayList<V> getList(K key) {
 		return this.map.get(key);
 	}
 
@@ -42,5 +43,9 @@ public class HashMapList<K, V> {
 
 	public boolean containsKey(K key) {
 		return this.map.containsKey(key);
+	}
+
+	public Set<K> keys() {
+		return this.map.keySet();
 	}
 }

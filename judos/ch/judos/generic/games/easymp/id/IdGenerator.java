@@ -1,6 +1,6 @@
-package ch.judos.generic.games.easymp;
+package ch.judos.generic.games.easymp.id;
 
-import ch.judos.generic.games.easymp.ObjectId.Type;
+import ch.judos.generic.games.easymp.id.ObjectId.Type;
 
 /**
  * @since 31.05.2015

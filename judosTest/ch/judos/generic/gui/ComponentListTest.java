@@ -29,7 +29,7 @@ public class ComponentListTest extends JFrame {
 			label.setOpaque(false);
 			entry.add(label);
 			JButton b = new JButton("test");
-			b.setPreferredSize(new Dimension(50, 50));
+			b.setPreferredSize(new Dimension(80, 50));
 			entry.add(b);
 
 			list.addEntry(entry, 0);

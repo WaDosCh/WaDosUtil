@@ -358,4 +358,9 @@ public class DynamicList<T> extends ArrayList<T> {
 		return result;
 	}
 
+	public T getRandomElement() {
+		int index = RandomJS.getInt(this.size() - 1);
+		return this.get(index);
+	}
+
 }

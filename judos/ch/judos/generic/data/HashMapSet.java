@@ -2,6 +2,7 @@ package ch.judos.generic.data;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * implements HashMap<K,HashSet<V>>
@@ -42,5 +43,9 @@ public class HashMapSet<K, V> {
 
 	public boolean containsKey(K key) {
 		return this.map.containsKey(key);
+	}
+
+	public Set<K> keys() {
+		return this.map.keySet();
 	}
 }

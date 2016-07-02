@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 import ch.judos.generic.data.MutableBoolean;
 import ch.judos.generic.games.easymp.FieldInformation;
 import ch.judos.generic.games.easymp.MonitoredObjectStorage;
-import ch.judos.generic.games.easymp.ObjectId;
+import ch.judos.generic.games.easymp.id.ObjectId;
 import ch.judos.generic.games.easymp.model.ObjectWithMetaData;
 import ch.judos.generic.games.easymp.model.UpdatableI;
 import ch.judos.generic.reflection.Classes;

@@ -136,6 +136,16 @@ public class Property {
 		return this.value;
 	}
 
+	/**
+	 * returns the same as getString()
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getString();
+	}
+
 	public boolean isValidDouble() {
 		return ConvertNumber.isDouble(this.value);
 	}

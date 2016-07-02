@@ -14,4 +14,17 @@ public class ColorUtils {
 		int alpha = (c1.getAlpha() + c2.getAlpha()) / 2;
 		return new Color(red, green, blue, alpha);
 	}
+
+	/**
+	 * @param argb
+	 *            integer color value
+	 * @return red,green,blue in an array
+	 */
+	public static int[] argbToInt3(int argb) {
+		int[] r = new int[3];
+		r[0] = (argb >> 16) & 0xFF;
+		r[1] = (argb >> 8) & 0xFF;
+		r[2] = argb & 0xFF;
+		return r;
+	}
 }
