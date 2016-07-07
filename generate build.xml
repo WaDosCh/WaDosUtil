@@ -13,8 +13,8 @@
 			destdir="doc" doctitle="WaDosUtil" 
 			nodeprecated="false" nodeprecatedlist="false" 
 			noindex="false" nonavbar="false" notree="false" 
-			packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*" 
-			source="1.8" sourcepath="waan;judos" splitindex="true" 
+			packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*,ch.wados.*" 
+			source="1.8" sourcepath="waan;judos;src" splitindex="true" 
 			use="true" version="true" />
 	</target>
 
@@ -29,6 +29,7 @@
 			</fileset>
 			<fileset dir="judos"  />
 			<fileset dir="waan" />
+			<fileset dir="src" />
 			<fileset dir="doc" />
 		</jar>
 		<jar destfile="builds/WaDosUtil-X.X.jar" filesetmanifest="mergewithoutmain">
@@ -37,6 +38,7 @@
 			</fileset>
 			<fileset dir="judos" />
 			<fileset dir="waan" />
+			<fileset dir="src" />
 		</jar>
 	</target>
 </project>

@@ -4,6 +4,7 @@ import org.eclipse.jdt.annotation.NonNull;
 
 import ch.waan.game.ui.UIComponent;
 import ch.waan.game.ui.UIContainer;
+import ch.wados.util.HighPrecisionClock;
 
 /**
  * High-level game manager.
