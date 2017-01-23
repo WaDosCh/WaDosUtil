@@ -108,11 +108,9 @@ public class PointF extends Point2D.Float implements /* Cloneable, Serializable,
 			this.y = target.y;
 			return true;
 		}
-		// else {
 		double angle = Math.atan2(delta.y, delta.x);
-		movePoint(angle, speed);
+		movePointI(angle, speed);
 		return false;
-		// }
 	}
 
 	/**
@@ -198,6 +196,11 @@ public class PointF extends Point2D.Float implements /* Cloneable, Serializable,
 	public void movePointI(double angle, float step) {
 		this.x += (float) (step * Math.cos(angle));
 		this.y += (float) (step * Math.sin(angle));
+	}
+
+	public void movePointI(Angle angle, double step) {
+		this.x += (float) (step * angle.getCos());
+		this.y += (float) (step * angle.getSin());
 	}
 
 	public PointF movePoint(double angle, float step) {

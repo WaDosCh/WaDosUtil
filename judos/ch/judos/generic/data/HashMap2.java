@@ -65,4 +65,8 @@ public class HashMap2<K, K2, V> {
 		}// else
 		return false;
 	}
+
+	public void clear() {
+		this.map1.clear();
+	}
 }

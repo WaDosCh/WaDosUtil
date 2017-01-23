@@ -3,6 +3,7 @@ package ch.judos.generic.data.geometry;
 import java.awt.Point;
 import java.awt.geom.Point2D;
 
+import ch.judos.generic.data.RandomJS;
 import ch.judos.generic.data.rstorage.interfaces.RStorable2;
 
 /**
@@ -11,6 +12,10 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  */
 public class PointI extends Point implements RStorable2 {
 	private static final long serialVersionUID = -2304751012108303425L;
+
+	public static PointI randomUniform(int minX, int maxX, int minY, int maxY) {
+		return new PointI(RandomJS.getInt(minX, maxX), RandomJS.getInt(minY, maxY));
+	}
 
 	public PointI(Point point) {
 		this(point.x, point.y);
@@ -56,6 +61,14 @@ public class PointI extends Point implements RStorable2 {
 	@Override
 	public String toString() {
 		return this.x + "/" + this.y;
+	}
+
+	public PointI subtract(PointI point) {
+		return new PointI(this.x - point.x, this.y - point.y);
+	}
+
+	public PointI add(PointI point) {
+		return new PointI(this.x + point.x, this.y + point.y);
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- * implements HashMap [K,HashSet[V]]
+ * implements HashMap [K,ArrayList[V]]
  * 
  * @since 02.02.2015
  * @author Julian Schelker
@@ -23,9 +23,12 @@ public class HashMapList<K, V> {
 	}
 
 	public void put(K key, V value) {
-		if (!this.map.containsKey(key))
-			this.map.put(key, new ArrayList<V>());
-		this.map.get(key).add(value);
+		ArrayList<V> list = this.map.get(key);
+		if (list == null) {
+			list = new ArrayList<V>();
+			this.map.put(key, list);
+		}
+		list.add(value);
 	}
 
 	public ArrayList<V> getList(K key) {
@@ -47,5 +50,17 @@ public class HashMapList<K, V> {
 
 	public Set<K> keys() {
 		return this.map.keySet();
+	}
+
+	public void clear() {
+		this.map.clear();
+	}
+
+	public int sizeKeys() {
+		return this.map.size();
+	}
+
+	public int sizeAllValues() {
+		return this.map.values().stream().map(list -> list.size()).reduce(Integer::sum).get();
 	}
 }

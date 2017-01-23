@@ -58,6 +58,10 @@ public class Angle implements RStorable2 {
 		this.radian = radian;
 	}
 
+	public Angle clone() {
+		return new Angle(this.radian);
+	}
+
 	public Angle sub(Angle angle) {
 		return Angle.fromRadian(this.radian - angle.radian);
 	}
@@ -181,6 +185,28 @@ public class Angle implements RStorable2 {
 
 	public boolean almostEquals(Angle angle, Angle delta) {
 		return inIntervalUncapped(angle.sub(delta), angle.add(delta));
+	}
+
+	/**
+	 * modifies this angle to approach the target angle
+	 * 
+	 * @param targetAngle
+	 * @param maxChange
+	 *            max modification of this angle
+	 * @return delta amount of angle changed in radian
+	 */
+	public double approachAngle(Angle targetAngle, Angle maxChange) {
+		double delta = targetAngle.radian - this.radian;
+		if (delta > Math.PI)
+			delta -= 2 * Math.PI;
+		if (delta < -Math.PI)
+			delta += 2 * Math.PI;
+		if (Math.abs(delta) > maxChange.radian) {
+			delta = maxChange.radian * Math.signum(delta);
+		}
+		this.radian += delta;
+		norm();
+		return delta;
 	}
 
 }

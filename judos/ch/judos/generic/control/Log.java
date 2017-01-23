@@ -3,7 +3,6 @@ package ch.judos.generic.control;
 import ch.judos.generic.data.date.Time;
 
 /**
- * @since 28.11.2015
  * @author Julian Schelker
  */
 public class Log {
@@ -11,7 +10,7 @@ public class Log {
 	private static Level logLevel;
 
 	public static enum Level {
-		ERROR(2), WARNING(1), INFO(0);
+		ERROR(3), WARNING(2), INFO(1), VERBOSE(0);
 
 		private int importance;
 
@@ -36,11 +35,22 @@ public class Log {
 		log(msg, Level.INFO);
 	}
 
+	public static void verbose(String msg) {
+		log(msg, Level.VERBOSE);
+	}
+
 	private static void log(String msg, Level msgLogLevel) {
 		if (logLevel.importance > msgLogLevel.importance)
 			return;
+		StackTraceElement stackElement = Thread.currentThread().getStackTrace()[3];
+
 		Time currentTime = new Time();
-		String logMsg = currentTime.toString("H:i:s") + " " + logLevel.name() + " - " + msg;
+		String fullClassName = stackElement.getClassName();
+		String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
+
+		String logMsg = currentTime.toString("H:i:s") + " " + logLevel.name() + " ["
+			+ simpleClassName + " " + stackElement.getMethodName() + "] " + msg;
 		System.out.println(logMsg);
 	}
+
 }
