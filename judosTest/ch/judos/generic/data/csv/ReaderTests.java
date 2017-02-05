@@ -3,8 +3,8 @@ package ch.judos.generic.data.csv;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
+import java.util.HashMap;
 
-import ch.judos.generic.data.csv.CSVFileReader;
 import junit.framework.TestCase;
 
 /**
@@ -33,8 +33,12 @@ public class ReaderTests extends TestCase {
 		CSVFileReader csv = CSVFileReader.read(this.input);
 		assertTrue(Arrays.equals(csv.getAttributes(), new String[]{"A", "B", "C"}));
 		assertEquals(csv.countEntries(), 2);
-		assertTrue(Arrays.equals(csv.getEntry(0), new String[]{"1", "1", "1"}));
-		assertTrue(Arrays.equals(csv.getEntry(1), new String[]{"2", "2", "2"}));
+		HashMap<String, String> entry = csv.getEntry(0);
+		assertEquals(entry.get("A"), "1");
+		assertEquals(entry.get("B"), "1");
+		assertEquals(entry.get("C"), "1");
+		entry = csv.getEntry(1);
+		assertEquals(entry.get("A"), "2");
 	}
 
 }

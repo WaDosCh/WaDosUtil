@@ -6,8 +6,6 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 /**
  * @since 14.09.2011
  * @author Julian Schelker
@@ -267,10 +265,6 @@ public class StringUtils {
 			return result;
 		}
 
-		@Override
-		public void remove() {
-			throw new NotImplementedException();
-		}
 	}
 
 	/**

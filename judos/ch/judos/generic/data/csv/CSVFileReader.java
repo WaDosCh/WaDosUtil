@@ -13,9 +13,7 @@ import ch.judos.generic.data.StringUtils;
  * Use a static method to read data from an inputstream or a file. Then use the
  * getters to access the data from the csv-file.
  * 
- * @since 04.01.2012
  * @author Julian Schelker
- * @version 1.0 / 04.01.2012
  */
 public class CSVFileReader {
 
@@ -95,13 +93,13 @@ public class CSVFileReader {
 	 * @return a stored object of the file
 	 * @throws IndexOutOfBoundsException
 	 */
-	public String[] getEntry(int index) throws IndexOutOfBoundsException {
+	public HashMap<String, String> getEntry(int index) throws IndexOutOfBoundsException {
 		return this.entities[index];
 	}
 
 	protected String separation;
 	private String[] attributes;
-	private String[][] entities;
+	private HashMap<String, String>[] entities;
 
 	/**
 	 * reads and parses a csv file
@@ -109,6 +107,7 @@ public class CSVFileReader {
 	 * @param reader
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unchecked")
 	protected CSVFileReader(BufferedReader reader) throws IOException {
 		String line;
 		String attributeLine = reader.readLine();
@@ -121,10 +120,14 @@ public class CSVFileReader {
 		this.separation = getSeparationCharacter(candidates);
 
 		this.attributes = CSVFile.decodeForValue(attributeLine.split(this.separation, -1));
-		this.entities = new String[allLines.size()][];
+		this.entities = (HashMap<String, String>[]) new HashMap[allLines.size()];
 		int index = 0;
 		for (String entity : allLines) {
-			this.entities[index] = CSVFile.decodeForValue(entity.split(this.separation, -1));
+			String[] values = CSVFile.decodeForValue(entity.split(this.separation, -1));
+			this.entities[index] = new HashMap<>();
+			for (int i = 0; i < this.attributes.length; i++) {
+				this.entities[index].put(this.attributes[i], values[i]);
+			}
 			index++;
 		}
 		if (!muted) {
@@ -177,6 +180,8 @@ public class CSVFileReader {
 		HashMap<String, Integer> result = new HashMap<>();
 		String s;
 		for (char c : lineWithAttributes.toCharArray()) {
+			if (Character.isAlphabetic(c) || Character.isDigit(c))
+				continue;
 			s = Character.toString(c);
 			Map.add(result, s, 1);
 		}

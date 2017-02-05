@@ -2,12 +2,15 @@ package ch.judos.generic.files;
 
 import java.awt.Component;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -40,7 +43,8 @@ public class FileUtils extends File {
 			file.mkdir();
 	}
 
-	public static String getMd5HexForFile(File f) throws NoSuchAlgorithmException, IOException {
+	public static String getMd5HexForFile(File f) throws NoSuchAlgorithmException,
+		IOException {
 		try (FileInputStream is = new FileInputStream(f)) {
 			return getMd5HexForStream(is);
 		}
@@ -84,26 +88,19 @@ public class FileUtils extends File {
 	 * @return true if operation succeeded - false if exception occured
 	 */
 	public static boolean copyDirectory(File sourceLocation, File targetLocation) {
-		boolean ok = true;
 		if (sourceLocation.isDirectory()) {
 			if (!targetLocation.exists()) {
 				targetLocation.mkdir();
 			}
 
-			String[] children = sourceLocation.list();
-			for (int i = 0; i < children.length; i++) {
-				boolean g = copyDirectory(new File(sourceLocation, children[i]), new File(
-					targetLocation, children[i]));
-				if (!g)
-					ok = false;
+			boolean ok = true;
+			for (String childName : sourceLocation.list()) {
+				ok &= copyDirectory(new File(sourceLocation, childName), new File(
+					targetLocation, childName));
 			}
+			return ok;
 		}
-		else {
-			boolean g = copyFile(sourceLocation, targetLocation);
-			if (!g)
-				ok = false;
-		}
-		return ok;
+		return copyFile(sourceLocation, targetLocation);
 	}
 
 	/**
@@ -112,22 +109,15 @@ public class FileUtils extends File {
 	 * @return true if operation succeeded - false if exception occured
 	 */
 	public static boolean copyFile(File f1, File f2) {
-		try (InputStream in = new FileInputStream(f1);
-			OutputStream out = new FileOutputStream(f2)) {
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
-			}
+		try {
+			Files.copy(f1.toPath(), f2.toPath(), StandardCopyOption.REPLACE_EXISTING,
+				StandardCopyOption.COPY_ATTRIBUTES);
 			return true;
-
-		}
-		catch (FileNotFoundException ex) {
-			return false;
 		}
 		catch (IOException e) {
-			return false;
+			e.printStackTrace();
 		}
+		return false;
 	}
 
 	/**
@@ -138,15 +128,14 @@ public class FileUtils extends File {
 	 * @return true if operation succeeded - false if exception occured
 	 */
 	public static boolean deleteDirectory(File path) {
-		if (path.exists()) {
-			File[] files = path.listFiles();
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].isDirectory()) {
-					deleteDirectory(files[i]);
-				}
-				else {
-					files[i].delete();
-				}
+		if (!path.exists())
+			return true;
+		if (path.isDirectory()) {
+			for (File file : path.listFiles()) {
+				if (file.isDirectory())
+					deleteDirectory(file);
+				else
+					file.delete();
 			}
 		}
 		return (path.delete());
@@ -173,7 +162,8 @@ public class FileUtils extends File {
 
 	/**
 	 * @param file
-	 * @return reads the whole content in the file and returns it as one string.<br>
+	 * @return reads the whole content in the file and returns it as one
+	 *         string.<br>
 	 *         lines in the file are separated by \n
 	 * @throws IOException
 	 */
@@ -190,7 +180,8 @@ public class FileUtils extends File {
 
 	/**
 	 * @param file
-	 * @return reads the whole content in the file and returns it as one list.<br>
+	 * @return reads the whole content in the file and returns it as one
+	 *         list.<br>
 	 * @throws IOException
 	 */
 	public static ArrayList<String> readFileContent(File file) throws IOException {
@@ -383,6 +374,18 @@ public class FileUtils extends File {
 			return new String[]{name, ending};
 		}
 		throw new RuntimeException("Problem with splitting fileName: " + fileName);
+	}
+
+	public static int getFilesCount(File file, boolean directoryInclusive) {
+		if (file.isFile())
+			return 1;
+		int count = (directoryInclusive ? 1 : 0);
+		for (File f : file.listFiles())
+			if (f.isDirectory())
+				count += getFilesCount(f, directoryInclusive);
+			else
+				count++;
+		return count;
 	}
 
 }

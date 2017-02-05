@@ -3,7 +3,6 @@ package ch.judos.generic.data;
 import java.lang.reflect.Array;
 import java.util.*;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import ch.judos.generic.reflection.Classes;
 
 /**
@@ -249,11 +248,6 @@ public class DynamicList<T> extends ArrayList<T> {
 				@Override
 				public T next() {
 					return null;
-				}
-
-				@Override
-				public void remove() {
-					throw new NotImplementedException();
 				}
 
 			};
