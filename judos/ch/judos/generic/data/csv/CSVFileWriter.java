@@ -4,8 +4,6 @@ import java.io.*;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-import ch.judos.generic.data.StringUtils;
-
 /**
  * Use the constructor to create a CSVFileWriter object. You must specify all
  * the attributes you are using for your entries. Then use the addEntry method
@@ -76,10 +74,10 @@ public class CSVFileWriter {
 		BufferedWriter wr = new BufferedWriter(output);
 		// If you get an error here you need to include
 		// "Apache commons-lang3-3.1" into your project
-		wr.write(StringUtils.join(CSVFile.encodeForFile(this.attributes), CSVFile.separator));
+		wr.write(String.join(CSVFile.separator, CSVFile.encodeForFile(this.attributes)));
 		wr.write(CSVFile.linebreak);
 		for (String[] entry : this.entries) {
-			wr.write(StringUtils.join(CSVFile.encodeForFile(entry), CSVFile.separator));
+			wr.write(String.join(CSVFile.separator, CSVFile.encodeForFile(entry)));
 			wr.write(CSVFile.linebreak);
 		}
 		wr.flush();

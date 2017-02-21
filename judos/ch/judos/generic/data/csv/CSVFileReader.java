@@ -111,7 +111,11 @@ public class CSVFileReader {
 	protected CSVFileReader(BufferedReader reader) throws IOException {
 		String line;
 		String attributeLine = reader.readLine();
-		HashMap<String, Integer> candidates = getSeparationCandidates(attributeLine);
+		HashMap<String, Integer> candidates = null;
+		if (attributeLine != null)
+			candidates = getSeparationCandidates(attributeLine);
+		else
+			candidates = new HashMap<>();
 		ArrayList<String> allLines = new ArrayList<>();
 		while ((line = reader.readLine()) != null) {
 			allLines.add(line);
