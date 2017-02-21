@@ -1,6 +1,7 @@
 package ch.judos.generic.files;
 
 import java.awt.Component;
+import java.awt.Desktop;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -8,6 +9,7 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,13 +17,18 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
+import ch.judos.generic.exception.ExceptionWithKey;
+
 /**
- * @since 18.11.2013
  * @author Julian Schelker
  */
 public class FileUtils extends File {
 
 	private static final long serialVersionUID = -3775679979394334289L;
+
+	public static void openFileWithDefaultApplication(File file) throws IOException {
+		Desktop.getDesktop().open(file);
+	}
 
 	public static BufferedReader getReaderForFile(File f) throws FileNotFoundException {
 		return new BufferedReader(new InputStreamReader(new FileInputStream(f),
@@ -88,19 +95,37 @@ public class FileUtils extends File {
 	 * @return true if operation succeeded - false if exception occured
 	 */
 	public static boolean copyDirectory(File sourceLocation, File targetLocation) {
+		return copyDirectory(sourceLocation, targetLocation, null);
+	}
+	/**
+	 * @param sourceLocation
+	 * @param targetLocation
+	 * @param exceptionList
+	 *            occuring exceptions are stored in here
+	 * @return true if operation succeeded - false if exception occured
+	 */
+	public static boolean copyDirectory(File sourceLocation, File targetLocation,
+		List<ExceptionWithKey> exceptionList) {
 		if (sourceLocation.isDirectory()) {
 			if (!targetLocation.exists()) {
 				targetLocation.mkdir();
 			}
 
 			boolean ok = true;
+			if (sourceLocation.list() == null) {
+				if (exceptionList != null) {
+					exceptionList.add(new ExceptionWithKey("READ_DIRECTORY_FAILED",
+						"Reading path which is not a directory: " + sourceLocation));
+				}
+				return false;
+			}
 			for (String childName : sourceLocation.list()) {
 				ok &= copyDirectory(new File(sourceLocation, childName), new File(
 					targetLocation, childName));
 			}
 			return ok;
 		}
-		return copyFile(sourceLocation, targetLocation);
+		return copyFile(sourceLocation, targetLocation, exceptionList);
 	}
 
 	/**
@@ -109,13 +134,21 @@ public class FileUtils extends File {
 	 * @return true if operation succeeded - false if exception occured
 	 */
 	public static boolean copyFile(File f1, File f2) {
+		return copyFile(f1, f2, null);
+	}
+
+	public static boolean copyFile(File f1, File f2, List<ExceptionWithKey> exceptionList) {
 		try {
+			if (!f1.exists())
+				return true;
 			Files.copy(f1.toPath(), f2.toPath(), StandardCopyOption.REPLACE_EXISTING,
 				StandardCopyOption.COPY_ATTRIBUTES);
 			return true;
 		}
-		catch (IOException e) {
-			e.printStackTrace();
+		catch (Exception e) {
+			if (exceptionList != null) {
+				exceptionList.add(new ExceptionWithKey("COPY_FILE_FAILED", e.toString()));
+			}
 		}
 		return false;
 	}
@@ -138,7 +171,7 @@ public class FileUtils extends File {
 					file.delete();
 			}
 		}
-		return (path.delete());
+		return path.delete();
 	}
 
 	/**

@@ -18,7 +18,7 @@ public class ByteData {
 
 	public static String autoFormat(double bytes, int decimalCiffers, boolean forceDecimals) {
 		int u = 0;
-		String[] units = new String[]{"B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB",
+		String[] units = new String[]{"Bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB",
 			"YiB"};
 		while (bytes >= 1024) {
 			bytes /= 1024;

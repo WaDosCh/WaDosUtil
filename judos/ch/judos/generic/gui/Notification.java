@@ -21,6 +21,8 @@ public class Notification {
 	 */
 	public static int PROCEED_CANCEL = 2;
 
+	public static int PROCEED_CLOSE = -1;
+
 	/**
 	 * @param title
 	 * @param message
