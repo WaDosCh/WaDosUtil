@@ -18,11 +18,4 @@ public class StringUtilsTests extends TestCase {
 		assertTrue(StringUtils.countMatches("hallo hallo", "hallo") == 2);
 	}
 
-	public void testJoin() {
-		assertEquals("a.b.c", StringUtils.join(new String[]{"a", "b", "c"}, "."));
-		assertEquals("a", StringUtils.join(new String[]{"a"}, "."));
-		assertEquals("hallo..welt", StringUtils.join(new String[]{"hallo", "welt"}, ".."));
-		assertEquals("", StringUtils.join(new String[]{}, "asdf"));
-	}
-
 }

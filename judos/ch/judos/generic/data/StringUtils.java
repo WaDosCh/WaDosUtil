@@ -459,17 +459,6 @@ public class StringUtils {
 		}
 	}
 
-	public static String join(String[] arr, String glue) {
-		if (arr.length == 0)
-			return "";
-		StringBuffer s = new StringBuffer();
-		for (int i = 0; i < arr.length; i++) {
-			s.append(arr[i]);
-			s.append(glue);
-		}
-		return s.substring(0, s.length() - glue.length());
-	}
-
 	public static int countMatches(String text, String key) {
 		int matches = 0;
 		int currentIndex = 0;
@@ -482,6 +471,21 @@ public class StringUtils {
 			currentIndex = pos + 1;
 		}
 		return matches;
+	}
+
+	public static String stringFromException(Throwable exception) {
+		StringWriter exceptionStackTrace = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(exceptionStackTrace);
+		exception.printStackTrace(printWriter);
+		return exceptionStackTrace.toString();
+	}
+
+	public static String takeMaxLinesFrom(String string, int maxLines) {
+		String[] splitToLines = string.split(Pattern.quote(linebreak));
+		if (splitToLines.length > maxLines) {
+			splitToLines = Arrays.copyOf(splitToLines, maxLines);
+		}
+		return String.join(linebreak, splitToLines);
 	}
 
 }
