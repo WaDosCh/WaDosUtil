@@ -68,6 +68,20 @@ public class Time {
 	}
 
 	/**
+	 * converts the given amount of seconds into a hour:minute:second
+	 * representation
+	 * 
+	 * @param timeInSeconds
+	 */
+	public Time(int timeInSeconds) {
+		int remaining = timeInSeconds;
+		this.second = remaining % 60;
+		remaining /= 60;
+		this.minute = remaining % 60;
+		this.hour = remaining / 60;
+	}
+
+	/**
 	 * see also the static parse method for parsing time
 	 * 
 	 * @param hour
@@ -317,5 +331,13 @@ public class Time {
 		else
 			return false;
 		return true;
+	}
+
+	/**
+	 * @return the current time in milliseconds offset to the beginning of the
+	 *         day
+	 */
+	public long getTime() {
+		return ((this.hour * 60 + this.minute) * 60 + this.second) * 1000;
 	}
 }

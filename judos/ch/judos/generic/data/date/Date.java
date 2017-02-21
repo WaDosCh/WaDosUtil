@@ -352,4 +352,10 @@ public class Date implements Cloneable, Comparable<Date> {
 		return true;
 	}
 
+	public long getTime() {
+		GregorianCalendar c = new GregorianCalendar();
+		c.set(this.year, this.month, this.day, 0, 0);
+		return c.getTimeInMillis();
+	}
+
 }

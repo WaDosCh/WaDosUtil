@@ -15,7 +15,18 @@ import ch.judos.generic.data.parse.DateFormat;
  */
 public class DateHelper {
 	// some identifier and helper variables
-	private static GregorianCalendar c = new GregorianCalendar();
+	private static GregorianCalendar c;
+
+	private static GregorianCalendar c() {
+		if (c == null) {
+			c = new GregorianCalendar();
+			c.set(Calendar.HOUR, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 0);
+			c.set(Calendar.MILLISECOND, 0);
+		}
+		return c;
+	}
 
 	/**
 	 * Assumes that Calendar.Sunday = 1, Calendar.Monday = 2 and so on... names
@@ -35,9 +46,9 @@ public class DateHelper {
 	 * @return the number of days the given month in the given year has
 	 */
 	public static int daysInMonth(int year, int month) {
-		c.set(Calendar.YEAR, year);
-		c.set(Calendar.MONTH, month - 1);
-		return c.getActualMaximum(Calendar.DAY_OF_MONTH);
+		c().set(Calendar.YEAR, year);
+		c().set(Calendar.MONTH, month - 1);
+		return c().getActualMaximum(Calendar.DAY_OF_MONTH);
 	}
 
 	/**
@@ -55,24 +66,24 @@ public class DateHelper {
 	 * @return current day [1-31]
 	 */
 	public static int getTodayDay() {
-		c.setTime(new java.util.Date());
-		return c.get(Calendar.DAY_OF_MONTH);
+		c().setTime(new java.util.Date());
+		return c().get(Calendar.DAY_OF_MONTH);
 	}
 
 	/**
 	 * @return current month nr [1-12]
 	 */
 	public static int getTodayMonth() {
-		c.setTime(new java.util.Date());
-		return c.get(Calendar.MONTH) + 1;
+		c().setTime(new java.util.Date());
+		return c().get(Calendar.MONTH) + 1;
 	}
 
 	/**
 	 * @return current year 4 digits (e.g.2013)
 	 */
 	public static int getTodayYear() {
-		c.setTime(new java.util.Date());
-		return c.get(Calendar.YEAR);
+		c().setTime(new java.util.Date());
+		return c().get(Calendar.YEAR);
 	}
 
 	/**
@@ -80,7 +91,7 @@ public class DateHelper {
 	 * @return true if the given year is a leap year
 	 */
 	public static boolean isLeapYear(int year) {
-		return c.isLeapYear(year);
+		return c().isLeapYear(year);
 	}
 
 	/**
