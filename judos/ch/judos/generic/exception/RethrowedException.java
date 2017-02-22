@@ -24,4 +24,5 @@ public class RethrowedException extends RuntimeException {
 	public String toString() {
 		return super.toString() + " (encapsulated: " + this.exception + ")";
 	}
+
 }
