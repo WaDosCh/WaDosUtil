@@ -1,4 +1,4 @@
-package ch.judos.generic.dropFilesOntoApp;
+package ch.judos.generic.os.dropFilesOntoApp;
 
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DropTargetDragEvent;
@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.judos.generic.dropFilesOntoApp.FileDrop.TransferableObject;
+import ch.judos.generic.os.dropFilesOntoApp.FileDrop.TransferableObject;
 
 /**
  * This class makes it easy to drag and drop files from the operating system to
