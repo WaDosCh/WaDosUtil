@@ -6,6 +6,16 @@ package ch.judos.generic.test;
  */
 public class AssertionUtils {
 
+	public static void assertNotNil(Object o, String msg) {
+		if (o == null)
+			throw new RuntimeException(msg);
+	}
+
+	public static void assertNotNil(Object o) {
+		if (o == null)
+			throw new RuntimeException("The param may not be null");
+	}
+
 	/**
 	 * @return whether assertions are enabled by the JVM
 	 */
