@@ -40,6 +40,11 @@ public class KeywordMatch<T> {
 	 * @return probability between 0 and 1 that this match is actually correct
 	 */
 	public double getCertaintyOfMatch() {
+		if (this.matches.length == 0)
+			return 0;
+		if (this.matches.length == 1) {
+			return Math.min(1, this.matches[0].e1 / 2);
+		}
 		double bestDistance = this.matches[0].e1 - this.matches[1].e1;
 		double certainty = 0.559201 * Math.log(10 * bestDistance);
 		certainty = Math.min(1, Math.max(0, certainty));
@@ -111,5 +116,9 @@ public class KeywordMatch<T> {
 		}
 		return "search :" + this.search + "\nfound: " + Arrays.toString(best) + "\nCertainty: "
 			+ this.getCertaintyOfMatch();
+	}
+
+	public int getSize() {
+		return this.matches.length;
 	}
 }

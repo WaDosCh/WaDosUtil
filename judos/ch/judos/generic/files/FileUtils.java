@@ -182,9 +182,9 @@ public class FileUtils extends File {
 		return filesys.getHomeDirectory();
 	}
 
-	public static String getExtension(File f) {
+	public static String getExtension(File file) {
 		String ext = null;
-		String s = f.getName();
+		String s = file.getName();
 		int i = s.lastIndexOf('.');
 
 		if (i > 0 && i < s.length() - 1) {
