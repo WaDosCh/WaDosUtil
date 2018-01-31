@@ -27,4 +27,13 @@ public class ColorUtils {
 		r[2] = argb & 0xFF;
 		return r;
 	}
+
+	/**
+	 * @param bgColor
+	 * @return nice string. e.g.: [r=255,g=80,b=1]
+	 */
+	public static String toString(Color color) {
+		return "[r=" + color.getRed() + ",g=" + color.getGreen() + ",b=" + color.getBlue()
+			+ "]";
+	}
 }
