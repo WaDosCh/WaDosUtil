@@ -2,7 +2,6 @@ package ch.judos.generic.data.geometry;
 
 import java.awt.Point;
 import java.awt.geom.Point2D;
-//import java.io.Serializable;
 
 import ch.judos.generic.data.rstorage.interfaces.RStorable2;
 
@@ -13,9 +12,20 @@ import ch.judos.generic.data.rstorage.interfaces.RStorable2;
  * @author Julian Schelker
  * @version 1.0 / 27.02.2013
  */
-public class PointF extends Point2D.Float implements /* Cloneable, Serializable, */RStorable2 {
+public class PointF extends Point2D.Float implements RStorable2 {
 
 	private static final long serialVersionUID = 1495729872930076211L;
+
+	public void rotate(double angleRadian) {
+		double rx = (this.x * Math.cos(angleRadian)) - (this.y * Math.sin(angleRadian));
+		double ry = (this.x * Math.sin(angleRadian)) + (this.y * Math.cos(angleRadian));
+		this.x = (float) rx;
+		this.y = (float) ry;
+	}
+
+	public void rotate(Angle angle) {
+		rotate(angle.getRadian());
+	}
 
 	/**
 	 * used for the RStorage to create instances
@@ -204,8 +214,8 @@ public class PointF extends Point2D.Float implements /* Cloneable, Serializable,
 	}
 
 	public PointF movePoint(double angle, float step) {
-		return new PointF(this.x + (float) (step * Math.cos(angle)), this.y
-			+ (float) (step * Math.sin(angle)));
+		return new PointF(this.x + (float) (step * Math.cos(angle)), this.y + (float) (step
+			* Math.sin(angle)));
 	}
 
 	public PointF movePoint(Angle angle, double step) {

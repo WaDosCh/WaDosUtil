@@ -58,6 +58,7 @@ public class Angle implements RStorable2 {
 		this.radian = radian;
 	}
 
+	@Override
 	public Angle clone() {
 		return new Angle(this.radian);
 	}

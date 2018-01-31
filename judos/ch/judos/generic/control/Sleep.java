@@ -6,6 +6,7 @@ public class Sleep {
 			Thread.sleep(millis);
 		}
 		catch (InterruptedException e) {
+			// don't care
 		}
 	}
 }

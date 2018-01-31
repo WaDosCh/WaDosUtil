@@ -54,12 +54,14 @@ public class FileTypeAssociates {
 					fileNode.deleteNode();
 			}
 			catch (Exception e2) {
+				// will throw original exception
 			}
 			try {
 				if (fileMeta != null)
 					fileMeta.deleteNode();
 			}
 			catch (Exception e2) {
+				// will throw original exception
 			}
 			throw e;
 		}
