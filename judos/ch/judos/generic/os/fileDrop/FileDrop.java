@@ -2,8 +2,14 @@ package ch.judos.generic.os.fileDrop;
 
 import java.awt.datatransfer.DataFlavor;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
+ * NOTE: If it doesn't work, consider giving eclipse admin priviledges!!<br>
+ * <br>
+ * 
+ * 
  * This class makes it easy to drag and drop files from the operating system to
  * a Java program. Any <tt>java.awt.Component</tt> can be dropped onto, but only
  * <tt>javax.swing.JComponent</tt>s will indicate the drop event with a changed
@@ -16,7 +22,7 @@ import java.io.*;
  * <code><pre>
  *      JPanel myPanel = new JPanel();
  *      new FileDrop( myPanel, new FileDrop.Listener()
- *      {   public void filesDropped( java.io.File[] files )
+ *      {   public void filesDropped( File[] files )
  *          {   
  *              // handle file drop
  *              ...
@@ -276,20 +282,11 @@ public class FileDrop {
 					} // end else: drag not ok
 				} // end dragEnter
 
-				public void dragOver(java.awt.dnd.DropTargetDragEvent evt) { // This
-																				// is
-																				// called
-																				// continually
-																				// as
-																				// long
-																				// as
-																				// the
-																				// mouse
-																				// is
-																				// over
-																				// the
-																				// drag
-																				// target.
+				/*
+				 * This is called continually as long as the mouse is over the
+				 * drag target.
+				 */
+				public void dragOver(java.awt.dnd.DropTargetDragEvent evt) {
 				} // end dragOver
 
 				public void drop(java.awt.dnd.DropTargetDropEvent evt) {
@@ -307,14 +304,13 @@ public class FileDrop {
 							log(out, "FileDrop: file list accepted.");
 
 							// Get a useful list
-							java.util.List fileList = (java.util.List) tr.getTransferData(
+							List<?> fileList = (List<?>) tr.getTransferData(
 								java.awt.datatransfer.DataFlavor.javaFileListFlavor);
-							java.util.Iterator iterator = fileList.iterator();
 
 							// Convert list to array
-							java.io.File[] filesTemp = new java.io.File[fileList.size()];
+							File[] filesTemp = new File[fileList.size()];
 							fileList.toArray(filesTemp);
-							final java.io.File[] files = filesTemp;
+							final File[] files = filesTemp;
 
 							// Alert listener to drop.
 							if (listener != null)
@@ -420,7 +416,7 @@ public class FileDrop {
 		if (supportsDnD == null) {
 			boolean support = false;
 			try {
-				Class arbitraryDndClass = Class.forName("java.awt.dnd.DnDConstants");
+				Class.forName("java.awt.dnd.DnDConstants");
 				support = true;
 			} // end try
 			catch (Exception e) {
@@ -435,7 +431,7 @@ public class FileDrop {
 	private static String ZERO_CHAR_STRING = "" + (char) 0;
 	private static File[] createFileArray(BufferedReader bReader, PrintStream out) {
 		try {
-			java.util.List list = new java.util.ArrayList();
+			List<File> list = new ArrayList<>();
 			java.lang.String line = null;
 			while ((line = bReader.readLine()) != null) {
 				try {
@@ -443,7 +439,7 @@ public class FileDrop {
 					if (ZERO_CHAR_STRING.equals(line))
 						continue;
 
-					java.io.File file = new java.io.File(new java.net.URI(line));
+					File file = new File(new java.net.URI(line));
 					list.add(file);
 				}
 				catch (Exception ex) {
@@ -451,7 +447,7 @@ public class FileDrop {
 				}
 			}
 
-			return (java.io.File[]) list.toArray(new File[list.size()]);
+			return (File[]) list.toArray(new File[list.size()]);
 		}
 		catch (IOException ex) {
 			log(out, "FileDrop: IOException");
@@ -603,7 +599,7 @@ public class FileDrop {
 	 * example your class declaration may begin like this: <code><pre>
 	 *      public class MyClass implements FileDrop.Listener
 	 *      ...
-	 *      public void filesDropped( java.io.File[] files )
+	 *      public void filesDropped( File[] files )
 	 *      {
 	 *          ...
 	 *      }   // end filesDropped
@@ -621,7 +617,7 @@ public class FileDrop {
 		 *            An array of <tt>File</tt>s that were dropped.
 		 * @since 1.0
 		 */
-		public abstract void filesDropped(java.io.File[] files);
+		public abstract void filesDropped(File[] files);
 
 	} // end inner-interface Listener
 
@@ -643,7 +639,8 @@ public class FileDrop {
 	 */
 	public static class Event extends java.util.EventObject {
 
-		private java.io.File[] files;
+		private static final long serialVersionUID = -1036377412563459601L;
+		private File[] files;
 
 		/**
 		 * Constructs an {@link Event} with the array of files that were dropped
@@ -654,7 +651,7 @@ public class FileDrop {
 		 * @source The event source
 		 * @since 1.1
 		 */
-		public Event(java.io.File[] files, Object source) {
+		public Event(File[] files, Object source) {
 			super(source);
 			this.files = files;
 		} // end constructor
@@ -666,7 +663,7 @@ public class FileDrop {
 		 * @return array of files that were dropped
 		 * @since 1.1
 		 */
-		public java.io.File[] getFiles() {
+		public File[] getFiles() {
 			return files;
 		} // end getFiles
 
@@ -796,7 +793,7 @@ public class FileDrop {
 		 *            The {@link Fetcher} that will return the data object
 		 * @since 1.1
 		 */
-		public TransferableObject(Class dataClass, Fetcher fetcher) {
+		public TransferableObject(Class<?> dataClass, Fetcher fetcher) {
 			this.fetcher = fetcher;
 			this.customFlavor = new java.awt.datatransfer.DataFlavor(dataClass, MIME_TYPE);
 		} // end constructor

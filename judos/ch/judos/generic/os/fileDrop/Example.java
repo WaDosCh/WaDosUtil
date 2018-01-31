@@ -3,6 +3,7 @@ package ch.judos.generic.os.fileDrop;
 import java.awt.Color;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFrame;
 import javax.swing.border.Border;
 
 /**
@@ -33,7 +34,7 @@ public class Example {
 		}); // end FileDrop.Listener
 
 		frame.setBounds(100, 100, 300, 400);
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 	} // end main
 
