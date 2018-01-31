@@ -182,15 +182,21 @@ public class FileUtils extends File {
 		return filesys.getHomeDirectory();
 	}
 
+	/**
+	 * @param file
+	 * @return the filetype e.g. "jpg" "png" <br>
+	 *         the empty string if it is not a file or doesn't have an extension
+	 */
 	public static String getExtension(File file) {
-		String ext = null;
 		String s = file.getName();
 		int i = s.lastIndexOf('.');
+		if (!file.isFile())
+			return "";
 
-		if (i > 0 && i < s.length() - 1) {
-			ext = s.substring(i + 1).toLowerCase();
+		if (i >= 0 && i < s.length() - 1) {
+			return s.substring(i + 1).toLowerCase();
 		}
-		return ext;
+		return "";
 	}
 
 	/**
