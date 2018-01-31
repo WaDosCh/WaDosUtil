@@ -33,12 +33,15 @@ public class DynamicList<T> extends ArrayList<T> {
 	}
 
 	/**
-	 * initialize the list with the elements of another list
+	 * initialize the list with elements
 	 * 
 	 * @param s
 	 */
-	public DynamicList(List<T> s) {
-		super(s);
+	public DynamicList(Iterable<T> initialObjects) {
+		super();
+		for (T element : initialObjects) {
+			this.add(element);
+		}
 	}
 
 	/**
