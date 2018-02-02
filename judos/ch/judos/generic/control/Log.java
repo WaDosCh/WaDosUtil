@@ -5,9 +5,13 @@ import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.function.Consumer;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.StrSubstitutor;
 
 /**
  * default level is INFO
@@ -22,12 +26,34 @@ public class Log {
 	 * For long format you could use <br>
 	 * new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
 	 */
-	public final DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss.S");
+	public DateFormat dateFormat = new SimpleDateFormat("hh:mm:ss.S");
 
 	public boolean logToFile = false;
 	public boolean logToConsole = true;
 
+	/**
+	 * the standard format of a log message.<br>
+	 * Can be changed to an arbitrary different format by using the same
+	 * placeholders that are defined here.<br>
+	 * <br>
+	 * <code> ${date} </code> The timestamp for the log message, uses dateFormat
+	 * to format <br>
+	 * <code> ${level} </code> Log level string, uses the enum name directly<br>
+	 * <code> ${file} </code> In which file the log was sent<br>
+	 * <code> ${line} </code> On which line the log was called<br>
+	 * <code> ${method} </code> In which method the log happened<br>
+	 * <code> ${msg} </code> The actual log message
+	 */
+	public String logFormat = "${date} ${level} [${file}:${line} in ${method}] ${msg}";
+
 	public File logFile = new File("log.txt");
+
+	/**
+	 * Provide this to override the default behavior of the logger. It will
+	 * receive a hashmap with all the placeholder values ({@link #logFormat} and
+	 * the finally assembled message (with key 'message').
+	 */
+	public Consumer<Map<String, String>> loggingOverride;
 
 	/**
 	 * anything logged, will also be logged in sublogger
@@ -96,13 +122,22 @@ public class Log {
 			return;
 		StackTraceElement caller = Thread.currentThread().getStackTrace()[3];
 
-		StringBuilder builder = new StringBuilder(150);
-		builder.append(this.dateFormat.format(new Date())).append(" ");
-		builder.append(this.currentLogLevel).append(" ");
-		builder.append(" [").append(caller.getFileName()).append(":");
-		builder.append(caller.getLineNumber()).append(" in " + caller.getMethodName() + "] ");
-		builder.append(msg);
-		logItActually(msg, msgLogLevel);
+		Map<String, String> values = new HashMap<>(7);
+		values.put("date", this.dateFormat.format(new Date()));
+		values.put("level", this.currentLogLevel.name());
+		values.put("file", caller.getFileName());
+		values.put("line", String.valueOf(caller.getLineNumber()));
+		values.put("method", caller.getMethodName());
+		values.put("msg", msg);
+
+		String message = new StrSubstitutor(values).replace(msg);
+
+		if (this.loggingOverride != null) {
+			values.put("message", message);
+			this.loggingOverride.accept(values);
+		}
+		else
+			logItActually(message, msgLogLevel);
 	}
 
 	private void logItActually(String msg, Level msgLogLevel) {
@@ -122,6 +157,17 @@ public class Log {
 			}
 			catch (IOException e) {
 				e.printStackTrace();
+			}
+		}
+	}
+
+	public void close() {
+		if (this.outStream != null) {
+			try {
+				this.outStream.close();
+			}
+			catch (IOException e) {
+				// fine
 			}
 		}
 	}
