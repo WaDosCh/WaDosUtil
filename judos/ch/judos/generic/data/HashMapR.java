@@ -11,7 +11,9 @@ import java.util.Set;
  * @author Julian Schelker
  * @version 1.0 / 23.02.2013
  * @param <K>
+ *            key type
  * @param <V>
+ *            value type
  */
 public class HashMapR<K, V> {
 
@@ -28,9 +30,6 @@ public class HashMapR<K, V> {
 
 	/**
 	 * put some value to the key
-	 * 
-	 * @param key
-	 * @param value
 	 */
 	public void put(K key, V value) {
 		this.key2value.put(key, value);
@@ -38,7 +37,6 @@ public class HashMapR<K, V> {
 	}
 
 	/**
-	 * @param key
 	 * @return true if the key is contained in the map
 	 */
 	public boolean containsKey(K key) {
@@ -46,7 +44,6 @@ public class HashMapR<K, V> {
 	}
 
 	/**
-	 * @param value
 	 * @return true if the value is contained in the map
 	 */
 	public boolean containsValue(V value) {
@@ -54,7 +51,6 @@ public class HashMapR<K, V> {
 	}
 
 	/**
-	 * @param key
 	 * @return the value found for this key
 	 */
 	public V getFromKey(K key) {
@@ -62,7 +58,6 @@ public class HashMapR<K, V> {
 	}
 
 	/**
-	 * @param value
 	 * @return the key found for this value
 	 */
 	public K getFromValue(V value) {
@@ -71,8 +66,6 @@ public class HashMapR<K, V> {
 
 	/**
 	 * removes the key and the value that belonged to this key
-	 * 
-	 * @param key
 	 */
 	public void removeByKey(K key) {
 		V value = getFromKey(key);
@@ -82,8 +75,6 @@ public class HashMapR<K, V> {
 
 	/**
 	 * removes the value and the key that belonged to this value
-	 * 
-	 * @param value
 	 */
 	public void removeByValue(V value) {
 		K key = getFromValue(value);

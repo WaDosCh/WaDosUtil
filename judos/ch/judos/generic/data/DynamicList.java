@@ -340,9 +340,10 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * will throw an exception when one object can't be cast to the target class
 	 * 
 	 * @param l
+	 *            list of objects
 	 * @param class1
-	 * @return
-	 * @throws ClassCastException
+	 *            target class to cast each object to
+	 * @return a new dynamic list of T2 objects
 	 */
 	@SuppressWarnings({"unchecked"})
 	public static <T1, T2 extends T1> DynamicList<T2> castUp(List<T1> l, Class<T2> class1)
