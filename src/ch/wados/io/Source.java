@@ -22,7 +22,7 @@ import ch.wados.xml.XML;
 public abstract class Source {
 
 	/**
-	 * Returns a Source based of the given file name. <br/>
+	 * Returns a Source based of the given file name. <br>
 	 * This method does not validate the given file name. It is implicitly
 	 * validated as soon as it is interacted with. This allows for clearer
 	 * Source handling.
@@ -36,7 +36,7 @@ public abstract class Source {
 	}
 
 	/**
-	 * Returns a Source based of the given input stream <br/>
+	 * Returns a Source based of the given input stream <br>
 	 * This method does not validate the given stream. It is implicitly
 	 * validated as soon as it is interacted with. This allows for clearer
 	 * Source handling.
@@ -50,7 +50,7 @@ public abstract class Source {
 	}
 
 	/**
-	 * Returns a Source based of the given URL. <br/>
+	 * Returns a Source based of the given URL. <br>
 	 * This method does not validate the given URL. It is implicitly validated
 	 * as soon as it is interacted with. This allows for clearer Source
 	 * handling.

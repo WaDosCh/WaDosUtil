@@ -1,7 +1,7 @@
 package ch.wados.function;
 
 /**
- * Functional interface for a function (X => Y), that is allowed to throw
+ * Functional interface for a function (X =&gt; Y), that is allowed to throw
  * exceptions
  * 
  * @author Andreas Wälchli

@@ -27,15 +27,15 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * create an empty list with some space
 	 * 
 	 * @param initialCapacity
+	 *            initial size to allocate for this list
 	 */
 	public DynamicList(int initialCapacity) {
 		super(initialCapacity);
 	}
 
 	/**
-	 * initialize the list with elements
-	 * 
-	 * @param s
+	 * @param initialObjects
+	 *            initialize the list with elements
 	 */
 	public DynamicList(Iterable<T> initialObjects) {
 		super();
@@ -46,6 +46,7 @@ public class DynamicList<T> extends ArrayList<T> {
 
 	/**
 	 * @param initialObjects
+	 *            added to the list when constructing it
 	 */
 	@SafeVarargs
 	public DynamicList(T... initialObjects) {
@@ -68,9 +69,8 @@ public class DynamicList<T> extends ArrayList<T> {
 	}
 
 	/**
-	 * adds all elements to the list
-	 * 
 	 * @param furtherObjects
+	 *            adds all elements to the list
 	 */
 	@SafeVarargs
 	public final void addAll(T... furtherObjects) {
@@ -81,7 +81,9 @@ public class DynamicList<T> extends ArrayList<T> {
 
 	/**
 	 * @param <Type>
-	 * @param t
+	 *            type reference
+	 * @param c
+	 *            class reference
 	 * @return a list with all objects from this list that could be casted to
 	 *         the given type
 	 */
@@ -273,6 +275,7 @@ public class DynamicList<T> extends ArrayList<T> {
 
 		/**
 		 * @param list
+		 *            list to iterate over
 		 */
 		public Iterator2(List list) {
 			this.list = list;

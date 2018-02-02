@@ -6,6 +6,7 @@ import java.util.HashSet;
  * @since 17.05.2015
  * @author Julian Schelker
  * @param <E>
+ *            type inside your set
  */
 public class DynHashSet<E> extends HashSet<E> {
 

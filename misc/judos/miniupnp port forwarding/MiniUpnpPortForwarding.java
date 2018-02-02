@@ -11,7 +11,6 @@ import java.util.List;
 import lib.data.JS_Random;
 
 /**
- * @created 20.03.2012
  * @author Julian Schelker
  * @lastUpdate 23.04.2012
  */

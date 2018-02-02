@@ -70,7 +70,8 @@ public class GatewayDiscover {
 	 * A map of the GatewayDevices discovered so far. The assumption is that a
 	 * machine is connected to up to a Gateway Device per InetAddress
 	 */
-	private final Map<InetAddress, GatewayDevice> devices = new HashMap<InetAddress, GatewayDevice>();
+	private final Map<InetAddress, GatewayDevice> devices =
+		new HashMap<InetAddress, GatewayDevice>();
 
 	/*
 	 * Thread class for sending a search datagram and process the response.
@@ -176,8 +177,7 @@ public class GatewayDiscover {
 
 	/**
 	 * Discovers Gateway Devices on the network(s) the executing machine is
-	 * connected to.
-	 * <p/>
+	 * connected to. <br>
 	 * The host may be connected to different networks via different network
 	 * interfaces. Assumes that each network interface has a different
 	 * InetAddress and returns a map associating every GatewayDevice (responding
@@ -338,8 +338,8 @@ public class GatewayDiscover {
 
 			try {
 				// skip devices, not suitable to search gateways for
-				if (card.isLoopback() || card.isPointToPoint() || card.isVirtual()
-					|| !card.isUp())
+				if (card.isLoopback() || card.isPointToPoint() || card.isVirtual() || !card
+					.isUp())
 					continue;
 			}
 			catch (SocketException e) {

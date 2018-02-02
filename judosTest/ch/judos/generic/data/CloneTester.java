@@ -1,11 +1,8 @@
 package ch.judos.generic.data;
 
 import junit.framework.TestCase;
-import ch.judos.generic.data.Cloner;
-import ch.judos.generic.data.TupleR;
 
 /**
- * @created 28.04.2012
  * @author Julian Schelker
  */
 public class CloneTester extends TestCase {

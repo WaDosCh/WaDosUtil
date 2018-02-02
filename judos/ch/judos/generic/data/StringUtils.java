@@ -198,9 +198,9 @@ public class StringUtils {
 	}
 
 	/**
-	 * shortens the text, if charCount>12 it cuts of the end and adds "..." to
-	 * match the given charCount<br>
-	 * if charCount<=12 it cuts of the end and adds "." to match the given
+	 * shortens the text, if charCount &gt; 12 it cuts of the end and adds "..."
+	 * to match the given charCount<br>
+	 * if charCount &lt;= 12 it cuts of the end and adds "." to match the given
 	 * charCount.
 	 * 
 	 * @param text

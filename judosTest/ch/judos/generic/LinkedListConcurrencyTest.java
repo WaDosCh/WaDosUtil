@@ -1,7 +1,9 @@
 package ch.judos.generic;
 
 import static org.junit.Assert.fail;
+
 import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,7 +12,6 @@ import org.junit.Test;
  * removes the elements gets an NoSuchElementException. <br>
  * The test verifies the statement above.
  * 
- * @created 25.08.2012
  * @author Julian Schelker
  */
 public class LinkedListConcurrencyTest {

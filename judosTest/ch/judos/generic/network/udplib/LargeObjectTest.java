@@ -1,11 +1,14 @@
 package ch.judos.generic.network.udplib;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import ch.judos.generic.data.SerializerException;
 import ch.judos.generic.network.udp.ConnectionIssueListener;
 import ch.judos.generic.network.udp.UdpLib;
@@ -13,7 +16,6 @@ import ch.judos.generic.network.udp.interfaces.Udp4I;
 import ch.judos.generic.network.udp.interfaces.UdpListener;
 
 /**
- * @created 01.05.2012
  * @author Julian Schelker
  */
 public class LargeObjectTest implements UdpListener, ConnectionIssueListener {

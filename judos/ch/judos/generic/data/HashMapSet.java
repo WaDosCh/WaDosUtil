@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * implements HashMap<K,HashSet<V>>
+ * implements HashMap&lt;K,HashSet&lt;V&gt;&gt;
  * 
  * @since 28.01.2015
  * @author Julian Schelker

@@ -2,16 +2,18 @@ package ch.judos.generic.network.udplib;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
 import java.net.InetSocketAddress;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import ch.judos.generic.network.udp.UdpLib;
 import ch.judos.generic.network.udp.interfaces.Udp4I;
 import ch.judos.generic.network.udp.model.reachability.Reachability;
 
 /**
- * @created 04.05.2012
  * @author Julian Schelker
  */
 public class CheckAvailabilityTests {

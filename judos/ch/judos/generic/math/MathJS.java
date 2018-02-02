@@ -189,7 +189,8 @@ public class MathJS {
 	 *            number one
 	 * @param b
 	 *            number two
-	 * @return if a==b returns 1, if a!=0 && b==0 returns NaN, otherwise a/b
+	 * @return if a==b returns 1, if a!=0 &amp;&amp; b==0 returns NaN, otherwise
+	 *         a/b
 	 */
 	public static double divideByZero(double a, double b) {
 		if (b == 0) {

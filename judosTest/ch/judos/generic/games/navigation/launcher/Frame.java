@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 /**
  * nasty class to implement graphics around the nice main
  * 
- * @created 10.10.2011
  * @author Julian Schelker
  */
 public class Frame extends JFrame implements KeyListener {

@@ -93,7 +93,7 @@ public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 
 	/**
 	 * adds a {@link Runnable} with default priority ({@code 0}) to the shutdown
-	 * system.<br/>
+	 * system.<br>
 	 * {@inheritDoc}
 	 *
 	 * @throws NullPointerException

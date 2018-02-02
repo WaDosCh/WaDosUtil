@@ -1,7 +1,6 @@
 package controller.portforwarding;
 
 /**
- * @created 29.03.2012
  * @author Julian Schelker
  * @lastupdate 23.04.2012
  */

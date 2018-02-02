@@ -3,7 +3,6 @@ package controller.portforwarding;
 import java.net.DatagramSocket;
 
 /**
- * @created 16.03.2012
  * @author Julian Schelker
  * @lastUpdate 23.04.2012
  * 

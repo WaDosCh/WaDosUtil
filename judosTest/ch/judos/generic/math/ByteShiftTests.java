@@ -1,10 +1,8 @@
 package ch.judos.generic.math;
 
 import junit.framework.TestCase;
-import ch.judos.generic.math.ConvertNumber;
 
 /**
- * @created 27.04.2012
  * @author Julian Schelker
  */
 public class ByteShiftTests extends TestCase {

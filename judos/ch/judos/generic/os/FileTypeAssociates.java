@@ -15,7 +15,6 @@ public class FileTypeAssociates {
 	 *            without dot e.g. "java"
 	 * @param command
 	 * @param fileDescription
-	 * @return
 	 */
 	public static void win_add(String fileType, String command, String fileDescription)
 		throws RegistryException {

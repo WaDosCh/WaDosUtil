@@ -7,7 +7,7 @@ import org.w3c.dom.Document;
 /**
  * XML Data Wrapper
  * 
- * This class wraps a DOM Document for nice interaction with other components. <br/>
+ * This class wraps a DOM Document for nice interaction with other components. <br>
  * 
  * XML instances keep DOM Documents around internally. Therefore any mutation
  * performed by / on an XML instance affects the backing DOM document - and

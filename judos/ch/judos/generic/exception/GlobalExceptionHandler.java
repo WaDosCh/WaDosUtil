@@ -12,16 +12,6 @@ import ch.judos.generic.gui.Notification;
 
 public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 
-	/**
-	 * @param title
-	 *            a text which is displayed in the title of the notification
-	 * @param intro
-	 *            text displayed before showing thread name and 5 lines of stack
-	 *            trace
-	 * @param saved
-	 *            text displayed after stack trace, should direct user where to
-	 *            find more information
-	 */
 	public GlobalExceptionHandler() {
 	}
 
@@ -53,6 +43,7 @@ public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 			targetLogFolder = f.getParentFile();
 		}
 		catch (URISyntaxException e) {
+			// do nothing
 		}
 		if (targetLogFolder == null) {
 			targetLogFolder = new File(".");

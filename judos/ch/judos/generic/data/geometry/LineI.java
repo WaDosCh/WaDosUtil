@@ -88,13 +88,14 @@ public class LineI extends Line2D {
 	 * @param point
 	 * @return the distance of the point to the closest point lying on the
 	 *         infinitely extended line.<br>
-	 *         > 0 if the point lies on the left side, seen from the start point<br>
-	 *         < 0 if the point lies on the right side
+	 *         &gt; 0 if the point lies on the left side, seen from the start
+	 *         point<br>
+	 *         &lt; 0 if the point lies on the right side
 	 * 
 	 */
 	public double ptLineDistSigned(Point2D point) {
-		return this.start.distance(point)
-			* Math.sin(this.start.getAngleTo(this.end) - this.start.getAngleTo(point));
+		return this.start.distance(point) * Math.sin(this.start.getAngleTo(this.end)
+			- this.start.getAngleTo(point));
 	}
 
 	/**

@@ -29,7 +29,7 @@ public class ColorUtils {
 	}
 
 	/**
-	 * @param bgColor
+	 * @param color
 	 * @return nice string. e.g.: [r=255,g=80,b=1]
 	 */
 	public static String toString(Color color) {

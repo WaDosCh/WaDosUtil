@@ -3,12 +3,9 @@ package ch.judos.generic.data.csv;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import ch.judos.generic.data.csv.CSVFile;
-import ch.judos.generic.data.csv.CSVFileWriter;
 import junit.framework.TestCase;
 
 /**
- * @created 04.01.2012
  * @author Julian Schelker
  * @version 1.0
  * @lastUpdate 04.01.2012

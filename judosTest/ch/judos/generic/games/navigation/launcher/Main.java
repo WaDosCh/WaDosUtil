@@ -16,7 +16,6 @@ import ch.judos.generic.games.pathsearch.WayPoint;
 import ch.judos.generic.games.unitCoordination.MovementListener;
 
 /**
- * @created 10.10.2011
  * @author Julian Schelker
  * @version 1.0
  * @dependsOn

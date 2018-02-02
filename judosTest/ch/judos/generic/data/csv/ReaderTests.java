@@ -8,7 +8,6 @@ import java.util.HashMap;
 import junit.framework.TestCase;
 
 /**
- * @created 04.01.2012
  * @author Julian Schelker
  * @version 1.0
  * @lastUpdate 04.01.2012

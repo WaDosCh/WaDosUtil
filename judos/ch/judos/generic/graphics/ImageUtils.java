@@ -38,7 +38,7 @@ public class ImageUtils {
 	 *            the maximum width for the rescaled image
 	 * @param height
 	 *            the maximum height for the rescaled image
-	 * @return rescaled image to fit into the defined width & height. Aspect
+	 * @return rescaled image to fit into the defined width &amp; height. Aspect
 	 *         ratio isn't changed
 	 */
 	public static Image fitInto(Image image, int width, int height) {
@@ -71,7 +71,7 @@ public class ImageUtils {
 	 *            the minimal width for the rescaled image
 	 * @param height
 	 *            the minimal height for the rescaled image
-	 * @return rescaled image to fit onto the defined width & height. Aspect
+	 * @return rescaled image to fit onto the defined width &amp; height. Aspect
 	 *         ratio is preserved
 	 */
 	public static Image fitOnto(Image image, int width, int height) {
@@ -135,7 +135,8 @@ public class ImageUtils {
 		return dest;
 	}
 
-	public static int[] getPixels(BufferedImage img, int x, int y, int w, int h, int[] pixels) {
+	public static int[] getPixels(BufferedImage img, int x, int y, int w, int h,
+		int[] pixels) {
 		if (w == 0 || h == 0) {
 			return new int[0];
 		}

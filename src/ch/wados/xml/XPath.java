@@ -11,7 +11,7 @@ import ch.wados.util.Result;
 import ch.wados.util.Tuple2;
 
 /**
- * Pipeline-Style XML processing utility. <br/>
+ * Pipeline-Style XML processing utility. <br>
  * 
  * An XPath instance holds a list of all XML elements that match the defined
  * "path"

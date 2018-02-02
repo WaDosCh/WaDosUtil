@@ -9,7 +9,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @created 23.04.2012
  * @author Julian Schelker
  * @lastupdate 23.04.2012
  */

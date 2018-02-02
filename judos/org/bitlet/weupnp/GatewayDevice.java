@@ -40,7 +40,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * A <tt>GatewayDevice</tt> is a class that abstracts UPnP-compliant gateways
- * <p/>
+ * <br>
  * It holds all the information that comes back as UPnP responses, and provides
  * methods to issue UPnP commands to a gateway.
  *
@@ -112,8 +112,7 @@ public class GatewayDevice {
 	}
 
 	/**
-	 * Retrieves the properties and description of the GatewayDevice.
-	 * <p/>
+	 * Retrieves the properties and description of the GatewayDevice. <br>
 	 * Connects to the device's {@link #location} and parses the response using
 	 * a {@link GatewayDeviceHandler} to populate the fields of this class
 	 *
@@ -154,8 +153,7 @@ public class GatewayDevice {
 
 	/**
 	 * Issues UPnP commands to a GatewayDevice that can be reached at the
-	 * specified <tt>url</tt>
-	 * <p/>
+	 * specified <tt>url</tt> <br>
 	 * The command is identified by a <tt>service</tt> and an <tt>action</tt>
 	 * and can receive arguments
 	 *
@@ -189,8 +187,8 @@ public class GatewayDevice {
 			Set<Map.Entry<String, String>> entrySet = args.entrySet();
 
 			for (Map.Entry<String, String> entry : entrySet) {
-				soapBody.append("<" + entry.getKey() + ">" + entry.getValue() + "</"
-					+ entry.getKey() + ">");
+				soapBody.append("<" + entry.getKey() + ">" + entry.getValue() + "</" + entry
+					.getKey() + ">");
 			}
 
 		}
@@ -259,8 +257,7 @@ public class GatewayDevice {
 	}
 
 	/**
-	 * Retrieves the external IP address associated with this device
-	 * <p/>
+	 * Retrieves the external IP address associated with this device <br>
 	 * The external address is the address that can be used to connect to the
 	 * GatewayDevice from the external network
 	 *
@@ -318,8 +315,7 @@ public class GatewayDevice {
 
 	/**
 	 * Queries the GatewayDevice to retrieve a specific port mapping entry,
-	 * corresponding to specified criteria, if present.
-	 * <p/>
+	 * corresponding to specified criteria, if present. <br>
 	 * Retrieves the <tt>PortMappingEntry</tt> associated with
 	 * <tt>externalPort</tt> and <tt>protocol</tt>, if present.
 	 *
@@ -356,8 +352,8 @@ public class GatewayDevice {
 		if (nameValue.isEmpty() || nameValue.containsKey("errorCode"))
 			return false;
 
-		if (!nameValue.containsKey("NewInternalClient")
-			|| !nameValue.containsKey("NewInternalPort"))
+		if (!nameValue.containsKey("NewInternalClient") || !nameValue.containsKey(
+			"NewInternalPort"))
 			return false;
 
 		portMappingEntry.setProtocol(protocol);
@@ -368,8 +364,8 @@ public class GatewayDevice {
 		portMappingEntry.setRemoteHost(nameValue.get("NewRemoteHost"));
 
 		try {
-			portMappingEntry.setInternalPort(Integer
-				.parseInt(nameValue.get("NewInternalPort")));
+			portMappingEntry.setInternalPort(Integer.parseInt(nameValue.get(
+				"NewInternalPort")));
 		}
 		catch (NumberFormatException nfe) {
 			// skip bad port
@@ -413,15 +409,15 @@ public class GatewayDevice {
 		portMappingEntry.setPortMappingDescription(nameValue.get("NewPortMappingDescription"));
 
 		try {
-			portMappingEntry.setInternalPort(Integer
-				.parseInt(nameValue.get("NewInternalPort")));
+			portMappingEntry.setInternalPort(Integer.parseInt(nameValue.get(
+				"NewInternalPort")));
 		}
 		catch (Exception e) {
 		}
 
 		try {
-			portMappingEntry.setExternalPort(Integer
-				.parseInt(nameValue.get("NewExternalPort")));
+			portMappingEntry.setExternalPort(Integer.parseInt(nameValue.get(
+				"NewExternalPort")));
 		}
 		catch (Exception e) {
 		}
@@ -444,8 +440,8 @@ public class GatewayDevice {
 		Integer portMappingNumber = null;
 
 		try {
-			portMappingNumber = Integer
-				.valueOf(nameValue.get("NewPortMappingNumberOfEntries"));
+			portMappingNumber = Integer.valueOf(nameValue.get(
+				"NewPortMappingNumberOfEntries"));
 		}
 		catch (Exception e) {
 		}

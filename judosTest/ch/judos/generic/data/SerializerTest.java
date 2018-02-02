@@ -1,14 +1,13 @@
 package ch.judos.generic.data;
 
 import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
+
 import org.junit.Test;
 import org.w3c.dom.Document;
-import ch.judos.generic.data.Serializer;
-import ch.judos.generic.data.SerializerException;
 
 /**
- * @created 26.04.2012
  * @author Julian Schelker
  */
 public class SerializerTest {

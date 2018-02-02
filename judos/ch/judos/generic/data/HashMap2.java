@@ -9,8 +9,11 @@ import java.util.HashMap;
  * @author Julian Schelker
  * @version 1.0 / 23.02.2013
  * @param <K>
+ *            key of the hashmap
  * @param <K2>
+ *            second key of the hashmap
  * @param <V>
+ *            value associated to the two keys
  */
 public class HashMap2<K, K2, V> {
 
@@ -62,7 +65,7 @@ public class HashMap2<K, K2, V> {
 	public boolean containsKey(K key1, K2 key2) {
 		if (this.map1.containsKey(key1)) {
 			return this.map1.get(key1).containsKey(key2);
-		}// else
+		} // else
 		return false;
 	}
 

@@ -1,5 +1,6 @@
 package ch.wados.util;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -12,7 +13,7 @@ import ch.wados.function.ErrableSupplier;
  * 
  * Result is designed for thorough result handling.
  * 
- * It exists in 3 different possible states: <br/>
+ * It exists in 3 different possible states: <br>
  * <ol>
  * <li>a Value Result: This represents the main result. It contains a non-null
  * object
@@ -114,7 +115,7 @@ public abstract class Result<T> {
 	 * @throws NoSuchElementException
 	 *             if the result is no value result
 	 */
-	public abstract T get();
+	public abstract T get() throws NoSuchElementException;
 
 	/**
 	 * Returns the exception contained in the result
@@ -123,7 +124,7 @@ public abstract class Result<T> {
 	 * @throws NoSuchElementException
 	 *             if the result is no error result
 	 */
-	public abstract Exception exception();
+	public abstract Exception exception() throws NoSuchElementException;
 
 	/**
 	 * Indicates if a value is present. This is an identifier for value results

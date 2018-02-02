@@ -1,18 +1,20 @@
 package ch.judos.generic.network.udplib;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import ch.judos.generic.data.SerializerException;
 import ch.judos.generic.network.udp.UdpLib;
 import ch.judos.generic.network.udp.interfaces.Udp4I;
 import ch.judos.generic.network.udp.interfaces.UdpListener;
 
 /**
- * @created 30.04.2012
  * @author Julian Schelker
  */
 public class SimpleObjectSendTests implements UdpListener {
@@ -34,8 +36,8 @@ public class SimpleObjectSendTests implements UdpListener {
 		String sent = "Hallo Welt!";
 		this.udp.addObjectListener(this);
 		for (int i = 0; i < this.sendPackages; i++) {
-			this.udp
-				.sendObjectConfirmTo(sent, false, new InetSocketAddress("127.0.0.1", port));
+			this.udp.sendObjectConfirmTo(sent, false, new InetSocketAddress("127.0.0.1",
+				port));
 			Thread.sleep(20);
 		}
 		assertEquals(this.received, sent);

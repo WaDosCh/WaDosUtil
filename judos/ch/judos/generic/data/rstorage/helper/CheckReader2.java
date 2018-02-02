@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  * @since 20.04.2015
  * @author Julian Schelker
  */
-public class CheckReader2 extends Reader /* implements AutoCloseable */{
+public class CheckReader2 extends Reader /* implements AutoCloseable */ {
 
 	protected Reader readFrom;
 
@@ -46,8 +46,8 @@ public class CheckReader2 extends Reader /* implements AutoCloseable */{
 	 * 
 	 * @param shouldBe
 	 * @param shouldConsume
-	 *            did the string match -> should the string be consumed in the
-	 *            stream
+	 *            did the string match -&gt; should the string be consumed in
+	 *            the stream
 	 * @return did the string match
 	 * @throws IOException
 	 */

@@ -5,7 +5,6 @@ import java.awt.Polygon;
 import java.awt.geom.Point2D;
 
 /**
- * @created 24.04.2012
  * @author Julian Schelker
  */
 public class RotatedRect {
@@ -46,8 +45,8 @@ public class RotatedRect {
 
 	private double[] getPointsAngles() {
 		double pi = Math.PI;
-		return new double[]{this.theta + this.alpha, this.theta - this.alpha,
-			this.theta + pi + this.alpha, this.theta + pi - this.alpha};
+		return new double[]{this.theta + this.alpha, this.theta - this.alpha, this.theta + pi
+			+ this.alpha, this.theta + pi - this.alpha};
 	}
 
 	private int[] getXPoints() {
@@ -67,8 +66,8 @@ public class RotatedRect {
 	}
 
 	private Point2D getPoint(double angle) {
-		return new Point2D.Double(this.x + this.r * Math.cos(angle), this.y + this.r
-			* Math.sin(angle));
+		return new Point2D.Double(this.x + this.r * Math.cos(angle), this.y + this.r * Math
+			.sin(angle));
 	}
 
 	private Polygon getPoly() {
