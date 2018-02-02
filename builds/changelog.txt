@@ -1,0 +1,11 @@
+Changelog:
+
+1.4.3
+	- improved Log class a lot
+
+
+
+
+Renamed for proper ordering:
+	1.3 -> 1.3.0 is the same version
+	1.4 -> 1.4.0    " 
