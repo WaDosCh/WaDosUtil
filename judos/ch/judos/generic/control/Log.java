@@ -44,7 +44,7 @@ public class Log {
 	 * <code> ${method} </code> In which method the log happened<br>
 	 * <code> ${msg} </code> The actual log message
 	 */
-	public String logFormat = "${date} ${level} [${file}:${line} in ${method}] ${msg}";
+	public String logFormat = "${date} ${level} in ${method} (${file}:${line}) ${msg}";
 
 	public File logFile = new File("log.txt");
 
@@ -156,26 +156,29 @@ public class Log {
 	}
 
 	private void logInternal(String msg, Level msgLogLevel) {
-		if (this.currentLogLevel.importance > msgLogLevel.importance)
-			return;
 		StackTraceElement caller = Thread.currentThread().getStackTrace()[3];
 
-		Map<String, String> values = new HashMap<>(7);
-		values.put("date", this.dateFormat.format(new Date()));
-		values.put("level", this.currentLogLevel.name());
+		HashMap<String, String> values = new HashMap<>(7);
+		values.put("level", msgLogLevel.name());
 		values.put("file", caller.getFileName());
 		values.put("line", String.valueOf(caller.getLineNumber()));
 		values.put("method", caller.getMethodName());
 		values.put("msg", msg);
 
+		Date now = new Date();
 		for (Log subLogger : this.subLoggers) {
-			subLogger.logInternalWithValues(values, msgLogLevel);
+			subLogger.logInternalWithValues(values, msgLogLevel, now);
 		}
 
-		logInternalWithValues(values, msgLogLevel);
+		if (this.currentLogLevel.importance > msgLogLevel.importance)
+			return;
+
+		logInternalWithValues(values, msgLogLevel, now);
 	}
 
-	private void logInternalWithValues(Map<String, String> values, Level msgLogLevel) {
+	private void logInternalWithValues(HashMap<String, String> values, Level msgLogLevel,
+		Date date) {
+		values.put("date", this.dateFormat.format(date));
 		String message = new StrSubstitutor(values).replace(this.logFormat);
 
 		if (this.loggingOverride != null) {
@@ -264,14 +267,6 @@ public class Log {
 
 		private Level(int importance) {
 			this.importance = importance;
-		}
-
-		public Level fromString(String str) {
-			for (Level l : values()) {
-				if (l.name().equals(str))
-					return l;
-			}
-			return null;
 		}
 	}
 }
