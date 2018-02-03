@@ -18,7 +18,8 @@
 		<javadoc access="protected" author="true" classpath="lib/junit-4.12.jar;lib/hamcrest-all-1.3.jar;lib/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar" destdir="doc" doctitle="WaDosUtil" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*,ch.wados.*" source="1.8" sourcepath="waan;judos;src" splitindex="true" use="true" version="true">
 			<tag name="todo" />
 			<tag name="copyright" />
-				<tag name="source" />
+			<tag name="source" />
+			<tag name="default" />
 		</javadoc>
 	</target>
 
