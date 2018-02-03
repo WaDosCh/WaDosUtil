@@ -4,7 +4,10 @@ package ch.judos.generic.exception;
 public interface RunnableThrowsException {
 	public void run() throws Exception;
 
-	public default void runWithoutRuntimeException() {
+	/**
+	 * rethrows all exceptions as RuntimeExceptions
+	 */
+	public default void runWithoutCompilerException() {
 		try {
 			run();
 		}
@@ -17,6 +20,6 @@ public interface RunnableThrowsException {
 	 * runs a lambda and catches the exceptions just to rethrow them at runtime
 	 */
 	public static void runRethrow(RunnableThrowsException runnable) {
-		runnable.runWithoutRuntimeException();
+		runnable.runWithoutCompilerException();
 	}
 }

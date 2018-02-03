@@ -2,7 +2,6 @@ package ch.judos.generic.exception;
 
 import java.io.File;
 import java.lang.Thread.UncaughtExceptionHandler;
-import java.net.URISyntaxException;
 
 import ch.judos.generic.data.StringUtils;
 import ch.judos.generic.data.date.Date;
@@ -11,6 +10,8 @@ import ch.judos.generic.files.FileUtils;
 import ch.judos.generic.gui.Notification;
 
 public class GlobalExceptionHandler implements UncaughtExceptionHandler {
+
+	public static File exceptionLogFolder = new File(".");
 
 	public GlobalExceptionHandler() {
 	}
@@ -25,7 +26,7 @@ public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 		try {
 			runnable.run();
 		}
-		catch (Exception e) {
+		catch (Throwable e) {
 			handle(e);
 		}
 	}
@@ -35,21 +36,7 @@ public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 		String exceptionStackTrace = StringUtils.stringFromException(throwable);
 		System.err.println(exceptionStackTrace); // log it for debugging
 
-		// write to file
-		File targetLogFolder = null;
-		try {
-			File f = new File(GlobalExceptionHandler.class.getProtectionDomain()
-				.getCodeSource().getLocation().toURI().getPath());
-			targetLogFolder = f.getParentFile();
-		}
-		catch (URISyntaxException e) {
-			// do nothing
-		}
-		if (targetLogFolder == null) {
-			targetLogFolder = new File(".");
-		}
-
-		File file = new File(targetLogFolder, "Exception " + new Date() + " " + new Time()
+		File file = new File(exceptionLogFolder, "Exception " + new Date() + " " + new Time()
 			.toString("H\\hi") + ".txt");
 		FileUtils.writeToFile(file, exceptionStackTrace);
 
