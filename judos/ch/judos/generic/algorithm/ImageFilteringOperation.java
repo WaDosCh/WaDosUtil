@@ -16,7 +16,7 @@ import java.util.Collections;
  * 
  * @author me
  */
-public class filteringOp {
+public class ImageFilteringOperation {
 	public static ArrayList<Double> neighborList;
 	public static double max = 0;
 
@@ -25,10 +25,13 @@ public class filteringOp {
 	 * This method performs median filtering and returns an enhanced image.
 	 * 
 	 * @param _enlargeImage
+	 *            image to enlarge
 	 * 
 	 * @param _desImage
+	 *            result array where to save transformed image
 	 * 
 	 * @param dimension
+	 *            which dimension to use for filtering
 	 * 
 	 * @return enhanced image double[][]
 	 */
@@ -67,7 +70,6 @@ public class filteringOp {
 	}
 
 	/**
-	 * 
 	 * this method use GaussianFiltering to enhance an image.
 	 * 
 	 * 1 2 1 a b c
@@ -79,10 +81,13 @@ public class filteringOp {
 	 * 
 	 * 
 	 * @param _enlargeImage
+	 *            image to filter
 	 * 
 	 * @param _desImage
+	 *            where to store result
 	 * 
 	 * @param dimension
+	 *            which dimension to be used for filtering
 	 * 
 	 * @return 2 dimension image
 	 */
@@ -104,7 +109,8 @@ public class filteringOp {
 				double g = _enlargeImage[i + 1][j - 1];
 				double h = _enlargeImage[i + 1][j];
 				double k = _enlargeImage[i + 1][j + 1];
-				gaussianValue = (1 * a + 2 * b + 1 * c + 2 * d + 4 * e + 2 * f + 1 * g + 2 * h + 1 * k) / 16.0;
+				gaussianValue = (1 * a + 2 * b + 1 * c + 2 * d + 4 * e + 2 * f + 1 * g + 2 * h
+					+ 1 * k) / 16.0;
 				if (i == 1 & j == 1) {
 					max = gaussianValue;
 				}

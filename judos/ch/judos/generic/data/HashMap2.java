@@ -30,7 +30,13 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
-	 * puts a value to the specified two keys
+	 * @param key1
+	 *            first key
+	 * @param key2
+	 *            second key
+	 * @param value
+	 *            value to associate to those two keys puts a value to the
+	 *            specified two keys
 	 */
 	public void put(K key1, K2 key2, V value) {
 		HashMap<K2, V> map2 = this.map1.get(key1);
@@ -42,6 +48,10 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
+	 * @param key1
+	 *            first key
+	 * @param key2
+	 *            second key
 	 * @return gets the value back, needs both keys
 	 */
 	public V get(K key1, K2 key2) {
@@ -52,7 +62,11 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
-	 * @return if the given two keys exist
+	 * @param key1
+	 *            the first key
+	 * @param key2
+	 *            the second key
+	 * @return true if the given two keys exist
 	 */
 	public boolean containsKey(K key1, K2 key2) {
 		if (this.map1.containsKey(key1)) {

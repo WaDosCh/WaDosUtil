@@ -78,8 +78,8 @@ public class DistanceTransform {
 				histogramArrayCountMap.put(pixelValue, 1.0);
 			}
 			else {
-				histogramArrayCountMap.put(pixelValue,
-					histogramArrayCountMap.get(pixelValue) + 1);
+				histogramArrayCountMap.put(pixelValue, histogramArrayCountMap.get(pixelValue)
+					+ 1);
 			}
 		}
 	}
@@ -409,10 +409,10 @@ public class DistanceTransform {
 						// print2DimensionArray(_image);
 						// print("");
 					}
-					else if (!neighborArray.isEmpty()
-						&& !nonZeroAreTheSameLabel(neighborArray)) // case
-																	// 3
-																	// :
+					else if (!neighborArray.isEmpty() && !nonZeroAreTheSameLabel(
+						neighborArray)) // case
+										// 3
+										// :
 					// not all
 					// are the
 					// same
@@ -717,7 +717,7 @@ public class DistanceTransform {
 			print("");
 			// an enhance image is created with Median Filtering Operaion
 			double[][] image = new double[height][width];
-			image = filteringOp.medianFilteringOperation(enlargeImage, image, 3);
+			image = ImageFilteringOperation.medianFilteringOperation(enlargeImage, image, 3);
 			// print2DimensionArray(image);
 			print2DimensionArrayInt(image);
 			ArrayList<Double> al = new ArrayList<>();
@@ -726,7 +726,7 @@ public class DistanceTransform {
 			buildHistogram(al);
 			print("");
 			print("Histogram : ");
-			printHistogram(histogramArray, (int) filteringOp.max);
+			printHistogram(histogramArray, (int) ImageFilteringOperation.max);
 			// calculate threshold values
 			ArrayList<Double> possibleThresholdAl = new ArrayList<>();
 			possibleThresholdAl = listTopCandidate(11, histogramArrayCountMap);
@@ -882,7 +882,8 @@ public class DistanceTransform {
 	}
 
 	public static void printMap(Map<Integer, ArrayList<Double>> map) {
-		print("label     minRow    maxRow      minCol    maxCol       width        height      noOfPixel         CR         CC         RC            R2           C2            Vr        Vc     ");
+		print(
+			"label     minRow    maxRow      minCol    maxCol       width        height      noOfPixel         CR         CC         RC            R2           C2            Vr        Vc     ");
 		for (int i : map.keySet()) {
 			ArrayList<Double> al = new ArrayList<>();
 			al = map.get(i);
@@ -957,10 +958,10 @@ public class DistanceTransform {
 				}
 				ori2DImage[lineCount - 1][i % width] = alPixelOri.get(i);
 			}
-		}// end try block
+		} // end try block
 		catch (IOException e) {
 			System.out.println(e);
-		}// end catch
+		} // end catch
 		closeIO();
 	}
 
@@ -1015,10 +1016,10 @@ public class DistanceTransform {
 			// }
 			// ori2DImage[lineCount-1][i%width] = alPixelOri.get(i);
 			// }
-		}// end try block
+		} // end try block
 		catch (IOException e) {
 			System.out.println(e);
-		}// end catch
+		} // end catch
 		closeIO();
 	}
 
@@ -1115,10 +1116,10 @@ public class DistanceTransform {
 						// print2DimensionArray(_image);
 						// print("");
 					}
-					else if (!neighborArray.isEmpty()
-						&& !nonZeroAreTheSameLabel(neighborArray)) // case
-																	// 3
-																	// :
+					else if (!neighborArray.isEmpty() && !nonZeroAreTheSameLabel(
+						neighborArray)) // case
+										// 3
+										// :
 					// not all
 					// are the
 					// same
@@ -1222,7 +1223,7 @@ public class DistanceTransform {
 	 * 
 	 * @param image
 	 * 
-	 * @return property map Map<Integer,ArrayList<Double>>
+	 * @return property map Map&lt;Integer,ArrayList&lt;Double&gt;&gt;
 	 */
 	public static Map<Integer, ArrayList<Double>> thirdPass(double[][] image) {
 		int label = 0;
@@ -1341,10 +1342,10 @@ public class DistanceTransform {
 				}
 			}
 			DistanceTransform.writeToFile(outputFile, binaryImage);
-		}// end try block
+		} // end try block
 		catch (IOException e) {
 			System.out.println(e);
-		}// end catch
+		} // end catch
 		closeIO();
 		return outputFile;
 	}
@@ -1387,7 +1388,8 @@ public class DistanceTransform {
 				String oneLine = "";
 				for (int j = 0; j < al.size(); ++j) {
 					if (j == 0) {
-						oneLine = "label        minRow         maxRow        minCol      maxCol       width     height    noOfPixel      CR        CC         RC        R2           C2         Vr         Vc     ";
+						oneLine =
+							"label        minRow         maxRow        minCol      maxCol       width     height    noOfPixel      CR        CC         RC        R2           C2         Vr         Vc     ";
 						bWriter.write(oneLine);
 						bWriter.newLine();
 						bWriter.flush();

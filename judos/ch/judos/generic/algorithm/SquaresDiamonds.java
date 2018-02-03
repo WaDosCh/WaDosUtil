@@ -22,6 +22,8 @@ public class SquaresDiamonds {
 
 	/**
 	 * @param iterations
+	 *            how many iterations to do. defines size of array to be
+	 *            returned
 	 * @param water
 	 *            minimum terrain level [0,1]
 	 */
@@ -62,7 +64,8 @@ public class SquaresDiamonds {
 				float avg = avgNeighbours2(x, y);
 
 				float newHeight = (1f - smoothness) * this.points[x][y] + smoothness * avg;
-				// System.out.println("h�he: "+this.points[x][y]+" avg umg.: "+avg+" neu:"+newHeight);
+				// System.out.println("h�he: "+this.points[x][y]+" avg umg.:
+				// "+avg+" neu:"+newHeight);
 
 				newPoints[x][y] = newHeight;
 
@@ -159,8 +162,8 @@ public class SquaresDiamonds {
 			value /= anz;
 		}
 		if (anz < 4)
-			System.err
-				.println("Error: this point " + x + "," + y + " has not 4 neighbours...");
+			System.err.println("Error: this point " + x + "," + y
+				+ " has not 4 neighbours...");
 		return value;
 	}
 
