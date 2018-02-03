@@ -63,7 +63,7 @@ public class Log {
 	protected OutputStreamWriter outStream;
 	protected static Log instance;
 
-	protected static Log getInstance() {
+	public static Log getInstance() {
 		if (instance == null) {
 			instance = new Log();
 			instance.logToFile = true;
@@ -79,32 +79,70 @@ public class Log {
 		getInstance().logInternal(msg, Level.VERBOSE);
 	}
 
+	public void verboseI(String msg) {
+		logInternal(msg, Level.VERBOSE);
+	}
+
 	public static void verbose(String msg, Object... args) {
 		getInstance().logInternal(msg + " " + StringUtils.join(args, ","), Level.VERBOSE);
+	}
+
+	public void verboseI(String msg, Object... args) {
+		logInternal(msg + " " + StringUtils.join(args, ","), Level.VERBOSE);
 	}
 
 	public static void info(String msg, Object... args) {
 		getInstance().logInternal(msg + " " + StringUtils.join(args, ","), Level.INFO);
 	}
 
+	public void infoI(String msg, Object... args) {
+		logInternal(msg + " " + StringUtils.join(args, ","), Level.INFO);
+	}
+
 	public static void info(String msg) {
 		getInstance().logInternal(msg, Level.INFO);
+	}
+	public void infoI(String msg) {
+		logInternal(msg, Level.INFO);
 	}
 
 	public static void warn(String msg, Object... args) {
 		getInstance().logInternal(msg + " " + StringUtils.join(args, ","), Level.WARNING);
 	}
+	public void warnI(String msg, Object... args) {
+		logInternal(msg + " " + StringUtils.join(args, ","), Level.WARNING);
+	}
 
 	public static void warn(String msg) {
 		getInstance().logInternal(msg, Level.WARNING);
 	}
-
+	public void warnI(String msg) {
+		logInternal(msg, Level.WARNING);
+	}
 	public static void err(String msg, Object... args) {
 		getInstance().logInternal(msg + " " + StringUtils.join(args, ","), Level.ERROR);
 	}
-
+	public void errI(String msg, Object... args) {
+		logInternal(msg + " " + StringUtils.join(args, ","), Level.ERROR);
+	}
 	public static void err(String msg) {
 		getInstance().logInternal(msg, Level.ERROR);
+	}
+	public void errI(String msg) {
+		logInternal(msg, Level.ERROR);
+	}
+
+	public static void fatal(String msg, Object... args) {
+		getInstance().logInternal(msg + " " + StringUtils.join(args, ","), Level.FATAL);
+	}
+	public void fatalI(String msg, Object... args) {
+		logInternal(msg + " " + StringUtils.join(args, ","), Level.FATAL);
+	}
+	public static void fatal(String msg) {
+		getInstance().logInternal(msg, Level.FATAL);
+	}
+	public void fatalI(String msg) {
+		logInternal(msg, Level.FATAL);
 	}
 
 	public static void log(String msg, Level msgLogLevel) {
@@ -130,17 +168,25 @@ public class Log {
 		values.put("method", caller.getMethodName());
 		values.put("msg", msg);
 
-		String message = new StrSubstitutor(values).replace(msg);
+		for (Log subLogger : this.subLoggers) {
+			subLogger.logInternalWithValues(values, msgLogLevel);
+		}
+
+		logInternalWithValues(values, msgLogLevel);
+	}
+
+	private void logInternalWithValues(Map<String, String> values, Level msgLogLevel) {
+		String message = new StrSubstitutor(values).replace(this.logFormat);
 
 		if (this.loggingOverride != null) {
 			values.put("message", message);
 			this.loggingOverride.accept(values);
 		}
 		else
-			logItActually(message, msgLogLevel);
+			logInternalToTarget(message, msgLogLevel);
 	}
 
-	private void logItActually(String msg, Level msgLogLevel) {
+	private void logInternalToTarget(String msg, Level msgLogLevel) {
 		if (this.logToConsole) {
 			if (msgLogLevel.importance >= Level.ERROR.importance)
 				System.err.println(msg);

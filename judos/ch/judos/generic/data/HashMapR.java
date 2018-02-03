@@ -37,6 +37,8 @@ public class HashMapR<K, V> {
 	}
 
 	/**
+	 * @param key
+	 *            check whether this key is in the map
 	 * @return true if the key is contained in the map
 	 */
 	public boolean containsKey(K key) {
@@ -44,6 +46,8 @@ public class HashMapR<K, V> {
 	}
 
 	/**
+	 * @param value
+	 *            search for this in the map
 	 * @return true if the value is contained in the map
 	 */
 	public boolean containsValue(V value) {
@@ -51,6 +55,8 @@ public class HashMapR<K, V> {
 	}
 
 	/**
+	 * @param key
+	 *            use this key to find a value
 	 * @return the value found for this key
 	 */
 	public V getFromKey(K key) {
