@@ -236,18 +236,32 @@ public class Log {
 	}
 
 	/**
-	 * @param file
+	 * @param logger
+	 *            add a logger which receives every log that the general one
+	 *            receives
 	 */
 	public static void addSubLogger(Log logger) {
 		getInstance().addSubLoggerI(logger);
 	}
+	/**
+	 * @param logger
+	 *            remove an existing sublogger
+	 */
 	public static void removeSubLogger(Log logger) {
 		getInstance().removeSubLoggerI(logger);
 	}
 
+	/**
+	 * @param logger
+	 *            add a logger which receives every log that this one receives
+	 */
 	public void addSubLoggerI(Log logger) {
 		this.subLoggers.add(logger);
 	}
+	/**
+	 * @param logger
+	 *            remove an existing sublogger
+	 */
 	public void removeSubLoggerI(Log logger) {
 		this.subLoggers.remove(logger);
 	}
