@@ -166,6 +166,12 @@ public class Log {
 		values.put("msg", msg);
 
 		Date now = new Date();
+		logInternalWithValues(values, msgLogLevel, now);
+	}
+
+	private void logInternalWithValues(HashMap<String, String> values, Level msgLogLevel,
+		Date now) {
+
 		for (Log subLogger : this.subLoggers) {
 			subLogger.logInternalWithValues(values, msgLogLevel, now);
 		}
@@ -173,12 +179,7 @@ public class Log {
 		if (this.currentLogLevel.importance > msgLogLevel.importance)
 			return;
 
-		logInternalWithValues(values, msgLogLevel, now);
-	}
-
-	private void logInternalWithValues(HashMap<String, String> values, Level msgLogLevel,
-		Date date) {
-		values.put("date", this.dateFormat.format(date));
+		values.put("date", this.dateFormat.format(now));
 		String message = new StrSubstitutor(values).replace(this.logFormat);
 
 		if (this.loggingOverride != null) {
