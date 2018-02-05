@@ -1,15 +1,6 @@
 package ch.judos.generic.data.parse;
 
 import ch.judos.generic.data.date.Time;
-import ch.judos.generic.data.parse.ComposedFormat;
-import ch.judos.generic.data.parse.ConstantFormat;
-import ch.judos.generic.data.parse.DateFormat;
-import ch.judos.generic.data.parse.Format;
-import ch.judos.generic.data.parse.IntervallFormat;
-import ch.judos.generic.data.parse.NumberFormat;
-import ch.judos.generic.data.parse.TimeFormat;
-import ch.judos.generic.data.parse.TimeHM;
-import ch.judos.generic.data.parse.TimeHMS;
 import junit.framework.TestCase;
 
 /**
@@ -49,15 +40,6 @@ public class FormatTests extends TestCase {
 		f.matches("abc 1234");
 		assertEquals("abc ", con.get());
 		assertEquals(1234, number.get());
-	}
-
-	/**
-	 */
-	public void testDate() {
-		DateFormat d = new DateFormat();
-		assertTrue(d.matches("12.1.2012"));
-		assertTrue(d.matches("2013-12-31"));
-		assertTrue(d.matches("12/31/2010"));
 	}
 
 	/**
