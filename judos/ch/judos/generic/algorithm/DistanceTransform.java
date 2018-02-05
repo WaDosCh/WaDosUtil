@@ -540,7 +540,7 @@ public class DistanceTransform {
 	 * 
 	 * @param image
 	 * 
-	 * @return added property map Map<Integer, ArrayList<Double>>
+	 * @return added property map Map&lt;Integer, ArrayList&lt;Double&gt;&gt;
 	 */
 	public static Map<Integer, ArrayList<Double>> getAdditional5Properties(
 		Map<Integer, ArrayList<Double>> map, double[][] image) {
@@ -1222,6 +1222,7 @@ public class DistanceTransform {
 	 * return property map as output
 	 * 
 	 * @param image
+	 *            the image
 	 * 
 	 * @return property map Map&lt;Integer,ArrayList&lt;Double&gt;&gt;
 	 */

@@ -44,7 +44,9 @@ public abstract class Listenable {
 	 * event
 	 * 
 	 * @param message
+	 *            the message text
 	 * @param value
+	 *            any additional value
 	 */
 	protected void notifyListeners(String message, Object value) {
 		for (Listener l : this.listener)

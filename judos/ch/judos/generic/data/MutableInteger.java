@@ -980,6 +980,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * value.
 	 * 
 	 * @param i
+	 *            original number
 	 * 
 	 * @return the value obtained by reversing order of the bits in the
 	 *         specified {@code int} value.
@@ -995,6 +996,7 @@ public class MutableInteger extends Number implements Comparable<Integer> {
 	 * value is zero; and 1 if the specified value is positive.)
 	 * 
 	 * @param i
+	 *            number
 	 * 
 	 * @return the signum function of the specified {@code int} value.
 	 * @since 1.5

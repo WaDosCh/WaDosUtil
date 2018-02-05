@@ -20,6 +20,12 @@
 			<tag name="copyright" />
 			<tag name="source" />
 			<tag name="default" />
+			<tag name="implSpec" />
+			<classpath>
+				<fileset dir="lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
 		</javadoc>
 	</target>
 
