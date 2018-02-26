@@ -22,6 +22,7 @@ import ch.wados.util.Tuple2;
  * @version 1.1, May 11, 2015
  *
  */
+@Deprecated
 class XPathImp implements XPath {
 
 	public XPathImp(Stream<Element> elements) {

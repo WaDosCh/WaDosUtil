@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import ch.wados.function.ErrableFunction;
 
+@Deprecated
 class ValueResult<T> extends Result<T> {
 
 	private final T value;

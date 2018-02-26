@@ -17,7 +17,9 @@ import org.eclipse.jdt.annotation.NonNull;
  *
  * @param <T>
  *            The Content type
+ * @deprecated use ch.awae.utils.Lazy from awaeUtils
  */
+@Deprecated
 public final class Lazy<T> {
 
 	private boolean needsInit = false;

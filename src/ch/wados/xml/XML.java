@@ -16,6 +16,7 @@ import org.w3c.dom.Document;
  * @author Andreas Wälchli
  * @version 1.1, 2015-05-11
  */
+@Deprecated
 public class XML {
 
 	private final Document document;

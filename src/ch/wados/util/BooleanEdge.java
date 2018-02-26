@@ -10,7 +10,9 @@ import org.eclipse.jdt.annotation.NonNull;
  * 
  * @author Andreas Wälchli
  * @version 1.1, 2015-02-28
+ * @deprecated use ch.awae.utils.logic.Logic#edge from awaeUtils
  */
+@Deprecated
 public final class BooleanEdge {
 
 	private final @NonNull BooleanSupplier expression;

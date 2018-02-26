@@ -12,7 +12,9 @@ import java.util.Objects;
  *            the type of the first element
  * @param <T2>
  *            the type or the second element
+ * @deprecated use ch.awae.utils.functional.T2 from awaeUtils
  */
+@Deprecated
 public class Tuple2<T1, T2> {
 
 	/**

@@ -17,7 +17,9 @@ import org.eclipse.jdt.annotation.Nullable;
  * 
  * @param <E>
  *            the element type for this queue
+ * @deprecated use ch.awae.utils.collection.mutable.LinkedQueue from awaeUtils
  */
+@Deprecated
 public final class LinkedQueue<@Nullable E> implements Queue<E> {
 
 	private class Node<T> {
@@ -124,8 +126,7 @@ public final class LinkedQueue<@Nullable E> implements Queue<E> {
 	public boolean add(E e) {
 		if (this.head == null) {
 			this.tail = this.head = new Node<>(e);
-		}
-		else {
+		} else {
 			Node<E> node = new Node<>(e);
 			this.tail.next = node;
 			this.tail = node;

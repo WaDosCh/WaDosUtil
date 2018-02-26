@@ -31,7 +31,9 @@ import ch.wados.function.ErrableSupplier;
  *
  * @param <T>
  *            the result type
+ * @deprecated use ch.awae.utils.functional.Result from awaeUtils
  */
+@Deprecated
 public abstract class Result<T> {
 
 	Result() {
@@ -102,8 +104,7 @@ public abstract class Result<T> {
 	public static <T> Result<T> eval(ErrableSupplier<T> supplier) {
 		try {
 			return Result.ofNullable(supplier.get());
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			return new ErrorResult<>(e);
 		}
 	}
