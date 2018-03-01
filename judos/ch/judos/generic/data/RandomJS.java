@@ -20,6 +20,17 @@ public class RandomJS {
 	}
 
 	/**
+	 * @param ts
+	 * @return a random object out of the provided ones
+	 */
+	@SafeVarargs
+	public static <T> T getObject(T... ts) {
+		init();
+		int index = getInt(0, ts.length - 1);
+		return ts[index];
+	}
+
+	/**
 	 * @param max
 	 *            the maximum value (exclusive)
 	 * @return a random float
