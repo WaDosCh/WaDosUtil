@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import ch.wados.util.Result;
 
+@Deprecated
 class StreamSource extends Source {
 
 	private final InputStream stream;

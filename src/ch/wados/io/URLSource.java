@@ -5,6 +5,7 @@ import java.net.URL;
 
 import ch.wados.util.Result;
 
+@Deprecated
 final class URLSource extends Source {
 
 	private final String url;

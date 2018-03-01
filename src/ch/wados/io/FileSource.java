@@ -5,6 +5,7 @@ import java.io.InputStream;
 
 import ch.wados.util.Result;
 
+@Deprecated
 final class FileSource extends Source {
 
 	private final String filename;

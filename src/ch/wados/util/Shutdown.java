@@ -12,7 +12,9 @@ import ch.wados.collection.mutable.PriorityQueue;
  *
  * @author Andreas Wälchli
  * @version 1.3, 2015-05-10
+ * @deprecated use ch.awae.utils.Shutdown from awaeUtils
  */
+@Deprecated
 public final class Shutdown extends PriorityQueue<@NonNull Runnable> {
 
 	/**

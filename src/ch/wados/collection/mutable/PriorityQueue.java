@@ -19,7 +19,9 @@ import java.util.stream.Collectors;
  *
  * @param <E>
  *            the element type
+ * @deprecated use ch.awae.utils.collection.mutable.PriorityQueue from awaeUtils
  */
+@Deprecated
 public class PriorityQueue<E> implements Queue<E> {
 
 	private class QueueElement implements Comparable<QueueElement> {
@@ -34,8 +36,7 @@ public class PriorityQueue<E> implements Queue<E> {
 
 		@Override
 		public int compareTo(QueueElement o) {
-			return (PriorityQueue.this.isMinQueue ? 1 : -1)
-				* Double.compare(this.priority, o.priority);
+			return (PriorityQueue.this.isMinQueue ? 1 : -1) * Double.compare(this.priority, o.priority);
 		}
 
 		@Override
@@ -103,8 +104,7 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public boolean add(E e) {
-		return this.backer.add(new QueueElement(e, this.isMinQueue ? Double.MAX_VALUE
-			: Double.MIN_VALUE));
+		return this.backer.add(new QueueElement(e, this.isMinQueue ? Double.MAX_VALUE : Double.MIN_VALUE));
 	}
 
 	/**
@@ -225,8 +225,7 @@ public class PriorityQueue<E> implements Queue<E> {
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
-		return this.backer.retainAll(c.stream().map(e -> new QueueElement(e, 0)).collect(
-			Collectors.toList()));
+		return this.backer.retainAll(c.stream().map(e -> new QueueElement(e, 0)).collect(Collectors.toList()));
 	}
 
 	/**
