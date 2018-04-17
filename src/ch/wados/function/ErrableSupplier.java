@@ -8,7 +8,9 @@ package ch.wados.function;
  *
  * @param <T>
  *            return type
+ * @deprecated use ch.awae.utils.functional.FailableFunction0 from awaeUtils
  */
+@Deprecated
 @FunctionalInterface
 public interface ErrableSupplier<T> {
 

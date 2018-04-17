@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 import ch.wados.function.ErrableFunction;
 
+@Deprecated
 class ErrorResult<T> extends Result<T> {
 
 	private final Exception e;

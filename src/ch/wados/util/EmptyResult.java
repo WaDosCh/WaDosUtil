@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 
 import ch.wados.function.ErrableFunction;
 
+@Deprecated
 class EmptyResult<T> extends Result<T> {
 
 	@Override

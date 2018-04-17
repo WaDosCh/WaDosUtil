@@ -11,6 +11,7 @@ import java.util.List;
  * @param <T>
  *            the edge type
  */
+@Deprecated
 public interface Vertex<T extends Vertex<T>> {
 
 	/**

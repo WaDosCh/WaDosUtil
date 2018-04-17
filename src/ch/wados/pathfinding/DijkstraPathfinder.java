@@ -20,7 +20,9 @@ import ch.wados.collection.mutable.PriorityQueue;
  *
  * @param <V>
  *            the vertex type of the pathfinder
+ * @deprecated use ch.awae.utils.pathfinding.DijkstraPathfinder from awaeUtils
  */
+@Deprecated
 public final class DijkstraPathfinder<V extends Vertex<V>> implements Pathfinder<V> {
 
 	@Override

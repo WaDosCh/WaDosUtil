@@ -12,7 +12,9 @@ package ch.wados.concurrent;
  *
  * @author Andreas Wälchli
  * @version 1.2, 2015-05-10
+ * @deprecated use ch.awae.utils.IterativeRunner from awaeUtils
  */
+@Deprecated
 public abstract class IterativeRunner implements Runnable {
 
 	@Override

@@ -11,6 +11,7 @@ import java.util.List;
  * @param <V>
  *            the vertex type supported by the pathfinder
  */
+@Deprecated
 public interface Pathfinder<V extends Vertex<V>> {
 
 	/**

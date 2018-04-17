@@ -11,7 +11,9 @@ package ch.wados.function;
  *            the input type
  * @param <Y>
  *            the return type
+ * @deprecated use ch.awae.utils.functional.FailableFunction1 from awaeUtils
  */
+@Deprecated
 @FunctionalInterface
 public interface ErrableFunction<X, Y> {
 

@@ -19,6 +19,7 @@ import ch.wados.util.Tuple2;
  * @author Andreas Wälchli
  * @version 1.1, 2015-05-11
  */
+@Deprecated
 public interface XPath {
 
 	/**
