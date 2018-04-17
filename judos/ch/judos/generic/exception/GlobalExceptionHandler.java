@@ -15,23 +15,34 @@ import ch.judos.generic.data.StringUtils;
 import ch.judos.generic.files.FileUtils;
 import ch.judos.generic.gui.Notification;
 
+//TODO: do not overwrite exception file if existing. Add postfix number
 public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 
-	private static GlobalExceptionHandler instance;
+	public static boolean createExceptionFiles = true;
+
 	public static File exceptionLogFolder = new File(".");
 
 	/**
 	 * Take care not to use any characters that are not allowed in filenames!
-	 * new SimpleDateFormat("yyyy-MM-dd hh'h'mm'm'ss.SSS");
+	 * new SimpleDateFormat("yyyy-MM-dd HH'h'mm'm'ss.SSS");
 	 */
-	public static DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh'h'mm");
+	public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH'h'mm");
 
 	/**
 	 * customize the user's message that will be shown
 	 */
 	public static String message = "In this thread an error has occured: ${thread}\n\n"
-		+ "${shortStackTrace}\n\nA report has been saved in:\n ${file}";
+		+ "${shortStackTrace}";
 
+	/**
+	 * appended to the message if {@link #createExceptionFiles} is set to true
+	 */
+	public static String messageSaveToFile = "\n\nA report has been saved in:\\n ${file}";
+
+	/**
+	 * usually problems are directly logged to the System.err stream. If you set
+	 * a consumer here you may override this behavior
+	 */
 	public static Consumer<String> logOverride;
 
 	public static GlobalExceptionHandler getInstance() {
@@ -40,12 +51,14 @@ public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 		return instance;
 	}
 
+	private static GlobalExceptionHandler instance;
+
 	private GlobalExceptionHandler() {
 	}
 
 	public static void handle(Throwable throwable) {
 		Thread t = Thread.currentThread();
-		instance.uncaughtException(t, throwable);
+		getInstance().uncaughtException(t, throwable);
 	}
 
 	public static void runAndHandle(RunnableThrowsException runnable) {
@@ -65,18 +78,23 @@ public class GlobalExceptionHandler implements UncaughtExceptionHandler {
 		else
 			System.err.println(exceptionStackTrace); // log it for debugging
 
-		File file = new File(exceptionLogFolder, "Exception " + dateFormat.format(new Date())
-			+ ".txt");
-		FileUtils.writeToFile(file, exceptionStackTrace);
-
-		// show to user
-		String shortened = StringUtils.takeMaxLinesFrom(exceptionStackTrace, 5);
 		HashMap<String, String> values = new HashMap<>();
+		String shortened = StringUtils.takeMaxLinesFrom(exceptionStackTrace, 5);
 		values.put("thread", thread.getName());
-		values.put("file", file.getAbsolutePath());
 		values.put("shortStackTrace", shortened);
 
-		String msg = new StrSubstitutor(values).replace(message);
+		// create exception file
+		String messageAppended = "";
+		if (createExceptionFiles) {
+			File file = new File(exceptionLogFolder, "Exception " + dateFormat.format(
+				new Date()) + ".txt");
+			FileUtils.writeToFile(file, exceptionStackTrace);
+			values.put("file", file.getAbsolutePath());
+			messageAppended = new StrSubstitutor(values).replace(messageSaveToFile);
+		}
+
+		// show to user
+		String msg = new StrSubstitutor(values).replace(message) + messageAppended;
 		Notification.notifyErr("Error", msg);
 	}
 
