@@ -5,7 +5,7 @@
 
 	<target name="main">
 		<!-- version numbers -->
-		<property name="build.major" value="1.4" />
+		<property name="build.major" value="1.5" />
 		<buildnumber file="build-number.txt" />
 		<property name="build.version" value="${build.major}.${build.number}" />
 
@@ -15,7 +15,7 @@
 	</target>
 
 	<target name="javadoc">
-		<javadoc access="protected" author="true" classpath="lib/junit-4.12.jar;lib/hamcrest-all-1.3.jar;lib/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar" destdir="doc" doctitle="WaDosUtil" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*,ch.wados.*" source="1.8" sourcepath="waan;judos;src" splitindex="true" use="true" version="true">
+		<javadoc access="protected" author="true" classpath="lib/junit-4.12.jar;lib/hamcrest-all-1.3.jar;lib/org.eclipse.jdt.annotation_2.0.0.v20140415-1436.jar" destdir="doc" doctitle="WaDosUtil" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="ch.judos.generic.*,ch.waan.*,org.bitlet.weupnp,*,ch.wados.*" source="1.8" sourcepath="src" splitindex="true" use="true" version="true">
 			<tag name="todo" />
 			<tag name="copyright" />
 			<tag name="source" />
@@ -38,8 +38,6 @@
 			<fileset dir="bin">
 				<exclude name="**/ch/judos/examples/**" />
 			</fileset>
-			<fileset dir="judos" />
-			<fileset dir="waan" />
 			<fileset dir="src" />
 			<fileset dir="doc" />
 		</jar>
@@ -47,8 +45,6 @@
 			<fileset dir="bin">
 				<exclude name="**/ch/judos/examples/**" />
 			</fileset>
-			<fileset dir="judos" />
-			<fileset dir="waan" />
 			<fileset dir="src" />
 		</jar>
 	</target>
