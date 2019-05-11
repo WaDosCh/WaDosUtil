@@ -10,7 +10,7 @@ import java.io.IOException;
  * 
  * @author m.thitithamasak
  */
-public class thresholding {
+public class Thresholding {
 	private static BufferedReader bReader;
 	private static FileReader fReader;
 	public static int height = 0;

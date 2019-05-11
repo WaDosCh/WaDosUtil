@@ -1,6 +1,11 @@
 package ch.judos.generic.gui;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.security.InvalidParameterException;
@@ -11,7 +16,6 @@ import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.event.MouseInputListener;
 
 import ch.judos.generic.data.TupleR;
@@ -19,8 +23,7 @@ import ch.judos.generic.data.TupleR;
 /**
  * @since 20.09.2014
  * @author Julian Schelker
- * @param <T>
- *            component
+ * @param <T> component
  */
 public class ComponentList<T> {
 	protected JRootPane contentPanel;
@@ -127,8 +130,7 @@ public class ComponentList<T> {
 	}
 
 	/**
-	 * @param l
-	 *            the listener is notified when an entry is selected
+	 * @param l the listener is notified when an entry is selected
 	 */
 	public void addListSelectionListener(ComponentListSelectionListener<T> l) {
 		if (l == null)
@@ -136,7 +138,7 @@ public class ComponentList<T> {
 		this.selectionListeners.add(l);
 	}
 
-	public void removeListSelectionListener(ListSelectionListener l) {
+	public void removeListSelectionListener(ComponentListSelectionListener<T> l) {
 		this.selectionListeners.remove(l);
 	}
 
@@ -164,8 +166,7 @@ public class ComponentList<T> {
 	}
 
 	/**
-	 * @param visibleComponent
-	 *            you will get this from your mouseEvent.getComponent()
+	 * @param visibleComponent you will get this from your mouseEvent.getComponent()
 	 * @return -1 if the element was not found
 	 */
 	public int getIndexOf(Component visibleComponent) {
@@ -205,9 +206,8 @@ public class ComponentList<T> {
 	}
 
 	/**
-	 * <b>Note:</b> this method does not notify any ListSelectionListeners about
-	 * the change. Use selectAndNotifyListeners(Component) if you want to let
-	 * your listeners know about the change.
+	 * <b>Note:</b> this method does not notify any ListSelectionListeners about the change. Use
+	 * selectAndNotifyListeners(Component) if you want to let your listeners know about the change.
 	 * 
 	 * @param visibleComponent
 	 */
@@ -268,8 +268,7 @@ public class ComponentList<T> {
 		Component glass = ComponentList.this.contentPanel.getGlassPane();
 		Container con = ComponentList.this.contentPanel.getContentPane();
 
-		public GlassPaneListener() {
-		}
+		public GlassPaneListener() {}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -284,8 +283,8 @@ public class ComponentList<T> {
 
 		private void forwardEventToEntry(MouseEvent e, ComponentListEntry entry) {
 			Point point = SwingUtilities.convertPoint(this.glass, e.getPoint(), entry);
-			MouseEvent event = new MouseEvent(entry, e.getID(), e.getWhen(), e.getModifiers(),
-				point.x, point.y, e.getClickCount(), e.isPopupTrigger());
+			MouseEvent event = new MouseEvent(entry, e.getID(), e.getWhen(), e.getModifiers(), point.x,
+				point.y, e.getClickCount(), e.isPopupTrigger());
 			delegateMouseEvent(event);
 		}
 
@@ -360,36 +359,33 @@ public class ComponentList<T> {
 		private void forwardEvent(MouseEvent e) {
 			Point glassPoint = e.getPoint();
 
-			Point containerPoint = SwingUtilities.convertPoint(this.glass, glassPoint,
-				this.con);
+			Point containerPoint = SwingUtilities.convertPoint(this.glass, glassPoint, this.con);
 			if (containerPoint.y < 0)
 				return;
 
-			Component component = SwingUtilities.getDeepestComponentAt(this.con,
-				containerPoint.x, containerPoint.y);
+			Component component =
+				SwingUtilities.getDeepestComponentAt(this.con, containerPoint.x, containerPoint.y);
 			if (component != this.currentlyHovered && this.currentlyHovered != null) {
-				Point hoverPoint = SwingUtilities.convertPoint(this.glass, glassPoint,
-					this.currentlyHovered);
+				Point hoverPoint =
+					SwingUtilities.convertPoint(this.glass, glassPoint, this.currentlyHovered);
 				this.currentlyHovered.dispatchEvent(new MouseEvent(this.currentlyHovered,
-					MouseEvent.MOUSE_EXITED, e.getWhen(), e.getModifiers(), hoverPoint.x,
-					hoverPoint.y, e.getClickCount(), e.isPopupTrigger()));
+					MouseEvent.MOUSE_EXITED, e.getWhen(), e.getModifiers(), hoverPoint.x, hoverPoint.y,
+					e.getClickCount(), e.isPopupTrigger()));
 			}
 			if (component == null)
 				return;
 
-			Point componentPoint = SwingUtilities.convertPoint(this.glass, glassPoint,
-				component);
+			Point componentPoint = SwingUtilities.convertPoint(this.glass, glassPoint, component);
 
 			if (component != this.currentlyHovered) {
 				this.currentlyHovered = component;
-				this.currentlyHovered.dispatchEvent(new MouseEvent(component,
-					MouseEvent.MOUSE_ENTERED, e.getWhen(), e.getModifiers(), componentPoint.x,
-					componentPoint.y, e.getClickCount(), e.isPopupTrigger()));
+				this.currentlyHovered.dispatchEvent(
+					new MouseEvent(component, MouseEvent.MOUSE_ENTERED, e.getWhen(), e.getModifiers(),
+						componentPoint.x, componentPoint.y, e.getClickCount(), e.isPopupTrigger()));
 			}
 
-			component.dispatchEvent(new MouseEvent(component, e.getID(), e.getWhen(), e
-				.getModifiers(), componentPoint.x, componentPoint.y, e.getClickCount(), e
-				.isPopupTrigger()));
+			component.dispatchEvent(new MouseEvent(component, e.getID(), e.getWhen(), e.getModifiers(),
+				componentPoint.x, componentPoint.y, e.getClickCount(), e.isPopupTrigger()));
 		}
 
 	}

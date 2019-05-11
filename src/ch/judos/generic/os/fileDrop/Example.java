@@ -18,16 +18,17 @@ public class Example {
 		javax.swing.JFrame frame = new javax.swing.JFrame("FileDrop");
 		Border dragBorder = BorderFactory.createLineBorder(Color.GREEN, 2);
 		final javax.swing.JTextArea text = new javax.swing.JTextArea();
-		frame.getContentPane().add(new javax.swing.JScrollPane(text),
-			java.awt.BorderLayout.CENTER);
+		frame.getContentPane().add(new javax.swing.JScrollPane(text), java.awt.BorderLayout.CENTER);
 
 		new FileDrop(System.out, text, dragBorder, new FileDrop.Listener() {
+			@Override
 			public void filesDropped(java.io.File[] files) {
 				for (int i = 0; i < files.length; i++) {
 					try {
 						text.append(files[i].getCanonicalPath() + "\n");
 					} // end try
 					catch (java.io.IOException e) {
+						// ok
 					}
 				} // end for: through each dropped file
 			} // end filesDropped

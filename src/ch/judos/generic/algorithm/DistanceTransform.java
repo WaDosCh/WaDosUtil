@@ -757,7 +757,7 @@ public class DistanceTransform {
 			File myFile = new File(fileName);
 			myFile.delete();
 			writeToFile(fileName, image);
-			fileName = thresholding.thresholdOutBinaryImage(fileName, thresholdValue, width,
+			fileName = Thresholding.thresholdOutBinaryImage(fileName, thresholdValue, width,
 				height);
 			String BinaryImage = fileName;
 			// read binary image

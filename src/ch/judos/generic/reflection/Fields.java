@@ -5,7 +5,6 @@ import java.lang.reflect.Modifier;
 import java.util.List;
 
 import ch.judos.generic.data.DynamicList;
-import ch.judos.generic.data.Mapper;
 
 /**
  * provides useful methods in relation to fields
@@ -70,15 +69,6 @@ public class Fields {
 			clazz = clazz.getSuperclass();
 		}
 		return r;
-	}
-
-	public static Mapper<Field, String> getFieldNameMapper() {
-		return new Mapper<Field, String>() {
-			@Override
-			public String get(Field key) {
-				return key.getName();
-			}
-		};
 	}
 
 }

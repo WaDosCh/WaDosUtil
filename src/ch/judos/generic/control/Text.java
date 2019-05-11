@@ -15,13 +15,13 @@ public class Text {
 
 	private Text() {
 		Locale currentLocale = Locale.getDefault();
-		if (output)
+		if (this.output)
 			System.out.println("Host locale: " + currentLocale);
 		LanguageRange high = new LanguageRange(currentLocale.toLanguageTag());
 
 		Locale best = Locale.lookup(new DynamicList<>(high, getDefaultLocale()),
 			existingTextPropertyBundles());
-		if (output)
+		if (this.output)
 			System.out.println("Best matching locale: " + best);
 		this.bundle = ResourceBundle.getBundle("TextBundle", best, new UTF8Control());
 	}

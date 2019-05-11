@@ -2,6 +2,7 @@ package ch.judos.generic.data;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.function.Function;
 
 import ch.judos.generic.reflection.Classes;
 
@@ -11,8 +12,7 @@ import ch.judos.generic.reflection.Classes;
  * @since 23.06.2011
  * @author Julian Schelker
  * @version 1.11 / 21.02.2013
- * @param <T>
- *            any object to be in the list
+ * @param <T> any object to be in the list
  */
 public class DynamicList<T> extends ArrayList<T> {
 
@@ -26,16 +26,14 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * create an empty list with some space
 	 * 
-	 * @param initialCapacity
-	 *            initial size to allocate for this list
+	 * @param initialCapacity initial size to allocate for this list
 	 */
 	public DynamicList(int initialCapacity) {
 		super(initialCapacity);
 	}
 
 	/**
-	 * @param initialObjects
-	 *            initialize the list with elements
+	 * @param initialObjects initialize the list with elements
 	 */
 	public DynamicList(Iterable<T> initialObjects) {
 		super();
@@ -45,8 +43,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	}
 
 	/**
-	 * @param initialObjects
-	 *            added to the list when constructing it
+	 * @param initialObjects added to the list when constructing it
 	 */
 	@SafeVarargs
 	public DynamicList(T... initialObjects) {
@@ -59,8 +56,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * list is modified and returned to add further objects
 	 * 
-	 * @param obj
-	 *            add some object
+	 * @param obj add some object
 	 * @return the list itself
 	 */
 	public DynamicList<T> a(T obj) {
@@ -69,8 +65,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	}
 
 	/**
-	 * @param furtherObjects
-	 *            adds all elements to the list
+	 * @param furtherObjects adds all elements to the list
 	 */
 	@SafeVarargs
 	public final void addAll(T... furtherObjects) {
@@ -80,14 +75,11 @@ public class DynamicList<T> extends ArrayList<T> {
 	}
 
 	/**
-	 * @param <Type>
-	 *            type reference
-	 * @param c
-	 *            class reference
-	 * @return a list with all objects from this list that could be casted to
-	 *         the given type
+	 * @param <Type> type reference
+	 * @param c class reference
+	 * @return a list with all objects from this list that could be casted to the given type
 	 */
-	@SuppressWarnings({"unused", "unchecked"})
+	@SuppressWarnings({ "unused", "unchecked" })
 	public <Type> DynamicList<Type> castOrOmit(Class<Type> c) {
 		DynamicList<Type> result = new DynamicList<>();
 		for (T entry : this) {
@@ -123,8 +115,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * <b>Note:</b> will not affect this list
 	 * 
 	 * @param c
-	 * @return only the objects that are instances of the given class (tests for
-	 *         class.equals(class))
+	 * @return only the objects that are instances of the given class (tests for class.equals(class))
 	 */
 	public DynamicList<T> filterByClass(Class<?> c) {
 		DynamicList<T> result = new DynamicList<>();
@@ -184,8 +175,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <Type>
 	 * @param list
-	 * @param search
-	 *            the string to look for in the toString() of the objects
+	 * @param search the string to look for in the toString() of the objects
 	 * @return the object that is found - null if none is found
 	 */
 	public static <Type> Type searchExact(List<Type> list, String search) {
@@ -202,8 +192,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * @param <X>
 	 * @param elements
-	 * @return the smallest element of the list, according to their natural
-	 *         order
+	 * @return the smallest element of the list, according to their natural order
 	 */
 	public static <X extends Comparable<X>> Optional<X> smallest(List<X> elements) {
 		return elements.stream().min(Comparator.naturalOrder());
@@ -214,7 +203,7 @@ public class DynamicList<T> extends ArrayList<T> {
 	 * @param elements
 	 * @return the smallest element of the list
 	 */
-	@SuppressWarnings({"unchecked", "rawtypes"})
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static <X> X smallest(X... elements) {
 		List l = Arrays.asList(elements);
 		Collections.sort(l);
@@ -274,8 +263,7 @@ public class DynamicList<T> extends ArrayList<T> {
 		private Class<?> commonClass;
 
 		/**
-		 * @param list
-		 *            list to iterate over
+		 * @param list list to iterate over
 		 */
 		public Iterator2(List list) {
 			this.list = list;
@@ -318,11 +306,11 @@ public class DynamicList<T> extends ArrayList<T> {
 
 	}
 
-	public <K> T searchExactFirst(K search, Mapper<T, K> mapper) {
+	public <K> T searchExactFirst(K search, Function<T, K> mapper) {
 		Iterator<T> it = iterator();
 		while (it.hasNext()) {
 			T e = it.next();
-			if (mapper.get(e).equals(search))
+			if (mapper.apply(e).equals(search))
 				return e;
 		}
 		return null;
@@ -339,13 +327,11 @@ public class DynamicList<T> extends ArrayList<T> {
 	/**
 	 * will throw an exception when one object can't be cast to the target class
 	 * 
-	 * @param l
-	 *            list of objects
-	 * @param class1
-	 *            target class to cast each object to
+	 * @param l list of objects
+	 * @param class1 target class to cast each object to
 	 * @return a new dynamic list of T2 objects
 	 */
-	@SuppressWarnings({"unchecked"})
+	@SuppressWarnings({ "unchecked" })
 	public static <T1, T2 extends T1> DynamicList<T2> castUp(List<T1> l, Class<T2> class1)
 		throws ClassCastException {
 		DynamicList<T2> result = new DynamicList<>(l.size());

@@ -107,7 +107,7 @@ public class CSVFileReader {
 	 * @param reader
 	 * @throws IOException
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "null" })
 	protected CSVFileReader(BufferedReader reader) throws IOException {
 		String line;
 		String attributeLine = reader.readLine();
@@ -124,7 +124,7 @@ public class CSVFileReader {
 		this.separation = getSeparationCharacter(candidates);
 
 		this.attributes = CSVFile.decodeForValue(attributeLine.split(this.separation, -1));
-		this.entities = (HashMap<String, String>[]) new HashMap[allLines.size()];
+		this.entities = new HashMap[allLines.size()];
 		int index = 0;
 		for (String entity : allLines) {
 			String[] values = CSVFile.decodeForValue(entity.split(this.separation, -1));

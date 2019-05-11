@@ -47,12 +47,12 @@ public class TaskBarProgressWrapper {
 	}
 
 	public void setProgress(double progress) {
-		this.list.SetProgressValue((Pointer<Integer>) this.windowHandlePointer, (int) (progress
+		this.list.SetProgressValue(this.windowHandlePointer, (int) (progress
 			* 1000), 1000);
 	}
 
 	public void setState(State state) {
-		this.list.SetProgressState((Pointer<Integer>) this.windowHandlePointer, state
+		this.list.SetProgressState(this.windowHandlePointer, state
 			.getFlag());
 	}
 }

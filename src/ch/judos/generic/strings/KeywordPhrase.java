@@ -17,8 +17,8 @@ public class KeywordPhrase {
 		text = Normalizer.normalize(text, Normalizer.Form.NFD);
 		text = text.replaceAll("\\p{M}", "");
 		text = text.replaceAll("\\s+", " ");
-		DynamicList<String> parts = new DynamicList<>(text.split(" "));
-		this.parts = parts.stream().filter(s -> !s.trim().isEmpty()).toArray(String[]::new);
+		DynamicList<String> stringParts = new DynamicList<>(text.split(" "));
+		this.parts = stringParts.stream().filter(s -> !s.trim().isEmpty()).toArray(String[]::new);
 	}
 
 	public double score(KeywordPhrase phrase) {

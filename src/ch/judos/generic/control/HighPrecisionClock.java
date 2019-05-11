@@ -2,13 +2,13 @@ package ch.judos.generic.control;
 
 public class HighPrecisionClock {
 
-	private static final int busyWaitAheadNS = 1000000;
+	protected int busyWaitAheadNS = 1000000;
 
-	private int fps;
-	private Runnable tick;
-	private boolean running;
-	private Thread thread;
-	private String name;
+	protected int fps;
+	protected Runnable tick;
+	protected boolean running;
+	protected Thread thread;
+	protected String name;
 
 	public HighPrecisionClock(int fps, Runnable tick, String name) {
 		this.fps = fps;
@@ -29,8 +29,8 @@ public class HighPrecisionClock {
 		this.running = false;
 	}
 
-	private void run() {
-		long delayBetweenFrameNS = 1000000000 / fps;
+	protected void run() {
+		long delayBetweenFrameNS = 1000000000 / this.fps;
 		long lastFrameTimeNS = 0;
 		while (this.running) {
 			long currentTimeNS = System.nanoTime();
@@ -38,15 +38,19 @@ public class HighPrecisionClock {
 				lastFrameTimeNS = currentTimeNS;
 				try {
 					this.tick.run();
-				} catch (Exception e) {
+				}
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 			try {
-				long remaining = lastFrameTimeNS + delayBetweenFrameNS - System.nanoTime() - busyWaitAheadNS;
+				long remaining =
+					lastFrameTimeNS + delayBetweenFrameNS - System.nanoTime() - this.busyWaitAheadNS;
 				if (remaining > 0)
 					Thread.sleep(remaining / 1000000, (int) (remaining % 1000000));
-			} catch (InterruptedException e) {
+			}
+			catch (InterruptedException e) {
+				// do nothing
 			}
 		}
 	}

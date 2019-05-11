@@ -35,19 +35,19 @@ public final class AccessLock {
 	}
 
 	public synchronized void lock() {
-		locked = true;
+		this.locked = true;
 	}
 
 	public synchronized void unlock() {
-		locked = false;
+		this.locked = false;
 	}
 
 	public synchronized void toggleLock() {
-		locked = !locked;
+		this.locked = !this.locked;
 	}
 
 	public boolean isLocked() {
-		return locked;
+		return this.locked;
 	}
 
 	/**
@@ -57,8 +57,8 @@ public final class AccessLock {
 	 * {@link IllegalStateException}.
 	 */
 	public synchronized void test() {
-		if (locked)
-			throw exceptionSupplier.get();
+		if (this.locked)
+			throw this.exceptionSupplier.get();
 	}
 
 	/**

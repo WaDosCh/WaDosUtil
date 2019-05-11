@@ -1,6 +1,8 @@
 package ch.judos.generic.data;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * a hashmap with two keys
@@ -8,12 +10,9 @@ import java.util.HashMap;
  * @since 23.02.2013
  * @author Julian Schelker
  * @version 1.0 / 23.02.2013
- * @param <K>
- *            key of the hashmap
- * @param <K2>
- *            second key of the hashmap
- * @param <V>
- *            value associated to the two keys
+ * @param <K> key of the hashmap
+ * @param <K2> second key of the hashmap
+ * @param <V> value associated to the two keys
  */
 public class HashMap2<K, K2, V> {
 
@@ -30,13 +29,9 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
-	 * @param key1
-	 *            first key
-	 * @param key2
-	 *            second key
-	 * @param value
-	 *            value to associate to those two keys puts a value to the
-	 *            specified two keys
+	 * @param key1 first key
+	 * @param key2 second key
+	 * @param value value to associate to those two keys puts a value to the specified two keys
 	 */
 	public void put(K key1, K2 key2, V value) {
 		HashMap<K2, V> map2 = this.map1.get(key1);
@@ -48,10 +43,8 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
-	 * @param key1
-	 *            first key
-	 * @param key2
-	 *            second key
+	 * @param key1 first key
+	 * @param key2 second key
 	 * @return gets the value back, needs both keys
 	 */
 	public V get(K key1, K2 key2) {
@@ -62,10 +55,8 @@ public class HashMap2<K, K2, V> {
 	}
 
 	/**
-	 * @param key1
-	 *            the first key
-	 * @param key2
-	 *            the second key
+	 * @param key1 the first key
+	 * @param key2 the second key
 	 * @return true if the given two keys exist
 	 */
 	public boolean containsKey(K key1, K2 key2) {
@@ -73,6 +64,17 @@ public class HashMap2<K, K2, V> {
 			return this.map1.get(key1).containsKey(key2);
 		}
 		return false;
+	}
+
+	public Set<K> keySet() {
+		return this.map1.keySet();
+	}
+
+	public Set<K2> getInnerKeySet(K key) {
+		HashMap<K2, V> map = this.map1.get(key);
+		if (map == null)
+			return Collections.emptySet();
+		return map.keySet();
 	}
 
 	public void clear() {

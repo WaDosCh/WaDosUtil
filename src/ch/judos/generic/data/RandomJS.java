@@ -1,5 +1,7 @@
 package ch.judos.generic.data;
 
+import java.util.List;
+
 /**
  * @since 20.03.2012
  * @author Julian Schelker
@@ -30,9 +32,14 @@ public class RandomJS {
 		return ts[index];
 	}
 
+	public static <T> T getObject(List<T> list) {
+		init();
+		int index = getInt(0, list.size() - 1);
+		return list.get(index);
+	}
+
 	/**
-	 * @param max
-	 *            the maximum value (exclusive)
+	 * @param max the maximum value (exclusive)
 	 * @return a random float
 	 */
 	public static double getDouble(double max) {
@@ -50,8 +57,7 @@ public class RandomJS {
 	}
 
 	/**
-	 * @param max
-	 *            the maximum value (exclusive)
+	 * @param max the maximum value (exclusive)
 	 * @return a random float
 	 */
 	public static float getFloat(double max) {
@@ -69,10 +75,8 @@ public class RandomJS {
 	}
 
 	/**
-	 * @param min
-	 *            the minimum value (inclusive)
-	 * @param max
-	 *            the maximum value (inclusive)
+	 * @param min the minimum value (inclusive)
+	 * @param max the maximum value (inclusive)
 	 * @return a random int
 	 */
 	public static int getInt(int min, int max) {
@@ -81,8 +85,7 @@ public class RandomJS {
 	}
 
 	/**
-	 * @param max
-	 *            the maximum value (inclusive)
+	 * @param max the maximum value (inclusive)
 	 * @return a random int between 0 (inclusive) and the max (inclusive)
 	 */
 	public static int getInt(int max) {
@@ -98,5 +101,19 @@ public class RandomJS {
 	 */
 	public static boolean getTrueWithProb(int percentage) {
 		return getDouble(100) <= percentage;
+	}
+	
+	public static boolean getBoolean() {
+		return getInt(1) == 1;
+	}
+	
+	public static <T extends Enum<T>> T getEnum(Class<T> clazz) {
+		try {
+			@SuppressWarnings("unchecked")
+			T[] values = (T[]) clazz.getMethod("values").invoke(null);
+			return RandomJS.getObject(values);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 }

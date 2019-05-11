@@ -1,12 +1,6 @@
 package ch.judos.generic.math;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import ch.judos.generic.math.operators.AddOperator;
-import ch.judos.generic.math.operators.EmptyOperator;
-import ch.judos.generic.math.operators.SquareOperator;
-import ch.judos.generic.math.operators.UnaryOperator;
 
 /**
  * @since 04.09.2011
@@ -21,35 +15,10 @@ public class MathJS {
 	 *         stdv= sum( ( x_i - mean)^2 )/ (n-1)
 	 */
 	public static double stdv(List<? extends Number> list) {
-
 		double mean = sum(list) / list.size();
+		double sum = list.stream().mapToDouble(x -> Math.pow(x.doubleValue() - mean, 2)).sum();
+		return sum / (list.size() - 1);
 
-		AddOperator add = new AddOperator();
-		UnaryOperator sub = add.bindArgumentB(-mean);
-		SquareOperator sq = new SquareOperator();
-
-		return sum(listDo(listDo(list, sub), sq)) / (list.size() - 1);
-
-	}
-
-	public static List<Number> listAdd(List<? extends Number> list, Number n) {
-		AddOperator op1 = new AddOperator();
-		UnaryOperator op2 = op1.bindArgumentB(n.doubleValue());
-		return listDo(list, op2);
-	}
-
-	public static List<Number> listDo(List<? extends Number> list, UnaryOperator op) {
-		ArrayList<Number> result = new ArrayList<>();
-		for (Number x : list) {
-			result.add(new Double(op.calculate(x.doubleValue())));
-		}
-		return result;
-	}
-
-	public static void listDo(List<? extends Number> list, EmptyOperator op) {
-		for (Number x : list) {
-			op.calculate(x.doubleValue());
-		}
 	}
 
 	/**
@@ -76,9 +45,9 @@ public class MathJS {
 	 * @param number
 	 * @param min
 	 * @param max
-	 * @return the number clamped to the invervall. if the number is smaller
-	 *         than min then min is returned, if the number if bigger than max
-	 *         then max is returned. otherwise the number itself is returned.
+	 * @return the number clamped to the invervall. if the number is smaller than min then min is
+	 *         returned, if the number if bigger than max then max is returned. otherwise the number
+	 *         itself is returned.
 	 */
 	public static double clamp(double number, double min, double max) {
 		if (number < min)
@@ -89,10 +58,8 @@ public class MathJS {
 	}
 
 	/**
-	 * @param base
-	 *            base of the logarithm
-	 * @param number
-	 *            some number
+	 * @param base base of the logarithm
+	 * @param number some number
 	 * @return log_a(b)
 	 */
 	public static double log(double base, double number) {
@@ -115,9 +82,7 @@ public class MathJS {
 	 * returns the total cross of a number.
 	 * 
 	 * @param number
-	 * @param base
-	 *            the radix of the number, for decimal numbers: 10, for binary
-	 *            numbers: 2
+	 * @param base the radix of the number, for decimal numbers: 10, for binary numbers: 2
 	 * @return the total cross
 	 */
 	public static int crossSum(int number, int base) {
@@ -143,10 +108,8 @@ public class MathJS {
 	}
 
 	/**
-	 * @param number
-	 *            to round
-	 * @param decimals
-	 *            digits after comma
+	 * @param number to round
+	 * @param decimals digits after comma
 	 * @return the rounded value
 	 */
 	public static double round(double number, int decimals) {
@@ -174,10 +137,8 @@ public class MathJS {
 	}
 
 	/**
-	 * @param value
-	 *            to round
-	 * @param decimals
-	 *            digits after comma
+	 * @param value to round
+	 * @param decimals digits after comma
 	 * @return the rounded value as string
 	 */
 	public static String roundToStr(double value, int decimals) {
@@ -185,12 +146,9 @@ public class MathJS {
 	}
 
 	/**
-	 * @param a
-	 *            number one
-	 * @param b
-	 *            number two
-	 * @return if a==b returns 1, if a!=0 &amp;&amp; b==0 returns NaN, otherwise
-	 *         a/b
+	 * @param a number one
+	 * @param b number two
+	 * @return if a==b returns 1, if a!=0 &amp;&amp; b==0 returns NaN, otherwise a/b
 	 */
 	public static double divideByZero(double a, double b) {
 		if (b == 0) {
@@ -202,8 +160,7 @@ public class MathJS {
 	}
 
 	/**
-	 * @param arr
-	 *            values
+	 * @param arr values
 	 * @return the maximum value of the array
 	 */
 	public static double max(double... arr) {
@@ -231,8 +188,7 @@ public class MathJS {
 	}
 
 	/**
-	 * @param arr
-	 *            values
+	 * @param arr values
 	 * @return the maximum value of the array
 	 */
 	public static float max(float... arr) {
@@ -244,8 +200,7 @@ public class MathJS {
 	}
 
 	/**
-	 * @param arr
-	 *            values
+	 * @param arr values
 	 * @return the minimum value of the array
 	 */
 	public static double min(double... arr) {
@@ -301,8 +256,7 @@ public class MathJS {
 	}
 
 	/**
-	 * @param arr
-	 *            values
+	 * @param arr values
 	 * @return the minimum value of the array
 	 */
 	public static float min(float... arr) {
