@@ -582,8 +582,8 @@ public class FileDrop {
 
 	/**
 	 * This is the event that is passed to the
-	 * {@link ch.judos.generic.os.fileDrop.FileDrop#filesDropped filesDropped(...)} method in your
-	 * {@link ch.judos.generic.os.fileDrop.FileDrop} when files are dropped onto a registered drop
+	 * {@link FileDrop#filesDropped filesDropped(...)} method in your
+	 * {@link FileDrop} when files are dropped onto a registered drop
 	 * target.
 	 *
 	 * <p>

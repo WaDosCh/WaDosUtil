@@ -1,5 +1,0 @@
-use eclipse's feature "install new software"
-software page link:
-http://download.scala-ide.org/sdk/lithium/e44/scala211/stable/site/
-
-install everything
