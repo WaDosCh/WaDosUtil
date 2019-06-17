@@ -40,7 +40,9 @@ public class HashMapList<K, V> {
 
 	public void removeKey(K key) {
 		ArrayList<V> list = this.map.remove(key);
-		this.size -= list.size();
+		if (list != null) {
+			this.size -= list.size();
+		}
 	}
 
 	public void removeValueForKey(K key, V value) {

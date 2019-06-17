@@ -200,6 +200,7 @@ public class Path implements Cloneable, Comparable<Path> {
 	 *            coordinateTranslator
 	 * @return whether the fields are diagonally reachable
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public boolean isAirReachable(PointF start, PointF target, FreeFieldChecker freeCheck,
 		CoordinateTranslator trans) {
 		int i = findDirection(start, target);
